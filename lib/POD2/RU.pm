@@ -6,6 +6,9 @@ use strict;
 use warnings;
 use base 'Exporter';
 use base 'POD2::Base';
+use IO::Interactive qw(is_interactive);
+use Encode::Locale qw(decode_argv);
+
 
 use 5.008_005;
 our $VERSION = '0.01';
@@ -84,8 +87,7 @@ sub print_pods {
 }
 
 sub prepare_encoding_console {
-    use Encode::Locale qw(decode_argv);
-    if (-t) {
+    if (is_interactive()) {
         binmode( STDIN,  ":encoding(console_in)" );
         binmode( STDOUT, ":encoding(console_out)" );
         binmode( STDERR, ":encoding(console_out)" );
