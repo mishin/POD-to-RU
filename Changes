@@ -1,4 +1,75 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
-        - Initial release
+
+5.18.0.1.16  2015-03-09 20:41:14 MSK
+
+           * Figth with Dist::Milla
+           * Finished translate perlretut
+
+5.18.0.1.15  February 23, 2015
+
+           * Convert to Dist::Milla
+           * perlretut translating finished
+      
+5.18.0.1.14  October 21, 2014
+ 
+           * Added translation perlsecret.pod
+
+5.18.0.1.13  October 1, 2014
+ 
+           * Added translation perlreref.pod
+           
+5.18.0.1.12  Ceptember 23, 2014
+ 
+           * Russian language (utf8) is not not possible in readme
+           * Minor changes
+           * Format of Changes changed ;)
+
+5.18.0.1.11  Ceptember 22, 2014
+ 
+           * Added translation perlrequick.pod
+           
+5.18.0.1.10  Ceptember 24, 2013
+           [Spec Changes]
+           * Add correct distribution version
+ 
+5.18.0.1.9  Ceptember 24, 2013
+           [Spec Changes]
+           * Change file Changes according to CPAN::Changes
+
+5.18.0.1.8  Ceptember 2, 2013
+
+           * Added new thanks, 01pod.t 
+           * Test pod documentation
+
+5.18.0.1.7  July 28, 2013
+
+           * Add POD2::ES to see also, it's my fault, my sincere apologies to Enrique Nell
+
+5.18.0.1.6  July 28, 2013
+
+           * Add changes from Anton Nikishaev<me@lelf.lu>
+
+5.18.0.1.5  July 28, 2013
+
+           * Remove russian language from Build.PL
+
+5.18.0.1.4  July 28, 2013
+
+           * Add link to Makefile.PL git repository  https://github.com/mishin/perldoc-ru.git
+
+5.18.0.1.3  July 28, 2013
+
+           * Move to Build.PL    http://blogs.perl.org/users/chorny/2011/07/how-to-get-rid-of-withoutworldwriteables.html
+
+5.18.0.1.2  July 27, 2013
+
+           * Added  perlcheat.pod
+           * Added  perlnewmod.pod
+
+5.18.0.1.1  July 2, 2013
+
+           * Initial release
+           * Anatoliy Sharifullin agreed that i can use already translated code from https://github.com/sharifulin/pod2-ru/blob/master/RU.pm
+
