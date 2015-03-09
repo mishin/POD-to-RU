@@ -317,7 +317,7 @@ Mnemonic: heI<x>adecimal.
  /\x{263B}/         # Black smiling face.
  /\x{263b}/         # Same, the hex digits A - F are case insensitive.
 
-=head2 Ìîäèôèêàòîðû
+=head2 Модификаторы
 
 A number of backslash sequences have to do with changing the character,
 or characters following them. C<\l> will lowercase the character following
