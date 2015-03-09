@@ -1,5 +1,5 @@
 {
-   "abstract" : "Translate Perl documantation to Russian language",
+   "abstract" : "Perl Документация по-русски ",
    "author" : [
       "Nikolay Mishin <mi@ya.ru>"
    ],
@@ -58,6 +58,6 @@
          "web" : "https://github.com/mishin/POD-to-RU"
       }
    },
-   "version" : "5.18.0.1.16"
+   "version" : "5.18.0.1.17"
 }
 
