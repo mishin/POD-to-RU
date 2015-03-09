@@ -193,13 +193,21 @@ Nikolay Mishin E<lt>mi@ya.ruE<gt>
 =over
 
 =item * Николай Мишин  C<< <mishin@cpan.org> >>
+
 =item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
+
 =item * Алексей Суриков C<< <KSURi> >>
+
 =item * Михаил Любимов  C<< <mikhail.lyubimov> >>
+
 =item * Дмитрий Константинов  C<< <Dim_K> >>
+
 =item * Евгений Баранов  C<< <Baranov> >>
+
 =item * Антон Николаев C<< <me@lelf.lu> >>
+
 =item * Динар Жамалиев C<< <zhdinar> >>
+
 =item * Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
 
 =back
