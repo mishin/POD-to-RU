@@ -1,6 +1,6 @@
 package POD2::RU;
 
-# ABSTRACT: Translate Perl documantation to Russian language
+# ABSTRACT: Perl Документация по-русски 
 use utf8;
 use strict;
 use warnings;
