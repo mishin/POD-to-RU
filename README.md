@@ -86,14 +86,14 @@ Nikolay Mishin <mi@ya.ru>
 # АВТОРЫ
 
 - Николай Мишин  `<mishin@cpan.org>`
-=item \* Анатолий Шарифулин  `<sharifulin@gmail.com>`
-=item \* Алексей Суриков `<KSURi>`
-=item \* Михаил Любимов  `<mikhail.lyubimov>`
-=item \* Дмитрий Константинов  `<Dim_K>`
-=item \* Евгений Баранов  `<Baranov>`
-=item \* Антон Николаев `<me@lelf.lu>`
-=item \* Динар Жамалиев `<zhdinar>`
-=item \* Валерий Кравчук `<valera@openxs.kiev.ua>`
+-  Анатолий Шарифулин  `<sharifulin@gmail.com>`
+-  Алексей Суриков `<KSURi>`
+-  Михаил Любимов  `<mikhail.lyubimov>`
+-  Дмитрий Константинов  `<Dim_K>`
+-  Евгений Баранов  `<Baranov>`
+-  Антон Николаев `<me@lelf.lu>`
+-  Динар Жамалиев `<zhdinar>`
+-  Валерий Кравчук `<valera@openxs.kiev.ua>`
 
 # COPYRIGHT
 
