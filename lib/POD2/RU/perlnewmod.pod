@@ -13,13 +13,12 @@ perlnewmod - подготовка нового модуля
 Основная возможность так сделать - это реализовать задачу, поместив её решение в Perl модуль. Если вы не знаете, что это, то
  оставшаяся часть этого документа не принесет большой пользы для вас.  Возможно вы пропустили массу полезного кода и вам нужно почитать L<perlmod> , L<perlmodlib> и L<perlmodinstall> перед возвращением сюда.
 
-Если вы обнаружили, что нет модуля доступны за то, что вы пытаетесь сделать, и вы должны были написать код самостоятельно, рассмотрите упаковку до раствора в модуль и загружать его на CPAN так что любой может пользу.
-When you've found that there isn't a module available for what you're trying to do, and you've had to write the code yourself, consider packaging up the solution into a module and uploading it to CPAN so that others can benefit.  
-Когда вы обнаружили, что существует не модуль для того, что вы пытаетесь сделать, и вам пришлось бы писать код самостоятельно, считают упаковки решение в модуль и его передачи в CPAN, так что другие могут воспользоваться.
+Если вы обнаружили, что нет модуля, который делает то, что вам нужно и вам придется писать код самостоятельно, рассмотрите упаковку этого кода в модуль и загрузите его на CPAN, чтобы другие могли им воспользоваться.
 
-=head2 Предупреждение
+=head2 Предостережение
 
 Мы собираемся в первую очередь сосредоточиться на Perl-модулей только здесь, а не XS модулей. XS модули служат несколько иную цель, и вы должны рассмотреть разные вещи, прежде чем распространять их - популярность библиотеки вы склейки, переносимость на другие операционные системы, и так далее. Тем не менее, указания по подготовке Perl стороне модуля и упаковку и распространение оно будет применять одинаково хорошо XS модуль как чистый Perl-один.
+We're going to primarily concentrate on Perl-only modules here, rather than XS modules. XS modules serve a rather different purpose, and you should consider different things before distributing them - the popularity of the library you are gluing, the portability to other operating systems, and so on. However, the notes on preparing the Perl side of the module and packaging and distributing it will apply equally well to an XS module as a pure-Perl one
 
 =head2 Что я должен сделать в модуле?
 
