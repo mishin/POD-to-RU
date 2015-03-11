@@ -40,13 +40,9 @@
             "Encode::Locale" : "0",
             "IO::Interactive" : "0",
             "POD2::Base" : "0",
-            "perl" : "5.008005"
-         }
-      },
-      "test" : {
-         "requires" : {
             "Test::More" : "0.96",
-            "Test::More::UTF8" : "0"
+            "Test::More::UTF8" : "0",
+            "perl" : "5.008005"
          }
       }
    },
@@ -62,6 +58,6 @@
          "web" : "https://github.com/mishin/POD-to-RU"
       }
    },
-   "version" : "5.18.0.1.20"
+   "version" : "5.18.0.1.21"
 }
 
