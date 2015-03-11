@@ -2,6 +2,10 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.22  2015-03-12 00:18:23 MSK
+           [Spec Changes]
+           * Исправил 1 букву в Changes
+
 5.18.0.1.21  2015-03-11 23:34:39 MSK
 
            * Улучшил перевод у
