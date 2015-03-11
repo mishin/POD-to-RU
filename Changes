@@ -2,6 +2,17 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * Улачшил перевод у
+           * a2p.pod
+           * perl.pod
+           * perlbook.pod
+           * perlcheat.pod
+           * perldoc.pod
+           * перевел Acme Transmogrifier
+           * как Акме Трансмогрифиер 
+           * (Acme Transmogrifier, Acme - выдуманная мультяшная компания, Transmogrifier - преобразователь меча в Diablo 2)
+           * в perlintro.pod
+	
 5.18.0.1.20  2015-03-09 23:42:40 MSK
 
            * Добавил отсутствующие зависимости по pull request 
