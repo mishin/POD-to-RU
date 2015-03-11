@@ -5,7 +5,5 @@ requires 'POD2::Base';
 requires 'IO::Interactive';
 requires 'Encode::Locale';
 
-on test => sub {
-    requires 'Test::More', '0.96';
-    requires 'Test::More::UTF8';
-};
+requires 'Test::More', '0.96';
+requires 'Test::More::UTF8';
