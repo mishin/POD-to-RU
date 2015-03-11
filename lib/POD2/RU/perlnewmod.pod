@@ -17,7 +17,7 @@ perlnewmod - подготовка нового модуля
 
 =head2 Предостережение
 
-Мы собираемся в первую очередь сосредоточиться на Perl-модулей только здесь, а не XS модулей. XS модули служат несколько иную цель, и вы должны рассмотреть разные вещи, прежде чем распространять их - популярность библиотеки вы склейки, переносимость на другие операционные системы, и так далее. Тем не менее, указания по подготовке Perl стороне модуля и упаковку и распространение оно будет применять одинаково хорошо XS модуль как чистый Perl-один.
+Мы собираемся в первую очередь сосредоточиться здесь только на Perl-модулях, а не XS. XS модули служат несколько иной цели, и вы должны рассмотреть разные вещи, прежде чем распространять их - популярность библиотеки вы склейки, переносимость на другие операционные системы, и так далее. Тем не менее, указания по подготовке Perl стороне модуля и упаковку и распространение оно будет применять одинаково хорошо XS модуль как чистый Perl-один.
 We're going to primarily concentrate on Perl-only modules here, rather than XS modules. XS modules serve a rather different purpose, and you should consider different things before distributing them - the popularity of the library you are gluing, the portability to other operating systems, and so on. However, the notes on preparing the Perl side of the module and packaging and distributing it will apply equally well to an XS module as a pure-Perl one
 
 =head2 Что я должен сделать в модуле?
