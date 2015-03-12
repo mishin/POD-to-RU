@@ -2,6 +2,10 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.23  2015-03-12 21:32:38 MSK
+
+           * Доперевел perlnewmod, хоть эта документация и устарела
+
 5.18.0.1.22  2015-03-12 00:18:23 MSK
            [Spec Changes]
            * Исправил 1 букву в Changes
