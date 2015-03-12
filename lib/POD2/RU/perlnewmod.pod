@@ -169,7 +169,7 @@ Once you've ensured that your module passes its own tests - always a good thing 
 
 Simon Cozens, C<simon@cpan.org>
 
-Updated by Kirrily "Skud" Robert, C<skud@cpan.org>
+Обновлено Kirrily "Skud" Robert, C<skud@cpan.org>
 
 =head1 СМОТРИТЕ ТАКЖЕ
 
