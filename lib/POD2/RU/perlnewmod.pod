@@ -176,7 +176,7 @@ Simon Cozens, C<simon@cpan.org>
 L<perlmod>, L<perlmodlib>, L<perlmodinstall>, L<h2xs>, L<strict>,
 L<Carp>, L<Exporter>, L<perlpod>, L<Test::Simple>, L<Test::More>
 L<ExtUtils::MakeMaker>, L<Module::Build>, L<Module::Starter>
-http://www.cpan.org/ , Ken Williams's учебник, как создать ваш собственный модуль at http://mathforum.org/~ken/perl_modules.html, похоже это дока устарела,т.к сейчас популярна  Dist::Zilla и супер модуль от Tatsuhiko Miyagawa  Dist::Milla, Minilla  , 
+http://www.cpan.org/ , Ken Williams's учебник, как создать ваш собственный модуль at http://mathforum.org/~ken/perl_modules.html, похоже это дока устарела,т.к сейчас популярна  L<Dist::Zilla> и супер модуль от Tatsuhiko Miyagawa  L<Dist::Milla>, L<Minilla>  , 
 
 =head1 ПЕРЕВОДЧИКИ
 
