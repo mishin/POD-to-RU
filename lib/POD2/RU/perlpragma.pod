@@ -130,10 +130,15 @@ B<Не> пытайтесь хранить указатели на структу
 =over
 
 =item * Николай Мишин  C<< <mishin@cpan.org> >>
+
 =item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
+
 =item * Алексей Суриков (Language) C<< <KSURi> >>
+
 =item * Михаил Любимов (Language) C<< <mikhail.lyubimov> >>
+
 =item * Дмитрий Константинов (Language) C<< <Dim_K> >>
+
 =item * Евгений Баранов (Language) C<< <Baranov> >>
 
 =back    
