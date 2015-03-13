@@ -24,6 +24,11 @@
       ]
    },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build::Tiny" : "0.039"
+         }
+      },
       "configure" : {
          "requires" : {
             "Module::Build::Tiny" : "0.039"
@@ -40,9 +45,13 @@
             "Encode::Locale" : "0",
             "IO::Interactive" : "0",
             "POD2::Base" : "0",
-            "Test::More" : "0.96",
-            "Test::More::UTF8" : "0",
             "perl" : "5.008005"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.96",
+            "Test::More::UTF8" : "0"
          }
       }
    },
@@ -58,6 +67,6 @@
          "web" : "https://github.com/mishin/POD-to-RU"
       }
    },
-   "version" : "5.18.0.1.24"
+   "version" : "5.18.0.1.25"
 }
 
