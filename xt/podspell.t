@@ -9,6 +9,10 @@ regop
 regops
 Nikolay
 Mishin
+Autoloader
+Diablo
+Miyagawa
+Tatsuhiko
 Adriano
 Albanowski
 Dougherty
