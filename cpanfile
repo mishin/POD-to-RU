@@ -5,5 +5,10 @@ requires 'POD2::Base';
 requires 'IO::Interactive';
 requires 'Encode::Locale';
 
-requires 'Test::More', '0.96';
-requires 'Test::More::UTF8';
+# Зависимости фазы тестирования
+on test => sub {
+    # Test::More версии 0.88 или старше
+    requires 'Test::More', '0.96';
+    requires 'Test::More::UTF8';
+};
+
