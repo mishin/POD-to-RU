@@ -12,7 +12,7 @@ on test => sub {
     requires 'Test::More::UTF8';
 };
 
-# Зависимости фазы сборки, спасибо Владимирe Леттиевe из Pragmaticperl 
+# Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl 
 # http://pragmaticperl.com/issues/10/pragmaticperl-10-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cpanfile.html
 on build => sub {
     requires 'Module::Build::Tiny', '0.039';
