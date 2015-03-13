@@ -12,3 +12,7 @@ on test => sub {
     requires 'Test::More::UTF8';
 };
 
+# Зависимости фазы сборки
+on build => sub {
+    requires 'Module::Build::Tiny', '0.039';
+};
