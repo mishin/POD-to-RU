@@ -23,9 +23,8 @@ POD2::RU - Perl Документация по-русски
 
 # DESCRIPTION
 
-POD2::RU is
-
-Этот модуль содержит перевод Perl-документации на русский. Домашняя страница проекта ─ [https://github.com/mishin/POD-to-RU](https://github.com/mishin/POD-to-RU). 
+Модуль POD2::RU содержит перевод Perl-документации на русский. 
+Домашняя страница проекта ─ [https://github.com/mishin/POD-to-RU](https://github.com/mishin/POD-to-RU). 
 
 После установки пакета, вы можете использовать следующую команду, чтобы получить документацию:
 
