@@ -10,6 +10,7 @@ on test => sub {
     # Test::More версии 0.88 или старше
     requires 'Test::More', '0.96';
     requires 'Test::More::UTF8';
+    requires 'Test::Pod', '1.00';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl 

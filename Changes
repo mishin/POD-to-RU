@@ -2,6 +2,9 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * Add Test::Pod as prereq 
+           * according to http://cpants.cpanauthors.org/dist/POD2-RU/errors
+
 5.18.0.1.26  2015-03-15 01:16:57 MSK
 
            * Продолжаю перевод perlre
