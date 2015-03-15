@@ -192,29 +192,23 @@ C<<prepare_encoding_console>> - Получает кодировку консол
 
 Nikolay Mishin E<lt>mi@ya.ruE<gt>
 
-=head1 АВТОРЫ
+=head1 CONTRIBUTORS
 
-=over
+Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
 
-=item * Николай Мишин  C<< <mishin@cpan.org> >>
+Алексей Суриков C<< <KSURi> >>
 
-=item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
+Михаил Любимов  C<< <mikhail.lyubimov> >>
 
-=item * Алексей Суриков C<< <KSURi> >>
+Дмитрий Константинов  C<< <Dim_K> >>
 
-=item * Михаил Любимов  C<< <mikhail.lyubimov> >>
+Евгений Баранов  C<< <Baranov> >>
 
-=item * Дмитрий Константинов  C<< <Dim_K> >>
+Антон Николаев C<< <me@lelf.lu> >>
 
-=item * Евгений Баранов  C<< <Baranov> >>
+Динар Жамалиев C<< <zhdinar> >>
 
-=item * Антон Николаев C<< <me@lelf.lu> >>
-
-=item * Динар Жамалиев C<< <zhdinar> >>
-
-=item * Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
-
-=back
+Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
 
 =head1 COPYRIGHT
 
