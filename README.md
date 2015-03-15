@@ -5,36 +5,34 @@ POD2::RU - Perl Документация по-русски
 # SYNOPSIS
 
     use POD2::RU;
-
-    $ perldoc POD2::RU::<название_pod>
-
-    $ perl -MPOD2::RU -e print_pods
-    $ perl -MPOD2::RU -e print_pod <название_pod1> [<название_pod2> ...]
-
-    use POD2::RU;
     print_pods();
     print_pod('pod_foo', 'pod_baz');
-
-    use POD2::RU;
-    my $pod2 = POD2::RU->new();
-    $pod2->print_pods();
-    $pod2->print_pod('perlfunc');
-                                                                                            
 
 # DESCRIPTION
 
 Модуль POD2::RU содержит перевод Perl-документации на русский. 
 Домашняя страница проекта ─ [https://github.com/mishin/POD-to-RU](https://github.com/mishin/POD-to-RU). 
 
+Примеры использования
+
+    perldoc POD2::RU::perlretut
+
+    perl -MPOD2::RU -e 'print_pods'
+    perl -MPOD2::RU -e 'print_pod <название_pod1> [<название_pod2> ...]'
+
+    use POD2::RU;
+    print_pods();
+    print_pod('pod_foo', 'pod_baz');
+
 После установки пакета, вы можете использовать следующую команду, чтобы получить документацию:
 
-    $ perldoc POD2::RU::<название_pod>
+    perldoc POD2::RU::<название_pod>
 
 Начиная с Pod::Perldoc версии 3.14 можно использовать следующий синтаксис:
 
-    $ perldoc -L RU <название_pod>
-    $ perldoc -L RU -f <функция>
-    $ perldoc -L RU -q <регулярное выражение для FAQ>
+    perldoc -L RU <название_pod>
+    perldoc -L RU -f <функция>
+    perldoc -L RU -q <регулярное выражение для FAQ>
 
 Модификатор  `-L` определяет код языка перевода. Если пакет `POD2::<код_языка>` не существует, то модификатор игнорируется.
 
@@ -44,8 +42,8 @@ POD2::RU - Perl Документация по-русски
 
 для того, чтобы не писать модификатор  `-L` каждый раз:
 
-    $ perldoc-ru perlre
-    $ perldoc-ru -f map
+    perldoc-ru perlre
+    perldoc-ru -f map
 
 Начиная с  `Pod::Perldoc` версии 3.15 вы можете использовать переменную среды PERLDOC\_POD2. Если эта переменная установлена в '1', то perldoc осуществляет поиск pod документации на языке, указанном в переменной LC\_ALL, LANG или LC\_LANG. Или же вы можете установить значение "ru", означающее вывод документации на русском языке. Например,
 
@@ -134,15 +132,3 @@ They (JPRP people) uses sourceforge and its CVS.
 [http://sourceforge.jp/cvs/view/perldocjp/docs/modules/](http://sourceforge.jp/cvs/view/perldocjp/docs/modules/)
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 82:
-
-    Expected '=item \*'
-
-- Around line 86:
-
-    Expected '=item \*'

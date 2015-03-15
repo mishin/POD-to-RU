@@ -71,10 +71,10 @@ sub print_pod {
         ( my $pod = lc( shift @args ) ) =~ s/\.pod$//;
         if ( exists $pods->{$pod} ) {
             print
-"\t'$pod' переведены на русский Perl $pods->{$pod}\n";
+qq{\t'$pod' переведены на русский Perl $pods->{$pod}\n};
         }
         else {
-            print "\t'$pod' еще не переведены\n";
+            print qq{\t'$pod' еще не переведены\n};
         }
     }
 }
@@ -100,6 +100,8 @@ __END__
 
 =encoding utf-8
 
+=for stopwords
+
 =head1 NAME
 
 POD2::RU - Perl Документация по-русски
@@ -107,35 +109,34 @@ POD2::RU - Perl Документация по-русски
 =head1 SYNOPSIS
 
   use POD2::RU;
-
-  $ perldoc POD2::RU::<название_pod>
-
-  $ perl -MPOD2::RU -e print_pods
-  $ perl -MPOD2::RU -e print_pod <название_pod1> [<название_pod2> ...]
-
-  use POD2::RU;
   print_pods();
   print_pod('pod_foo', 'pod_baz');
 
-  use POD2::RU;
-  my $pod2 = POD2::RU->new();
-  $pod2->print_pods();
-  $pod2->print_pod('perlfunc');
-                                                                                          
 =head1 DESCRIPTION
 
 Модуль POD2::RU содержит перевод Perl-документации на русский. 
 Домашняя страница проекта ─ L<https://github.com/mishin/POD-to-RU>. 
 
+Примеры использования
+
+  perldoc POD2::RU::perlretut
+
+  perl -MPOD2::RU -e 'print_pods'
+  perl -MPOD2::RU -e 'print_pod <название_pod1> [<название_pod2> ...]'
+
+  use POD2::RU;
+  print_pods();
+  print_pod('pod_foo', 'pod_baz');
+
 После установки пакета, вы можете использовать следующую команду, чтобы получить документацию:
 
-  $ perldoc POD2::RU::<название_pod>
+  perldoc POD2::RU::<название_pod>
 
 Начиная с Pod::Perldoc версии 3.14 можно использовать следующий синтаксис:
 
-  $ perldoc -L RU <название_pod>
-  $ perldoc -L RU -f <функция>
-  $ perldoc -L RU -q <регулярное выражение для FAQ>
+  perldoc -L RU <название_pod>
+  perldoc -L RU -f <функция>
+  perldoc -L RU -q <регулярное выражение для FAQ>
 
 Модификатор  C<-L> определяет код языка перевода. Если пакет C<< POD2::<код_языка> >> не существует, то модификатор игнорируется.
 
@@ -145,8 +146,8 @@ POD2::RU - Perl Документация по-русски
 
 для того, чтобы не писать модификатор  C<-L> каждый раз:
 
-  $ perldoc-ru perlre
-  $ perldoc-ru -f map
+  perldoc-ru perlre
+  perldoc-ru -f map
 
 Начиная с  F<Pod::Perldoc> версии 3.15 вы можете использовать переменную среды PERLDOC_POD2. Если эта переменная установлена в '1', то perldoc осуществляет поиск pod документации на языке, указанном в переменной LC_ALL, LANG или LC_LANG. Или же вы можете установить значение "ru", означающее вывод документации на русском языке. Например,
 
@@ -177,11 +178,11 @@ L<Pod::Perldoc> использует ее для определения, где 
 
 Выводит на экран оригинальнуя версию Perl для всех частей, переданых в качестве аргументов.
 
-=item C<search_perlfunc_re>
+=item * C<search_perlfunc_re>
 
 C<< perldoc -f function >> использует возвращаемое значение этой функции (как regexp), чтобы пропустить введение и найти список функций.
 
-=item C<prepare_encoding_console>
+=item * C<prepare_encoding_console>
 
 C<<prepare_encoding_console>> - Получает кодировку консоли и устанавливает ее правильно для выводимых символов
 
