@@ -2,6 +2,10 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.29  2015-03-15 22:02:52 MSK
+
+           * Change additions Authors to Contributors
+
 5.18.0.1.28  2015-03-15 20:11:20 MSK
 
            * Change Synopsis due to test synopsys.yt ok

@@ -84,17 +84,23 @@ POD2::RU - Perl Документация по-русски
 
 Nikolay Mishin <mi@ya.ru>
 
-# АВТОРЫ
+# CONTRIBUTORS
 
-- Николай Мишин  `<mishin@cpan.org>`
-- Анатолий Шарифулин  `<sharifulin@gmail.com>`
-- Алексей Суриков `<KSURi>`
-- Михаил Любимов  `<mikhail.lyubimov>`
-- Дмитрий Константинов  `<Dim_K>`
-- Евгений Баранов  `<Baranov>`
-- Антон Николаев `<me@lelf.lu>`
-- Динар Жамалиев `<zhdinar>`
-- Валерий Кравчук `<valera@openxs.kiev.ua>`
+Анатолий Шарифулин  `<sharifulin@gmail.com>`
+
+Алексей Суриков `<KSURi>`
+
+Михаил Любимов  `<mikhail.lyubimov>`
+
+Дмитрий Константинов  `<Dim_K>`
+
+Евгений Баранов  `<Baranov>`
+
+Антон Николаев `<me@lelf.lu>`
+
+Динар Жамалиев `<zhdinar>`
+
+Валерий Кравчук `<valera@openxs.kiev.ua>`
 
 # COPYRIGHT
 
