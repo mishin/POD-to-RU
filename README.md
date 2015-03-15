@@ -78,6 +78,10 @@ POD2::RU - Perl Документация по-русски
 
     `perldoc -f function` использует возвращаемое значение этой функции (как regexp), чтобы пропустить введение и найти список функций.
 
+- `prepare_encoding_console`
+
+    `<prepare_encoding_console`> - Получает кодировку консоли и устанавливает ее правильно для выводимых символов
+
 # AUTHOR
 
 Nikolay Mishin <mi@ya.ru>
@@ -130,3 +134,15 @@ They (JPRP people) uses sourceforge and its CVS.
 [http://sourceforge.jp/cvs/view/perldocjp/docs/modules/](http://sourceforge.jp/cvs/view/perldocjp/docs/modules/)
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
+
+# POD ERRORS
+
+Hey! **The above document had some coding errors, which are explained below:**
+
+- Around line 82:
+
+    Expected '=item \*'
+
+- Around line 86:
+
+    Expected '=item \*'
