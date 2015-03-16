@@ -193,38 +193,20 @@ Latin-1 (ISO-8859-1) значения (которые такие же, как в
 100_000 буквенных символов в Юникоде.
 
 В отличие от большинства локалей, которые являются специфическими для пары язык-страна,
-Юникод классифицирует все символы, как письма, которые используются I<somewhere>я <somewhere>в
-в мире
-C <\w>. Например, ваш язык не может думать что C < Латинской малые
-Письмо ETH настроек это письмо (если вы будете говорить исландского), но
-Unicode делает. Аналогичным образом все символы, десятичные цифры
-где-то в мире будет соответствовать C <\d>; это сотни, а не 10,
-возможные совпадения. И некоторые из этих цифр выглядят как некоторые из 10
-Цифры ASCII, но означает другое число, поэтому человек легко мог думать
-число-ином количестве, чем на самом деле. Например,
-C < БЕНГАЛИ четыре цифры настроек (U + 09EA) выглядит очень похоже
-C < ASCII ЦИФРА ВОСЕМЬ НАСТРОЕК (U + 0038). И C <\d+>, могут соответствовать строки цифр
-что представляют собой смесь из различных систем письма, создание безопасности
-выпуск. L < Unicode::UCD/num() настроек может использоваться для сортировки
-Это вне. Или C</a> модификатор может использоваться для принудительного C <\d> в соответствии
-только ASCII от 0 до 9.
-Unlike most locales, which are specific to a language and country pair,
-Unicode classifies all the characters that are letters I<somewhere> in
-the world as
-C<\w>.  For example, your locale might not think that C<LATIN SMALL
-LETTER ETH> is a letter (unless you happen to speak Icelandic), but
-Unicode does.  Similarly, all the characters that are decimal digits
-somewhere in the world will match C<\d>; this is hundreds, not 10,
-possible matches.  And some of those digits look like some of the 10
-ASCII digits, but mean a different number, so a human could easily think
-a number is a different quantity than it really is.  For example,
-C<BENGALI DIGIT FOUR> (U+09EA) looks very much like an
-C<ASCII DIGIT EIGHT> (U+0038).  And, C<\d+>, may match strings of digits
-that are a mixture from different writing systems, creating a security
-issue.  L<Unicode::UCD/num()> can be used to sort
-this out.  Or the C</a> modifier can be used to force C<\d> to match
-just the ASCII 0 through 9.
-
+Юникод классифицирует все символы, как символ для письма, которые используются I<где угодно>
+в мире, как C<\w>. Например, ваша локаль может не считать C<LATIN SMALL
+LETTER ETH> как строковый символ (пока вы не будете говорить на исландском), а Юникод принимает этот символ за строчный. Аналогичным образом все символы, десятичные цифры
+ везде в мире будут соответствовать C<\d>; это сотни, а не 10-ки
+возможных совпадений. И некоторые из этих цифр выглядят, как некоторые из 10
+ASCII цифр, но означают другое число, поэтому человек легко мог думать
+совсем другое число, чем на самом деле. Например,
+C<BENGALI DIGIT FOUR> (U+09EA)  выглядит очень похоже на
+C<ASCII DIGIT EIGHT> (U+0038). И C<\d+> может найти символы , которые могут соответствовать символам цифр,
+ котрые представляют собой смесь из различных систем письма, созданных из соображений безопасности. 
+ L<Unicode::UCD/num()> может использоваться для сортировки. 
+ А модификатор C</a> может использоваться для принудительного поиска шаблоном C<\d>  
+только ASCII цифр от 0 до 9.
+ 
 Also, under this modifier, case-insensitive matching works on the full
 set of Unicode
 characters.  The C<KELVIN SIGN>, for example matches the letters "k" and
