@@ -190,7 +190,7 @@ C<<prepare_encoding_console>> - Получает кодировку консол
 
 =head1 AUTHOR
 
-Nikolay Mishin E<lt>mi@ya.ruE<gt>
+  Nikolay Mishin E<lt>mi@ya.ruE<gt>
 
 =head1 CONTRIBUTORS
 
