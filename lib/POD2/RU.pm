@@ -210,6 +210,12 @@ Nikolay Mishin E<lt>mi@ya.ruE<gt>
 
 Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
 
+Enrique Nell 
+
+Yusuke Kawasaki
+
+Вячеслав Тихановский (VTI)
+
 =head1 COPYRIGHT
 
 Copyright 2015- Nikolay Mishin
