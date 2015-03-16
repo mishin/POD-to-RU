@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.30  2015-03-16 23:29:12 MSK
+
            * Translate half a page from perlre due to Unicode
            * Add format to pod
 
