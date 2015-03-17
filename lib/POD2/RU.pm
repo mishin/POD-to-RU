@@ -190,21 +190,21 @@ C<<prepare_encoding_console>> - Получает кодировку консол
 
 =head1 AUTHOR
 
-  Nikolay Mishin E<lt>mi@ya.ruE<gt>
+=item * Nikolay Mishin E<lt>mi@ya.ruE<gt>
 
 =head1 CONTRIBUTORS
 
-  Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
-  Алексей Суриков C<< <KSURi> >>
-  Михаил Любимов  C<< <mikhail.lyubimov> >>
-  Дмитрий Константинов  C<< <Dim_K> >>
-  Евгений Баранов  C<< <Baranov> >>
-  Антон Николаев C<< <me@lelf.lu> >>
-  Динар Жамалиев C<< <zhdinar> >>
-  Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
-  Enrique Nell 
-  Yusuke Kawasaki
-  Вячеслав Тихановский (VTI)
+=item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
+=item * Алексей Суриков C<< <KSURi> >>
+=item * Михаил Любимов  C<< <mikhail.lyubimov> >>
+=item * Дмитрий Константинов  C<< <Dim_K> >>
+=item * Евгений Баранов  C<< <Baranov> >>
+=item * Антон Николаев C<< <me@lelf.lu> >>
+=item * Динар Жамалиев C<< <zhdinar> >>
+=item * Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
+=item * Enrique Nell 
+=item * Yusuke Kawasaki
+=item * Вячеслав Тихановский (VTI)
 
 =head1 COPYRIGHT
 
