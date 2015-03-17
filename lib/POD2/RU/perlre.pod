@@ -254,34 +254,33 @@ C<\x{100}>); или
 
 =back
 
-Another mnemonic for this modifier is "Depends", as the rules actually
-used depend on various things, and as a result you can get unexpected
-results.  See L<perlunicode/The "Unicode Bug">.  The Unicode Bug has
-become rather infamous, leading to yet another (printable) name for this
-modifier, "Dodgy".
+Другая мнемоникак для этого модификатора "Зависит от", и правила, которые на самом деле
+используются зависят от различных вещей, и в результате вы можете получить неожиданные
+результаты. Смотрите L<perlunicode/The "Unicode Bug">.  Ошибка Unicode 
+становиться довольно печальной, ведущих к еще одному (версия для печати) имени для этого
+модификатора, "Dodgy" "Непредсказуемый" или "Рисковый".
 
-Unless the pattern or string are encoded in UTF-8, only ASCII characters
-can match positively.
+Если шаблон или строки не кодируются в UTF-8, то буду найдены только символы ASCII.
 
-Here are some examples of how that works on an ASCII platform:
+Вот некоторые примеры того, как это работает на ASCII платформе:
 
- $str =  "\xDF";      # $str is not in UTF-8 format.
- $str =~ /^\w/;       # No match, as $str isn't in UTF-8 format.
- $str .= "\x{0e0b}";  # Now $str is in UTF-8 format.
- $str =~ /^\w/;       # Match! $str is now in UTF-8 format.
+ $str =  "\xDF";      # $str не в UTF-8 формате.
+ $str =~ /^\w/;       # Не найдет, так как $str не в UTF-8 формате.
+ $str .= "\x{0e0b}";  # Теперь строка $str в UTF-8 формате.
+ $str =~ /^\w/;       # Найдет! $str теперь в UTF-8 формате.
  chop $str;
- $str =~ /^\w/;       # Still a match! $str remains in UTF-8 format.
+ $str =~ /^\w/;       # Все еще найдет! $str остается в UTF-8 формате.
 
-This modifier is automatically selected by default when none of the
-others are, so yet another name for it is "Default".
+Этот модификатор автоматически выбирается по умолчанию, если ни один другой не указан
+, таким образом для него другое имя — "По умолчанию" ("Default").
 
-Because of the unexpected behaviors associated with this modifier, you
-probably should only use it to maintain weird backward compatibilities.
+Из-за неожиданного поведения, связанные с этим модификатором, вам
+вероятно следует его использовать только, его вам нужно сохранить странные обратные совместимости.
 
-=head4 /a (and /aa)
+=head4 /a (и /aa)
 
-This modifier stands for ASCII-restrict (or ASCII-safe).  This modifier,
-unlike the others, may be doubled-up to increase its effect.
+Этот модификатор выступает за ASCII строгость  (или ASCII-безопасность). Этот модификатор,
+в отличие от других, может в два раза расширить свой эффект.
 
 When it appears singly, it causes the sequences C<\d>, C<\s>, C<\w>, and
 the Posix character classes to match only in the ASCII range.  They thus
