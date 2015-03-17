@@ -183,7 +183,6 @@ X</l>
 
 =head4 /u
 
-
 означает использования правил Unicode во время поиска по шаблону. На платформах ASCII
 это означает, что символы с кодом от 128 до 255 такие, как 
 Latin-1 (ISO-8859-1) значения (которые такие же, как в Юникоде).
@@ -207,52 +206,51 @@ C<ASCII DIGIT EIGHT> (U+0038). И C<\d+> может найти символы , 
  А модификатор C</a> может использоваться для принудительного поиска шаблоном C<\d>  
 только ASCII цифр от 0 до 9.
  
-Also, under this modifier, case-insensitive matching works on the full
-set of Unicode
-characters.  The C<KELVIN SIGN>, for example matches the letters "k" and
-"K"; and C<LATIN SMALL LIGATURE FF> matches the sequence "ff", which,
-if you're not prepared, might make it look like a hexadecimal constant,
-presenting another potential security issue.  See
-L<http://unicode.org/reports/tr36> for a detailed discussion of Unicode
-security issues.
+Кроме того под этим модификатором, регистронезависимый поиск символов работает на полном
+наборе Юникодных символов. C<KELVIN SIGN>, например совпадает с буквами "k" и
+"K"; и  C<LATIN SMALL LIGATURE FF> соответствует последовательности "ff", которая,
+если вы не подготовлены, может выглядеть, как шестнадцатеричная константа,
+что представляет еще одну потенциальную проблему безопасности. См.
+L<http://unicode.org/reports/tr36> для подробного обсуждения 
+вопросов безопасности в Юникоде.
 
-This modifier may be specified to be the default by C<use feature
-'unicode_strings>, C<use locale ':not_characters'>, or
-C<L<use 5.012|perlfunc/use VERSION>> (or higher),
-but see L</Which character set modifier is in effect?>.
+Этот модификатор может определяться по умолчанию, используя C<use feature
+'unicode_strings>,  C<use locale ':not_characters'>, или
+C<L<use 5.012|perlfunc/use VERSION>>>> (или выше),
+но посмотрите главу L</Какой набор символьных модификаторов действует?>.
 X</u>
 
 =head4 /d
 
-This modifier means to use the "Default" native rules of the platform
-except when there is cause to use Unicode rules instead, as follows:
+Этот модификатор означает использование собственные правила платформы "По умолчанию",
+за исключением случаев, когда вместо этого есть основания для использования правил Юникода, следующим образом:
 
 =over 4
 
 =item 1
 
-the target string is encoded in UTF-8; or
+целевая строка кодируется в UTF-8; или
 
 =item 2
 
-the pattern is encoded in UTF-8; or
+шаблон кодируется в UTF-8; или
 
 =item 3
 
-the pattern explicitly mentions a code point that is above 255 (say by
-C<\x{100}>); or
+шаблон явно упоминает код символа, который находится выше 255 (скажем
+C<\x{100}>); или
 
 =item 4
 
-the pattern uses a Unicode name (C<\N{...}>);  or
+шаблон использует Юникодное имя (C<\N{...}>);  или
 
 =item 5
 
-the pattern uses a Unicode property (C<\p{...}>); or
+шаблон использует Юникодное свойство (C<\p{...}>); или
 
 =item 6
 
-the pattern uses L</C<(?[ ])>>
+шаблон использует L</C<(?[ ])>>
 
 =back
 
