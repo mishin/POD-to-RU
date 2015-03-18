@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.31  2015-03-18 21:45:25 MSK
+
            * Change Changes date format so it's validated http://changes.cpanhq.org/validate ok!
            * I want to get there http://changes.cpanhq.org/hof (Hall of Fame)
 

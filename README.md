@@ -87,16 +87,16 @@ Nikolay Mishin <mi@ya.ru>
 # CONTRIBUTORS
 
 - Анатолий Шарифулин  `<sharifulin@gmail.com>`
-=item \* Алексей Суриков `<KSURi>`
-=item \* Михаил Любимов  `<mikhail.lyubimov>`
-=item \* Дмитрий Константинов  `<Dim_K>`
-=item \* Евгений Баранов  `<Baranov>`
-=item \* Антон Николаев `<me@lelf.lu>`
-=item \* Динар Жамалиев `<zhdinar>`
-=item \* Валерий Кравчук `<valera@openxs.kiev.ua>`
-=item \* Enrique Nell 
-=item \* Yusuke Kawasaki
-=item \* Вячеслав Тихановский (VTI)
+- Алексей Суриков `<KSURi>`
+- Михаил Любимов  `<mikhail.lyubimov>`
+- Дмитрий Константинов  `<Dim_K>`
+- Евгений Баранов  `<Baranov>`
+- Антон Николаев `<me@lelf.lu>`
+- Динар Жамалиев `<zhdinar>`
+- Валерий Кравчук `<valera@openxs.kiev.ua>`
+- Enrique Nell 
+- Yusuke Kawasaki
+- Вячеслав Тихановский (VTI)
 
 # COPYRIGHT
 
@@ -134,15 +134,3 @@ They (JPRP people) uses sourceforge and its CVS.
 [http://sourceforge.jp/cvs/view/perldocjp/docs/modules/](http://sourceforge.jp/cvs/view/perldocjp/docs/modules/)
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 99:
-
-    '=item' outside of any '=over'
-
-- Around line 111:
-
-    You forgot a '=back' before '=head1'
