@@ -197,7 +197,7 @@ Latin-1 (ISO-8859-1) значения (которые такие же, как в
 LETTER ETH> как строковый символ (пока вы не будете говорить на исландском), а Юникод принимает этот символ за строчный. Аналогичным образом все символы, десятичные цифры
  везде в мире будут соответствовать C<\d>; это сотни, а не 10-ки
 возможных совпадений. И некоторые из этих цифр выглядят, как некоторые из 10
-ASCII цифр, но означают другое число, поэтому человек легко мог думать
+ASCII цифр, но означают другое число, поэтому человек легко может думать, что это
 совсем другое число, чем на самом деле. Например,
 C<BENGALI DIGIT FOUR> (U+09EA)  выглядит очень похоже на
 C<ASCII DIGIT EIGHT> (U+0038). И C<\d+> может найти символы , которые могут соответствовать символам цифр,
@@ -256,7 +256,7 @@ C<\x{100}>); или
 
 Другая мнемоникак для этого модификатора "Зависит от", и правила, которые на самом деле
 используются зависят от различных вещей, и в результате вы можете получить неожиданные
-результаты. Смотрите L<perlunicode/The "Unicode Bug">.  Ошибка Unicode 
+результаты. Смотрите L<perlunicode/"<Bug Юникода">.  Ошибка Unicode 
 становиться довольно печальной, ведущих к еще одному (версия для печати) имени для этого
 модификатора, "Dodgy" "Непредсказуемый" или "Рисковый".
 
@@ -282,28 +282,28 @@ C<\x{100}>); или
 Этот модификатор выступает за ASCII строгость  (или ASCII-безопасность). Этот модификатор,
 в отличие от других, может в два раза расширить свой эффект.
 
-When it appears singly, it causes the sequences C<\d>, C<\s>, C<\w>, and
-the Posix character classes to match only in the ASCII range.  They thus
-revert to their pre-5.6, pre-Unicode meanings.  Under C</a>,  C<\d>
-always means precisely the digits C<"0"> to C<"9">; C<\s> means the five
-characters C<[ \f\n\r\t]>, and starting in Perl v5.18, experimentally,
-the vertical tab; C<\w> means the 63 characters
-C<[A-Za-z0-9_]>; and likewise, all the Posix classes such as
-C<[[:print:]]> match only the appropriate ASCII-range characters.
+Когда он появляется один, то он применяется к последовательности  C<\d>, C<\s>, C<\w>, и
+классам символов Posix для соответствия только в диапазоне ASCII.
+Они, таким образом, возвращаются к версиям до 5.6 (pre-5.6), бывшим еще до значений Юникода (pre-Unicode).
+Под модификатором C</a>,  C<\d>
+всегда означает точко цифры от C<"0"> до C<"9">; C<\s> означает пять символов
+ C<[ \f\n\r\t]>, и начиная с Perl v5.18, экспериментально,
+ вертикальный табулятор; C<\w> означает 63 символа
+C<[A-Za-z0-9_]>; кроме того, все Posix классы такие как 
+C<[[:print:]]> найдут только соответствующие символы ASCII-диапазона.
 
-This modifier is useful for people who only incidentally use Unicode,
-and who do not wish to be burdened with its complexities and security
-concerns.
+Этот модификатор является полезным для людей, которые только изреда используют Юникод,
+и, которые не желают обременяться его сложностью и проблемами безопасности.
 
-With C</a>, one can write C<\d> with confidence that it will only match
-ASCII characters, and should the need arise to match beyond ASCII, you
-can instead use C<\p{Digit}> (or C<\p{Word}> for C<\w>).  There are
-similar C<\p{...}> constructs that can match beyond ASCII both white
-space (see L<perlrecharclass/Whitespace>), and Posix classes (see
-L<perlrecharclass/POSIX Character Classes>).  Thus, this modifier
-doesn't mean you can't use Unicode, it means that to get Unicode
-matching you must explicitly use a construct (C<\p{}>, C<\P{}>) that
-signals Unicode.
+С модификатором C</a>, вы можете написать C<\d> с уверенностью, что он точно найдет только
+ASCII символы, и, если вам нужно найти что-то за пределами сиволов ASCII, вы можете 
+вместо этого использовать C<\p{Digit}> (или C<\p{Word}> для C<\w>).  
+Есть аналогичные конструкции C<\p{...}> , которые могут соответствовать симолам за пределами ASCII 
+как для пробельных символов (см.  L<perlrecharclass/Whitespace>) , так и для классов Posix (см.
+L<perlrecharclass/POSIX Character Classes>.
+Таким образом этот модификатор не означает, что вы не можете использовать Unicode, 
+это означает, что для поиска Юникодных символов вы должны явно использовать конструкцию (C<\p{}>, C<\P{}>),
+ которая говорит о том, что это Юникод.
 
 As you would expect, this modifier causes, for example, C<\D> to mean
 the same thing as C<[^0-9]>; in fact, all non-ASCII characters match
