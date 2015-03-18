@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
            * Change Changes date format so it's validated http://changes.cpanhq.org/validate ok!
+           * I want to get there http://changes.cpanhq.org/hof (Hall of Fame)
            * Translate half a page from perlre due to Unicode
            * Add format to pod
 
