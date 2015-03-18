@@ -183,11 +183,10 @@ X</l>
 
 =head4 /u
 
-
 означает использования правил Unicode во время поиска по шаблону. На платформах ASCII
 это означает, что символы с кодом от 128 до 255 такие, как 
 Latin-1 (ISO-8859-1) значения (которые такие же, как в Юникоде).
-(Иначе Perl считаетЮ что их значение будет неопределенным). Таким образом,
+(Иначе Perl считает, что их значение будет неопределенным). Таким образом,
 под этот модификатором платформа ASCII фактически становится Юникодной
 платформой; и следовательно, к примеру, C<\w> будет соответствовать любому из более чем
 100_000 буквенных символов в Юникоде.
@@ -198,7 +197,7 @@ Latin-1 (ISO-8859-1) значения (которые такие же, как в
 LETTER ETH> как строковый символ (пока вы не будете говорить на исландском), а Юникод принимает этот символ за строчный. Аналогичным образом все символы, десятичные цифры
  везде в мире будут соответствовать C<\d>; это сотни, а не 10-ки
 возможных совпадений. И некоторые из этих цифр выглядят, как некоторые из 10
-ASCII цифр, но означают другое число, поэтому человек легко мог думать
+ASCII цифр, но означают другое число, поэтому человек легко может думать, что это
 совсем другое число, чем на самом деле. Например,
 C<BENGALI DIGIT FOUR> (U+09EA)  выглядит очень похоже на
 C<ASCII DIGIT EIGHT> (U+0038). И C<\d+> может найти символы , которые могут соответствовать символам цифр,
@@ -207,118 +206,116 @@ C<ASCII DIGIT EIGHT> (U+0038). И C<\d+> может найти символы , 
  А модификатор C</a> может использоваться для принудительного поиска шаблоном C<\d>  
 только ASCII цифр от 0 до 9.
  
-Also, under this modifier, case-insensitive matching works on the full
-set of Unicode
-characters.  The C<KELVIN SIGN>, for example matches the letters "k" and
-"K"; and C<LATIN SMALL LIGATURE FF> matches the sequence "ff", which,
-if you're not prepared, might make it look like a hexadecimal constant,
-presenting another potential security issue.  See
-L<http://unicode.org/reports/tr36> for a detailed discussion of Unicode
-security issues.
+Кроме того под этим модификатором, регистронезависимый поиск символов работает на полном
+наборе Юникодных символов. C<KELVIN SIGN>, например совпадает с буквами "k" и
+"K"; и  C<LATIN SMALL LIGATURE FF> соответствует последовательности "ff", которая,
+если вы не подготовлены, может выглядеть, как шестнадцатеричная константа,
+что представляет еще одну потенциальную проблему безопасности. См.
+L<http://unicode.org/reports/tr36> для подробного обсуждения 
+вопросов безопасности в Юникоде.
 
-This modifier may be specified to be the default by C<use feature
-'unicode_strings>, C<use locale ':not_characters'>, or
-C<L<use 5.012|perlfunc/use VERSION>> (or higher),
-but see L</Which character set modifier is in effect?>.
+Этот модификатор может определяться по умолчанию, используя C<use feature
+'unicode_strings>,  C<use locale ':not_characters'>, или
+C<L<use 5.012|perlfunc/use VERSION>>>> (или выше),
+но посмотрите главу L</Какой набор символьных модификаторов действует?>.
 X</u>
 
 =head4 /d
 
-This modifier means to use the "Default" native rules of the platform
-except when there is cause to use Unicode rules instead, as follows:
+Этот модификатор означает использование собственные правила платформы "По умолчанию",
+за исключением случаев, когда вместо этого есть основания для использования правил Юникода, следующим образом:
 
 =over 4
 
 =item 1
 
-the target string is encoded in UTF-8; or
+целевая строка кодируется в UTF-8; или
 
 =item 2
 
-the pattern is encoded in UTF-8; or
+шаблон кодируется в UTF-8; или
 
 =item 3
 
-the pattern explicitly mentions a code point that is above 255 (say by
-C<\x{100}>); or
+шаблон явно упоминает код символа, который находится выше 255 (скажем
+C<\x{100}>); или
 
 =item 4
 
-the pattern uses a Unicode name (C<\N{...}>);  or
+шаблон использует Юникодное имя (C<\N{...}>);  или
 
 =item 5
 
-the pattern uses a Unicode property (C<\p{...}>); or
+шаблон использует Юникодное свойство (C<\p{...}>); или
 
 =item 6
 
-the pattern uses L</C<(?[ ])>>
+шаблон использует L</C<(?[ ])>>
 
 =back
 
-Another mnemonic for this modifier is "Depends", as the rules actually
-used depend on various things, and as a result you can get unexpected
-results.  See L<perlunicode/The "Unicode Bug">.  The Unicode Bug has
-become rather infamous, leading to yet another (printable) name for this
-modifier, "Dodgy".
+Другая мнемоникак для этого модификатора "Зависит от", и правила, которые на самом деле
+используются зависят от различных вещей, и в результате вы можете получить неожиданные
+результаты. Смотрите L<perlunicode/"<Bug Юникода">.  Ошибка Unicode 
+становиться довольно печальной, ведущих к еще одному (версия для печати) имени для этого
+модификатора, "Dodgy" "Непредсказуемый" или "Рисковый".
 
-Unless the pattern or string are encoded in UTF-8, only ASCII characters
-can match positively.
+Если шаблон или строки не кодируются в UTF-8, то буду найдены только символы ASCII.
 
-Here are some examples of how that works on an ASCII platform:
+Вот некоторые примеры того, как это работает на ASCII платформе:
 
- $str =  "\xDF";      # $str is not in UTF-8 format.
- $str =~ /^\w/;       # No match, as $str isn't in UTF-8 format.
- $str .= "\x{0e0b}";  # Now $str is in UTF-8 format.
- $str =~ /^\w/;       # Match! $str is now in UTF-8 format.
+ $str =  "\xDF";      # $str не в UTF-8 формате.
+ $str =~ /^\w/;       # Не найдет, так как $str не в UTF-8 формате.
+ $str .= "\x{0e0b}";  # Теперь строка $str в UTF-8 формате.
+ $str =~ /^\w/;       # Найдет! $str теперь в UTF-8 формате.
  chop $str;
- $str =~ /^\w/;       # Still a match! $str remains in UTF-8 format.
+ $str =~ /^\w/;       # Все еще найдет! $str остается в UTF-8 формате.
 
-This modifier is automatically selected by default when none of the
-others are, so yet another name for it is "Default".
+Этот модификатор автоматически выбирается по умолчанию, если ни один другой не указан
+, таким образом для него другое имя — "По умолчанию" ("Default").
 
-Because of the unexpected behaviors associated with this modifier, you
-probably should only use it to maintain weird backward compatibilities.
+Из-за неожиданного поведения, связанные с этим модификатором, вам
+вероятно следует его использовать только, его вам нужно сохранить странные обратные совместимости.
 
-=head4 /a (and /aa)
+=head4 /a (и /aa)
 
-This modifier stands for ASCII-restrict (or ASCII-safe).  This modifier,
-unlike the others, may be doubled-up to increase its effect.
+Этот модификатор выступает за ASCII строгость  (или ASCII-безопасность). Этот модификатор,
+в отличие от других, может в два раза расширить свой эффект.
 
-When it appears singly, it causes the sequences C<\d>, C<\s>, C<\w>, and
-the Posix character classes to match only in the ASCII range.  They thus
-revert to their pre-5.6, pre-Unicode meanings.  Under C</a>,  C<\d>
-always means precisely the digits C<"0"> to C<"9">; C<\s> means the five
-characters C<[ \f\n\r\t]>, and starting in Perl v5.18, experimentally,
-the vertical tab; C<\w> means the 63 characters
-C<[A-Za-z0-9_]>; and likewise, all the Posix classes such as
-C<[[:print:]]> match only the appropriate ASCII-range characters.
+Когда он появляется один, то он применяется к последовательности  C<\d>, C<\s>, C<\w>, и
+классам символов Posix для соответствия только в диапазоне ASCII.
+Они, таким образом, возвращаются к версиям до 5.6 (pre-5.6), бывшим еще до значений Юникода (pre-Unicode).
+Под модификатором C</a>,  C<\d>
+всегда означает точко цифры от C<"0"> до C<"9">; C<\s> означает пять символов
+ C<[ \f\n\r\t]>, и начиная с Perl v5.18, экспериментально,
+ вертикальный табулятор; C<\w> означает 63 символа
+C<[A-Za-z0-9_]>; кроме того, все Posix классы такие как 
+C<[[:print:]]> найдут только соответствующие символы ASCII-диапазона.
 
-This modifier is useful for people who only incidentally use Unicode,
-and who do not wish to be burdened with its complexities and security
-concerns.
+Этот модификатор является полезным для людей, которые только изреда используют Юникод,
+и, которые не желают обременяться его сложностью и проблемами безопасности.
 
-With C</a>, one can write C<\d> with confidence that it will only match
-ASCII characters, and should the need arise to match beyond ASCII, you
-can instead use C<\p{Digit}> (or C<\p{Word}> for C<\w>).  There are
-similar C<\p{...}> constructs that can match beyond ASCII both white
-space (see L<perlrecharclass/Whitespace>), and Posix classes (see
-L<perlrecharclass/POSIX Character Classes>).  Thus, this modifier
-doesn't mean you can't use Unicode, it means that to get Unicode
-matching you must explicitly use a construct (C<\p{}>, C<\P{}>) that
-signals Unicode.
+С модификатором C</a>, вы можете написать C<\d> с уверенностью, что он точно найдет только
+ASCII символы, и, если вам нужно найти что-то за пределами сиволов ASCII, вы можете 
+вместо этого использовать C<\p{Digit}> (или C<\p{Word}> для C<\w>).  
+Есть аналогичные конструкции C<\p{...}> , которые могут соответствовать симолам за пределами ASCII 
+как для пробельных символов (см.  L<perlrecharclass/Whitespace>) , так и для классов Posix (см.
+L<perlrecharclass/POSIX Character Classes>.
+Таким образом этот модификатор не означает, что вы не можете использовать Unicode, 
+это означает, что для поиска Юникодных символов вы должны явно использовать конструкцию (C<\p{}>, C<\P{}>),
+ которая говорит о том, что это Юникод.
 
-As you would expect, this modifier causes, for example, C<\D> to mean
-the same thing as C<[^0-9]>; in fact, all non-ASCII characters match
-C<\D>, C<\S>, and C<\W>.  C<\b> still means to match at the boundary
-between C<\w> and C<\W>, using the C</a> definitions of them (similarly
-for C<\B>).
+Как и следовало ожидать, этот модификатор вызывает, например, что C<\D> означает то же, что и
+C<[^0-9]>; в самом деле все не ASCII находят
+C<\D>, C<\S>, и C<\W>.  C<\b> по-прежнему соответствует границе
+между C<\w> и C<\W>, используя свое определение при модификаторе C</a> (аналогично
+для C<\B>).
 
-Otherwise, C</a> behaves like the C</u> modifier, in that
-case-insensitive matching uses Unicode semantics; for example, "k" will
-match the Unicode C<\N{KELVIN SIGN}> under C</i> matching, and code
-points in the Latin1 range, above ASCII will have Unicode rules when it
-comes to case-insensitive matching.
+В противном случае C</a> ведет себя как модификатор C</u> , в 
+регистронезависимом поиске семантики Юникодных символов; к примеру будет "k"
+найдет юникодный C<\N{KELVIN SIGN}> при поиске с модификатором C</i>  и код
+символов в диапазоне Latin1, выше ASCII будет иметь правила Юникода, как они действуют
+ при поиске без учета регистра.
 
 To forbid ASCII/non-ASCII matches (like "k" with C<\N{KELVIN SIGN}>),
 specify the "a" twice, for example C</aai> or C</aia>.  (The first
