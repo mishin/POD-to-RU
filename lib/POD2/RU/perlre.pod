@@ -317,17 +317,18 @@ C<\D>, C<\S>, и C<\W>.  C<\b> по-прежнему соответствует 
 символов в диапазоне Latin1, выше ASCII будет иметь правила Юникода, как они действуют
  при поиске без учета регистра.
 
-To forbid ASCII/non-ASCII matches (like "k" with C<\N{KELVIN SIGN}>),
-specify the "a" twice, for example C</aai> or C</aia>.  (The first
-occurrence of "a" restricts the C<\d>, etc., and the second occurrence
-adds the C</i> restrictions.)  But, note that code points outside the
-ASCII range will use Unicode rules for C</i> matching, so the modifier
-doesn't really restrict things to just ASCII; it just forbids the
-intermixing of ASCII and non-ASCII.
+Для запрещения поиска ASCII/не-ASCII (например, как "k" с C<\N{KELVIN SIGN}>),
+поставьте "a" дважды, например C</aai> или C</aia>.  (Первой появление
+ "a" ограничивает C<\d>, и так далее, а второе появление
+ добавляет ограничение для C</i>.) Но, нужно заметить, что для символов вне 
+ диапазона
+ASCII будет использоваться правила Юникода для C</i> поиска, таким образом, модификатор,
+ в действительности, не ограничивает символы только ASCII диапазоном; он просто запрещает
+смешение символов ASCII и не ASCII диапазона.
 
-To summarize, this modifier provides protection for applications that
-don't wish to be exposed to all of Unicode.  Specifying it twice
-gives added protection.
+Подводя итог, этот модификатор обеспечивает защиту для приложений, которые
+ не хотят быть подвержены влиянию Юникода. Указанием его дважды
+  дает дополнительную защиту.
 
 This modifier may be specified to be the default by C<use re '/a'>
 or C<use re '/aa'>.  If you do so, you may actually have occasion to use
