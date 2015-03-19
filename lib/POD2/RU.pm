@@ -11,7 +11,7 @@ use Encode::Locale qw(decode_argv);
 
 
 use 5.008_005;
-our $VERSION = '5.18.0.1.32';
+our $VERSION = '5.18.0.1.33';
 
 our @EXPORT = qw(print_pod print_pods);
 
