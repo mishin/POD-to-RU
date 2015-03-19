@@ -1,6 +1,8 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
+
+5.18.0.1.32  2015-03-19 04:46:15 MSK
            * Add author test dependencies to cpanfile
 
 5.18.0.1.31  2015-03-18 21:45:25 MSK
