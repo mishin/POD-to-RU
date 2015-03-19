@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * Translate some perlre, so I want to make new release
 5.18.0.1.32  2015-03-19 04:46:15 MSK
            * Add author test dependencies to cpanfile
 
