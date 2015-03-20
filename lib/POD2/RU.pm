@@ -189,28 +189,34 @@ C<<prepare_encoding_console>> - Получает кодировку консол
 =back
 
 =head1 AUTHOR
-
-Nikolay Mishin E<lt>mi@ya.ruE<gt>
+ 
+=over 4
+ 
+=item *
+ 
+Nikolay Mishin <mi@ya.ru>
+ 
+=back
 
 =head1 CONTRIBUTORS
 
 =over
 
-=item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
+=item * Анатолий Шарифулин <sharifulin@gmail.com>
 
-=item * Алексей Суриков C<< <KSURi> >>
+=item * Алексей Суриков <KSURi>
 
-=item * Михаил Любимов  C<< <mikhail.lyubimov> >>
+=item * Михаил Любимов  <mikhail.lyubimov>
 
-=item * Дмитрий Константинов  C<< <Dim_K> >>
+=item * Дмитрий Константинов  <Dim_K>
 
-=item * Евгений Баранов  C<< <Baranov> >>
+=item * Евгений Баранов  <Baranov>
 
-=item * Антон Николаев C<< <me@lelf.lu> >>
+=item * Антон Николаев <me@lelf.lu>
 
-=item * Динар Жамалиев C<< <zhdinar> >>
+=item * Динар Жамалиев <zhdinar>
 
-=item * Валерий Кравчук C<< <valera@openxs.kiev.ua> >>
+=item * Валерий Кравчук<valera@openxs.kiev.ua>
 
 =item * Enrique Nell 
 
