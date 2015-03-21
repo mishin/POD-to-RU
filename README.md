@@ -57,12 +57,12 @@ POD2::RU - Perl Документация по-русски
 - `new`
 
     Была добавлена для совместимости с `perldoc` Perl 5.10.1.
-    [Pod::Perldoc](https://metacpan.org/pod/Pod::Perldoc) использует ее для возврата имени пакета перевода.
+    ["Pod::Perldoc"](#pod-perldoc) использует ее для возврата имени пакета перевода.
 
 - `pod_dirs`
 
     Была добавлена для совместимости с `perldoc` Perl 5.10.1.
-    [Pod::Perldoc](https://metacpan.org/pod/Pod::Perldoc) использует ее для определения, где искать переведенные файлы.
+    ["Pod::Perldoc"](#pod-perldoc) использует ее для определения, где искать переведенные файлы.
 
 - `print_pods`
 
@@ -82,18 +82,18 @@ POD2::RU - Perl Документация по-русски
 
 # AUTHOR
 
-Nikolay Mishin <mi@ya.ru>
+- Nikolay Mishin <mi@ya.ru>
 
 # CONTRIBUTORS
 
-- Анатолий Шарифулин  `<sharifulin@gmail.com>`
-- Алексей Суриков `<KSURi>`
-- Михаил Любимов  `<mikhail.lyubimov>`
-- Дмитрий Константинов  `<Dim_K>`
-- Евгений Баранов  `<Baranov>`
-- Антон Николаев `<me@lelf.lu>`
-- Динар Жамалиев `<zhdinar>`
-- Валерий Кравчук `<valera@openxs.kiev.ua>`
+- Анатолий Шарифулин <sharifulin@gmail.com>
+- Алексей Суриков <KSURi>
+- Михаил Любимов  <mikhail.lyubimov>
+- Дмитрий Константинов  <Dim\_K>
+- Евгений Баранов  <Baranov>
+- Антон Николаев <me@lelf.lu>
+- Динар Жамалиев <zhdinar>
+- Валерий Кравчук<valera@openxs.kiev.ua>
 - Enrique Nell 
 - Yusuke Kawasaki
 - Вячеслав Тихановский (VTI)
@@ -109,7 +109,7 @@ it under the same terms as Perl itself.
 
 # SEE ALSO
 
-[POD2::ES](https://metacpan.org/pod/POD2::ES), [POD2::PT\_BR](https://metacpan.org/pod/POD2::PT_BR), [POD2::IT](https://metacpan.org/pod/POD2::IT), [POD2::FR](https://metacpan.org/pod/POD2::FR), [POD2::LT](https://metacpan.org/pod/POD2::LT).
+["POD2::ES"](#pod2-es), ["POD2::PT\_BR"](#pod2-pt_br), ["POD2::IT"](#pod2-it), ["POD2::FR"](#pod2-fr), ["POD2::LT"](#pod2-lt).
 
 # DONATIONS
 
