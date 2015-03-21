@@ -166,12 +166,12 @@ POD2::RU - Perl Документация по-русски
 =item * C<new>
 
 Была добавлена для совместимости с C<perldoc> Perl 5.10.1.
-L</Pod::Perldoc> использует ее для возврата имени пакета перевода.
+L<Pod::Perldoc> использует ее для возврата имени пакета перевода.
 
 =item * C<pod_dirs>
 
 Была добавлена для совместимости с C<perldoc> Perl 5.10.1.
-L</Pod::Perldoc> использует ее для определения, где искать переведенные файлы.
+L<Pod::Perldoc> использует ее для определения, где искать переведенные файлы.
 
 =item * C<print_pods>
 
@@ -240,7 +240,7 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L</POD2::ES>, L</POD2::PT_BR>, L</POD2::IT>, L</POD2::FR>, L</POD2::LT>.
+L<POD2::ES>, L<POD2::PT_BR>, L<POD2::IT>, L<POD2::FR>, L<POD2::LT>.
 
 =head1 DONATIONS
 
