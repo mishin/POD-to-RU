@@ -327,30 +327,30 @@ ASCII будет использоваться правила Юникода дл
 смешение символов ASCII и не ASCII диапазона.
 
 Подводя итог, этот модификатор обеспечивает защиту для приложений, которые
- не хотят быть подвержены влиянию Юникода. Указанием его дважды
-  дает дополнительную защиту.
+ не хотят быть подвержены влиянию Юникода. Указав его дважды
+  вы получаете дополнительную защиту.
 
-This modifier may be specified to be the default by C<use re '/a'>
-or C<use re '/aa'>.  If you do so, you may actually have occasion to use
-the C</u> modifier explictly if there are a few regular expressions
-where you do want full Unicode rules (but even here, it's best if
-everything were under feature C<"unicode_strings">, along with the
-C<use re '/aa'>).  Also see L</Which character set modifier is in
-effect?>.
+Этот модификатор может бытьуказан по-умолчанию с помощью C<use re '/a'>
+или C<use re '/aa'>.  Если вы так сделаете, вы можете иметь возможность использовать модификатор
+C</u> явно, если существует несколько регулярных выражений,
+где вы хотите использовать полные правила Юникода
+(но даже здесь, лучше, если бы работала функция 
+ C<"unicode_strings">, наряду с
+C<use re '/aa'>).  Также смотри L</Какой набор символьных модификаторов действует?>.
 X</a>
 X</aa>
 
-=head4 Which character set modifier is in effect?
+=head4 Какой набор символьных модификаторов действует?
 
-Which of these modifiers is in effect at any given point in a regular
-expression depends on a fairly complex set of interactions.  These have
-been designed so that in general you don't have to worry about it, but
-this section gives the gory details.  As
-explained below in L</Extended Patterns> it is possible to explicitly
-specify modifiers that apply only to portions of a regular expression.
-The innermost always has priority over any outer ones, and one applying
-to the whole expression has priority over any of the default settings that are
-described in the remainder of this section.
+Какой набор символьных модификаторов действует
+в любой месте регулярного выражения зависит от набора довольно сложных взаимодействий.
+Они разработаны таким образом, что в целом вам не придется беспокоиться об этом, но
+этот раздел даст вам кровавые подробности.
+Как объясняется ниже в L</Расширенных шаблонах> это возможно явно
+указав модификаторы, которые применяются только к части регулярного выражения.
+Внутреннее всегда имеет приоритет над любым внешним и одно применение
+для целого выражения имеет приоритет над любым из параметров по умолчанию
+описан в оставшейся части этого раздела.
 
 The C<L<use re 'E<sol>foo'|re/"'/flags' mode">> pragma can be used to set
 default modifiers (including these) for regular expressions compiled
