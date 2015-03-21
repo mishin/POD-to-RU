@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * Change code for perlcritic -1 -verbose 1
+
 5.18.0.1.33  2015-03-20 00:36:52 MSK
 
            * Translate some perlre, so I want to make new release

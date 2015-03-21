@@ -1,6 +1,6 @@
 package POD2::RU;
 
-# ABSTRACT: Perl Документация по-русски 
+# ABSTRACT: Perl Документация по-русски
 use utf8;
 use strict;
 use warnings;
@@ -9,36 +9,35 @@ use base 'POD2::Base';
 use IO::Interactive qw(is_interactive);
 use Encode::Locale qw(decode_argv);
 
-
 use 5.008_005;
 our $VERSION = '5.18.0.1.33';
 
-our @EXPORT = qw(print_pod print_pods);
+our @EXPORT_OK = qw(print_pod print_pods);
 
 # Versions list
 sub pod_info {
-    {
-        perl        => '5.18.0.1',
-        perlintro   => '5.18.0.1',
-        perlrun     => '5.18.0.1',
-        a2p         => '5.18.0.1',
-        perlbook    => '5.18.0.1',
-        perldoc     => '5.18.0.1',
-        perlpragma  => '5.18.0.1',
-        perlstyle   => '5.18.0.1',
-        perlcheat   => '5.18.0.1',
-        perlnewmod  => '5.18.0.1',
-        perlrequick => '5.18.0.1',
-        perlreref   => '5.18.0.1',
-        perlunicode   => '5.18.0.1',
-        perlretut   => '5.18.0.1',
-        perlreguts   => '5.18.0.1',
-        perlrecharclass   => '5.18.0.1',
-        perlrebackslash   => '5.18.0.1',
-        perlreapi   => '5.18.0.1',
-        perlre   => '5.18.0.1',
-        perlsecret   => '5.18.0.1',
-        perlreapi   => '5.18.0.1',
+    return {
+        perl            => '5.18.0.1',
+        perlintro       => '5.18.0.1',
+        perlrun         => '5.18.0.1',
+        a2p             => '5.18.0.1',
+        perlbook        => '5.18.0.1',
+        perldoc         => '5.18.0.1',
+        perlpragma      => '5.18.0.1',
+        perlstyle       => '5.18.0.1',
+        perlcheat       => '5.18.0.1',
+        perlnewmod      => '5.18.0.1',
+        perlrequick     => '5.18.0.1',
+        perlreref       => '5.18.0.1',
+        perlunicode     => '5.18.0.1',
+        perlretut       => '5.18.0.1',
+        perlreguts      => '5.18.0.1',
+        perlrecharclass => '5.18.0.1',
+        perlrebackslash => '5.18.0.1',
+        perlreapi       => '5.18.0.1',
+        perlre          => '5.18.0.1',
+        perlsecret      => '5.18.0.1',
+        perlreapi       => '5.18.0.1',
     };
 }
 
@@ -49,11 +48,11 @@ sub search_perlfunc_re {
 
 # Print information about a pod file
 sub print_pod {
-    my $self = shift;
+    my ( $self, @tmp_args ) = @_;
+    my @args = @tmp_args ? @tmp_args : @ARGV;
     prepare_encoding_console();
-    my @args = @_ ? @_ : @ARGV;
 
-    unless ( ref $self ) {
+    if ( !ref $self ) {
         if ( defined $self ) {
             if ( $self ne __PACKAGE__ ) {
                 unshift @args, $self;
@@ -68,7 +67,7 @@ sub print_pod {
     my $pods = $self->pod_info;
 
     while (@args) {
-        ( my $pod = lc( shift @args ) ) =~ s/\.pod$//;
+        ( my $pod = lc shift @args ) =~ s/[.]pod$//smx;
         if ( exists $pods->{$pod} ) {
             print
 qq{\t'$pod' переведены на русский Perl $pods->{$pod}\n};
@@ -77,22 +76,26 @@ qq{\t'$pod' переведены на русский Perl $pods->{$pod}\n};
             print qq{\t'$pod' еще не переведены\n};
         }
     }
+    return 1;
 }
 
 # Print list of translated pods
 sub print_pods {
-    my $self = @_ ? shift : __PACKAGE__;
+    my $self = shift;
+    $self = $self ? $self : __PACKAGE__;
     prepare_encoding_console();
     $self->SUPER::print_pods;
+    return 1;
 }
 
 sub prepare_encoding_console {
-    if (is_interactive()) {
-        binmode( STDIN,  ":encoding(console_in)" );
-        binmode( STDOUT, ":encoding(console_out)" );
-        binmode( STDERR, ":encoding(console_out)" );
+    if ( is_interactive() ) {
+        binmode STDIN,  ':encoding(console_in)';
+        binmode STDOUT, ':encoding(console_out)';
+        binmode STDERR, ':encoding(console_out)';
     }
     Encode::Locale::decode_argv();
+    return 1;
 }
 
 1;
@@ -163,12 +166,12 @@ POD2::RU - Perl Документация по-русски
 =item * C<new>
 
 Была добавлена для совместимости с C<perldoc> Perl 5.10.1.
-L<Pod::Perldoc> использует ее для возврата имени пакета перевода.
+L</Pod::Perldoc> использует ее для возврата имени пакета перевода.
 
 =item * C<pod_dirs>
 
 Была добавлена для совместимости с C<perldoc> Perl 5.10.1.
-L<Pod::Perldoc> использует ее для определения, где искать переведенные файлы.
+L</Pod::Perldoc> использует ее для определения, где искать переведенные файлы.
 
 =item * C<print_pods>
 
@@ -231,7 +234,7 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<POD2::ES>, L<POD2::PT_BR>, L<POD2::IT>, L<POD2::FR>, L<POD2::LT>.
+L</POD2::ES>, L</POD2::PT_BR>, L</POD2::IT>, L</POD2::FR>, L</POD2::LT>.
 
 =head1 DONATIONS
 
