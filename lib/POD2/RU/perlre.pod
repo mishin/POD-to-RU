@@ -349,13 +349,13 @@ X</aa>
 Как объясняется ниже в L</Расширенных шаблонах> это возможно явно
 указав модификаторы, которые применяются только к части регулярного выражения.
 Внутреннее всегда имеет приоритет над любым внешним и одно применение
-для целого выражения имеет приоритет над любым из параметров по умолчанию
-описан в оставшейся части этого раздела.
+для целого выражения имеет приоритет над любым из параметров по умолчанию,
+описанному в оставшейся части этого раздела.
 
-The C<L<use re 'E<sol>foo'|re/"'/flags' mode">> pragma can be used to set
-default modifiers (including these) for regular expressions compiled
-within its scope.  This pragma has precedence over the other pragmas
-listed below that also change the defaults.
+Прагма C<L<use re 'E<sol>foo'|re/"'/flags' mode">> может использоваться для установки модификаторов 
+по умолчанию (включая эти) для скомпилированных регулярных выражений
+в пределах своей области.  Эта прагма имеет приоритет над другими прагмами,
+перечисленные ниже, что также изменяет значения по умолчанию.
 
 Otherwise, C<L<use locale|perllocale>> sets the default modifier to C</l>;
 and C<L<use feature 'unicode_strings|feature>>, or
