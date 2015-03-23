@@ -357,24 +357,24 @@ X</aa>
 в пределах своей области.  Эта прагма имеет приоритет над другими прагмами,
 перечисленные ниже, что также изменяет значения по умолчанию.
 
-Otherwise, C<L<use locale|perllocale>> sets the default modifier to C</l>;
-and C<L<use feature 'unicode_strings|feature>>, or
-C<L<use 5.012|perlfunc/use VERSION>> (or higher) set the default to
-C</u> when not in the same scope as either C<L<use locale|perllocale>>
-or C<L<use bytes|bytes>>.
-(C<L<use locale ':not_characters'|perllocale/Unicode and UTF-8>> also
-sets the default to C</u>, overriding any plain C<use locale>.)
-Unlike the mechanisms mentioned above, these
-affect operations besides regular expressions pattern matching, and so
-give more consistent results with other operators, including using
-C<\U>, C<\l>, etc. in substitution replacements.
+Иначе, C<L<use locale|perllocale>> устанавливает модификатор по умолчанию в C</l>;
+и C<L<use feature 'unicode_strings|feature>>, или
+C<L<use 5.012|perlfunc/use VERSION>> (или выше) установка умолчания в
+C</u> когда не в той же области, либо как C<L<use locale|perllocale>>
+или C<L<use bytes|bytes>>.
+(C<L<use locale ':not_characters'|perllocale/Unicode and UTF-8>> также
+устанавливают умолчание в C</u>, переопределяет и простой C<use locale>.)
+В отличие от механизмов, упомянутых выше, эти
+операнды влияют на операции помимо поиска регулярного выражения по шаблону  и поэтому
+дают более последовательные результаты с другими операторами, в том числе с использованием
+C<\U>, C<\l> и т.д. в операциях замены.
 
-If none of the above apply, for backwards compatibility reasons, the
-C</d> modifier is the one in effect by default.  As this can lead to
-unexpected results, it is best to specify which other rule set should be
-used.
+Если ни один из перечисленных выше вариантов не применяется, то, для обратной совместимости
+модификатор C</d> является в сущности по умолчанию. Так как это может привести к
+неожиданным результатам, то лучше указать какой другой набор правил должен 
+использоваться.
 
-=head4 Character set modifier behavior prior to Perl 5.14
+=head4 Модификатор поведения набора символов до Perl 5.14
 
 Prior to 5.14, there were no explicit modifiers, but C</l> was implied
 for regexes compiled within the scope of C<use locale>, and C</d> was
