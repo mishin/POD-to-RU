@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * add test::Pod to build prereq
+           * translate perlre 10 lines
 5.18.0.1.35  2015-03-22 01:33:34 MSK
 
            * Change tag L
