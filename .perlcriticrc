@@ -1,0 +1,4 @@
+[-Documentation::RequirePodSections]
+[-Documentation::PodSpelling] 
+[-InputOutput::RequireCheckedSyscalls]
+[-Documentation::RequirePodLinksIncludeText]
