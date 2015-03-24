@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * correct badges in readme
 5.18.0.1.37  2015-03-25 02:38:53 MSK
 
            * add .travis.yml and play with badges ;)
