@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.37  2015-03-25 02:38:53 MSK
+
            * add .travis.yml and play with badges ;)
            * add .perlcritic
 5.18.0.1.36  2015-03-23 22:22:13 MSK
