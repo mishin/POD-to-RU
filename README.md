@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mishin/perldoc-ru.svg?branch=master)](https://travis-ci.org/mishin/perldoc-ru)
+[![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.svg)](https://coveralls.io/r/mishin/POD-to-RU)
 # NAME
 
 POD2::RU - Perl Документация по-русски
