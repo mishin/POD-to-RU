@@ -7,8 +7,13 @@ perl:
 - 5.12
 - "5.10"
 - 5.8
+matrix:
+  include:
+    - perl: 5.20
+      env: COVERAGE=1
 before_install:
 - perlbrew install-cpanm -f
+- eval $(curl https://travis-perl.github.io/init) --auto
 install:
 - cpanm -nq --installdeps --with-develop --with-recommends --with-suggests .
 script:
