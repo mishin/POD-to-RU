@@ -376,16 +376,16 @@ C<\U>, C<\l> и т.д. в операциях замены.
 
 =head4 Модификатор поведения набора символов до Perl 5.14
 
-Prior to 5.14, there were no explicit modifiers, but C</l> was implied
-for regexes compiled within the scope of C<use locale>, and C</d> was
-implied otherwise.  However, interpolating a regex into a larger regex
-would ignore the original compilation in favor of whatever was in effect
-at the time of the second compilation.  There were a number of
-inconsistencies (bugs) with the C</d> modifier, where Unicode rules
-would be used when inappropriate, and vice versa.  C<\p{}> did not imply
-Unicode rules, and neither did all occurrences of C<\N{}>, until 5.12.
+До 5.14, были не было явных модификаторов, но C</l> подразумевается
+для регулярных выражений, скомпилированные в соупе  C<use locale> и C</d> 
+подразумевался иначе.Однако интерполяция регексов в больших регексах
+будет игнорировать оригинальную компиляцию в пользу всего, что было в действительности
+во время второй компиляции. Существует ряд несоответствий (ошибок) 
+с модификатором C</d> , где правила Юникода
+будут неуместны и наоборот.C <\p{}> не подразумевает
+правил Юникода и не делает все вхождения C<\N{}>, до 5.12.
 
-=head2 Regular Expressions
+=head2 Регулярные выражения
 
 =head3 Metacharacters
 
