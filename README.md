@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mishin/perldoc-ru.svg?branch=master)](https://travis-ci.org/mishin/perldoc-ru)
 # NAME
 
 POD2::RU - Perl Документация по-русски
