@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * add .travis.yml and play with badges ;)
 5.18.0.1.36  2015-03-23 22:22:13 MSK
 
            * add test::Pod to build prereq 
