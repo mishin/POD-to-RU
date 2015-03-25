@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/mishin/POD-to-RU.svg?branch=master)](https://travis-ci.org/mishin/POD-to-RU)
+[![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
+
 # NAME
 
 POD2::RU - Perl Документация по-русски
@@ -134,8 +137,3 @@ They (JPRP people) uses sourceforge and its CVS.
 [http://sourceforge.jp/cvs/view/perldocjp/docs/modules/](http://sourceforge.jp/cvs/view/perldocjp/docs/modules/)
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
-
-
-[![Build Status](https://travis-ci.org/mishin/POD-to-RU.svg?branch=master)](https://travis-ci.org/mishin/POD-to-RU)
-[![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
-[![Gitter chat](https://badges.gitter.im/mishin/POD-to-RU.png)](https://gitter.im/mishin/POD-to-RU)
