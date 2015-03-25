@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * Try to use
+           * Dist::Zilla::Plugin::GitHubREADME::Badge - Dist::Zilla - add badges to github README.md
 5.18.0.1.39  2015-03-25 02:56:28 MSK
 
            * Fighting with git:
