@@ -73,9 +73,10 @@
          "type" : "git",
          "url" : "https://github.com/mishin/POD-to-RU.git",
          "web" : "https://github.com/mishin/POD-to-RU"
-      }
+      },
+      "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.42",
+   "version" : "5.18.0.1.43",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>"
    ]
