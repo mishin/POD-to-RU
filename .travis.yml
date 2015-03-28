@@ -8,6 +8,7 @@ perl:
 - "5.10"
 - 5.8
 before_install:
+- sudo apt-get install -qq aspell libaspell-dev aspell-en aspell-ru
 - perlbrew install-cpanm -f
 - cpanm -n Test::Perl::Critic
 - cpanm -n Test::Spelling
@@ -16,4 +17,4 @@ install:
 - cpanm -nq --installdeps --with-develop --with-recommends --with-suggests .
 script:
 - prove -lr xt t
-sudo: false
+
