@@ -1,20 +1,7 @@
 language: perl
 perl:
-- "5.20"
 - 5.18
 - 5.16
 - 5.14
 - 5.12
-- "5.10"
-- 5.8
-before_install:
-- sudo apt-get install -qq aspell libaspell-dev aspell-en aspell-ru
-- perlbrew install-cpanm -f
-- cpanm -n Test::Perl::Critic
-- cpanm -n Test::Spelling
-- cpanm -n Devel::Cover::Report::Coveralls
-install:
-- cpanm -nq --installdeps --with-develop --with-recommends --with-suggests .
-script:
-- prove -vlr xt
-
+- 5.10
