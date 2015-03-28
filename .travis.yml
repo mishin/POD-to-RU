@@ -12,4 +12,4 @@ language: perl
      - cpanm --quiet --notest --installdeps .
 
   script:
-     - prove -lrsv t
+     - prove -lrsv t xt
