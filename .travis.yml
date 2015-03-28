@@ -9,6 +9,9 @@ perl:
 - 5.8
 before_install:
 - perlbrew install-cpanm -f
+- cpanm -n Test::Perl::Critic
+- cpanm -n Test::Spelling
+- cpanm -n Devel::Cover::Report::Coveralls
 install:
 - cpanm -nq --installdeps --with-develop --with-recommends --with-suggests .
 script:
