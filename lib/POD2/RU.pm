@@ -109,6 +109,8 @@ __END__
 
 POD2::RU - Perl Документация по-русски
 
+=for HTML <a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a>
+
 =head1 SYNOPSIS
 
   use POD2::RU;
