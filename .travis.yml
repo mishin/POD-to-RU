@@ -16,5 +16,5 @@ before_install:
 install:
 - cpanm -nq --installdeps --with-develop --with-recommends --with-suggests .
 script:
-- prove -lr xt t
+- prove -vlr xt
 
