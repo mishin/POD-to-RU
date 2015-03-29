@@ -387,8 +387,12 @@ C<\U>, C<\l> и т.д. в операциях замены.
 
 =head2 Регулярные выражения
 
-=head3 Metacharacters
+=head3 Метасимволы
 
+Шаблоны, используемые в Perl эволюционировали от тех, 
+которые представлены в Регулярных Выражениях Версии 8 (Version 8 regex routines)
+поставляются в
+Версия 8 процедур regex.
 The patterns used in Perl pattern matching evolved from those supplied in
 the Version 8 regex routines.  (The routines are derived
 (distantly) from Henry Spencer's freely redistributable reimplementation
