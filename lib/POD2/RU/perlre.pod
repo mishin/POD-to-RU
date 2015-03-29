@@ -390,58 +390,52 @@ C<\U>, C<\l> и т.д. в операциях замены.
 =head3 Метасимволы
 
 Шаблоны, используемые в Perl эволюционировали от тех, 
-которые представлены в Регулярных Выражениях Версии 8 (Version 8 regex routines)
-поставляются в
-Версия 8 процедур regex.
-The patterns used in Perl pattern matching evolved from those supplied in
-the Version 8 regex routines.  (The routines are derived
-(distantly) from Henry Spencer's freely redistributable reimplementation
-of the V8 routines.)  See L<Version 8 Regular Expressions> for
-details.
+которые были в Процедурах Регулярных Выражениях Версии 8 (Version 8 regex routines).
+Процедуры являются производными (отдаленно) 
+от свободно распространяемой повторной реализации подпрограмм версии V8 Генри Спенсера .
+См. L<Версия 8 Регулярных Выражений> для подробностей.
 
-In particular the following metacharacters have their standard I<egrep>-ish
-meanings:
-X<metacharacter>
+В частности следующие метасимволы имеют значения по I<egrep>-ному стандарту:
+X<метасимволы>
 X<\> X<^> X<.> X<$> X<|> X<(> X<()> X<[> X<[]>
 
 
-    \        Quote the next metacharacter
-    ^        Match the beginning of the line
-    .        Match any character (except newline)
-    $        Match the end of the line (or before newline at the end)
-    |        Alternation
-    ()       Grouping
-    []       Bracketed Character class
+    \        Экранирование следующего метасимвола
+    ^        Найдет начало строки
+    .        Найдет любой символ (кроме символа новой строки)
+    $        Найдет конец строки (перед символом новой строки в конце)
+    |        Альтернатива
+    ()       Группировка
+    []       Класс символов в квадратных скобках
 
-By default, the "^" character is guaranteed to match only the
-beginning of the string, the "$" character only the end (or before the
-newline at the end), and Perl does certain optimizations with the
-assumption that the string contains only one line.  Embedded newlines
-will not be matched by "^" or "$".  You may, however, wish to treat a
-string as a multi-line buffer, such that the "^" will match after any
-newline within the string (except if the newline is the last character in
-the string), and "$" will match before any newline.  At the
-cost of a little more overhead, you can do this by using the /m modifier
-on the pattern match operator.  (Older programs did this by setting C<$*>,
-but this option was removed in perl 5.10.)
+По умолчанию, символ "^" гарантирует, что найдется только начало строки
+, а символ "$" найдет только конец (или перед символом новой строки в конце
+), и Perl делает определенные оптимизации, предполагая, что набор символов содержит только одну строку.
+Внутренние новые строки не будут найдены "^" или "$".  Вы можете, тем не менне пожелать
+представить символы для поиска как буфер из многих строк, тогда "^" будет найдет после любого символа новой строки внтури символов для поиска (исключанием является случай, когда 
+символ новой строки является последним символом в строке поиска), 
+и "$" найдет перед любым символом новой строки. Стоимость накладных 
+расходов немного больше, если вы применяете к шаблону поиска модификатор /m.
+(Старые программы делали это, устанавливая C<$*>,
+но эта возможность удалена в perl 5.10.)
 X<^> X<$> X</m>
 
-To simplify multi-line substitutions, the "." character never matches a
-newline unless you use the C</s> modifier, which in effect tells Perl to pretend
-the string is a single line--even if it isn't.
+Для упрощения замены в многострочном буфере, символ "." никогда не найдет
+ символ новой строки, только, если вы не используете модификатор C</s>, который фактически сообщает Perl,
+  что весь буфер для поиска - это одна строка --даже если это не так.
 X<.> X</s>
 
-=head3 Quantifiers
+=head3 Повторители (Квантификаторы, умножители, символы, указывающие количество)
 
-The following standard quantifiers are recognized:
-X<metacharacter> X<quantifier> X<*> X<+> X<?> X<{n}> X<{n,}> X<{n,m}>
+Существуют следующие стандартные повторители:
+X<метасимвол> X<повторитель> X<*> X<+> X<?> X<{n}> X<{n,}> X<{n,m}>
 
-    *           Match 0 or more times
-    +           Match 1 or more times
-    ?           Match 1 or 0 times
-    {n}         Match exactly n times
-    {n,}        Match at least n times
-    {n,m}       Match at least n but not more than m times
+    *           Найдет 0 или больше раз
+    +           Найдет 1 или больше раз
+    ?           Найдет 1 или 0 раз
+    {n}         Найдет точно n раз
+    {n,}        Найдет по крайней мере n раз
+    {n,m}       Найдет по крайней мере n раз, но не более m раз
 
 (If a curly bracket occurs in any other context and does not form part of
 a backslashed sequence like C<\x{...}>, it is treated as a regular
