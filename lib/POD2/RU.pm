@@ -109,7 +109,10 @@ __END__
 
 POD2::RU - Perl Документация по-русски
 
-=for HTML <a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a><a href="https://coveralls.io/r/mishin/POD-to-RU?branch=master">    <img style="max-width:100%;" data-canonical-src="https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master" alt="Coverage Status" src="https://camo.githubusercontent.com/8769056c0371af38c8fd59b06…2d746f2d52552f62616467652e706e673f6272616e63683d6d6173746572"></img></a>
+=for HTML <a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a><a href='https://coveralls.io/r/mishin/POD-to-RU?branch=master'><img src='https://coveralls.io/repos/mishin/POD-to-RU/badge.svg?branch=master' alt='Coverage Status' /></a>
+
+
+
 
 =head1 SYNOPSIS
 
