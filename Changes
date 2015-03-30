@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * удалил ненужные =for HTML
 5.18.0.1.48  2015-03-30 03:58:12 MSK
 
            * add cpants badge thanks to FAYLAND++

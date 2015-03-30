@@ -109,9 +109,10 @@ __END__
 
 POD2::RU - Perl Документация по-русски
 
-=for HTML <a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a>
-=for HTML <a href='https://coveralls.io/r/mishin/POD-to-RU?branch=master'><img src='https://coveralls.io/repos/mishin/POD-to-RU/badge.svg?branch=master' alt='Coverage Status' /></a>
-=for HTML <a href="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" target="_blank"><img src="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" alt="" data-canonical-src="http://cpants.cpanauthors.org/dist/POD2-RU.png" style="max-width:100%;"></a>
+=for HTML 
+<a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a>
+<a href='https://coveralls.io/r/mishin/POD-to-RU?branch=master'><img src='https://coveralls.io/repos/mishin/POD-to-RU/badge.svg?branch=master' alt='Coverage Status' /></a>
+<a href="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" target="_blank"><img src="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" alt="" data-canonical-src="http://cpants.cpanauthors.org/dist/POD2-RU.png" style="max-width:100%;"></a>
 
 
 
