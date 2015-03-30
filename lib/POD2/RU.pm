@@ -10,7 +10,7 @@ use IO::Interactive qw(is_interactive);
 use Encode::Locale qw(decode_argv);
 
 use 5.008_005;
-our $VERSION = '5.18.0.1.48';
+our $VERSION = '5.18.0.1.49';
 
 our @EXPORT_OK = qw(print_pod print_pods);
 
