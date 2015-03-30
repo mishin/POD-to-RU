@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/mishin/POD-to-RU.svg?branch=master)](https://travis-ci.org/mishin/POD-to-RU)
 [![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
+![](http://cpants.cpanauthors.org/dist/POD2-RU.png)
 
 # NAME
 
