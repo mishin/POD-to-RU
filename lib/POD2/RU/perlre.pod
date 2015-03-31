@@ -437,17 +437,21 @@ X<метасимвол> X<повторитель> X<*> X<+> X<?> X<{n}> X<{n,}> 
     {n,}        Найдет по крайней мере n раз
     {n,m}       Найдет по крайней мере n раз, но не более m раз
 
-(If a curly bracket occurs in any other context and does not form part of
-a backslashed sequence like C<\x{...}>, it is treated as a regular
-character.  In particular, the lower quantifier bound is not optional,
-and a typo in a quantifier silently causes it to be treated as the
-literal characters.  For example,
+(Если фигурная скобка находится в любом другом контексте и не являются частью
+эскейп последовательности такой, как  C<\x{...}>, то она обрабатывается как обычный
+символ. В частности, нижняя граница повторителя не является обязательной,
+опечатка в повторителе молча рассматривает его, как
+буквенные символы. Например,
 
     /o{4,3}/
 
-looks like a quantifier that matches 0 times, since 4 is greater than 3,
-but it really means to match the sequence of six characters
-S<C<"o { 4 , 3 }">>.  It is planned to eventually require literal uses
+выглядит как повторитель, который найдется 0 раз, так как 4 больше 3,
+но это в действительности это означает соответствие последовательности из шести символов
+S<C<"o { 4 , 3 }">>.  
+планируется в конечном итоге требует литерал используется
+фигурные скобки сбежал скажем, поставив перед ними с косой
+или заключив их в квадратные скобки,
+It is planned to eventually require literal uses
 of curly brackets to be escaped, say by preceding them with a backslash
 or enclosing them within square brackets, (C<"\{"> or C<"[{]">).  This
 change will allow for future syntax extensions (like making the lower
