@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * перезали тесты, как у https://github.com/oklahomer/p5-Facebook-OpenGraph
+           * переводил perlre
 5.18.0.1.49  2015-03-30 04:04:36 MSK
 
            * удалил ненужные =for HTML
