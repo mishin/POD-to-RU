@@ -465,20 +465,20 @@ S<C<"o { 4 , 3 }">>.
 
     $_ **= $_ , / {$_} / for 2 .. 42;
 
-By default, a quantified subpattern is "greedy", that is, it will match as
-many times as possible (given a particular starting location) while still
-allowing the rest of the pattern to match.  If you want it to match the
-minimum number of times possible, follow the quantifier with a "?".  Note
-that the meanings don't change, just the "greediness":
-X<metacharacter> X<greedy> X<greediness>
+По умоланию повторительный подшаблон "жадный", это означает, что он будет искать
+максимальное число совпадений из возможного (наиная с указанной стартовой позиции)
+пока еще соответствие шаблону остается.  Если вы хотите найти минимальное число совпадений
+, укажите после повторителя "?".  Следует что значение шаблона не меняется,
+а только его "жадность":
+X<метасимвол> X<жадный> X<жадность>
 X<?> X<*?> X<+?> X<??> X<{n}?> X<{n,}?> X<{n,m}?>
 
-    *?        Match 0 or more times, not greedily
-    +?        Match 1 or more times, not greedily
-    ??        Match 0 or 1 time, not greedily
-    {n}?      Match exactly n times, not greedily (redundant)
-    {n,}?     Match at least n times, not greedily
-    {n,m}?    Match at least n but not more than m times, not greedily
+    *?        Найдёт 0 или больше раз, не жаден
+    +?        Найдёт 1 или больше раз, не жаден
+    ??        Найдёт 0 или 1 раз, не жаден
+    {n}?      Найдёт exactly n times, не жаден (излишне)
+    {n,}?     Найдёт как минимум n раз, не жаден
+    {n,m}?    Найдёт как минимум n раз но не более m раз, не жаден
 
 By default, when a quantified subpattern does not allow the rest of the
 overall pattern to match, Perl will backtrack. However, this behaviour is
