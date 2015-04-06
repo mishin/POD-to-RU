@@ -476,31 +476,35 @@ X<?> X<*?> X<+?> X<??> X<{n}?> X<{n,}?> X<{n,m}?>
     *?        Найдёт 0 или больше раз, не жаден
     +?        Найдёт 1 или больше раз, не жаден
     ??        Найдёт 0 или 1 раз, не жаден
-    {n}?      Найдёт exactly n times, не жаден (излишне)
+    {n}?      Найдёт точно n раз, не жаден (излишне)
     {n,}?     Найдёт как минимум n раз, не жаден
     {n,m}?    Найдёт как минимум n раз но не более m раз, не жаден
 
-By default, when a quantified subpattern does not allow the rest of the
-overall pattern to match, Perl will backtrack. However, this behaviour is
-sometimes undesirable. Thus Perl provides the "possessive" quantifier form
-as well.
+По умолчанию, когда повторенный вложенный шаблон не позволяет совпасть остальной части
+общего шаблона, Perl делает шаг назад (backtrack). Однако такое поведение является
+иногда нежелательно. Тогда Perl предоставляет форму "притяжательного" повторителя.
 
- *+     Match 0 or more times and give nothing back
- ++     Match 1 or more times and give nothing back
- ?+     Match 0 or 1 time and give nothing back
- {n}+   Match exactly n times and give nothing back (redundant)
- {n,}+  Match at least n times and give nothing back
- {n,m}+ Match at least n but not more than m times and give nothing back
+ *+     Найдёт 0 или больше раз и не дает возврата
+ ++     Найдёт 1 или больше раз и не дает возврата
+ ?+     Найдёт 0 или 1 раз и не дает возврата
+ {n}+   Найдёт точно n раз и не дает возврата (излишне)
+ {n,}+  Найдёт как минимум n раз и не дает возврата
+ {n,m}+ Найдёт как минимум n раз но не более m раз и не дает возврата
 
-For instance,
+Например,
 
    'aaaa' =~ /a++a/
 
-will never match, as the C<a++> will gobble up all the C<a>'s in the
-string and won't leave any for the remaining part of the pattern. This
+ This
 feature can be extremely useful to give perl hints about where it
 shouldn't backtrack. For instance, the typical "match a double-quoted
 string" problem can be most efficiently performed when written as:
+
+никогда не найдется, так как C<a++> будет съедать все C<a> в
+строке и не оставит ни одного символа для оставшейся части шаблона. 
+Эта особенность может быть экстремально полезна, давая перлу сигнал, 
+где не должно быть возврата назад. Например, типичная проблема "поиска строки в двойных кавычках"
+ может решиться наиболее эффективно, когда написано так:
 
    /"(?:[^"\\]++|\\.)*+"/
 
