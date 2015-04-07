@@ -1,7 +1,8 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
-
+           * спасибо zoffixznet исправил перевод perlreref
+           * насчет применения буквы m в регексах
 5.18.0.1.50  2015-04-06 01:33:36 MSK
 
            * перезалил тесты, как у https://github.com/oklahomer/p5-Facebook-OpenGraph
