@@ -495,11 +495,6 @@ X<?> X<*?> X<+?> X<??> X<{n}?> X<{n,}?> X<{n,m}?>
 
    'aaaa' =~ /a++a/
 
- This
-feature can be extremely useful to give perl hints about where it
-shouldn't backtrack. For instance, the typical "match a double-quoted
-string" problem can be most efficiently performed when written as:
-
 никогда не найдется, так как C<a++> будет съедать все C<a> в
 строке и не оставит ни одного символа для оставшейся части шаблона. 
 Эта особенность может быть экстремально полезна, давая перлу сигнал, 
@@ -508,11 +503,14 @@ string" problem can be most efficiently performed when written as:
 
    /"(?:[^"\\]++|\\.)*+"/
 
-as we know that if the final quote does not match, backtracking will not
-help. See the independent subexpression
-L</C<< (?>pattern) >>> for more details;
+как мы знаем, если последняя кавычка не находится, то поиск с возвратом не поможет.
+
+Смотри независимое выражение
+L</C<< (?>pattern) >>> для деталей;
 possessive quantifiers are just syntactic sugar for that construct. For
 instance the above example could also be written as follows:
+притяжательные повторители являются только синтаксическим сахаром для этой конструкции. Например, 
+пример, приведенный выше, может быть записан следующим образом:
 
    /"(?>(?:(?>[^"\\]+)|\\.)*)"/
 
