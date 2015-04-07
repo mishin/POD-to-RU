@@ -233,6 +233,8 @@ Nikolay Mishin <mi@ya.ru>
 
 =item * Вячеслав Тихановский (VTI)
 
+=item * zoffixznet
+
 =back
 
 =head1 COPYRIGHT
