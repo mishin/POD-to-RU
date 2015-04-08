@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+5.18.0.1.52  2015-04-09 00:53:02 MSK
+
            * добавил переносы строк после =item
 5.18.0.1.51  2015-04-09 00:36:00 MSK
            * спасибо zoffixznet исправил перевод perlreref

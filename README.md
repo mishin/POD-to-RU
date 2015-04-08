@@ -92,18 +92,18 @@ POD2::RU - Perl Документация по-русски
 # CONTRIBUTORS
 
 - Анатолий Шарифулин ([SHARIFULN](https://metacpan.org/author/SHARIFULN))
-=item \* Андрей Шитов ([ANDY](https://metacpan.org/author/ANDY))
-=item \* Алексей Суриков ([KSURI](https://metacpan.org/author/KSURI))
-=item \* Михаил Любимов ([mikhail.lyubimov](http://event.perlrussia.ru/rpw2008/user/4579))
-=item \* Дмитрий Константинов ([Dim\_K](http://www.weblancer.net/users/Dim_K/portfolio/))
-=item \* Евгений Баранов ([Baranov](http://event.yapcrussia.org/mayperl2/user/161))
-=item \* Антон Никишаев ([llelf](https://github.com/llelf))
-=item \* Динар Жамалиев ([zhdinar](http://blog.perl5doc.ru))
-=item \* Валерий Кравчук ([valera@openxs.kiev.ua](http://www.opennet.ru/search.shtml?exclude=index|%2Fman.shtml&words=valera%40openxs.kiev.ua))
-=item \* Enrique Nell ([ENELL](https://metacpan.org/author/ENELL)) 
-=item \* Yusuke Kawasaki ([KAWASAKI](https://metacpan.org/author/KAWASAKI))
-=item \* Вячеслав Тихановский ([VTI](https://metacpan.org/author/VTI))
-=item \* Zoffix Znet ([ZOFFIX](https://metacpan.org/author/ZOFFIX))
+- Андрей Шитов ([ANDY](https://metacpan.org/author/ANDY))
+- Алексей Суриков ([KSURI](https://metacpan.org/author/KSURI))
+- Михаил Любимов ([mikhail.lyubimov](http://event.perlrussia.ru/rpw2008/user/4579))
+- Дмитрий Константинов ([Dim\_K](http://www.weblancer.net/users/Dim_K/portfolio/))
+- Евгений Баранов ([Baranov](http://event.yapcrussia.org/mayperl2/user/161))
+- Антон Никишаев ([llelf](https://github.com/llelf))
+- Динар Жамалиев ([zhdinar](http://blog.perl5doc.ru))
+- Валерий Кравчук ([valera@openxs.kiev.ua](http://www.opennet.ru/search.shtml?exclude=index|%2Fman.shtml&words=valera%40openxs.kiev.ua))
+- Enrique Nell ([ENELL](https://metacpan.org/author/ENELL)) 
+- Yusuke Kawasaki ([KAWASAKI](https://metacpan.org/author/KAWASAKI))
+- Вячеслав Тихановский ([VTI](https://metacpan.org/author/VTI))
+- Zoffix Znet ([ZOFFIX](https://metacpan.org/author/ZOFFIX))
 
 # COPYRIGHT
 
