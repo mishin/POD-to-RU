@@ -16,6 +16,7 @@ on test => sub {
     requires 'Test::Builder::IO::Scalar', '2.111';
     requires 'Test::Builder',             '1.001006';
     requires 'Test::Builder::Module',     '1.001006';
+    requires 'Test::Deep',     '0.115';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
