@@ -11,7 +11,7 @@ $pod2->prepare_encoding_console();
 
 # Test utf8 is ok.
 {
-    my $uni = "\x{11e}";
+my $uni = "\x{11e}";
      
     my @warnings;
     local $SIG{__WARN__} = sub {
