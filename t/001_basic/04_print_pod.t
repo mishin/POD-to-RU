@@ -8,12 +8,15 @@ use POD2::RU;
 #########################
 my $pod2 = POD2::RU->new();
 use Test::Output;
+
 #$pod2->prepare_encoding_console();
 
 sub writer {
-	$pod2->print_pod('perlretut');
+    $pod2->print_pod('perlretut');
 }
 
-stdout_isnt( \&writer,
+stdout_isnt(
+    \&writer,
     qq{\t'perlretut' переведен на русский Perl 5.18.0.1\n},
-    'Test STDOUT of print_pod' );
+    'Test STDOUT of print_pod'
+);

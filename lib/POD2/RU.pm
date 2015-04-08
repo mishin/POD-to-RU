@@ -8,7 +8,6 @@ use base 'Exporter';
 use base 'POD2::Base';
 use IO::Interactive qw(is_interactive);
 use Encode::Locale qw(decode_argv);
-	
 
 use 5.008_005;
 our $VERSION = '5.18.0.1.53';

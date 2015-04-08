@@ -11,11 +11,12 @@ use Test::Output;
 $pod2->prepare_encoding_console();
 
 sub writer {
-	$pod2->print_pods;#('perlretut');
+    $pod2->print_pods;    #('perlretut');
 }
 
 #stdout_isnt
-stdout_isnt( \&writer,
+stdout_isnt(
+    \&writer,
     qq{\t'a2p' переведен на русский Perl 5.18.0.1
 \t'perl' переведен на русский Perl 5.18.0.1
 \t'perlbook' переведен на русский Perl 5.18.0.1
@@ -37,6 +38,7 @@ stdout_isnt( \&writer,
 \t'perlstyle' переведен на русский Perl 5.18.0.1
 \t'perlunicode' переведен на русский Perl 5.18.0.1
 },
-    'Test STDOUT of print_pod' );
+    'Test STDOUT of print_pod'
+);
 
 #&writer();
