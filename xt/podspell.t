@@ -6,6 +6,7 @@ set_spell_cmd("sp_ch () {(cat $1|aspell --lang=ru-yo list|aspell --lang=en list)
 all_pod_files_spelling_ok('lib');
 __DATA__
 VTI
+zoffixznet
 regop
 regops
 Nikolay

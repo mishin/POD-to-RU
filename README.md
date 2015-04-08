@@ -86,21 +86,24 @@ POD2::RU - Perl Документация по-русски
 
 # AUTHOR
 
-- Nikolay Mishin <mi@ya.ru>
+- Nikolay Mishin ([MISHIN](https://metacpan.org/author/MISHIN))
 
 # CONTRIBUTORS
 
-- Анатолий Шарифулин <sharifulin@gmail.com>
-- Алексей Суриков <KSURi>
-- Михаил Любимов  <mikhail.lyubimov>
-- Дмитрий Константинов  <Dim\_K>
-- Евгений Баранов  <Baranov>
-- Антон Николаев <me@lelf.lu>
-- Динар Жамалиев <zhdinar>
-- Валерий Кравчук<valera@openxs.kiev.ua>
-- Enrique Nell 
-- Yusuke Kawasaki
-- Вячеслав Тихановский (VTI)
+- Анатолий Шарифулин ([SHARIFULN](https://metacpan.org/author/SHARIFULN))
+- Андрей Шитов ([ANDY](https://metacpan.org/author/ANDY))
+- Алексей Суриков ([KSURI](https://metacpan.org/author/KSURI))
+- Михаил Любимов ([mikhail.lyubimov](http://event.perlrussia.ru/rpw2008/user/4579))
+- Дмитрий Константинов ([Dim_K](http://www.weblancer.net/users/Dim_K/portfolio/))
+- Евгений Баранов ([Baranov](http://event.yapcrussia.org/mayperl2/user/161))
+- Антон Никишаев ([llelf](https://github.com/llelf))
+- Динар Жамалиев ([zhdinar](http://blog.perl5doc.ru))
+- Валерий Кравчук ([valera@openxs.kiev.ua](http://www.opennet.ru/search.shtml?exclude=index|%2Fman.shtml&words=valera%40openxs.kiev.ua))
+- Enrique Nell ([ENELL](https://metacpan.org/author/ENELL)) 
+- Yusuke Kawasaki ([KAWASAKI](https://metacpan.org/author/KAWASAKI))
+- Вячеслав Тихановский ([VTI](https://metacpan.org/author/VTI))
+- Zoffix Znet ([ZOFFIX](https://metacpan.org/author/ZOFFIX))
+
 
 # COPYRIGHT
 

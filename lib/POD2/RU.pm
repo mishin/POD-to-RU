@@ -203,7 +203,7 @@ C<<prepare_encoding_console>> - Получает кодировку консол
  
 =item *
  
-Nikolay Mishin <mi@ya.ru>
+Nikolay Mishin (L<MISHIN|https://metacpan.org/author/MISHIN>)
  
 =back
 
@@ -211,29 +211,19 @@ Nikolay Mishin <mi@ya.ru>
 
 =over
 
-=item * Анатолий Шарифулин <sharifulin@gmail.com>
-
-=item * Алексей Суриков <KSURi>
-
-=item * Михаил Любимов  <mikhail.lyubimov>
-
-=item * Дмитрий Константинов  <Dim_K>
-
-=item * Евгений Баранов  <Baranov>
-
-=item * Антон Николаев <me@lelf.lu>
-
-=item * Динар Жамалиев <zhdinar>
-
-=item * Валерий Кравчук<valera@openxs.kiev.ua>
-
-=item * Enrique Nell 
-
-=item * Yusuke Kawasaki
-
-=item * Вячеслав Тихановский (VTI)
-
-=item * zoffixznet
+=item * Анатолий Шарифулин (L<SHARIFULN|https://metacpan.org/author/SHARIFULN>)
+=item * Андрей Шитов (L<ANDY|https://metacpan.org/author/ANDY>)
+=item * Алексей Суриков (L<KSURI|https://metacpan.org/author/KSURI>)
+=item * Михаил Любимов (L<mikhail.lyubimov|http://event.perlrussia.ru/rpw2008/user/4579>)
+=item * Дмитрий Константинов (L<Dim_K|http://www.weblancer.net/users/Dim_K/portfolio/>)
+=item * Евгений Баранов (L<Baranov|http://event.yapcrussia.org/mayperl2/user/161>)
+=item * Антон Никишаев (L<llelf|https://github.com/llelf>)
+=item * Динар Жамалиев (L<zhdinar|http://blog.perl5doc.ru>)
+=item * Валерий Кравчук (L<valera@openxs.kiev.ua|http://www.opennet.ru/search.shtml?exclude=index|%2Fman.shtml&words=valera%40openxs.kiev.ua>)
+=item * Enrique Nell (L<ENELL|https://metacpan.org/author/ENELL>) 
+=item * Yusuke Kawasaki (L<KAWASAKI|https://metacpan.org/author/KAWASAKI>)
+=item * Вячеслав Тихановский (L<VTI|https://metacpan.org/author/VTI>)
+=item * Zoffix Znet (L<ZOFFIX|https://metacpan.org/author/ZOFFIX>)
 
 =back
 
