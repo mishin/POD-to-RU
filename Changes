@@ -5,6 +5,7 @@ Revision history for POD2-RU
            * насчет применения буквы m в регексах
            * красиво отформатировал участников проекта
            * исправил perlreref про происк с m и без
+           * добавил test scripts for 100% coverage
 5.18.0.1.50  2015-04-06 01:33:36 MSK
 
            * перезалил тесты, как у https://github.com/oklahomer/p5-Facebook-OpenGraph
