@@ -58,8 +58,10 @@
             "Test::Builder" : "1.001006",
             "Test::Builder::IO::Scalar" : "2.111",
             "Test::Builder::Module" : "1.001006",
+            "Test::Deep" : "0.115",
             "Test::More" : "1.001006",
-            "Test::More::UTF8" : "0.04"
+            "Test::More::UTF8" : "0.04",
+            "Test::Output" : "1.03"
          }
       }
    },
@@ -78,7 +80,8 @@
    },
    "version" : "5.18.0.1.50",
    "x_contributors" : [
-      "Nikolay Mishin <mi@ya.ru>"
+      "Nikolay Mishin <mi@ya.ru>",
+      "Zoffix Znet <cpan@zoffix.com>"
    ]
 }
 

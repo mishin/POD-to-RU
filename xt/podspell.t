@@ -5,6 +5,17 @@ add_stopwords(<DATA>);
 set_spell_cmd("sp_ch () {(cat $1|aspell --lang=ru-yo list|aspell --lang=en list); };sp_ch");
 all_pod_files_spelling_ok('lib');
 __DATA__
+Baranov
+ENELL
+KSURI
+SHARIFULN
+ZOFFIX
+Znet
+Zoffix
+llelf
+lyubimov
+mikhail
+zhdinar
 VTI
 zoffixznet
 regop

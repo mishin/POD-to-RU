@@ -71,10 +71,10 @@ sub print_pod {
         ( my $pod = lc shift @args ) =~ s/[.]pod$//smx;
         if ( exists $pods->{$pod} ) {
             print
-qq{\t'$pod' переведены на русский Perl $pods->{$pod}\n};
+qq{\t'$pod' переведен на русский Perl $pods->{$pod}\n};
         }
         else {
-            print qq{\t'$pod' еще не переведены\n};
+            print qq{\t'$pod' еще не переведен\n};
         }
     }
     return 1;
@@ -212,29 +212,17 @@ Nikolay Mishin (L<MISHIN|https://metacpan.org/author/MISHIN>)
 =over
 
 =item * Анатолий Шарифулин (L<SHARIFULN|https://metacpan.org/author/SHARIFULN>)
-
 =item * Андрей Шитов (L<ANDY|https://metacpan.org/author/ANDY>)
-
 =item * Алексей Суриков (L<KSURI|https://metacpan.org/author/KSURI>)
-
 =item * Михаил Любимов (L<mikhail.lyubimov|http://event.perlrussia.ru/rpw2008/user/4579>)
-
 =item * Дмитрий Константинов (L<Dim_K|http://www.weblancer.net/users/Dim_K/portfolio/>)
-
 =item * Евгений Баранов (L<Baranov|http://event.yapcrussia.org/mayperl2/user/161>)
-
 =item * Антон Никишаев (L<llelf|https://github.com/llelf>)
-
 =item * Динар Жамалиев (L<zhdinar|http://blog.perl5doc.ru>)
-
 =item * Валерий Кравчук (L<valera@openxs.kiev.ua|http://www.opennet.ru/search.shtml?exclude=index|%2Fman.shtml&words=valera%40openxs.kiev.ua>)
-
 =item * Enrique Nell (L<ENELL|https://metacpan.org/author/ENELL>) 
-
 =item * Yusuke Kawasaki (L<KAWASAKI|https://metacpan.org/author/KAWASAKI>)
-
 =item * Вячеслав Тихановский (L<VTI|https://metacpan.org/author/VTI>)
-
 =item * Zoffix Znet (L<ZOFFIX|https://metacpan.org/author/ZOFFIX>)
 
 =back
