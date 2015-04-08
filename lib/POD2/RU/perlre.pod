@@ -507,24 +507,22 @@ X<?> X<*?> X<+?> X<??> X<{n}?> X<{n,}?> X<{n,m}?>
 
 Смотри независимое выражение
 L</C<< (?>pattern) >>> для деталей;
-possessive quantifiers are just syntactic sugar for that construct. For
-instance the above example could also be written as follows:
 притяжательные повторители являются только синтаксическим сахаром для этой конструкции. Например, 
 пример, приведенный выше, может быть записан следующим образом:
 
    /"(?>(?:(?>[^"\\]+)|\\.)*)"/
 
-=head3 Escape sequences
+=head3 Эскейп последовательности (или последовательности обратной косой черты)
 
-Because patterns are processed as double-quoted strings, the following
-also work:
+Поскольку шаблоны обрабатываются, как строки в двойных кавычках, то следующие
+последовательности также будут работать:
 
- \t          tab                   (HT, TAB)
- \n          newline               (LF, NL)
- \r          return                (CR)
- \f          form feed             (FF)
- \a          alarm (bell)          (BEL)
- \e          escape (think troff)  (ESC)
+ \t          табуляция                   (HT, TAB)
+ \n          новая строка               (LF, NL)
+ \r          ввод, перенос строки                (CR)
+ \f          Перевод формата (Formfeed)             (FF)
+ \a          Тревога (звуковой сигнал)          (BEL)
+ \e          Клавиша ESC (Escape) (think troff)  (ESC)
  \cK         control char          (example: VT)
  \x{}, \x00  character whose ordinal is the given hexadecimal number
  \N{name}    named Unicode character or character sequence
