@@ -33,6 +33,6 @@ on 'develop' => sub {
     requires 'Test::Synopsis',     '0.11';
     requires 'Test::Vars';
     requires 'Test::Portability::Files';
-    requires 'Test::Pod::Coverage';    
-    
+    requires 'Test::Pod::Coverage';  
+    requires 'Test::Kwalitee';
 };
