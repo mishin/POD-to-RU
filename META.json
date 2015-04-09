@@ -39,8 +39,12 @@
          "requires" : {
             "Dist::Milla" : "v1.0.14",
             "ExtUtils::Manifest" : "1.70",
+            "Test::Kwalitee" : "0",
             "Test::Pod" : "1.41",
-            "Test::Synopsis" : "0.11"
+            "Test::Pod::Coverage" : "0",
+            "Test::Portability::Files" : "0",
+            "Test::Synopsis" : "0.11",
+            "Test::Vars" : "0"
          }
       },
       "runtime" : {
@@ -78,7 +82,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.54",
+   "version" : "5.18.0.1.55",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>",
       "Zoffix Znet <cpan@zoffix.com>"
