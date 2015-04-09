@@ -524,19 +524,19 @@ L</C<< (?>pattern) >>> для деталей;
  \f          Перевод формата (Formfeed)             (FF)
  \a          Тревога (звуковой сигнал)          (BEL)
  \e          Клавиша ESC (Escape) (think troff)  (ESC)
- \cK         control char          (example: VT)
- \x{}, \x00  character whose ordinal is the given hexadecimal number
- \N{name}    named Unicode character or character sequence
- \N{U+263D}  Unicode character     (example: FIRST QUARTER MOON)
- \o{}, \000  character whose ordinal is the given octal number
- \l          lowercase next char (think vi)
- \u          uppercase next char (think vi)
- \L          lowercase till \E (think vi)
- \U          uppercase till \E (think vi)
- \Q          quote (disable) pattern metacharacters till \E
- \E          end either case modification or quoted section, think vi
+ \cK         символ control          (пример: VT)
+ \x{}, \x00  порядковый номер символа, данный в шестнадцатиричном формате
+ \N{name}    Именованный символ Юникода или последовательность символов
+ \N{U+263D}  Юникодный символ     (пример: FIRST QUARTER MOON)
+ \o{}, \000  порядковый номер символа, данный в восьмеричном формате
+ \l          Следующий символ в нижнем регистре (думая vi)
+ \u          Следующий символ в верхнем регистре (думая vi)
+ \L          Нижний регистр до \E (думая vi)
+ \U          Верхний регистр до \E (думая vi)
+ \Q          (quote) Отключает действие метасиволов в шаблоне до \E
+ \E          Завершение модификации, конец случае модификации или заквотированной секции, думая vi
 
-Details are in L<perlop/Quote and Quote-like Operators>.
+Подробнее смотри L<perlop/"Квотирование и Операторы заключения в кавычки"> (L<perlop/Quote and Quote-like Operators>).
 
 =head3 Character Classes and other Special Escapes
 
