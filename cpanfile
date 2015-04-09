@@ -31,4 +31,8 @@ on build => sub {
 on 'develop' => sub {
     requires 'ExtUtils::Manifest', '1.70';
     requires 'Test::Synopsis',     '0.11';
+    requires 'Test::Vars';
+    requires 'Test::Portability::Files';
+    requires 'Test::Pod::Coverage';    
+    
 };
