@@ -2,6 +2,7 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * добавил тесты
 5.18.0.1.54  2015-04-09 01:20:07 MSK
 
            * make milla perltidy
