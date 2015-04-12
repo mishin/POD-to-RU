@@ -1,7 +1,7 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
-
+           * coverage 100% done!
 5.18.0.1.57  2015-04-12 03:33:17 MSK
 
            * добавил в travis
