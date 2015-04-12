@@ -85,6 +85,10 @@ POD2::RU - Perl Документация по-русски
 
     `<prepare_encoding_console`> - Получает кодировку консоли и устанавливает ее правильно для выводимых символов
 
+- `pod_info`
+
+    `<pod_info`> - Выдает хэш с текущими pod файлами в данном дистрибутиве
+
 # AUTHOR
 
 - Nikolay Mishin ([MISHIN](https://metacpan.org/author/MISHIN))

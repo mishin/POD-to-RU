@@ -50,7 +50,6 @@
       "runtime" : {
          "requires" : {
             "Encode::Locale" : "1.03",
-            "IO::Interactive" : "v0.0.6",
             "List::Util" : "1.41",
             "POD2::Base" : "0.043",
             "Scalar::Util" : "1.41",
@@ -82,7 +81,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.55",
+   "version" : "5.18.0.1.56",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>",
       "Zoffix Znet <cpan@zoffix.com>"
