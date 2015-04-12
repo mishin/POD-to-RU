@@ -51,21 +51,6 @@ sub print_pod {
     my ( $self, @tmp_args ) = @_;
     my @args = @tmp_args ? @tmp_args : @ARGV;
     prepare_encoding_console();
-
-=pod
-    if ( !ref $self ) {
-        if ( defined $self ) {
-            if ( $self ne __PACKAGE__ ) {
-                unshift @args, $self;
-                $self = __PACKAGE__;
-            }
-        }
-        else {
-            $self = __PACKAGE__;
-        }
-    }
-=cut    
-
     my $pods = $self->pod_info;
 
     while (@args) {
