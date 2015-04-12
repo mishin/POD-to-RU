@@ -5,22 +5,28 @@ use Test::More tests => 3;
 use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
+use Test::Warn;
 #########################
 my $pod2 = POD2::RU->new();
 $pod2->prepare_encoding_console();
 
 # Test utf8 is ok.
-{
     my $uni = "\x{11e}";
 
-    my @warnings;
-    local $SIG{__WARN__} = sub {
-        push @warnings, @_;
-    };
+#    my @warnings;
+#    local $SIG{__WARN__} = sub {
+#        push @warnings, @_;
+#    };
 
-    is( $uni, $uni, "Testing $uni" );
-    is_deeply( \@warnings, [] );
-}
+#    is( $uni, $uni, "Testing $uni" );
+#    is_deeply( \@warnings, [] );
+
+    warnings_are 
+    {eval is( $uni, $uni, "Testing $uni" )} 
+     [], "no warnings";
+#    warning_like {eval q/"$x"; $x;/} 
+#                 [qw/void uninitialized/], 
+#		              "some warnings at compile time";
 
 use IPC::Open3;
 my $cmd=q{perl -MPOD2::RU -e '$pod2 = POD2::RU->new();$pod2->print_pod(q{perlre});'};

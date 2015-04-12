@@ -18,6 +18,7 @@ on test => sub {
     requires 'Test::Builder::Module',     '1.001006';
     requires 'Test::Deep', '0.115';
     requires 'Test::Output', '1.03';
+    requires 'Test::Warn', '1.30';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
