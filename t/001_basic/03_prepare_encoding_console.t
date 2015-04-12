@@ -1,7 +1,7 @@
 #########################
 # change 'tests => 1' to 'tests => last_test_to_print';
-
-use Test::More tests => 2;
+use utf8;
+use Test::More tests => 3;
 use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
@@ -21,3 +21,21 @@ $pod2->prepare_encoding_console();
     is( $uni, $uni, "Testing $uni" );
     is_deeply( \@warnings, [] );
 }
+
+use IPC::Open3;
+my $cmd=q{perl -MPOD2::RU -e '$pod2 = POD2::RU->new();$pod2->print_pod(q{perlre});'};
+#	'perlre' переведены на русский Perl 5.18.0.1
+
+#$pod2->prepare_encoding_console();
+
+
+my ( $in, $out, $err );
+#-foreach my $testcase (@testcases) {
+    open3( $in, $out, $err, $cmd );
+    print $in $testcase->{in};
+    close $in;
+    my $rout = join( '', <$out> );
+ isnt   ($rout,q{	'perlre' переведены на русский Perl 5.18.0.1},q{	'perlre' переведены на русский Perl 5.18.0.1});
+#print "$rout\n";
+ #   ok( grep { $rout eq $_ } @{ $testcase->{out} }, $testcase->{in} );
+#}

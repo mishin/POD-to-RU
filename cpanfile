@@ -3,7 +3,7 @@ requires 'perl', '5.008005';
 # requires 'Some::Module', 'VERSION';
 requires 'Scalar::Util',    '1.41';
 requires 'Encode::Locale',  '1.03';
-requires 'IO::Interactive', '0.0.6';
+#requires 'IO::Interactive', '0.0.6';
 requires 'POD2::Base',      '0.043';
 requires 'List::Util',      '1.41';
 

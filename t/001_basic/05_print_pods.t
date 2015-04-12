@@ -2,7 +2,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 use utf8;
 use Test::More tests => 1;
-use Test::More::UTF8;
+#use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
 #########################
@@ -15,7 +15,7 @@ sub writer {
 }
 
 #stdout_isnt
-stdout_isnt(
+stdout_is(
     \&writer,
     qq{\t'a2p' переведен на русский Perl 5.18.0.1
 \t'perl' переведен на русский Perl 5.18.0.1
