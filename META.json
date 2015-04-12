@@ -64,7 +64,8 @@
             "Test::Deep" : "0.115",
             "Test::More" : "1.001006",
             "Test::More::UTF8" : "0.04",
-            "Test::Output" : "1.03"
+            "Test::Output" : "1.03",
+            "Test::Warn" : "1.30"
          }
       }
    },
@@ -81,7 +82,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.57",
+   "version" : "5.18.0.1.58",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>",
       "Zoffix Znet <cpan@zoffix.com>"
