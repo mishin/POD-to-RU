@@ -2,6 +2,9 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * добавил в travis
+           * PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine prove -lrsv t;
+           * cover -ignore_re '[.]t$|prove'
 5.18.0.1.56  2015-04-12 03:24:07 MSK
 
            * добил покрытие pod и тестов до 100%
