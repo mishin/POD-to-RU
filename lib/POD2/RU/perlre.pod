@@ -538,15 +538,15 @@ L</C<< (?>pattern) >>> для деталей;
 
 Подробнее смотри L<perlop/"Квотирование и Операторы заключения в кавычки"> (L<perlop/Quote and Quote-like Operators>).
 
-=head3 Character Classes and other Special Escapes
+=head3 Символьные типы и другие специальные эскейп символы
 
-In addition, Perl defines the following:
+Кроме того Perl определяет следующее:
 X<\g> X<\k> X<\K> X<backreference>
 
- Sequence   Note    Description
-  [...]     [1]  Match a character according to the rules of the
-                   bracketed character class defined by the "...".
-                   Example: [a-z] matches "a" or "b" or "c" ... or "z"
+ Последовательность   Замечание    Описание
+  [...]     [1]  Найдет символ, который соответствует правилу в квадратных скобках,
+                 определенный "...".
+                   Например: [a-z] найдет "a" или "b" или "c" ... или "z"
   [[:...:]] [2]  Match a character according to the rules of the POSIX
                    character class "..." within the outer bracketed
                    character class.  Example: [[:upper:]] matches any
