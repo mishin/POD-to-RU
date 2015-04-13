@@ -190,13 +190,7 @@ C<<pod_info>> - Выдает хэш с текущими pod файлами в д
 
 =head1 AUTHOR
  
-=over 4
- 
-=item *
- 
-Nikolay Mishin (L<MISHIN|https://metacpan.org/author/MISHIN>)
- 
-=back
+=item * Nikolay Mishin (L<MISHIN|https://metacpan.org/author/MISHIN>)
 
 =head1 CONTRIBUTORS
 
