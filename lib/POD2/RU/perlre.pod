@@ -547,23 +547,21 @@ X<\g> X<\k> X<\K> X<backreference>
   [...]     [1]  Найдет символ, который соответствует правилу в квадратных скобках,
                  определенный "...".
                    Например: [a-z] найдет "a" или "b" или "c" ... или "z"
-  [[:...:]] [2]  Match a character according to the rules of the POSIX
-                   character class "..." within the outer bracketed
-                   character class.  Example: [[:upper:]] matches any
-                   uppercase character.
-  (?[...])  [8]  Extended bracketed character class
-  \w        [3]  Match a "word" character (alphanumeric plus "_", plus
-                   other connector punctuation chars plus Unicode
-                   marks)
-  \W        [3]  Match a non-"word" character
-  \s        [3]  Match a whitespace character
-  \S        [3]  Match a non-whitespace character
-  \d        [3]  Match a decimal digit character
-  \D        [3]  Match a non-digit character
-  \pP       [3]  Match P, named property.  Use \p{Prop} for longer names
-  \PP       [3]  Match non-P
-  \X        [4]  Match Unicode "eXtended grapheme cluster"
-  \C             Match a single C-language char (octet) even if that is
+  [[:...:]] [2]  Найдет символ, который соответствует правилам POSIX
+                    "..." класса символов в двойных квадратных скобках. Например: [[:upper:]] найдет любой 
+                    символ в верхнем регистре.
+  (?[...])  [8]  Расширенный класс символо в скобках
+  \w        [3]  Найдет символ "слова" (буквацифра плюс "_", плюс
+                  другие соединительные знаки пунктуации, отметки Юникода)
+  \W        [3]  Найдет символ не-"слова"
+  \s        [3]  Найдет пробельный символ
+  \S        [3]  Найдет не пробельный символ
+  \d        [3]  Найдет символ десятичной цифры
+  \D        [3]  Найдет отрицание символа десятичной цифры
+  \pP       [3]  Найдет P, именованное свойство. Ипользуйте \p{Prop} для длинных имен
+  \PP       [3]  Найдет не-P
+  \X        [4]  Найдет Unicode "eXtended grapheme cluster"
+  \C             Найдет a single C-language char (octet) even if that is
                    part of a larger UTF-8 character.  Thus it breaks up
                    characters into their UTF-8 bytes, so you may end up
                    with malformed pieces of UTF-8.  Unsupported in
