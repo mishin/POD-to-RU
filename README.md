@@ -91,7 +91,7 @@ POD2::RU - Perl Документация по-русски
 
 # AUTHOR
 
-- Nikolay Mishin ([MISHIN](https://metacpan.org/author/MISHIN))
+Nikolay Mishin ([MISHIN](https://metacpan.org/author/MISHIN))
 
 # CONTRIBUTORS
 
