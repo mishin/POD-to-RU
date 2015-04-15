@@ -568,44 +568,44 @@ X<\g> X<\k> X<\K> X<backreference>
   \1        [5]  Обратная ссылка на конкретную группу или буфер.
                    '1' на самом деле может быть любое положительное целое число.
   \g1       [5]  Обратная ссылка на конкретную или предыдущую группу,
-  \g{-1}    [5]  The number may be negative indicating a relative
-                   previous group and may optionally be wrapped in
-                   curly brackets for safer parsing.
-  \g{name}  [5]  Named backreference
-  \k<name>  [5]  Named backreference
-  \K        [6]  Keep the stuff left of the \K, don't include it in $&
-  \N        [7]  Any character but \n.  Not affected by /s modifier
-  \v        [3]  Vertical whitespace
-  \V        [3]  Not vertical whitespace
-  \h        [3]  Horizontal whitespace
-  \H        [3]  Not horizontal whitespace
-  \R        [4]  Linebreak
+  \g{-1}    [5]  Числа могут быть отрицательными, указывать относительно
+                  предыдущей группы и при необходимости могут быть обернуты в
+                  фигурные скобки для безопасного синтаксического разбора.
+  \g{name}  [5]  Именованная обратная ссылка
+  \k<name>  [5]  Именованная обратная ссылка
+  \K        [6]  Сохраняет найденный материал слева от \K, не включая его в $&
+  \N        [7]  Любой символ, кроме \n.  Не влияет на модификатор /s
+  \v        [3]  Вертикальный пробел
+  \V        [3]  Невертикальный пробел
+  \h        [3]  Горизонтальный пробел
+  \H        [3]  Негоризонтальный пробел
+  \R        [4]  Универсальная новая строка
 
 =over 4
 
 =item [1]
 
-See L<perlrecharclass/Bracketed Character Classes> for details.
+См. L<perlrecharclass/Bracketed Character Classes> для деталей.
 
 =item [2]
 
-See L<perlrecharclass/POSIX Character Classes> for details.
+См. L<perlrecharclass/POSIX Character Classes> для деталей.
 
 =item [3]
 
-See L<perlrecharclass/Backslash sequences> for details.
+См. L<perlrecharclass/Backslash sequences> для деталей.
 
 =item [4]
 
-See L<perlrebackslash/Misc> for details.
+См. L<perlrebackslash/Misc> для деталей.
 
 =item [5]
 
-See L</Capture groups> below for details.
+См. L</Группы захвата> ниже для деталей.
 
 =item [6]
 
-See L</Extended Patterns> below for details.
+См. L</Расширенные шаблоны поиска> ниже для деталей.
 
 =item [7]
 
