@@ -41,7 +41,8 @@ my ( $in, $out, $err );
     print $in $testcase->{in};
     close $in;
     my $rout = join( '', <$out> );
- isnt   ($rout,q{	'perlre' переведены на русский Perl 5.18.0.1},q{	'perlre' переведены на русский Perl 5.18.0.1});
+    like  ($rout, qr/perlre/, q{	'perlre' found});
+ #isnt   ($rout,q{	'perlre' переведены на русский Perl 5.18.0.1},q{	'perlre' переведены на русский Perl 5.18.0.1});
 #print "$rout\n";
  #   ok( grep { $rout eq $_ } @{ $testcase->{out} }, $testcase->{in} );
 #}
