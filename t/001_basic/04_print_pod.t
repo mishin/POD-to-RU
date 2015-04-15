@@ -22,4 +22,4 @@ use Test::Output;
 # );
 
 # is ($pod2->print_pod(),1,'выдаёт 1');
-is ($pod2->print_pod('perlxstypemap'),1,'выдаёт 1');
+is ($pod2->print_pod('perlxstypemap'),1,'get 1');
