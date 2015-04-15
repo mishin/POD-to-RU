@@ -1,7 +1,7 @@
 #########################
 # change 'tests => 1' to 'tests => last_test_to_print';
 use utf8;
-use Test::More tests => 3;
+use Test::More tests => 2;
 use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
