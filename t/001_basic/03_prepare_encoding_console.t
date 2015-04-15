@@ -27,7 +27,7 @@ $pod2->prepare_encoding_console();
 #    warning_like {eval q/"$x"; $x;/} 
 #                 [qw/void uninitialized/], 
 #		              "some warnings at compile time";
-
+=pod
 use IPC::Open3;
 my $cmd=q{perl -MPOD2::RU -e '$pod2 = POD2::RU->new();$pod2->print_pod(q{perlre});'};
 #	'perlre' переведены на русский Perl 5.18.0.1
@@ -42,6 +42,8 @@ my ( $in, $out, $err );
     close $in;
     my $rout = join( '', <$out> );
     like  ($rout, qr/perlre/, q{	'perlre' found});
+=cut
+
  #isnt   ($rout,q{	'perlre' переведены на русский Perl 5.18.0.1},q{	'perlre' переведены на русский Perl 5.18.0.1});
 #print "$rout\n";
  #   ok( grep { $rout eq $_ } @{ $testcase->{out} }, $testcase->{in} );
