@@ -609,18 +609,18 @@ X<\g> X<\k> X<\K> X<backreference>
 
 =item [7]
 
-Note that C<\N> has two meanings.  When of the form C<\N{NAME}>, it matches the
-character or character sequence whose name is C<NAME>; and similarly
-when of the form C<\N{U+I<hex>}>, it matches the character whose Unicode
-code point is I<hex>.  Otherwise it matches any character but C<\n>.
+Обратите внимание, что C<\N> имеет два значения. Когда он в форме C<\N{NAME}>, он соответствует
+символу или последовательности символов, которые называются C<NAME>; и так же,
+когда форма C<\N{U+I<hex>}>, она соответствует символу Юникода, в шестнадцатиричном коде
+— <hex>. В противном случае он соответствует любому символу, кроме C<\n>.
 
 =item [8]
 
-See L<perlrecharclass/Extended Bracketed Character Classes> for details.
+See L<perlrecharclass/Расширенная классы скобочных символов (Extended Bracketed Character Classes)> для деталей.
 
 =back
 
-=head3 Assertions
+=head3 Утверждения
 
 Perl defines the following zero-width assertions:
 X<zero-width assertion> X<assertion> X<regex, zero-width assertion>
