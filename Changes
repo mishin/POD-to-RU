@@ -1,6 +1,8 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
+
+5.18.0.1.62  2015-04-16 22:19:21 MSK
            * похоже поборол тесты 
            * use POSIX qw(setlocale LC_CTYPE); 
            * my $locale ='ru_RU.UTF-8';# "Russian_Russia.1251";
