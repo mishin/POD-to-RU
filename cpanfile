@@ -19,9 +19,9 @@ on test => sub {
     requires 'Test::Deep', '0.115';
     requires 'Test::Output', '1.03';
     requires 'Test::Warn', '0.30';
-    requires 'I18N::Langinfo', '0.03';
+    requires 'I18N::Langinfo', '0.02';
     requires 'PerlIO::locale' ,'0.10';
-    requires 'IPC::Open3', '1.05';
+    requires 'IPC::Open3', '1.03';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
