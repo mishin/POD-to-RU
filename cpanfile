@@ -21,7 +21,7 @@ on test => sub {
     requires 'Test::Warn', '0.30';
     requires 'I18N::Langinfo', '0.10';
     requires 'PerlIO::locale' ,'0.10';
-    requires 'IPC::Open3', '1.13';
+    requires 'IPC::Open3', '1.12';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
