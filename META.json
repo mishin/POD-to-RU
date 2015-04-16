@@ -58,6 +58,9 @@
       },
       "test" : {
          "requires" : {
+            "I18N::Langinfo" : "0.02",
+            "IPC::Open3" : "1.03",
+            "PerlIO::locale" : "0.10",
             "Test::Builder" : "1.001006",
             "Test::Builder::IO::Scalar" : "2.111",
             "Test::Builder::Module" : "1.001006",
@@ -82,7 +85,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.63",
+   "version" : "5.18.0.1.64",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>",
       "Zoffix Znet <cpan@zoffix.com>"
