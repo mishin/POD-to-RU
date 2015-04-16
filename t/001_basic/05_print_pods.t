@@ -6,9 +6,10 @@ use Test::More tests => 1;
 #use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
+use Test::Output;
+
 #########################
 my $pod2 = POD2::RU->new();
-use Test::Output;
 $pod2->prepare_encoding_console();
 
 sub writer {
