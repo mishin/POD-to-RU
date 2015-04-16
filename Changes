@@ -1,7 +1,7 @@
 Revision history for POD2-RU
 
 {{$NEXT}}
-
+           * правил cpanfile пока не прошел build в travis ci
 5.18.0.1.63  2015-04-16 23:31:28 MSK
            * предыдущий трюк не помог, будем 
            * setlocale(LC_CTYPE, "en_US.UTF-8") or skip("no such locale", 1) if langinfo(CODESET) ne 'UTF-8';
