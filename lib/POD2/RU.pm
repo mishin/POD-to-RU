@@ -194,7 +194,7 @@ C<<pod_info>> - Выдает хэш с текущими pod файлами в д
 
 =head1 AUTHOR
 
-Nikolay Mishin E<lt>mi@ya.ru<gt>
+Nikolay Mishin E<lt>mi@ya.ruE<gt>
 
 =head1 CONTRIBUTORS
 
