@@ -6,6 +6,17 @@ use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
 #########################
+use POSIX qw(setlocale LC_CTYPE);
+
+my $locale ='ru_RU.UTF-8';# "Russian_Russia.1251";
+setlocale (LC_CTYPE, $ENV{LC_CTYPE} = $locale) or plan skip_all => "cannot set locale to $locale";
+#use locale;
+#use POSIX qw(locale_h);
+
+#my $locale ='ru_RU.UTF-8';# "Russian_Russia.1251";
+#setlocale(LC_COLLATE, $locale);
+#setlocale(LC_CTYPE, $locale);
+#
 my $pod2 = POD2::RU->new();
 use Test::Output;
 

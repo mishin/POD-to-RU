@@ -1,11 +1,20 @@
 #########################
 # change 'tests => 1' to 'tests => last_test_to_print';
 use utf8;
-use Test::More tests => 2;
+use Test::More tests => 3;
 use Test::More::UTF8;
 use Test::Deep;
 use POD2::RU;
 use Test::Warn;
+#use locale;
+#use POSIX qw(locale_h);
+use POSIX qw(setlocale LC_CTYPE);
+
+my $locale ='ru_RU.UTF-8';# "Russian_Russia.1251";
+setlocale (LC_CTYPE, $ENV{LC_CTYPE} = $locale) or plan skip_all => "cannot set locale to $locale";
+
+#setlocale(LC_COLLATE, $locale);
+#setlocale(LC_CTYPE, $locale);
 #########################
 my $pod2 = POD2::RU->new();
 $pod2->prepare_encoding_console();
@@ -27,7 +36,7 @@ $pod2->prepare_encoding_console();
 #    warning_like {eval q/"$x"; $x;/} 
 #                 [qw/void uninitialized/], 
 #		              "some warnings at compile time";
-=pod
+#=pod
 use IPC::Open3;
 my $cmd=q{perl -MPOD2::RU -e '$pod2 = POD2::RU->new();$pod2->print_pod(q{perlre});'};
 #	'perlre' переведены на русский Perl 5.18.0.1
@@ -42,7 +51,7 @@ my ( $in, $out, $err );
     close $in;
     my $rout = join( '', <$out> );
     like  ($rout, qr/perlre/, q{	'perlre' found});
-=cut
+#=cut
 
  #isnt   ($rout,q{	'perlre' переведены на русский Perl 5.18.0.1},q{	'perlre' переведены на русский Perl 5.18.0.1});
 #print "$rout\n";
