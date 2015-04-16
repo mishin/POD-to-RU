@@ -19,7 +19,7 @@ on test => sub {
     requires 'Test::Deep', '0.115';
     requires 'Test::Output', '1.03';
     requires 'Test::Warn', '0.30';
-    requires 'I18N::Langinfo', '0.10';
+    requires 'I18N::Langinfo', '0.08';
     requires 'PerlIO::locale' ,'0.10';
     requires 'IPC::Open3', '1.12';
 };
