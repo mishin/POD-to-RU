@@ -6,6 +6,7 @@ use strict;
 use warnings;
 use base 'Exporter';
 use base 'POD2::Base';
+
 #use IO::Interactive qw(is_interactive);
 use Encode::Locale qw(decode_argv);
 
@@ -49,7 +50,7 @@ sub search_perlfunc_re {
 # Print information about a pod file
 sub print_pod {
     my ( $self, @tmp_args ) = @_;
-    my @args = @tmp_args;# ? @tmp_args : @ARGV;
+    my @args = @tmp_args;    # ? @tmp_args : @ARGV;
     prepare_encoding_console();
     my $pods = $self->pod_info;
 
@@ -69,6 +70,7 @@ qq{\t'$pod' переведен на русский Perl $pods->{$pod}\n};
 # Print list of translated pods
 sub print_pods {
     my $self = shift;
+
     #$self = $self ? $self : __PACKAGE__;
     prepare_encoding_console();
     $self->SUPER::print_pods;
@@ -76,11 +78,13 @@ sub print_pods {
 }
 
 sub prepare_encoding_console {
-#    if ( is_interactive() ) {
-        binmode STDIN,  ':encoding(console_in)';
-        binmode STDOUT, ':encoding(console_out)';
-        binmode STDERR, ':encoding(console_out)';
-#    }
+
+    #    if ( is_interactive() ) {
+    binmode STDIN,  ':encoding(console_in)';
+    binmode STDOUT, ':encoding(console_out)';
+    binmode STDERR, ':encoding(console_out)';
+
+    #    }
     Encode::Locale::decode_argv();
     return 1;
 }
