@@ -85,12 +85,12 @@ qq{\t'$pod' переведен на русский Perl $pods->{$pod}\n};
 # Print list of translated pods
 sub print_pods {
     my $self = shift;
-
-    #$self = $self ? $self : __PACKAGE__;
-    prepare_encoding_console();
+    $self = $self ? $self : __PACKAGE__;
     $self->SUPER::print_pods;
     return 1;
 }
+
+
 
 sub prepare_encoding_console {
 
