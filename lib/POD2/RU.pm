@@ -50,9 +50,24 @@ sub search_perlfunc_re {
 # Print information about a pod file
 sub print_pod {
     my ( $self, @tmp_args ) = @_;
-    my @args = @tmp_args;    # ? @tmp_args : @ARGV;
-    prepare_encoding_console();
+    my $self = shift;
+ 
+    my @args = @_ ? @_ : @ARGV;
+ 
+    unless (ref $self) {
+        if (defined $self) {
+            if ($self ne __PACKAGE__) {
+                unshift @args, $self;
+                $self = __PACKAGE__;
+            }
+        }
+        else {
+            $self = __PACKAGE__;
+        }
+    }
+ 
     my $pods = $self->pod_info;
+    prepare_encoding_console();
 
     while (@args) {
         ( my $pod = lc shift @args ) =~ s/[.]pod$//smx;
