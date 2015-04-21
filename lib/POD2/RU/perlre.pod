@@ -632,12 +632,19 @@ X<\b> X<\B> X<\A> X<\Z> X<\z> X<\G>
     \B  Найдет все, кроме границы слова
     \A  Найдет начало строки
     \Z  Найдет только в конце строки или перед новой строкой в конце
-    \z  Match only at end of string
-    \G  Match only at pos() (e.g. at the end-of-match position
-        of prior m//g)
+    \z  Найдет только в конце строки
+    \G  Найдет только в pos() (т.е. в конце последней найденной позиции m//g)
+
+Граница слова (C<\b>) это место между двумя символами,
+которые содержат C<\w> на одной их стороне и  C<\W> на другой его стороне
+ (в любом порядке), считая мнимой
+Начало и конец строки как сопрягающ C <\W>.
 
 A word boundary (C<\b>) is a spot between two characters
 that has a C<\w> on one side of it and a C<\W> on the other side
+of it (in either order), counting the imaginary characters off the
+beginning and end of the string as matching a C<\W>. 
+
 of it (in either order), counting the imaginary characters off the
 beginning and end of the string as matching a C<\W>.  (Within
 character classes C<\b> represents backspace rather than a word
