@@ -622,13 +622,13 @@ See L<perlrecharclass/Расширенная классы скобочных с�
 
 =head3 Утверждения
 
-Perl defines the following zero-width assertions:
-X<zero-width assertion> X<assertion> X<regex, zero-width assertion>
-X<regexp, zero-width assertion>
-X<regular expression, zero-width assertion>
+Perl определяет следующие утверждения нулевой длины:
+X<утверждения нулевой длины> X<утверждения> X<регексы, утверждения нулевой длины>
+X<регекспы, утверждения нулевой длины>
+X<регулярные выражения, утверждения нулевой длины>
 X<\b> X<\B> X<\A> X<\Z> X<\z> X<\G>
 
-    \b  Match a word boundary
+    \b  Найдет границу слова
     \B  Match except at a word boundary
     \A  Match only at beginning of string
     \Z  Match only at end of string, or before newline at the end
