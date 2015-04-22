@@ -640,11 +640,12 @@ X<\b> X<\B> X<\A> X<\Z> X<\z> X<\G>
  (в любом порядке), считая воображаемые символы начала и конца строки, как C<\W>.
   (Внутри сивольных классов C<\b> 
   представляет клавишу backspace, а не границу слова,так, как это обычно бывает в любой строке в двойных кавычках.)
-The C<\A> and C<\Z> are just like "^" and "$", except that they
-won't match multiple times when the C</m> modifier is used, while
-"^" and "$" will match at every internal line boundary.  To match
-the actual end of the string and not ignore an optional trailing
-newline, use C<\z>.
+C<\A> и C<\Z> работают также, как и "^" и "$", за исключением того, что они
+не будут искать несколько раз, когда используется модификатор C</m>
+, тогда как
+"^" и "$" будут соответствовать каждой внутренней линии границы. 
+Чтобы найти актуальный конец строки и не игнорировать 
+дополнительные конечные строки, используйте C<\z>.
 X<\b> X<\A> X<\Z> X<\z> X</m>
 
 The C<\G> assertion can be used to chain global matches (using
