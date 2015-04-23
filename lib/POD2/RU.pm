@@ -252,6 +252,10 @@ Copyright 2015- Nikolay Mishin
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 REPOSITORY
+
+L<https://github.com/mishin/POD-to-RU>
+
 =head1 SEE ALSO
 
 L<POD2::ES>, L<POD2::PT_BR>, L<POD2::IT>, L<POD2::FR>, L<POD2::LT>.
