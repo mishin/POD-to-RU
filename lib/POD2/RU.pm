@@ -1,107 +1,44 @@
 package POD2::RU;
 
 # ABSTRACT: Perl Документация по-русски
-use utf8;
-use strict;
 use warnings;
-use base 'Exporter';
+use strict;
+
+use utf8;
 use base 'POD2::Base';
 
-#use IO::Interactive qw(is_interactive);
-use Encode::Locale qw(decode_argv);
-
-use 5.008_005;
 our $VERSION = '5.18.0.1.64';
-
-our @EXPORT_OK = qw(print_pod print_pods);
 
 # Versions list
 sub pod_info {
-    return {
-        perl            => '5.18.0.1',
-        perlintro       => '5.18.0.1',
-        perlrun         => '5.18.0.1',
-        a2p             => '5.18.0.1',
-        perlbook        => '5.18.0.1',
-        perldoc         => '5.18.0.1',
-        perlpragma      => '5.18.0.1',
-        perlstyle       => '5.18.0.1',
-        perlcheat       => '5.18.0.1',
-        perlnewmod      => '5.18.0.1',
-        perlrequick     => '5.18.0.1',
-        perlreref       => '5.18.0.1',
-        perlunicode     => '5.18.0.1',
-        perlretut       => '5.18.0.1',
-        perlreguts      => '5.18.0.1',
-        perlrecharclass => '5.18.0.1',
-        perlrebackslash => '5.18.0.1',
-        perlreapi       => '5.18.0.1',
-        perlre          => '5.18.0.1',
-        perlsecret      => '5.18.0.1',
-        perlreapi       => '5.18.0.1',
-    };
+    perl              => '5.18.0.1',
+      perlintro       => '5.18.0.1',
+      perlrun         => '5.18.0.1',
+      a2p             => '5.18.0.1',
+      perlbook        => '5.18.0.1',
+      perldoc         => '5.18.0.1',
+      perlpragma      => '5.18.0.1',
+      perlstyle       => '5.18.0.1',
+      perlcheat       => '5.18.0.1',
+      perlnewmod      => '5.18.0.1',
+      perlrequick     => '5.18.0.1',
+      perlreref       => '5.18.0.1',
+      perlunicode     => '5.18.0.1',
+      perlretut       => '5.18.0.1',
+      perlreguts      => '5.18.0.1',
+      perlrecharclass => '5.18.0.1',
+      perlrebackslash => '5.18.0.1',
+      perlreapi       => '5.18.0.1',
+      perlre          => '5.18.0.1',
+      perlsecret      => '5.18.0.1',
+      perlreapi       => '5.18.0.1',
+      perlglossary    => '5.18.0.1', #для будущего перевода
+      ;
 }
 
 # String for perldoc with -L switch
 sub search_perlfunc_re {
     return 'Список функций Perl';
-}
-
-# Print information about a pod file
-sub print_pod {
-    my ( $self, @tmp_args ) = @_;
-    my $self = shift;
- 
-    my @args = @_ ? @_ : @ARGV;
- 
-    unless (ref $self) {
-        if (defined $self) {
-            if ($self ne __PACKAGE__) {
-                unshift @args, $self;
-                $self = __PACKAGE__;
-            }
-        }
-        else {
-            $self = __PACKAGE__;
-        }
-    }
- 
-    my $pods = $self->pod_info;
-    prepare_encoding_console();
-
-    while (@args) {
-        ( my $pod = lc shift @args ) =~ s/[.]pod$//smx;
-        if ( exists $pods->{$pod} ) {
-            print
-qq{\t'$pod' переведен на русский Perl $pods->{$pod}\n};
-        }
-        else {
-            print qq{\t'$pod' еще не переведен\n};
-        }
-    }
-    return 1;
-}
-
-# Print list of translated pods
-sub print_pods {
-    my $self = shift;
-    $self = $self ? $self : __PACKAGE__;
-    $self->SUPER::print_pods;
-    return 1;
-}
-
-
-
-sub prepare_encoding_console {
-
-    #    if ( is_interactive() ) {
-    binmode STDIN,  ':encoding(console_in)';
-    binmode STDOUT, ':encoding(console_out)';
-    binmode STDERR, ':encoding(console_out)';
-
-    #    }
-    Encode::Locale::decode_argv();
-    return 1;
 }
 
 1;
