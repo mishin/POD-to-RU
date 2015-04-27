@@ -648,13 +648,13 @@ C<\A> и C<\Z> работают также, как и "^" и "$", за искл�
 дополнительные конечные строки, используйте C<\z>.
 X<\b> X<\A> X<\Z> X<\z> X</m>
 
-The C<\G> assertion can be used to chain global matches (using
-C<m//g>), as described in L<perlop/"Regexp Quote-Like Operators">.
-It is also useful when writing C<lex>-like scanners, when you have
-several patterns that you want to match against consequent substrings
-of your string; see the previous reference.  The actual location
-where C<\G> will match can also be influenced by using C<pos()> as
-an lvalue: see L<perlfunc/pos>. Note that the rule for zero-length
+Утверждение C<\G> можно использовать для глобального поиска (используя
+C<m//g>), как описано в L<perlop/"Квотирование и Операторы заключения в кавычки"> (L<perlop/Quote and Quote-like Operators>).
+Это также удобно во время написания C<lex>-подобных сканнеров, когда у вас есть несколько паттернов,
+ которым вы хотите сопоставить последующие подстроки строки;
+ cмотрите предыдущие ссылки. 
+ Фактическое местонахождение, где C<\G> будет находить, 
+ также может определяться с помощью C<pos()> как lvalue(левое значение): см. L<perlfunc/pos>. Note that the rule for zero-length
 matches (see L</"Repeated Patterns Matching a Zero-length Substring">)
 is modified somewhat, in that contents to the left of C<\G> are
 not counted when determining the length of the match. Thus the following
