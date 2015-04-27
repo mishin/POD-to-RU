@@ -1,11 +1,13 @@
 [![Build Status](https://travis-ci.org/mishin/POD-to-RU.svg?branch=master)](https://travis-ci.org/mishin/POD-to-RU)
 [![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
-![Kwalitee status](http://cpants.cpanauthors.org/dist/POD2-RU.png)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/POD2-RU.png)](http://cpants.charsbar.org/dist/overview/POD2-RU)
 [![GitHub issues](https://img.shields.io/github/issues/mishin/POD-to-RU.svg)](https://github.com/mishin/POD-to-RU/issues)
+[![Cpan license](https://img.shields.io/cpan/l/POD2-RU.svg)]()
+[![Cpan version](https://img.shields.io/cpan/v/POD2-RU.svg)]()
 
 # NAME
 
-POD2::RU - Perl Документация по-русски
+POD2::RU - документация Perl по-русски
 
 # SYNOPSIS
 
@@ -91,7 +93,7 @@ POD2::RU - Perl Документация по-русски
 
 # AUTHOR
 
-Nikolay Mishin <mi@ya.ru<gt>
+Nikolay Mishin < >mi@ya.ru >
 
 # CONTRIBUTORS
 
@@ -118,14 +120,18 @@ Copyright 2015- Nikolay Mishin
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+# REPOSITORY
+
+[https://github.com/mishin/POD-to-RU](https://github.com/mishin/POD-to-RU)
+
 # SEE ALSO
 
 [POD2::ES](https://metacpan.org/pod/POD2::ES), [POD2::PT\_BR](https://metacpan.org/pod/POD2::PT_BR), [POD2::IT](https://metacpan.org/pod/POD2::IT), [POD2::FR](https://metacpan.org/pod/POD2::FR), [POD2::LT](https://metacpan.org/pod/POD2::LT).
 
 # DONATIONS
 
-Проект перевода документации Perl требует постоянных усилий, что доступно только для сильных духов и альтруистов.
-Авторы не просят, но ни не отвергают помощь в виде денег, книг, сыра и продуктов из свинины (можно хамон;) ), или даже поездки в Полинезию для снижения утомления и сохранения боевого духа команды. Мы приглашаем всех.
+Проект перевода документации Perl требует постоянных усилий, что доступно только для сильных духом и альтруистов.
+Авторы не просят, но ни не отвергают помощь в виде денег, книг, сыра и продуктов из свинины (можно хамон;) ), или даже поездки в Полинезию для снижения утомления и сохранения боевого духа команды. Мы приглашаем всех. (стащено и переведено отсюда [POD2::ES](https://metacpan.org/pod/POD2::ES))
 
 # THANKS 
 

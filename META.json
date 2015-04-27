@@ -1,7 +1,7 @@
 {
    "abstract" : "Perl Документация по-русски",
    "author" : [
-      "Nikolay Mishin <mi@ya.ru<gt>"
+      "Nikolay Mishin < >mi@ya.ru >"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 5.031, Dist::Milla version v1.0.14, CPAN::Meta::Converter version 2.143240",
@@ -85,7 +85,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moscowpm"
    },
-   "version" : "5.18.0.1.64",
+   "version" : "5.18.0.1.65",
    "x_contributors" : [
       "Nikolay Mishin <mi@ya.ru>",
       "Zoffix Znet <cpan@zoffix.com>"
