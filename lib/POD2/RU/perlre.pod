@@ -699,32 +699,38 @@ X<\g{1}> X<\g{-1}> X<\g{name}> X<relative backreference> X<named backreference>
 X<named capture buffer> X<regular expression, named capture buffer>
 X<named capture group> X<regular expression, named capture group>
 X<%+> X<$+{name}> X<< \k<name> >>
-There is no limit to the number of captured substrings that you may use.
-Groups are numbered with the leftmost open parenthesis being number 1, etc.  If
-a group did not match, the associated backreference won't match either. (This
-can happen if the group is optional, or in a different branch of an
-alternation.)
-You can omit the C<"g">, and write C<"\1">, etc, but there are some issues with
-this form, described below.
+Количество захваченных подстрок, которые вы можете использовать не ограничено.
+Группы нумеруются с левой открывающей круглой скобки номер 1, и т.д. Если
+группа не найдена, связанные обратные ссылки тоже не будут совпадать. (Это
+может случиться, если группа не является обязательной, или поиск идет в альтернативной ветке).
+Вы можете опустить C<"g"> и написать C<"\1">, и т.д., но с этим есть некоторые проблемы, описанные ниже.
 
-You can also refer to capture groups relatively, by using a negative number, so
-that C<\g-1> and C<\g{-1}> both refer to the immediately preceding capture
-group, and C<\g-2> and C<\g{-2}> both refer to the group before it.  For
-example:
+Также можно захватывать группы относительно друг друга, используя отрицательное число, так 
+С<\g-1> и С<\g{-1}> оба относятся к группе непосредственно перед захватом и 
+C<\g-2> и C<\g{-2}> относятся к группе перед ней. Например:
 
         /
-         (Y)            # group 1
-         (              # group 2
-            (X)         # group 3
-            \g{-1}      # backref to group 3
-            \g{-3}      # backref to group 1
+         (Y)            # группа 1
+         (              # группа 2
+            (X)         # группа 3
+            \g{-1}      # обратная ссылка на группу 3
+            \g{-3}      # обратная ссылка на группу 1
          )
         /x
 
-would match the same as C</(Y) ( (X) \g3 \g1 )/x>.  This allows you to
-interpolate regexes into larger regexes and not have to worry about the
-capture groups being renumbered.
+поиск будет таким же, как C</(Y) ( (X) \g3 \g1 )/x>. Это позволяет
+интерполировать регулярные выражения в большие регулярные выражения
+и тогда не придется беспокоиться о перенумерации групп захвата.
 
+Можно вообще обойтись с числами и создавать именованные записи группы.
+Нотация является C<(?E<lt>I<name>E<gt>...) раздел настроек объявить и C < \g{I <name>} раздел настроек для
+ссылка. (Чтобы быть совместимым с регулярные выражения .net, C < \g{I <name>} раздел настроек может
+также быть написано как C < \k{I <name>} раздел настроек, C < \kE <lt>я <name>E <gt>настроек или C < \k'I <name>' настроек.)
+Я <name>не должны начинаться с цифры или содержать дефисы.
+При различных групп в рамках той же модели имеют одинаковое имя, любая ссылка
+Это имя берет на себя левый определенной группы. Именованные группы игр в
+Абсолютная и относительная нумерация и так может также быть переданы те
+номера.
 You can dispense with numbers altogether and create named capture groups.
 The notation is C<(?E<lt>I<name>E<gt>...)> to declare and C<\g{I<name>}> to
 reference.  (To be compatible with .Net regular expressions, C<\g{I<name>}> may
