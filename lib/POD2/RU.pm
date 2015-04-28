@@ -32,7 +32,7 @@ sub pod_info {
       perlre          => '5.18.0.1',
       perlsecret      => '5.18.0.1',
       perlreapi       => '5.18.0.1',
-      perlglossary    => '5.18.0.1', #для будущего перевода
+      perlglossary    => '5.18.0.1',   #для будущего перевода
       ;
 }
 

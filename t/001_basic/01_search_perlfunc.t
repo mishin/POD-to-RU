@@ -4,9 +4,10 @@
 #########################
 
 # change 'tests => 1' to 'tests => last_test_to_print';
+use strict;
+use warnings;
 use utf8;
 use Test::More tests => 1;
-use Test::More::UTF8;
 use POD2::RU;
 #########################
 
