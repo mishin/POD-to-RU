@@ -140,7 +140,7 @@ it under the same terms as Perl itself.
 Проект OmegaT: [http://omegat.org/](http://omegat.org/)
 
 Также хотелось бы выразить благодарность автору перевода perl документации на испанский язык 
-POD2::ES Enrique Nell за его в помощь в напимании скриптов и вообще основу  взял с этого репозитория.
+POD2::ES Enrique Nell за его в помощь в написании скриптов.
 
 Проект POD2::ES: [https://github.com/zipf/perldoc-es](https://github.com/zipf/perldoc-es)
 
@@ -151,3 +151,8 @@ They (JPRP people) uses sourceforge and its CVS.
 [http://sourceforge.jp/cvs/view/perldocjp/docs/modules/](http://sourceforge.jp/cvs/view/perldocjp/docs/modules/)
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
+
+Спасибо Яндекс Спеллеру [https://tech.yandex.ru/speller/](https://tech.yandex.ru/speller/) за то, что через него можно прогнать русский
+текст и удобно исправить ошибки!
+
+Спасибо сайту [http://online.orfo.ru/](http://online.orfo.ru/) - он выручал даже тогда, когда был бессилен Яндекс Спеллер.
