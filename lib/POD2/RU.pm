@@ -226,4 +226,6 @@ They are using a traditional mailing list and sourceforge's bug tracking system.
 Спасибо Яндекс Спеллеру L<https://tech.yandex.ru/speller/> за то, что через него можно прогнать русский
 текст и удобно исправить ошибки!
 
+Спасибо сайту L<http://online.orfo.ru/> - он выручал даже тогда, когда был бессилен Яндекс Спеллер.
+
 =cut
