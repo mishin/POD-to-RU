@@ -53,10 +53,12 @@ __END__
 POD2::RU - документация Perl по-русски
 
 =for HTML 
-<a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master"></a>
-<a href='https://coveralls.io/r/mishin/POD-to-RU?branch=master'><img src='https://coveralls.io/repos/mishin/POD-to-RU/badge.svg?branch=master' alt='Coverage Status' /></a>
-<a href="http://cpants.charsbar.org/dist/overview/POD2-RU"><img src="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" alt="" data-canonical-src="http://cpants.cpanauthors.org/dist/POD2-RU.png" style="max-width:100%;"></a>
+<a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://camo.githubusercontent.com/4d5013ccad85146ce9c975dce7d677e20a632b5a/68747470733a2f2f7472617669732d63692e6f72672f6d697368696e2f504f442d746f2d52552e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master" style="max-width:100%;"></a>
+<a href="https://coveralls.io/r/mishin/POD-to-RU?branch=master"><img src="https://camo.githubusercontent.com/8769056c0371af38c8fd59b06de30c14037c8f33/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6d697368696e2f504f442d746f2d52552f62616467652e706e673f6272616e63683d6d6173746572" alt="Coverage Status" data-canonical-src="https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master" style="max-width:100%;"></a>
+<a href="http://cpants.charsbar.org/dist/overview/POD2-RU"><img src="https://camo.githubusercontent.com/fbfe24c64a9d7662a1b9fb774ead7f7fe34fec71/687474703a2f2f6370616e74732e6370616e617574686f72732e6f72672f646973742f504f44322d52552e706e67" alt="Kwalitee status" data-canonical-src="http://cpants.cpanauthors.org/dist/POD2-RU.png" style="max-width:100%;"></a>
 <a href="https://github.com/mishin/POD-to-RU/issues"><img src="https://camo.githubusercontent.com/adb231d4b9884b6955a2f9373ce099654193182a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f6d697368696e2f504f442d746f2d52552e737667" alt="GitHub issues" data-canonical-src="https://img.shields.io/github/issues/mishin/POD-to-RU.svg" style="max-width:100%;"></a>
+<a href="/mishin/POD-to-RU/blob/master"><img src="https://camo.githubusercontent.com/f176cd20b10c2aa1639142f327302a7b9fbc21b2/68747470733a2f2f696d672e736869656c64732e696f2f6370616e2f6c2f504f44322d52552e737667" alt="Cpan license" data-canonical-src="https://img.shields.io/cpan/l/POD2-RU.svg" style="max-width:100%;"></a>
+<a href="/mishin/POD-to-RU/blob/master"><img src="https://camo.githubusercontent.com/df363da200ccfd0741da030dd26b99a2612c8fff/68747470733a2f2f696d672e736869656c64732e696f2f6370616e2f762f504f44322d52552e737667" alt="Cpan version" data-canonical-src="https://img.shields.io/cpan/v/POD2-RU.svg" style="max-width:100%;"></a></p>
 
 =head1 SYNOPSIS
 
@@ -209,7 +211,7 @@ L<POD2::ES>, L<POD2::PT_BR>, L<POD2::IT>, L<POD2::FR>, L<POD2::LT>.
 Проект OmegaT: L<http://omegat.org/>
 
 Также хотелось бы выразить благодарность автору перевода perl документации на испанский язык 
-POD2::ES Enrique Nell за его в помощь в напимании скриптов и вообще основу  взял с этого репозитория.
+POD2::ES Enrique Nell за его в помощь в написании скриптов.
  
 Проект POD2::ES: L<https://github.com/zipf/perldoc-es>
 
