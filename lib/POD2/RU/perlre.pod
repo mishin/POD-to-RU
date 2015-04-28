@@ -731,8 +731,8 @@ I<name> не должно начинаться с цифры или содерж
  на это имя подразумевает самую левую определяемую группу. Именованные группы уичтываются и в
 абсолютной и в относительной нумерации и на них также можно сослаться с помощью номера.
 
-(It's possible to do things with named capture groups that would otherwise
-require C<(??{})>.)
+(Это делает возможным делать вещи с именованными группами захвата, которые бы в противном случае
+требовали бы C<(??{})>.)
 
 Capture group contents are dynamically scoped and available to you outside the
 pattern until the end of the enclosing block or until the next successful
