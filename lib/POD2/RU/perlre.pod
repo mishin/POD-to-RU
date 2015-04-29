@@ -821,31 +821,31 @@ B<ЗАМЕЧАНИЕ>: неудачные поиски в Perl не сбрасы
 что упрощает написание кода, который проверяет серию
 конкретных случаев и запоминает лучший поиск.
 
-B<WARNING>: Once Perl sees that you need one of C<$&>, C<$`>, or
-C<$'> anywhere in the program, it has to provide them for every
-pattern match.  This may substantially slow your program.  Perl
-uses the same mechanism to produce C<$1>, C<$2>, etc, so you also pay a
-price for each pattern that contains capturing parentheses.  (To
-avoid this cost while retaining the grouping behaviour, use the
-extended regular expression C<(?: ... )> instead.)  But if you never
-use C<$&>, C<$`> or C<$'>, then patterns I<without> capturing
-parentheses will not be penalized.  So avoid C<$&>, C<$'>, and C<$`>
-if you can, but if you can't (and some algorithms really appreciate
-them), once you've used them once, use them at will, because you've
-already paid the price.  As of 5.17.4, the presence of each of the three
-variables in a program is recorded separately, and depending on
-circumstances, perl may be able be more efficient knowing that only C<$&>
-rather than all three have been seen, for example.
+B<ПРЕДУПРЕЖДЕНИЕ>: как только Perl видит, что вам нужна одна из переменных 
+C<$&>, C<$`>, или C<$'> где-либо в программе, он должен предоставить их для каждого
+поиска по шаблону. Это может существенно замедлить вашу программу. Perl
+использует тот же механизм для производства  C<$1>, C<$2>, и т.д., так, что вы также платите
+существенную цену для каждого шаблона, который содержит захватывающие скобки. (Чтобы
+избежать этой платы при сохранении группирующего поведения, используйте
+вместо этого расширенное регулярное выражение C<(?: ... )> .) Но если вы никогда не
+используете  C<$&>, C<$`> или C<$'>, тогда шаблоны I<без> захватывающих
+скобок не будут наказаны. Поэтому избегайтеC<$&>, C<$'>, или C<$`>,
+если можете, но если вы не можете (и я очень ценю некоторые такие алгоритмы),
+ после того как вы использовали их один раз, использовать их по своему желанию, потому что вы
+уже за низ заплатили. По состоянию на 5.17.4, присутствие каждой из трех
+переменных в программе регистрируется отдельно и, в зависимости от
+обстоятельства, perl может быть в состоянии быть более эффективным зная что только  C<$&>
+, а не все три будут использованы, например.
 X<$&> X<$`> X<$'>
 
-As a workaround for this problem, Perl 5.10.0 introduces C<${^PREMATCH}>,
-C<${^MATCH}> and C<${^POSTMATCH}>, which are equivalent to C<$`>, C<$&>
-and C<$'>, B<except> that they are only guaranteed to be defined after a
-successful match that was executed with the C</p> (preserve) modifier.
-The use of these variables incurs no global performance penalty, unlike
-their punctuation char equivalents, however at the trade-off that you
-have to tell perl when you want to use them.
-X</p> X<p modifier>
+Для того, чтобы обойти эту проблему Perl 5.10.0 представляет переменные  C<${^PREMATCH}>,
+C<${^MATCH}> иC<${^POSTMATCH}>, которые эквивалентны  C<$`>, C<$&>
+и C<$'>, B<исключая> то, что только они будут гарантированно определены после
+успешного поиска, который был выполнен с модификатором C</p> (preserve) (сохранять) .
+Использование этих переменных не влечет к штрафу глобальной производительности, в отличие от
+их эквивалента в виде знаков препинания, однако здесь вы идете на компромисс того, что вы
+должны сказать perl, когда вы хотите их использовать.
+X</p> X <p модификатор>
 
 =head2 Quoting metacharacters
 
