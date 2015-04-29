@@ -847,7 +847,7 @@ C<${^MATCH}> иC<${^POSTMATCH}>, которые эквивалентны  C<$`>,
 должны сказать perl, когда вы хотите их использовать.
 X</p> X <p модификатор>
 
-=head2 Quoting metacharacters
+=head2 Квотирующие метасимволы (Quoting metacharacters)
 
 Backslashed metacharacters in Perl are alphanumeric, such as C<\b>,
 C<\w>, C<\n>.  Unlike some other regular expression languages, there
