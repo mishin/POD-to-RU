@@ -734,70 +734,70 @@ I<name> не должно начинаться с цифры или содерж
 (Это делает возможным делать вещи с именованными группами захвата, которые бы в противном случае
 требовали бы C<(??{})>.)
 
-Capture group contents are dynamically scoped and available to you outside the
-pattern until the end of the enclosing block or until the next successful
-match, whichever comes first.  (See L<perlsyn/"Compound Statements">.)
-You can refer to them by absolute number (using C<"$1"> instead of C<"\g1">,
-etc); or by name via the C<%+> hash, using C<"$+{I<name>}">.
+Cодержимое захваченной группы определяется динамически и оно доступно для вас вне
+ шаблона поиска до конца закрывающего блока или до следующего успешного
+поиска, что наступит раньше. (See L<perlsyn/"Составные операторы">.)
+Вы можете обращаться к ним по абсолютному номеру (используя C<"$1"> вместо C<"\g1">,
+и т.д.); или по имени через хэш  C<%+>, с помощью C<"$+{I<name>}">.
 
-Braces are required in referring to named capture groups, but are optional for
-absolute or relative numbered ones.  Braces are safer when creating a regex by
-concatenating smaller strings.  For example if you have C<qr/$a$b/>, and C<$a>
-contained C<"\g1">, and C<$b> contained C<"37">, you would get C</\g137/> which
-is probably not what you intended.
+Скобки требуются для ссылки на именованные группы захвата, но являются опциональными для
+абсолютной или относительной нумерации групп. Скобки являются более безопасными, когда созданется регулярное выражение
+объединение меньших строк. Например, если у вас есть C<qr/$a$b/> и C<$a>
+содержит C<"\g1">, и  C<$b>  содержит C<"37">, вы получите C</\g137/>, что является, вероятно, не тем,
+ что вы хотели.
 
-The C<\g> and C<\k> notations were introduced in Perl 5.10.0.  Prior to that
-there were no named nor relative numbered capture groups.  Absolute numbered
-groups were referred to using C<\1>,
-C<\2>, etc., and this notation is still
-accepted (and likely always will be).  But it leads to some ambiguities if
-there are more than 9 capture groups, as C<\10> could mean either the tenth
-capture group, or the character whose ordinal in octal is 010 (a backspace in
-ASCII).  Perl resolves this ambiguity by interpreting C<\10> as a backreference
-only if at least 10 left parentheses have opened before it.  Likewise C<\11> is
-a backreference only if at least 11 left parentheses have opened before it.
-And so on.  C<\1> through C<\9> are always interpreted as backreferences.
-There are several examples below that illustrate these perils.  You can avoid
-the ambiguity by always using C<\g{}> or C<\g> if you mean capturing groups;
-and for octal constants always using C<\o{}>, or for C<\077> and below, using 3
-digits padded with leading zeros, since a leading zero implies an octal
-constant.
+Обозначения C<\g> иC<\k> были введены в Perl 5.10.0. До этого
+не было ни именованных, ни относительно пронумерованных групп захвата. Абсолютная нумерация
+группы передавалась с помощью C<\1>,
+C<\2> и т.д., и эта запись до сих пор
+принимается (и скорее всего всегда будет). Но это приводит к некоторым неясностям, если
+есть более чем 9 групп захвата, так C<\10> может означать либо десятую
+группу захвата, или символ, чей порядковый номер восьмеричное-010 (бэкспейс (пробел назад) в
+ASCII). Perl разрешает эту неопределенность путем интерпретации  C<\10> как обратной ссылки
+только, если по крайней мере 10 левых скобок были открыты перед ней. Аналогичным образом, C<\11>
+ - это обратная ссылка только, если по крайней мере 11 левых скобок открыты перед ней.
+И так далее. От C<\1> до C<\9> всегда интерпретируются как обратные ссылки.
+Есть несколько примеров ниже, которые иллюстрируют эти риски. Вы можете избежать
+двусмысленности всегда используя C<\g{}> или C<\g>, если вы имеете в виду захватываемые группы;
+и для восьмеричных констант всегда использовать C<\o{}>, или для C<\077> и ниже, используя 3
+цифры с ведущими нулями, поскольку лидирующий ноль означает восьмеричную
+константу.
 
-The C<\I<digit>> notation also works in certain circumstances outside
-the pattern.  See L</Warning on \1 Instead of $1> below for details.
+Обозначения C<\I<digit>> также работает в определенных обстоятельствах за пределами
+шаблона. Смотри  L</Предупреждение на \1 вместо $1> ниже для деталей.
 
 Examples:
 
-    s/^([^ ]*) *([^ ]*)/$2 $1/;     # swap first two words
+    s/^([^ ]*) *([^ ]*)/$2 $1/;     # поменять местами первые два слова
 
-    /(.)\g1/                        # find first doubled char
+    /(.)\g1/                        # найдет первый дублирующий символ
          and print "'$1' is the first doubled character\n";
 
-    /(?<char>.)\k<char>/            # ... a different way
+    /(?<char>.)\k<char>/            # ... другой способ
          and print "'$+{char}' is the first doubled character\n";
 
-    /(?'char'.)\g1/                 # ... mix and match
+    /(?'char'.)\g1/                 # ... смешанный поиск
          and print "'$1' is the first doubled character\n";
 
-    if (/Time: (..):(..):(..)/) {   # parse out values
+    if (/Time: (..):(..):(..)/) {   # разобрать значения
         $hours = $1;
         $minutes = $2;
         $seconds = $3;
     }
 
-    /(.)(.)(.)(.)(.)(.)(.)(.)(.)\g10/   # \g10 is a backreference
-    /(.)(.)(.)(.)(.)(.)(.)(.)(.)\10/    # \10 is octal
-    /((.)(.)(.)(.)(.)(.)(.)(.)(.))\10/  # \10 is a backreference
-    /((.)(.)(.)(.)(.)(.)(.)(.)(.))\010/ # \010 is octal
+    /(.)(.)(.)(.)(.)(.)(.)(.)(.)\g10/   # \g10 - это обратная ссылка
+    /(.)(.)(.)(.)(.)(.)(.)(.)(.)\10/    # \10 - восьмеричное число
+    /((.)(.)(.)(.)(.)(.)(.)(.)(.))\10/  # \10 - это обратная ссылка
+    /((.)(.)(.)(.)(.)(.)(.)(.)(.))\010/ # \010 - восьмеричное число
 
-    $a = '(.)\1';        # Creates problems when concatenated.
-    $b = '(.)\g{1}';     # Avoids the problems.
-    "aa" =~ /${a}/;      # True
-    "aa" =~ /${b}/;      # True
-    "aa0" =~ /${a}0/;    # False!
-    "aa0" =~ /${b}0/;    # True
-    "aa\x08" =~ /${a}0/;  # True!
-    "aa\x08" =~ /${b}0/;  # False
+    $a = '(.)\1';        # Создает проблемы, когда объединяются.
+    $b = '(.)\g{1}';     # Позволяет избежать проблем.
+    "aa" =~ /${a}/;      # Правда
+    "aa" =~ /${b}/;      # Правда
+    "aa0" =~ /${a}0/;    # Ложь!
+    "aa0" =~ /${b}0/;    # Правда
+    "aa\x08" =~ /${a}0/;  # Правда!
+    "aa\x08" =~ /${b}0/;  # Ложь
 
 Several special variables also refer back to portions of the previous
 match.  C<$+> returns whatever the last bracket match matched.
