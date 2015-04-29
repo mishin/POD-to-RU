@@ -219,7 +219,7 @@ L<http://sourceforge.jp/cvs/view/perldocjp/docs/modules/>
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
 
-Спасибо Яндекс Спеллеру L<https://tech.yandex.ru/speller/> за то, что через него можно прогнать русский
+Спасибо Яндекс Спеллеру L<https://tech.yandex.ru/speller/>, L<http://speller.yandex.net/speller/1.0/index.html> за то, что через него можно прогнать русский
 текст и удобно исправить ошибки!
 
 Спасибо сайту L<http://online.orfo.ru/> - он выручал даже тогда, когда был бессилен Яндекс Спеллер.
