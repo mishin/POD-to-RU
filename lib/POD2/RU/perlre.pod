@@ -736,7 +736,7 @@ I<name> не должно начинаться с цифры или содерж
 
 Cодержимое захваченной группы определяется динамически и оно доступно для вас вне
  шаблона поиска до конца закрывающего блока или до следующего успешного
-поиска, что наступит раньше. (See L<perlsyn/"Составные операторы">.)
+поиска, что наступит раньше. (См. L<perlsyn/"Составные операторы">.)
 Вы можете обращаться к ним по абсолютному номеру (используя C<"$1"> вместо C<"\g1">,
 и т.д.); или по имени через хэш  C<%+>, с помощью C<"$+{I<name>}">.
 
@@ -799,27 +799,27 @@ Examples:
     "aa\x08" =~ /${a}0/;  # Правда!
     "aa\x08" =~ /${b}0/;  # Ложь
 
-Several special variables also refer back to portions of the previous
-match.  C<$+> returns whatever the last bracket match matched.
-C<$&> returns the entire matched string.  (At one point C<$0> did
-also, but now it returns the name of the program.)  C<$`> returns
-everything before the matched string.  C<$'> returns everything
-after the matched string. And C<$^N> contains whatever was matched by
-the most-recently closed group (submatch). C<$^N> can be used in
-extended patterns (see below), for example to assign a submatch to a
-variable.
+Несколько специальных переменных также вернут порцию предыдущего поиска.
+ C<$+> вернет результат найденного в последней скобке.
+C<$&> вернет всю совпадающую строку. (Раньше это делал  C<$0>,
+ но теперь он возвращает имя программы.) C<$`> вернет 
+все перед совпавшей строкой.C<$'> вернет все
+после совпавшей строки. И C<$^N> содержит все, что было найдено 
+в самой недавно закрытой группе (подстроку). C<$^N> может быть использован в
+расширенные шаблонах (см. ниже), например назначить найденную подстроку 
+переменной.
 X<$+> X<$^N> X<$&> X<$`> X<$'>
 
-These special variables, like the C<%+> hash and the numbered match variables
-(C<$1>, C<$2>, C<$3>, etc.) are dynamically scoped
-until the end of the enclosing block or until the next successful
-match, whichever comes first.  (See L<perlsyn/"Compound Statements">.)
+Существуют специальные переменные такие как хеш C<%+> и пронумерованные переменные поиска
+(C<$1>, C<$2>, C<$3>, и т.д.) динамически распространяющиеся 
+до конца закрывающего блока или до следующего успешного поиска,
+ что наступит раньше.  (См. L<perlsyn/"Составные операторы">.) (См. L<perlsyn/"Compound Statements">.)
 X<$+> X<$^N> X<$&> X<$`> X<$'>
 X<$1> X<$2> X<$3> X<$4> X<$5> X<$6> X<$7> X<$8> X<$9>
 
-B<NOTE>: Failed matches in Perl do not reset the match variables,
-which makes it easier to write code that tests for a series of more
-specific cases and remembers the best match.
+B<ЗАМЕЧАНИЕ>: неудачные поиски в Perl не сбрасывают переменные поиска,
+что упрощает написание кода, который проверяет серию
+конкретных случаев и запоминает лучший поиск.
 
 B<WARNING>: Once Perl sees that you need one of C<$&>, C<$`>, or
 C<$'> anywhere in the program, it has to provide them for every
