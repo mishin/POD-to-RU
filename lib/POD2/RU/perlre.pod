@@ -860,22 +860,22 @@ C<\w>, C<\n>. В отличие от некоторых других языко�
 
     $pattern =~ s/(\W)/\\$1/g;
 
-(If C<use locale> is set, then this depends on the current locale.)
-Today it is more common to use the quotemeta() function or the C<\Q>
-metaquoting escape sequence to disable all metacharacters' special
-meanings like this:
+(Если установлено C<use locale>, то это зависит от текущей локали.)
+Сегодня чаще используют функцию quotemeta() или С<\Q>
+метаквотированный эскейп символ для отключения специальных
+значений всех метасимволов следующим образом:
 
     /$unquoted\Q$quoted\E$unquoted/
 
-Beware that if you put literal backslashes (those not inside
-interpolated variables) between C<\Q> and C<\E>, double-quotish
-backslash interpolation may lead to confusing results.  If you
-I<need> to use literal backslashes within C<\Q...\E>,
-consult L<perlop/"Gory details of parsing quoted constructs">.
+Учтите, что если вы положите символ косой черты (который не внутри
+переменных с интерполяцией) между C<\Q> и C<\E>, двойное квотирование
+интерполяции обратной косой черты может привести к нежелательным результатам. Если вам
+I<нужно> использовать символ косой черты в пределах C<\Q...\E>,
+проконсультируйтесь с (L<perlop/"Кровавые подробности разбора закавыченных(квотированных) конструкций">) (L<perlop/"Gory details of parsing quoted constructs">).
 
-C<quotemeta()> and C<\Q> are fully described in L<perlfunc/quotemeta>.
+C<quotemeta()> и C<\Q> полностью описаны в L<perlfunc/quotemeta>.
 
-=head2 Extended Patterns
+=head2 Расширенные шаблоны
 
 Perl also defines a consistent extension syntax for features not
 found in standard tools like B<awk> and
