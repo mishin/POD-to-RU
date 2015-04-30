@@ -11,9 +11,11 @@ POD2::RU - документация Perl по-русски
 
 # SYNOPSIS
 
+```perl
     use POD2::RU;
     print_pods();
-    print_pod('pod_foo', 'pod_baz');
+    print_pod('perlre', 'perlretut');
+```
 
 # DESCRIPTION
 
@@ -23,13 +25,8 @@ POD2::RU - документация Perl по-русски
 Примеры использования
 
     perldoc POD2::RU::perlretut
-
     perl -MPOD2::RU -e 'print_pods'
     perl -MPOD2::RU -e 'print_pod <название_pod1> [<название_pod2> ...]'
-
-    use POD2::RU;
-    print_pods();
-    print_pod('pod_foo', 'pod_baz');
 
 После установки пакета, вы можете использовать следующую команду, чтобы получить документацию:
 
@@ -82,10 +79,6 @@ POD2::RU - документация Perl по-русски
 - `search_perlfunc_re`
 
     `perldoc -f function` использует возвращаемое значение этой функции (как regexp), чтобы пропустить введение и найти список функций.
-
-- `prepare_encoding_console`
-
-    `<prepare_encoding_console`> - Получает кодировку консоли и устанавливает ее правильно для выводимых символов
 
 - `pod_info`
 
