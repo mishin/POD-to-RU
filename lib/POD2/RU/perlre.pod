@@ -849,14 +849,14 @@ X</p> X <p модификатор>
 
 =head2 Квотирующие метасимволы (Quoting metacharacters)
 
-Backslashed metacharacters in Perl are alphanumeric, such as C<\b>,
-C<\w>, C<\n>.  Unlike some other regular expression languages, there
-are no backslashed symbols that aren't alphanumeric.  So anything
-that looks like \\, \(, \), \[, \], \{, or \} is always
-interpreted as a literal character, not a metacharacter.  This was
-once used in a common idiom to disable or quote the special meanings
-of regular expression metacharacters in a string that you want to
-use for a pattern. Simply quote all non-"word" characters:
+Метасимволы с обратным слэшем в Perl являются буквенно-цифровыми, например C<\b>,
+C<\w>, C<\n>. В отличие от некоторых других языков с регулярными выражениями, не существует
+символов с обратным слэшем, которые не являются буквенно-цифровыми. Так что все, что
+  выглядит как \\, \(, \), \ [, \], \ {, или \} всегда
+интерпретируется как буквенный символ, а не метасимвол. Это было
+некогда общей идеей для отключения или квотирования (оборачивание в кавычки) метасимволов, имеющих специальное значение
+ в регулярных выражениях, которых вы хотите
+использовать для шаблоне поиска. Теперь заквотируем (поставим обратный слэш) для всех не-"словесных" символов:
 
     $pattern =~ s/(\W)/\\$1/g;
 
