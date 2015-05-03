@@ -1,7 +1,7 @@
 {
    "abstract" : "Perl Документация по-русски",
    "author" : [
-      "Nikolay Mishin < >mi@ya.ru >"
+      "Nikolay Mishin < mi@ya.ru >"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 5.031, Dist::Milla version v1.0.14, CPAN::Meta::Converter version 2.143240",

@@ -2,8 +2,8 @@
 [![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
 [![Kwalitee status](http://cpants.cpanauthors.org/dist/POD2-RU.png)](http://cpants.charsbar.org/dist/overview/POD2-RU)
 [![GitHub issues](https://img.shields.io/github/issues/mishin/POD-to-RU.svg)](https://github.com/mishin/POD-to-RU/issues)
-[![Cpan license](https://img.shields.io/cpan/l/POD2-RU.svg)]()
-[![Cpan version](https://img.shields.io/cpan/v/POD2-RU.svg)]()
+[![Cpan license](https://img.shields.io/cpan/l/POD2-RU.svg)](https://metacpan.org/release/POD2-RU)
+[![Cpan version](https://img.shields.io/cpan/v/POD2-RU.svg)](https://metacpan.org/release/POD2-RU)
 
 # NAME
 
@@ -11,11 +11,9 @@ POD2::RU - документация Perl по-русски
 
 # SYNOPSIS
 
-```perl
     use POD2::RU;
     print_pods();
-    print_pod('perlre', 'perlretut');
-```
+    print_pod('pod_foo', 'pod_baz');
 
 # DESCRIPTION
 
@@ -25,8 +23,13 @@ POD2::RU - документация Perl по-русски
 Примеры использования
 
     perldoc POD2::RU::perlretut
+
     perl -MPOD2::RU -e 'print_pods'
     perl -MPOD2::RU -e 'print_pod <название_pod1> [<название_pod2> ...]'
+
+    use POD2::RU;
+    print_pods();
+    print_pod('pod_foo', 'pod_baz');
 
 После установки пакета, вы можете использовать следующую команду, чтобы получить документацию:
 
@@ -86,7 +89,7 @@ POD2::RU - документация Perl по-русски
 
 # AUTHOR
 
-Nikolay Mishin <mi@ya.ru>
+Nikolay Mishin < mi@ya.ru >
 
 # CONTRIBUTORS
 
@@ -145,7 +148,10 @@ They (JPRP people) uses sourceforge and its CVS.
 
 They are using a traditional mailing list and sourceforge's bug tracking system. In my opinion, github would be a much better way to manage those things at the moment. github was not exist when they started the project.
 
-Спасибо Яндекс Спеллеру [https://tech.yandex.ru/speller/](https://tech.yandex.ru/speller/) за то, что через него можно прогнать русский
+Спасибо Яндекс Спеллеру [https://tech.yandex.ru/speller/](https://tech.yandex.ru/speller/), [http://speller.yandex.net/speller/1.0/index.html](http://speller.yandex.net/speller/1.0/index.html) за то, что через него можно прогнать русский
 текст и удобно исправить ошибки!
 
 Спасибо сайту [http://online.orfo.ru/](http://online.orfo.ru/) - он выручал даже тогда, когда был бессилен Яндекс Спеллер.
+
+Спасибо переводчику [http://www.bing.com/translator/](http://www.bing.com/translator/) за хороший предварительный перевод,
+но помучаться все равно придется, получается пока сыро;)
