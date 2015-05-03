@@ -86,7 +86,7 @@ POD2::RU - документация Perl по-русски
 
 # AUTHOR
 
-Nikolay Mishin < >mi@ya.ru >
+Nikolay Mishin <mi@ya.ru>
 
 # CONTRIBUTORS
 
