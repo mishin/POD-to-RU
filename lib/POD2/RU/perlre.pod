@@ -1026,12 +1026,17 @@ C<"d">) можгут следовать после курсора, таким о
 =item C<(?|pattern)>
 X<(?|)> X<Branch reset>
 
-This is the "branch reset" pattern, which has the special property
-that the capture groups are numbered from the same starting point
-in each alternation branch. It is available starting from perl 5.10.0.
+Это "сброс ветки" шаблона, который имеет специальные свойства, 
+когда захватываемые группы нумеруются с той же начальной точки
+в каждой чередующейся ветке . Он доступен начиная с perl 5.10.0.
 
-Capture groups are numbered from left to right, but inside this
-construct the numbering is restarted for each branch.
+Группы захвата  нумеруются слева направо, но внутри этой
+конструкции нумерация возобновляется для каждой ветви.
+
+Нумерация в пределах каждой ветки будет как нормальное и все группы
+Следуя этой конструкции будут пронумерованы как бы конструкцию
+содержится только одна ветвь, что, будучи один с наиболее захвата
+группы в нем.
 
 The numbering within each branch will be as normal, and any groups
 following this construct will be numbered as though the construct
