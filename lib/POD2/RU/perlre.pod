@@ -1033,26 +1033,26 @@ X<(?|)> X<Branch reset>
 Группы захвата  нумеруются слева направо, но внутри этой
 конструкции нумерация возобновляется для каждой ветви.
 
-Нумерация в пределах каждой ветки будет как нормальное и все группы
-Следуя этой конструкции будут пронумерованы как бы конструкцию
-содержится только одна ветвь, что, будучи один с наиболее захвата
-группы в нем.
+Нумерация в пределах каждой ветки будет нормальной и все группы
+следующие за этой конструкцией будут пронумерованы так,как-будто бы конструкция
+содержится только одну ветвь, ту, которая попадет в группу захвата.
 
-The numbering within each branch will be as normal, and any groups
-following this construct will be numbered as though the construct
-contained only one branch, that being the one with the most capture
-groups in it.
+Эта конструкция является полезной, когда вы хотите захватить одну из
+ нескольких альтернативных групп.
 
-This construct is useful when you want to capture one of a
-number of alternative matches.
-
-Consider the following pattern.  The numbers underneath show in
-which group the captured content will be stored.
-
+Рассмотрим следующий шаблон. Цифры над под выражением
+ показывают номера групп захвата.
 
     # before  ---------------branch-reset----------- after        
     / ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z ) /x
     # 1            2         2  3        2     3     4  
+
+Будьте внимательны при использовании филиал сбросить узор в сочетании с
+именем захватывает. Именованные захватывает реализованы как псевдонимы
+нумерованные группы, проведение захватов и что мешает
+осуществление филиала сбросить шаблон. Если вы используете имя
+захватывает в шаблоне сброс ветви, то лучше использовать те же имена,
+в том же порядке, в каждом из изменений:
 
 Be careful when using the branch reset pattern in combination with 
 named captures. Named captures are implemented as being aliases to 
