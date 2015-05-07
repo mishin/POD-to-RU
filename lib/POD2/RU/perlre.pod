@@ -1047,31 +1047,24 @@ X<(?|)> X<Branch reset>
     / ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z ) /x
     # 1            2         2  3        2     3     4  
 
-Будьте внимательны при использовании филиал сбросить узор в сочетании с
-именем захватывает. Именованные захватывает реализованы как псевдонимы
-нумерованные группы, проведение захватов и что мешает
-осуществление филиала сбросить шаблон. Если вы используете имя
-захватывает в шаблоне сброс ветви, то лучше использовать те же имена,
-в том же порядке, в каждом из изменений:
-
-Be careful when using the branch reset pattern in combination with 
-named captures. Named captures are implemented as being aliases to 
-numbered groups holding the captures, and that interferes with the
-implementation of the branch reset pattern. If you are using named
-captures in a branch reset pattern, it's best to use the same names,
-in the same order, in each of the alternations:
+Будьте внимательны при использовании сброса ветки шаблона в сочетании с
+именем захвата. Именованные захваты реализованы как псевдонимы
+нумерованным группам, что мешает
+осуществлению сброса ветки шаблона. Если вы используете именованный захват
+ в сбросе ветки шаблона, то лучше использовать те же имена,
+в том же порядке, в каждом из альтернатив:
 
    /(?|  (?<a> x ) (?<b> y )
       |  (?<a> z ) (?<b> w )) /x
 
-Not doing so may lead to surprises:
+Не делайте так, это может привести к сюрпризам:
 
   "12" =~ /(?| (?<a> \d+ ) | (?<b> \D+))/x;
   say $+ {a};   # Prints '12'
   say $+ {b};   # *Also* prints '12'.
 
-The problem here is that both the group named C<< a >> and the group
-named C<< b >> are aliases for the group belonging to C<< $1 >>.
+Проблема здесь в том, что обе группы назвали  C<< a >>, а группа с
+именем C<< b >> является алиасом для группы, принадлежащей к  C<< $1 >>.
 
 =item Look-Around Assertions
 X<look-around assertion> X<lookaround assertion> X<look-around> X<lookaround>
