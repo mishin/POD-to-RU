@@ -1066,14 +1066,14 @@ X<(?|)> X<Branch reset>
 Проблема здесь в том, что обе группы назвали  C<< a >>, а группа с
 именем C<< b >> является алиасом для группы, принадлежащей к  C<< $1 >>.
 
-=item Look-Around Assertions
-X<look-around assertion> X<lookaround assertion> X<look-around> X<lookaround>
+=item Утверждения Осмотра Вокруг (Look-Around Assertions)
+X<утверждения окружения>X<look-around assertion> X<lookaround assertion> X<look-around> X<lookaround>
 
 Look-around assertions are zero-width patterns which match a specific
 pattern without including it in C<$&>. Positive assertions match when
 their subpattern matches, negative assertions match when their subpattern
-fails. Look-behind matches text up to the current match position,
-look-ahead matches text following the current match position.
+fails. Осмотр-До(look-behind) находит текст до текущей позиции,
+Осмотр-После(look-ahead) находит текст следующий за позицией поиска.
 
 =over 4
 
