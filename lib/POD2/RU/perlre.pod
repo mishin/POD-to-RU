@@ -1089,15 +1089,18 @@ X<(?=)> X<look-ahead, positive> X<lookahead, positive>
 =item C<(?!pattern)>
 X<(?!)> X<look-ahead, negative> X<lookahead, negative>
 
-A zero-width negative look-ahead assertion.  For example C</foo(?!bar)/>
-matches any occurrence of "foo" that isn't followed by "bar".  Note
-however that look-ahead and look-behind are NOT the same thing.  You cannot
-use this for look-behind.
+Негативное нулевой ширины утверждение поиска вперед.  
+Наприметр C</foo(?!bar)/>
+найдет любое вхождение "foo" за которым не следует "bar". 
+Замечание.
+Однако поиск вперед и назад не то же самое. Вы не можете
+использовать это для поиска назад.
 
-If you are looking for a "bar" that isn't preceded by a "foo", C</(?!foo)bar/>
-will not do what you want.  That's because the C<(?!foo)> is just saying that
-the next thing cannot be "foo"--and it's not, it's a "bar", so "foobar" will
-match.  Use look-behind instead (see below).
+Если вы ищете "bar" перед которым нет "foo", C</(?!foo)bar/>
+, то будет искаться не то, что вы хотите.
+Потому что C<(?!foo)> означает, что следующая вещь
+ не может быть "foo"--но это не так, это "bar", таким образом "foobar" будет найден. 
+ Используйте вместо этого поиск назад (смотрите ниже).
 
 =item C<(?<=pattern)> C<\K>
 X<(?<=)> X<look-behind, positive> X<lookbehind, positive> X<\K>
