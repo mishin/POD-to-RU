@@ -1105,9 +1105,10 @@ X<(?!)> X<look-ahead, negative> X<lookahead, negative>
 =item C<(?<=pattern)> C<\K>
 X<(?<=)> X<look-behind, positive> X<lookbehind, positive> X<\K>
 
-A zero-width positive look-behind assertion.  For example, C</(?<=\t)\w+/>
-matches a word that follows a tab, without including the tab in C<$&>.
-Works only for fixed-width look-behind.
+Позитивное нулевой ширины утверждение поиска назад.  
+Например, C</(?<=\t)\w+/>
+найдет слово, перед которым стоит таб, без включения таба в C<$&>.
+Работает только для поиска назад фиксированной длины.
 
 There is a special form of this construct, called C<\K>, which causes the
 regex engine to "keep" everything it had matched prior to the C<\K> and
