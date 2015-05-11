@@ -1155,8 +1155,8 @@ $+{NAME} будет ссылаться на самую левую и этих г
 
 Формы C<(?'NAME'pattern)> и C<< (?<NAME>pattern) >> эквивалентны.
 
-B<NOTE:> While the notation of this construct is the same as the similar
-function in .NET regexes, the behavior is not. In Perl the groups are
+B<NOTE:> Хотя нотация этой конструкции такая же, как в регексах .NET , 
+но поведение не совпадает. In Perl the groups are
 numbered sequentially regardless of being named or not. Thus in the
 pattern
 
