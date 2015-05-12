@@ -1110,20 +1110,20 @@ X<(?<=)> X<look-behind, positive> X<lookbehind, positive> X<\K>
 найдет слово, перед которым стоит таб, без включения таба в C<$&>.
 Работает только для поиска назад фиксированной длины.
 
-There is a special form of this construct, called C<\K>, which causes the
-regex engine to "keep" everything it had matched prior to the C<\K> and
-not include it in C<$&>. This effectively provides variable-length
-look-behind. The use of C<\K> inside of another look-around assertion
-is allowed, but the behaviour is currently not well defined.
+Существует специальная форма этой конструкции, называемая C<\K>, которая влияет на
+регекс движок таким образом, что он "сохраняет" все, что было найдено перед C<\K>
+и не включает это в C<$&>. Это обеспечивает эффективный поиск назад переменной длины.
+Использования C<\K> внутри другого утверждения Осмотра Вокруг возможно, но это поведение
+еще хорошо не определено.
 
-For various reasons C<\K> may be significantly more efficient than the
-equivalent C<< (?<=...) >> construct, and it is especially useful in
-situations where you want to efficiently remove something following
-something else in a string. For instance
+Для различных причин C<\K> может быть значительно более эффективным, чем
+эквивалентная конструкция C<< (?<=...) >> и он особенно полезен в
+ситуации, где вы хотите эффективно удалить что-то следующее после строки. 
+К примеру 
 
   s/(foo)bar/$1/g;
 
-can be rewritten as the much more efficient
+можно переписать гораздо более эффективно
 
   s/foo\Kbar//g;
 
