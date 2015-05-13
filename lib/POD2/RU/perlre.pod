@@ -1130,9 +1130,10 @@ X<(?<=)> X<look-behind, positive> X<lookbehind, positive> X<\K>
 =item C<(?<!pattern)>
 X<(?<!)> X<look-behind, negative> X<lookbehind, negative>
 
-A zero-width negative look-behind assertion.  For example C</(?<!bar)foo/>
-matches any occurrence of "foo" that does not follow "bar".  Works
-only for fixed-width look-behind.
+Отрицающее утверждение нулевой ширины поиска назад.  
+Например C</(?<!bar)foo/>
+ найдет вхождения "foo" , которые не следуют за "bar".  Работает
+только для поиска назад фиксированной длины.
 
 =back
 
@@ -1141,17 +1142,18 @@ only for fixed-width look-behind.
 =item C<< (?<NAME>pattern) >>
 X<< (?<NAME>) >> X<(?'NAME')> X<named capture> X<capture>
 
-A named capture group. Identical in every respect to normal capturing
-parentheses C<()> but for the additional fact that the group
-can be referred to by name in various regular expression
-constructs (like C<\g{NAME}>) and can be accessed by name
-after a successful match via C<%+> or C<%->. See L<perlvar>
-for more details on the C<%+> and C<%-> hashes.
+Имя захваченной группы.
+Идентично во всех отношениях для нормального захвата
+скобками C<()>, но есть для дополнительной факт то, что к группе
+можно обращаться по имени в различных конструкциях регулярных выражений
+ (например, C<\g{NAME}>) и может быть доступен по имени
+после успешного поиска через C<%+> или C<%->. См. L<perlvar>
+для более подробной информации о хэшах C<%+> и C<%->.
 
-If multiple distinct capture groups have the same name then the
-$+{NAME} will refer to the leftmost defined group in the match.
+Если несколько различных захватываемых групп  имеют одинаковые имена, то
+$+{NAME} будет ссылаться на самую левую и этих групп.
 
-The forms C<(?'NAME'pattern)> and C<< (?<NAME>pattern) >> are equivalent.
+Формы C<(?'NAME'pattern)> и C<< (?<NAME>pattern) >> эквивалентны.
 
 B<NOTE:> While the notation of this construct is the same as the similar
 function in .NET regexes, the behavior is not. In Perl the groups are
