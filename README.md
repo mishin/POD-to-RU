@@ -155,3 +155,6 @@ They are using a traditional mailing list and sourceforge's bug tracking system.
 
 Спасибо переводчику [http://www.bing.com/translator/](http://www.bing.com/translator/) за хороший предварительный перевод,
 но помучаться все равно придется, получается пока сыро;)
+
+Спасибо [Mail.ru](https://metacpan.org/pod/Mail.ru) за проведение конференции YAPC Russia 2015 
+и лично Павлу Щербинину.
