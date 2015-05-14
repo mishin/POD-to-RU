@@ -1155,25 +1155,25 @@ $+{NAME} будет ссылаться на самую левую и этих г
 
 Формы C<(?'NAME'pattern)> и C<< (?<NAME>pattern) >> эквивалентны.
 
-B<NOTE:> Хотя нотация этой конструкции такая же, как в регексах .NET , 
-но поведение не совпадает. In Perl the groups are
-numbered sequentially regardless of being named or not. Thus in the
-pattern
+B<ПРИМЕЧАНИЕ:> Хотя нотация этой конструкции такая же, как в регексах .NET , 
+но поведение не совпадает. В Perl являются группы
+нумеруются последовательно, независимо от того именованные они или нет. 
+Таким образом, в шаблоне
 
   /(x)(?<foo>y)(z)/
 
-$+{foo} will be the same as $2, and $3 will contain 'z' instead of
-the opposite which is what a .NET regex hacker might expect.
+$+{foo} будет тоже, что и $2, и $3 будет содержать 'z' 
+вместо того, что хакер .NET регекса мог бы ожидать.
 
-Currently NAME is restricted to simple identifiers only.
-In other words, it must match C</^[_A-Za-z][_A-Za-z0-9]*\z/> or
-its Unicode extension (see L<utf8>),
-though it isn't extended by the locale (see L<perllocale>).
+В настоящее время имя ограничивается простым идентификатором.
+Другими словами, он должен совпадать с  C</^[_A-Za-z][_A-Za-z0-9]*\z/>  или
+его Юникодным расширением (см. L<utf8>)
+хотя он не поддерживает докали (locale) (см. L<perllocale>).
 
-B<NOTE:> In order to make things easier for programmers with experience
-with the Python or PCRE regex engines, the pattern C<< (?PE<lt>NAMEE<gt>pattern) >>
-may be used instead of C<< (?<NAME>pattern) >>; however this form does not
-support the use of single quotes as a delimiter for the name.
+B<ПРИМЕЧАНИЕ:> для того, чтобы сделать вещи проще для программистов с опытом работы
+с Python или движком регексов PCRE, шаблон C<< (?PE<lt>NAMEE<gt>pattern) >>
+может быть использован вместо C<< (?<NAME>pattern) >>; Однако эта форма не
+поддерживает использование одинарных кавычек в качестве разделителя для имени.
 
 =item C<< \k<NAME> >>
 
