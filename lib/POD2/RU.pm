@@ -191,6 +191,15 @@ it under the same terms as Perl itself.
 
 L<https://github.com/mishin/POD-to-RU>
 
+=head1 SUPPORT
+ 
+This module is managed in an open L<GitHub
+repository|http://github.com/mishin/POD-to-RU/>. Feel free to fork and
+contribute, or to clone L<git://github.com/mishin/POD-to-RU.git> and send
+patches!
+ 
+Found a bug? Please L<post|http://github.com/perl-pod/test-pod/issues> a report!
+
 =head1 SEE ALSO
 
 L<POD2::ES>, L<POD2::PT_BR>, L<POD2::IT>, L<POD2::FR>, L<POD2::LT>.
