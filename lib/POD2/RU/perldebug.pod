@@ -1,4 +1,7 @@
+=encoding utf8
+
 =head1 NAME/НАИМЕНОВАНИЕ
+
 X<debug> X<debugger>
 
 perldebug - Perl debugging

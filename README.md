@@ -120,6 +120,15 @@ it under the same terms as Perl itself.
 
 [https://github.com/mishin/POD-to-RU](https://github.com/mishin/POD-to-RU)
 
+# SUPPORT
+
+This module is managed in an open [GitHub
+repository](http://github.com/mishin/POD-to-RU/). Feel free to fork and
+contribute, or to clone [git://github.com/mishin/POD-to-RU.git](git://github.com/mishin/POD-to-RU.git) and send
+patches!
+
+Found a bug? Please [post](http://github.com/perl-pod/test-pod/issues) a report!
+
 # SEE ALSO
 
 [POD2::ES](https://metacpan.org/pod/POD2::ES), [POD2::PT\_BR](https://metacpan.org/pod/POD2::PT_BR), [POD2::IT](https://metacpan.org/pod/POD2::IT), [POD2::FR](https://metacpan.org/pod/POD2::FR), [POD2::LT](https://metacpan.org/pod/POD2::LT).
