@@ -1210,26 +1210,20 @@ reentrancy).
 завершается успешно, и ее возвращаемое значение устанавливается как  C<$^R>.
 
 В буквенных шаблонах, код парсится в то же время, как
-окружающий код. В шаблоне, управление передаётся временно
-вернуться к анализатору perl, вплоть до закрытия логически балансировка, скобка
-столкнулся с. Это похоже на то, что массив индекса выражение в
-строковый литерал обрабатывается, например
-
-In literal patterns, the code is parsed at the same time as the
-surrounding code. While within the pattern, control is passed temporarily
-back to the perl parser, until the logically-balancing closing brace is
-encountered. This is similar to the way that an array index expression in
-a literal string is handled, for example
+окружающий код. Во время обработки шаблона управление временно передаётся 
+ анализатору perl пока не находистся закрывающая скобка.
+Это похоже путь, которым индекс массива
+ вытаскивает строку, например
 
     "abc$array[ 1 + f('[') + g()]def"
 
-In particular, braces do not need to be balanced:
+В частности, скобки не обязательно должны быть сбалансированы:
 
     s/abc(?{ f('{'); })/def/
 
-Even in a pattern that is interpolated and compiled at run-time, literal
-code blocks will be compiled once, at perl compile time; the following
-prints "ABCD":
+Даже, если шаблон является интерполяцией и компилируется во время выполнения, литеральные
+блоки кода компилируются один раз, во время компиляции perl; следующее
+печатает "ABCD":
 
     print "D";
     my $qr = qr/(?{ BEGIN { print "A" } })/;
@@ -1237,12 +1231,24 @@ prints "ABCD":
     /$foo$qr(?{ BEGIN { print "B" } })/;
     BEGIN { print "C" }
 
+В моделях, где текст кодекса является производным от времени выполнения
+информации, а не появляется буквально в исходный код/шаблон /,
+код компилируется в то же время, что pattern компилируется, и
+по соображениям безопасности C < использования re «eval» раздел настроек должны быть в области. Это необходимо для
+пользовательские шаблоны, содержащие фрагменты кода не остановите
+исполняемый файл.
+
 In patterns where the text of the code is derived from run-time
 information rather than appearing literally in a source code /pattern/,
 the code is compiled at the same time that the pattern is compiled, and
 for reasons of security, C<use re 'eval'> must be in scope. This is to
 stop user-supplied patterns containing code snippets from being
 executable.
+
+В ситуациях, когда вам нужно включить эту с C < использования re «eval» раздел настроек вы должны
+также позволили проверка зараза. Еще лучше, используйте тщательно
+трудности оценки в рамках безопасного отсека. Смотрите L <perlsec>
+сведения об обоих этих механизмов.
 
 In situations where you need to enable this with C<use re 'eval'>, you should
 also have taint checking enabled.  Better yet, use the carefully
