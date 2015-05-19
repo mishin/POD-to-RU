@@ -1,4 +1,4 @@
-=head1 NAME
+=head1 NAME/НАИМЕНОВАНИЕ
 X<debug> X<debugger>
 
 perldebug - Perl debugging

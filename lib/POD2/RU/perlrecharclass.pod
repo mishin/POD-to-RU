@@ -1,7 +1,7 @@
 
 =encoding utf8
 
-=head1 НАИМЕНОВАНИЕ
+=head1 NAME/НАИМЕНОВАНИЕ
 X<character class>
 
 perlrecharclass - Классы символов регулярных выражений Perl

@@ -1,7 +1,7 @@
 
 =encoding utf8
 
-=head1 НАИМЕНОВАНИЕ
+=head1 NAME/НАИМЕНОВАНИЕ
 
 perlglossary - Perl Глоссарий
 

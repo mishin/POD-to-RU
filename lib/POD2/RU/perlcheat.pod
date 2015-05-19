@@ -1,7 +1,7 @@
 
 =encoding utf8
 
-=head1 НАИМЕНОВАНИЕ
+=head1 NAME/НАИМЕНОВАНИЕ
 
 perlcheat - Perl 5 Шпаргалка
 
