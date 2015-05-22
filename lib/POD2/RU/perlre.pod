@@ -1301,10 +1301,10 @@ L<"Backtracking">). Например,
 
     (?(condition)yes-pattern|no-pattern)
 
-switch.  If I<not> used in this way, the result of evaluation of C<code>
-is put into the special variable C<$^R>.  This happens immediately, so
-C<$^R> can be used from other C<(?{ code })> assertions inside the same
-regular expression.
+свиче (переключателе). Если I<не> использовать таким образом, то результат выполнения C<кода>
+помещается в специальную переменную C<$^R>. Это происходит сразу же, так только
+C<$^R> может быть использован с другими  C<(?{ code })> утверждениями внутри того же самого
+регулярного выражения.
 
 The assignment to C<$^R> above is properly localized, so the old
 value of C<$^R> is restored if the assertion is backtracked; compare
