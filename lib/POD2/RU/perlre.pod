@@ -1321,10 +1321,10 @@ C<$^R> может быть использован с другими  C<(?{ code 
 X<(??{})>
 X<regex, postponed> X<regexp, postponed> X<regular expression, postponed>
 
-B<WARNING>: This extended regular expression feature is considered
-experimental, and may be changed without notice. Code executed that
-has side effects may not perform identically from version to version
-due to the effect of future optimisations in the regex engine.
+B<ПРЕДУПРЕЖДЕНИЕ>: Эта функция расширенных регулярных выражений считается
+экспериментальной и может быть изменена без предварительного уведомления. Выполняемый код
+имеет побочные эффекты и он может не выполняться одинаково от версии к версии
+из-за эффекта будущих оптимизаций в регекс движке.
 
 This is a "postponed" regular subexpression.  It behaves in I<exactly> the
 same way as a C<(?{ code })> code block as described above, except that
