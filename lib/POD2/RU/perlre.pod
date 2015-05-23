@@ -1306,13 +1306,11 @@ L<"Backtracking">). Например,
 C<$^R> может быть использован с другими  C<(?{ code })> утверждениями внутри того же самого
 регулярного выражения.
 
-The assignment to C<$^R> above is properly localized, so the old
-value of C<$^R> is restored if the assertion is backtracked; compare
-L<"Backtracking">.
+Присваивание С<$^R> выше правильно локализовано, так, что старое
+значение C<$^R> восстанавливается, если утверждение возвратилось при поиске; сравните L <"Поиск с возвратом">.
 
-Note that the special variable C<$^N>  is particularly useful with code
-blocks to capture the results of submatches in variables without having to
-keep track of the number of nested parentheses. For example:
+Обратите внимание, что специальная переменная C<$^N> особенно полезна с блоками кода для записи результатов подсовпадений в переменных без необходимости
+ отслеживать количество вложенных скобок. Например:
 
   $_ = "The brown fox jumps over the lazy dog";
   /the (\S+)(?{ $color = $^N }) (\S+)(?{ $animal = $^N })/i;
