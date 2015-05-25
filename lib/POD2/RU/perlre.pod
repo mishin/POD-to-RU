@@ -1326,17 +1326,11 @@ B<ПРЕДУПРЕЖДЕНИЕ>: Эта функция расширенных р
 имеет побочные эффекты и он может не выполняться одинаково от версии к версии
 из-за эффекта будущих оптимизаций в регекс движке.
 
-Это «отложенное» регулярное выражение. Он ведет себя в я <exactly>
-так же, как C < (? {код}) настроек блока кода, как описано выше, за исключением
-его возвращаемое значение, а не присваиваются C <$^R>, рассматривается как
-шаблон, компиляции, если он является строкой (или используется как-если это qr / / объект),
-затем соответствует, как если бы это были вставлены вместо этой конструкции.
-
-This is a "postponed" regular subexpression.  It behaves in I<exactly> the
-same way as a C<(?{ code })> code block as described above, except that
-its return value, rather than being assigned to C<$^R>, is treated as a
-pattern, compiled if it's a string (or used as-is if its a qr// object),
-then matched as if it were inserted instead of this construct.
+Это «отложенное» регулярное выражение. Оно ведет себя I<точно>
+так же, как и C<(?{код}) , как описано выше, за исключением того, что
+ возвращаемое значение не присваиваются C<$^R>, а рассматривается как
+шаблон, компилируется, если он является строкой (или используется как есть, если это qr / / объект),
+затем ищется соответствие, как если бы он был вставлен вместо этой конструкции.
 
 During the matching of this sub-pattern, it has its own set of
 captures which are valid during the sub-match, but are discarded once
