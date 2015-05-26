@@ -1330,42 +1330,40 @@ B<ПРЕДУПРЕЖДЕНИЕ>: Эта функция расширенных р
 так же, как и C<(?{код}) , как описано выше, за исключением того, что
  возвращаемое значение не присваиваются C<$^R>, а рассматривается как
 шаблон, компилируется, если он является строкой (или используется как есть, если это qr / / объект),
-затем ищется соответствие, как если бы он был вставлен вместо этой конструкции.
+затем ищется соответствие, как если бы оно был вставлено вместо этой конструкции.
 
-During the matching of this sub-pattern, it has its own set of
-captures which are valid during the sub-match, but are discarded once
-control returns to the main pattern. For example, the following matches,
-with the inner pattern capturing "B" and matching "BB", while the outer
-pattern captures "A";
+В ходе сопоставления этого вложенного шаблона, он имеет свой собственный набор
+захваченных скобок (или захватов дальше), которые являются действительными во время подпоиска (промежуточного поиска), но удаляются, как только управление возвращается в основной шаблон. Например, следующий поиск,
+с внутренним шаблоном захвата "B" и находящий "BB", пока внешний
+шаблон захватывает "A";
 
     my $inner = '(.)\1';
     "ABBA" =~ /^(.)(??{ $inner })\1/;
     print $1; # prints "A";
 
-Note that this means that  there is no way for the inner pattern to refer
-to a capture group defined outside.  (The code block itself can use C<$1>,
-etc., to refer to the enclosing pattern's capture groups.)  Thus, although
+Обратите внимание, что это означает, что нет никакого способа, чтобы внутренний шаблон ссылался на
+группу захвата, определенную вне. (Сам блок кода можно использовать C<$1>,
+и т.д., для ссылки на группу захвата включенного шаблона.) Таким образом, хотя
 
     ('a' x 100)=~/(??{'(.)' x 100})/
 
-I<will> match, it will I<not> set $1 on exit.
+I<найдет> он I<не> установит $1 при выходе.
 
-The following pattern matches a parenthesized group:
+Следующий шаблон найдет группу в круглых скобках:
 
  $re = qr{
             \(
             (?:
-               (?> [^()]+ )  # Non-parens without backtracking
+               (?> [^()]+ )  # Не-парные без поиска с возвратом
              |
-               (??{ $re })   # Group with matching parens
+               (??{ $re })   # Группы с соответствующими парными скобками
             )*
             \)
          }x;
 
-See also
+Смотрите также
 L<C<(?I<PARNO>)>|/(?PARNO) (?-PARNO) (?+PARNO) (?R) (?0)>
-for a different, more efficient way to accomplish
-the same task.
+для другого, более эффективного способа выполнения этой задачи.
 
 Executing a postponed regular expression 50 times without consuming any
 input string will result in a fatal error.  The maximum depth is compiled
