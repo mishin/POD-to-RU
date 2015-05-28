@@ -1423,26 +1423,26 @@ C<(?R)>. Если I<PARNO> предшествует плюс или минус, 
     $2 = (bar(baz)+baz(bop))
     $3 = bar(baz)+baz(bop)
 
-If there is no corresponding capture group defined, then it is a
-fatal error.  Recursing deeper than 50 times without consuming any input
-string will also result in a fatal error.  The maximum depth is compiled
-into perl, so changing it requires a custom build.
+Если оответствующая группа захвата не определена , то 
+будет фатальная ошибка. Рекурсии глубже, чем 50 без добавления на вход новой 
+строки приведет также к фатальной ошибке. Максимальная глубина копилируется
+в perl, поэтому для его изменения его требуется сделать кастомный билд (requires a custom build).
 
-The following shows how using negative indexing can make it
-easier to embed recursive patterns inside of a C<qr//> construct
-for later use:
+Ниже показано, как с помощью отрицательной индексации 
+облегчить внедрение рекурсивных структур внутри конструкции C<qr//>
+для дальнейшего использования:
 
     my $parens = qr/(\((?:[^()]++|(?-1))*+\))/;
     if (/foo $parens \s+ \+ \s+ bar $parens/x) {
-       # do something here...
+       # сделать что-то здесь...
     }
 
-B<Note> that this pattern does not behave the same way as the equivalent
-PCRE or Python construct of the same form. In Perl you can backtrack into
-a recursed group, in PCRE and Python the recursed into group is treated
-as atomic. Also, modifiers are resolved at compile time, so constructs
-like (?i:(?1)) or (?:(?i)(?1)) do not affect how the sub-pattern will
-be processed.
+B<Примечание>, что этот шаблон не ведёт себя так же, как эквивалент в
+PCRE или Python такой же формы. В Perl можно делать поиск с возвратом в рекурсируемой
+ группе, в PCRE и Python рекурсия в группе рассматривается как атомарная.
+ Кроме того модификаторы разрешаются во время компиляции, так что такие конструкции 
+как (?i:(?1)) или (?:(?i)(?1)) не влияют на то, как вложенный шаблон будет
+обрабатываться.
 
 =item C<(?&NAME)>
 X<(?&NAME)>
