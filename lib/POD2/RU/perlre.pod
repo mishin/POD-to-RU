@@ -1463,53 +1463,53 @@ X<(?()>
 
 =item C<(?(condition)yes-pattern)>
 
-Conditional expression. Matches C<yes-pattern> if C<condition> yields
-a true value, matches C<no-pattern> otherwise. A missing pattern always
-matches.
+Условное выражение. Найдет C<yes-pattern> если C<condition> дает
+значение true, в противном случае ищет C<no-pattern> . Отсутствует шаблон 
+по которому ищется всегда.
 
-C<(condition)> should be one of: 1) an integer in
-parentheses (which is valid if the corresponding pair of parentheses
-matched); 2) a look-ahead/look-behind/evaluate zero-width assertion; 3) a
-name in angle brackets or single quotes (which is valid if a group
-with the given name matched); or 4) the special symbol (R) (true when
-evaluated inside of recursion or eval). Additionally the R may be
-followed by a number, (which will be true when evaluated when recursing
-inside of the appropriate group), or by C<&NAME>, in which case it will
-be true only when evaluated during recursion in the named group.
+C <(condition)> должно быть одним из: 
+1) целое число в
+скобках (которое валидно, если соответствуая пара скобок найдена);
+2) поиск впереди/поиск назад/выполнение утверждения нулевой ширины; 
+3) имя в угловых скобках или одинарных кавычках (который валидно, если найдена группа
+с заданным именем); или 
+4) Специальный символ (R) (true когда выполнение внутри рекурсии или eval). 
+Дополнительно после R могут быть числа, (которые будут true, когда выполняться рекурсия
+внутри соответствующей группы) или C<&NAME>, в этом случае она будет
+иметь значение true только при выполнении во время рекурсии именованной группы.
 
-Here's a summary of the possible predicates:
+Вот краткое изложение возможных предикатов:
 
 =over 4
 
 =item (1) (2) ...
 
-Checks if the numbered capturing group has matched something.
+Проверяет, если что-то пронумерованные группы захвата что-то нашли.
 
 =item (<NAME>) ('NAME')
 
-Checks if a group with the given name has matched something.
+Проверяет, если что группа с заданным именем что-то нашла.
 
 =item (?=...) (?!...) (?<=...) (?<!...)
 
-Checks whether the pattern matches (or does not match, for the '!'
-variants).
+Проверяет, найден ли шаблон (или не найден, для вариантов с '!').
 
 =item (?{ CODE })
 
-Treats the return value of the code block as the condition.
+Обрабатывает возвращаемое значение блока кода как условие.
 
 =item (R)
 
-Checks if the expression has been evaluated inside of recursion.
+Проверяет, что выражение выполняется внутри рекурсии.
 
 =item (R1) (R2) ...
 
-Checks if the expression has been evaluated while executing directly
-inside of the n-th capture group. This check is the regex equivalent of
+Проверяет, если выражение выполняется во время n-ной
+ группы захвата. Эта проверка является эквивалентом следующему регексу
 
   if ((caller(0))[3] eq 'subname') { ... }
 
-In other words, it does not check the full recursion stack.
+Другими словами он не проверяет полный стек рекурсии.
 
 =item (R&NAME)
 
