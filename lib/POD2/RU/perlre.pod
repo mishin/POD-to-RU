@@ -1447,16 +1447,16 @@ PCRE или Python такой же формы. В Perl можно делать �
 =item C<(?&NAME)>
 X<(?&NAME)>
 
-Recurse to a named subpattern. Identical to C<(?I<PARNO>)> except that the
-parenthesis to recurse to is determined by name. If multiple parentheses have
-the same name, then it recurses to the leftmost.
+Рекурсия для именованных шаблонов. Идентичен  C<(?I<PARNO>)>  за исключением того, что
+на скобки для рекурсии указывает имя. Если несколько скобок
+имеют то же имя, то она рекурсивно берет самую левую.
 
-It is an error to refer to a name that is not declared somewhere in the
-pattern.
+Возникнет сообщение об ошибке, ссылка идет на имя, которое не объявлено где-то в
+шаблон.
 
-B<NOTE:> In order to make things easier for programmers with experience
-with the Python or PCRE regex engines the pattern C<< (?P>NAME) >>
-may be used instead of C<< (?&NAME) >>.
+B<ПРИМЕЧАНИЕ:> для того, чтобы облегчить жизнь программистов с опытом работы
+с Python или движком регексов PCRE, шаблон C<< (?P>NAME) >>
+может быть использован вместо  C<< (?&NAME) >>.
 
 =item C<(?(condition)yes-pattern|no-pattern)>
 X<(?()>
