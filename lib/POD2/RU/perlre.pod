@@ -1513,16 +1513,16 @@ C <(condition)> должно быть одним из:
 
 =item (R&NAME)
 
-Similar to C<(R1)>, this predicate checks to see if we're executing
-directly inside of the leftmost group with a given name (this is the same
-logic used by C<(?&NAME)> to disambiguate). It does not check the full
-stack, but only the name of the innermost active recursion.
+Аналогично C<(R1)>, этот предикат проверяет при выполнении
+непосредственно внутри левой группы с заданным именем (это та же самая
+логика используемая C<(?&NAME)> для устранения неоднозначности). Он не проверяет полный
+стек, но только имя внутренней активной рекурсии.
 
 =item (DEFINE)
 
-In this case, the yes-pattern is never directly executed, and no
-no-pattern is allowed. Similar in spirit to C<(?{0})> but more efficient.
-See below for details.
+В этом случае, да-шаблон выполняется не напрямую и нет никаких нет-шабонов.
+Аналогично в духе C<(?{0})> но более эффективно.
+Подробнее смотрите ниже.
 
 =back
 
