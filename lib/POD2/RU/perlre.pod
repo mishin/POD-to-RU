@@ -1561,22 +1561,28 @@ yes-шаблонов непосредственно и не разрешает n
 C<$+{NAME}> будет.
 
 Наконец имейте в виду, что подшаблоны созданные внутри блока DEFINE
-всего на абсолютное и относительное количество фиксаций, так это:
-Finally, keep in mind that subpatterns created inside a DEFINE block
-count towards the absolute and relative number of captures, so this:
+считают абсолютное и относительное число захватов, таким образом:
 
-    my @captures = "a" =~ /(.)                  # First capture
+    my @captures = "a" =~ /(.)                  # Первый захват
                            (?(DEFINE)
-                               (?<EXAMPLE> 1 )  # Second capture
+                               (?<EXAMPLE> 1 )  # Второй захват
                            )/x;
     say scalar @captures;
 
-Will output 2, not 1. This is particularly important if you intend to
-compile the definitions with the C<qr//> operator, and later
-interpolate them in another pattern.
+Будет выводить 2, не 1. Это особенно важно, если вы намерены
+компилировать регулярное выражение с помощью  C<qr//
+ и позднее интерполировать их в другой шаблон.
 
 =item C<< (?>pattern) >>
 X<backtrack> X<backtracking> X<atomic> X<possessive>
+
+"Независимое" подвыражение, которой соответствует подстрока
+что я <standalone>C <pattern>бы матч, если на данной
+позиция и она соответствует я < ничего, кроме этой подстроки раздел настроек. Это
+конструкция полезна для оптимизации в противном случае была бы
+«вечные» матчи, потому что он не будет отступать (см. Л <"Backtracking">).
+Он также может быть полезным в местах, где «захватить все можно и не
+дать что-нибудь обратно» семантической желательно.
 
 An "independent" subexpression, one which matches the substring
 that a I<standalone> C<pattern> would match if anchored at the given
