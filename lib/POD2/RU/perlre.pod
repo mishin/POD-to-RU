@@ -1533,8 +1533,7 @@ For example:
        (?(1) \) )
      }x
 
-matches a chunk of non-parentheses, possibly included in parentheses
-themselves.
+найдет часть с непарными скобками, возможно, включенные в парные скобки.
 
 A special form is the C<(DEFINE)> predicate, which never executes its
 yes-pattern directly, and does not allow a no-pattern. This allows one to
