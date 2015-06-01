@@ -1535,20 +1535,19 @@ For example:
 
 найдет часть с непарными скобками, возможно, включенные в парные скобки.
 
-A special form is the C<(DEFINE)> predicate, which never executes its
-yes-pattern directly, and does not allow a no-pattern. This allows one to
-define subpatterns which will be executed only by the recursion mechanism.
-This way, you can define a set of regular expression rules that can be
-bundled into any pattern you choose.
+Особая форма - это предикат C<(DEFINE)> , который никогда не выполняет своих
+yes-шаблонов непосредственно и не разрешает no-шаблоны. Это позволяет
+определяются подмаски, которые будут выполняться только механизмом рекурсии.
+Таким образом, можно определить набор регулярных выражений, которые могут быть
+ использованы в любом шаблоне, который вы выберете.
 
-It is recommended that for this usage you put the DEFINE block at the
-end of the pattern, and that you name any subpatterns defined within it.
+Рекомендуется, что для данного использования вы определяете блок DEFINE в
+конце шаблона, и что вы задаете имена любым подшаблонам, определенным внутри него.
 
-Also, it's worth noting that patterns defined this way probably will
-not be as efficient, as the optimiser is not very clever about
-handling them.
+Кроме того, стоит отметить, что шаблоны определенные таким образом, вероятно, не могут
+ эффективными, так как оптимизатор, их обрабатывающий не достаточно очень умный.
 
-An example of how this might be used is as follows:
+Вот пример, как это может быть использовано:
 
   /(?<NAME>(?&NAME_PAT))(?<ADDR>(?&ADDRESS_PAT))
    (?(DEFINE)
@@ -1556,11 +1555,13 @@ An example of how this might be used is as follows:
      (?<ADRESS_PAT>....)
    )/x
 
-Note that capture groups matched inside of recursion are not accessible
-after the recursion returns, so the extra layer of capturing groups is
-necessary. Thus C<$+{NAME_PAT}> would not be defined even though
-C<$+{NAME}> would be.
+Обратите внимание, что группы захвата внутри  соответствующей рекурсии не доступны
+после возврата из нее, так как для этого нужен дополнительный слой из группы захвата. 
+Таким образом  C<$+{NAME_PAT}> не будет определяться, хотя
+C<$+{NAME}> будет.
 
+Наконец имейте в виду, что подшаблоны созданные внутри блока DEFINE
+всего на абсолютное и относительное количество фиксаций, так это:
 Finally, keep in mind that subpatterns created inside a DEFINE block
 count towards the absolute and relative number of captures, so this:
 
