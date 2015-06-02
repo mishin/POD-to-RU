@@ -1577,20 +1577,22 @@ C<$+{NAME}> будет.
 X<backtrack> X<backtracking> X<atomic> X<possessive>
 
 "Независимое" подвыражение, которой соответствует подстрока
-что я <standalone>C <pattern>бы матч, если на данной
-позиция и она соответствует я < ничего, кроме этой подстроки раздел настроек. Это
-конструкция полезна для оптимизации в противном случае была бы
-«вечные» матчи, потому что он не будет отступать (см. Л <"Backtracking">).
-Он также может быть полезным в местах, где «захватить все можно и не
-дать что-нибудь обратно» семантической желательно.
+ являющаяся I<автономным> (I<standalone>) 
+C<шаблоном> , который найдется, если есть якорь на данной позиции,
+ и он найдет I<ничего другого, кроме этой строки>.
+Это конструкция полезна для оптимизации в противном случае были бы
+ "вечные" поиски, потому что он не будет делать поиск с возвратом (см. L<"Backtracking">).
+Он также может быть полезным в местах, где "захватить все можно и не
+дать что-нибудь обратно" семантической желательно.
 
-An "independent" subexpression, one which matches the substring
-that a I<standalone> C<pattern> would match if anchored at the given
-position, and it matches I<nothing other than this substring>.  This
-construct is useful for optimizations of what would otherwise be
-"eternal" matches, because it will not backtrack (see L<"Backtracking">).
-It may also be useful in places where the "grab all you can, and do not
-give anything back" semantic is desirable.
+Например: C<< ^(?>a*)ab >> никогда не будет совпадать с  C<< (?>a*) >>
+(якорь в начале строки, как указано выше) будет соответствовать я <all>
+символы C <a>в начале строки, оставляя не C <a>для
+C <ab>матч. В противоположность этому C <a*ab> будет соответствовать таким же, как C <a+b>,
+Поскольку матч подгруппы C <a*> под влиянием следующих
+Группа C <ab>(см. Л <"Backtracking">). В частности, C <a*> внутри
+C <a*ab> будет соответствовать меньше символов, чем автономные C <a*>, так как
+Это делает хвост матч.
 
 For example: C<< ^(?>a*)ab >> will never match, since C<< (?>a*) >>
 (anchored at the beginning of string, as above) will match I<all>
