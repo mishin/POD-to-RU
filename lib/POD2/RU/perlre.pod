@@ -1703,22 +1703,16 @@ B<ПРЕДУПРЕЖДЕНИЕ:> эти шаблоны являются эксп
 C<$REGERROR> и C<$REGMARK> переменные. При этом применяются следующие
 правила:
 
-В случае неудачи, C переменная <$REGERROR> будет присвоено значение ARG
-шаблон команды, если глагола принимал участие в том матче. Если
-Часть шаблона ARG был опущен, то будет присвоено C <$REGERROR>
-имя последнего C < (* МАРКА: ИМЯ) > шаблон исполнения, или в значение TRUE, если существует
-нет. Кроме того, C <$REGMARK> переменная будет иметь значение FALSE.
+В случае неудачи, переменной C<$REGERROR> будет присвоено значение ARG
+глагольного шаблона, если глагол принимал участие в этом поиске. Если
+ значение ARG шаблона было опущено, то C<$REGERROR> будет присвоено 
+имя последнего исполненного шаблона C<(*MARK:NAME)> , или в значение TRUE, если такого не было.
+Кроме того, переменная C<$REGMARK> будет установлна в FALSE.
 
-On failure, the C<$REGERROR> variable will be set to the ARG value of the
-verb pattern, if the verb was involved in the failure of the match. If the
-ARG part of the pattern was omitted, then C<$REGERROR> will be set to the
-name of the last C<(*MARK:NAME)> pattern executed, or to TRUE if there was
-none. Also, the C<$REGMARK> variable will be set to FALSE.
-
-On a successful match, the C<$REGERROR> variable will be set to FALSE, and
-the C<$REGMARK> variable will be set to the name of the last
-C<(*MARK:NAME)> pattern executed.  See the explanation for the
-C<(*MARK:NAME)> verb below for more details.
+В случае успешного поиска, переменная C<$REGERROR> будет установлна в FALSE, а
+переменной C<$REGMARK> будет присвоено имя последнего
+исполненного шаблона C<(*MARK:NAME)>. Смотрите объяснение для
+глагола C<(*MARK:NAME)> ниже.
 
 B<NOTE:> C<$REGERROR> and C<$REGMARK> are not magic variables like C<$1>
 and most other regex-related variables. They are not local to a scope, nor
