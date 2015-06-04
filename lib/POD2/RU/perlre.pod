@@ -1637,13 +1637,13 @@ C<a+> и следующий C <\g{-1}> ест совпавшие строки; �
        \)
      }x
 
-which uses C<< (?>...) >> matches exactly when the one above does (verifying
-this yourself would be a productive exercise), but finishes in a fourth
-the time when used on a similar string with 1000000 C<a>s.  Be aware,
-however, that, when this construct is followed by a
-quantifier, it currently triggers a warning message under
-the C<use warnings> pragma or B<-w> switch saying it
-C<"matches null string many times in regex">.
+которая использует  C<< (?>...) >> находит точно,когда один выше делает (проверка
+этого самостоятельно является хорошим упражнением), но заканчивается в четвертом
+времени при использовании подобной строки с 1000000 C<a>s. Будьте осторожны,
+однако, что, когда за этой конструкцией следует умножитель (квантификатор),
+то он в настоящее время вызывает предупреждение под прагмой
+C<use warnings> или ключа B<-w>, который говорит, что
+C<"много раз найдены null строки в регексе"> (C<"matches null string many times in regex">).
 
 On simple groups, such as the pattern C<< (?> [^()]+ ) >>, a comparable
 effect may be achieved by negative look-ahead, as in C<[^()]+ (?! [^()] )>.
