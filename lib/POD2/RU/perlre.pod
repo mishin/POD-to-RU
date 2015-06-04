@@ -1649,43 +1649,33 @@ C<"много раз найдены null строки в регексе"> (C<"ma
 эффект может быть достигнут путем негативного поиска вперед, как в C<[^()]+ (?! [^()] )>.
 Это было только в 4 раза медленнее на строке с 1000000 C<a>s.
 
-Сема́нтика (от др.-греч. σημαντικός — обозначающий) «Все вы можете захватить и не дают ничего обратно» семантической желательно
-во многих ситуациях, когда на первый взгляд простой C < () * > выглядит как
-правильное решение. Предположим, что мы анализировать текст с комментариями с разделителями
-от C < # > следуют некоторые необязательные (горизонтальная) пробелы. В отличие от
-его внешний вид, C < #[\t]* > I < не > правильного выражения соответствует
-разделителем комментария, потому что она может «отказаться от «некоторые пробелы если
-Остальная часть шаблона можно сделать чтобы соответствовать таким образом. Правильный
-ответ это ни один из них:
-
-The "grab all you can, and do not give anything back" semantic is desirable
-in many situations where on the first sight a simple C<()*> looks like
-the correct solution.  Suppose we parse text with comments being delimited
-by C<#> followed by some optional (horizontal) whitespace.  Contrary to
-its appearance, C<#[ \t]*> I<is not> the correct subexpression to match
-the comment delimiter, because it may "give up" some whitespace if
-the remainder of the pattern can be made to match that way.  The correct
-answer is either one of these:
+Сема́нтика (от др.-греч. σημαντικός — обозначающий) "Возьми все, что можешь и ничего не отдавать обратно"
+ желательна во многих ситуациях, когда на первый взгляд простой  C<()*> выглядит как
+правильное решение. Предположим, что мы анализировали текст с комментариями с разделителями
+от C<#> за которыми следуют некоторые необязательные (горизонтальные) пробелы. В отличие от
+его внешнего вида, C<#[ \t]*> I<Это неt>  правильное подвыражение для поиска
+разделителей комментариев, потому что она может "отказаться" от некоторых пробелов если
+остальная часть шаблона совпадет. Правильный ответ на это - ни один из них:
 
     (?>#[ \t]*)
     #[ \t]*(?![ \t])
 
-For example, to grab non-empty comments into $1, one should use either
-one of these:
+Например чтобы захватить не-пустые комментарии в $1, следует использовать что-либо
+одно из этого:
 
     / (?> \# [ \t]* ) (        .+ ) /x;
     /     \# [ \t]*   ( [^ \t] .* ) /x;
 
-Which one you pick depends on which of these expressions better reflects
-the above specification of comments.
+От того, что вы выбираете, зависит, какие из этих выражений лучше отражают
+выше спецификации комментариев.
 
-In some literature this construct is called "atomic matching" or
-"possessive matching".
+В некоторой литературе эта конструкция называется "атомарным поиском" или
+"притяжательным поиском"("possessive matching").
 
-Possessive quantifiers are equivalent to putting the item they are applied
-to inside of one of these constructs. The following equivalences apply:
+Притяжательные умножители эквивалентны поставленному элементу, к которому они применяются
+внутри одной из этих конструкций. Применяются следующие эквиваленты:
 
-    Quantifier Form     Bracketing Form
+    Форма с умножителями  Форма со скобками
     ---------------     ---------------
     PAT*+               (?>PAT*)
     PAT++               (?>PAT+)
@@ -1698,7 +1688,7 @@ See L<perlrecharclass/Extended Bracketed Character Classes>.
 
 =back
 
-=head2 Special Backtracking Control Verbs
+=head2 Специальные глаголы для управления поиска с возвратом (Special Backtracking Control Verbs)
 
 B<WARNING:> These patterns are experimental and subject to change or
 removal in a future version of Perl. Their usage in production code should
