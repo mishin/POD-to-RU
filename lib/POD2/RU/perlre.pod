@@ -1684,24 +1684,30 @@ C<"много раз найдены null строки в регексе"> (C<"ma
 
 =item C<(?[ ])>
 
-See L<perlrecharclass/Extended Bracketed Character Classes>.
+See L<perlrecharclass/Расширенные классы символов в квадратных скобках>.
 
 =back
 
 =head2 Специальные глаголы для управления поиска с возвратом (Special Backtracking Control Verbs)
 
-B<WARNING:> These patterns are experimental and subject to change or
-removal in a future version of Perl. Their usage in production code should
-be noted to avoid problems during upgrades.
+B<ПРЕДУПРЕЖДЕНИЕ:> эти шаблоны являются экспериментальными и могут быть изменены или
+удалены в будущей версии Perl. Их использование в продкутивном коде следует
+специально отметить, чтобы избежать проблем при обновлении.
 
-These special patterns are generally of the form C<(*VERB:ARG)>. Unless
-otherwise stated the ARG argument is optional; in some cases, it is
-forbidden.
+Эти специальные шаблоны, как правило, в форме C<(*VERB:ARG)>. Иногда
+аргумент ARG является необязательным; в некоторых случаях это
+запрещено.
 
-Any pattern containing a special backtracking verb that allows an argument
-has the special behaviour that when executed it sets the current package's
-C<$REGERROR> and C<$REGMARK> variables. When doing so the following
-rules apply:
+Любой шаблон, содержащий специальный глагол возврата, который позволяет аргументу
+иметь специальное поведение, когда выполнен он устанавливает в текущем пакете
+C<$REGERROR> и C<$REGMARK> переменные. При этом применяются следующие
+правила:
+
+В случае неудачи, C переменная <$REGERROR> будет присвоено значение ARG
+шаблон команды, если глагола принимал участие в том матче. Если
+Часть шаблона ARG был опущен, то будет присвоено C <$REGERROR>
+имя последнего C < (* МАРКА: ИМЯ) > шаблон исполнения, или в значение TRUE, если существует
+нет. Кроме того, C <$REGMARK> переменная будет иметь значение FALSE.
 
 On failure, the C<$REGERROR> variable will be set to the ARG value of the
 verb pattern, if the verb was involved in the failure of the match. If the
