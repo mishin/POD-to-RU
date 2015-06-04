@@ -1714,22 +1714,30 @@ C<$REGERROR> и C<$REGMARK> переменные. При этом применя
 исполненного шаблона C<(*MARK:NAME)>. Смотрите объяснение для
 глагола C<(*MARK:NAME)> ниже.
 
-B<NOTE:> C<$REGERROR> and C<$REGMARK> are not magic variables like C<$1>
-and most other regex-related variables. They are not local to a scope, nor
-readonly, but instead are volatile package variables similar to C<$AUTOLOAD>.
-Use C<local> to localize changes to them to a specific scope if necessary.
+B<ПРИМЕЧАНИЕ:> C<$REGERROR> и С<$REGMARK> не являются магическими переменными такими, как C<$1>
+и большинство других переменных, связанных с регексами. Они не являются локальными для области, ни
+ReadOnly, но вместо этого они аналогичны летучим переменным пакета C<$AUTOLOAD>.
+Используйте C<local> для локализации изменений в их конкретной области при необходимости.
 
-If a pattern does not contain a special backtracking verb that allows an
-argument, then C<$REGERROR> and C<$REGMARK> are not touched at all.
+Если шаблон не содержит специального глагола для поиска с возвратом, который позволяет
+аргумент, то C<$REGERROR> и C<$REGMARK> не затрагиваются вообще.
 
 =over 3
 
-=item Verbs that take an argument
+=item Глаголы, которые принимают аргумент
 
 =over 4
 
 =item C<(*PRUNE)> C<(*PRUNE:NAME)>
 X<(*PRUNE)> X<(*PRUNE:NAME)>
+
+Этот шаблон нулевой ширины чернослив с возвратом дерево в текущей точке
+Когда отступили в на провал. Рассмотрим шаблон C < A (* ПОДРЕЗАТЬ) B >,
+где A и B являются сложные узоры. До C достигается <(*PRUNE)> глагола,
+A может отступать как необходимые для сопоставления. После того, как оно будет достигнуто, соответствующие
+продолжается в B, который также может отходить в случае необходимости; Однако если Б
+не совпадают, то без дальнейших возвратом займет место и шаблон
+не удастся прямо в текущей начальной позиции.
 
 This zero-width pattern prunes the backtracking tree at the current point
 when backtracked into on failure. Consider the pattern C<A (*PRUNE) B>,
