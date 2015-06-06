@@ -4,7 +4,7 @@
 
 perlunitut - Perl Unicode Tutorial
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
 The days of just flinging strings around are over. It's well established that
 modern programs need to be capable of communicating funny accented letters, and

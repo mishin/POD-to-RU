@@ -2,18 +2,18 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perluniintro - Perl Unicode introduction
+perluniintro - введение в Perl Юникод
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
-This document gives a general idea of Unicode and how to use Unicode
-in Perl.  See L</Further Resources> for references to more in-depth
-treatments of Unicode.
+Этот документ дает общее представление о Юникоде и как правильно использовать Юникод
+в Perl. Смотрите L</Дополнительные Ресурсы> для ссылок на более глубокие
+ исследования Юникода.
 
-=head2 Unicode
+=head2 Юникод
 
-Unicode is a character set standard which plans to codify all of the
-writing systems of the world, plus many other symbols.
+Юникодом является стандарт кодировки символов, которым планируют кодифицировать все
+системы письменности мира, а также многие другие символы.
 
 Unicode and ISO/IEC 10646 are coordinated standards that unify
 almost all other modern character set standards,
