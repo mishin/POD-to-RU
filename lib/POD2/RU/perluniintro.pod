@@ -1,4 +1,6 @@
-=head1 NAME
+=encoding UTF-8
+
+=head1 NAME/НАИМЕНОВАНИЕ
 
 perluniintro - Perl Unicode introduction
 
@@ -944,3 +946,11 @@ mailing lists for their valuable feedback.
 Copyright 2001-2011 Jarkko Hietaniemi E<lt>jhi@iki.fiE<gt>
 
 This document may be distributed under the same terms as Perl itself.
+
+=head1 ПЕРЕВОДЧИКИ
+ 
+=over
+ 
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back

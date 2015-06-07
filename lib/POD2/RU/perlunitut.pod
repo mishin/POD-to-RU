@@ -1,4 +1,6 @@
-=head1 NAME
+=encoding UTF-8
+
+=head1 NAME/НАИМЕНОВАНИЕ
 
 perlunitut - Perl Unicode Tutorial
 
@@ -206,3 +208,10 @@ Juerd Waalboer <#####@juerd.nl>
 
 L<perlunifaq>, L<perlunicode>, L<perluniintro>, L<Encode>
 
+=head1 ПЕРЕВОДЧИКИ
+ 
+=over
+ 
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
