@@ -2053,7 +2053,7 @@ regular expression matched successfully.
 
 Как вы видите, это может быть немного сложнее. Важно понимать, что
 регулярное выражение-это просто набор утверждений, которые определяют
-успеха. Может быть 0, 1 или несколько различных способов определений,
+успех. Может быть 0, 1 или несколько различных способов определений,
  который могут быть успешны против конкретной строки. И если есть
 несколько способов, которыми можно добиться успеха, то вам нужно понять поиск с возвратом, 
  чтобы узнать, насколько разнообразного успеха вы добьетесь.
@@ -2067,9 +2067,9 @@ regular expression matched successfully.
         print "Yup, no 123 in $_\n";
     }
 
-But that isn't going to match; at least, not the way you're hoping.  It
-claims that there is no 123 in the string.  Here's a clearer picture of
-why that pattern matches, contrary to popular expectations:
+Но это не будет найдено; по крайней мере не так, как вы надеетесь. Это
+утверждает, что в строке нет никаких 123. Вот более четкую картина о том,
+почему этот шаблон совпадает, вопреки популярным ожиданиям:
 
     $x = 'ABC123';
     $y = 'ABC445';
@@ -2080,7 +2080,7 @@ why that pattern matches, contrary to popular expectations:
     print "3: got $1\n" if $x =~ /^(\D*)(?!123)/;
     print "4: got $1\n" if $y =~ /^(\D*)(?!123)/;
 
-This prints
+Это напечатает
 
     2: got ABC
     3: got AB
