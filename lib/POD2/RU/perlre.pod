@@ -2067,9 +2067,9 @@ regular expression matched successfully.
         print "Yup, no 123 in $_\n";
     }
 
-Но это не будет найдено; по крайней мере не так, как вы надеетесь. Это
-утверждает, что в строке нет никаких 123. Вот более четкую картина о том,
-почему этот шаблон совпадает, вопреки популярным ожиданиям:
+Но это не будет найдено; по крайней мере не так, как вы надеетесь. Здесь 
+утверждается, что в строке нет никаких 123. Вот более четкая картина о том,
+почему этот шаблон совпадает, вопреки всеобщим ожиданиям:
 
     $x = 'ABC123';
     $y = 'ABC445';
@@ -2086,25 +2086,32 @@ regular expression matched successfully.
     3: got AB
     4: got ABC
 
-You might have expected test 3 to fail because it seems to a more
-general purpose version of test 1.  The important difference between
-them is that test 3 contains a quantifier (C<\D*>) and so can use
-backtracking, whereas test 1 will not.  What's happening is
-that you've asked "Is it true that at the start of $x, following 0 or more
-non-digits, you have something that's not 123?"  If the pattern matcher had
-let C<\D*> expand to "ABC", this would have caused the whole pattern to
-fail.
+Вы могли рассчитывать, что 3 тест будет провален, потому что он кажется более
+общим назначением теста 1. Важное различие между
+ними является то, что тест 3 содержит квантификатор (C<\D*>) и поэтому он может использовать
+поиск с возвратом, тогда как тест 1 не будет. Что происходит, когда
+ вы спросили "это правда, что в начале $x, после 0 или больше
+не цифр, у вас есть что-то не 123?" Если совпадений шаблона
+пусть C<\D*> расширяется до "ABC", это привело бы к тому, что весь шаблон
+ был бы провальным.
 
-The search engine will initially match C<\D*> with "ABC".  Then it will
-try to match C<(?!123)> with "123", which fails.  But because
-a quantifier (C<\D*>) has been used in the regular expression, the
-search engine can backtrack and retry the match differently
-in the hope of matching the complete regular expression.
+Поисковый движок изначально будет искать шаблон C<\D*> в "ABC". Затем он 
+попробует найти C<(?!123)> в "123", что не удастся. А потому, что
+повторитель (C<\D*>) был использован в регулярном выражении,
+поисковый движок может искать с возвратом и повторить поиск по-разному
+в надежде на полное соответствие регулярного выражения.
 
-The pattern really, I<really> wants to succeed, so it uses the
-standard pattern back-off-and-retry and lets C<\D*> expand to just "AB" this
-time.  Now there's indeed something following "AB" that is not
-"123".  It's "C123", which suffices.
+Шаблон действительно, I<действительно> хочет добиться успеха, поэтому он использует
+стандартный шаблон "возвратиьс-и-повтори" и позволяет C<\D*> расширится до просто "AB" в это
+время. Теперь это действительно что-то после "AB" это не
+"123". Это "C123", которого достаточно.
+
+Мы можем иметь дело с этим с помощью утверждения и отрицания.
+Мы будем говорить, что первая часть в $1 должны быть затем оба цифра
+и то, что это не «123». Помните, что вид чтений
+нулевой ширины выражения--они только выглядят, но не потреблять любой
+строки в их матче. Так что переписывания таким образом производит
+можно было бы ожидать; то есть дело 5 удастся, но дело 6 успешно:
 
 We can deal with this by using both an assertion and a negation.
 We'll say that the first part in $1 must be followed both by a digit
