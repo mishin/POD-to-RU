@@ -2107,62 +2107,53 @@ regular expression matched successfully.
 "123". Это "C123", которого достаточно.
 
 Мы можем иметь дело с этим с помощью утверждения и отрицания.
-Мы будем говорить, что первая часть в $1 должны быть затем оба цифра
-и то, что это не «123». Помните, что вид чтений
-нулевой ширины выражения--они только выглядят, но не потреблять любой
-строки в их матче. Так что переписывания таким образом производит
-можно было бы ожидать; то есть дело 5 удастся, но дело 6 успешно:
-
-We can deal with this by using both an assertion and a negation.
-We'll say that the first part in $1 must be followed both by a digit
-and by something that's not "123".  Remember that the look-aheads
-are zero-width expressions--they only look, but don't consume any
-of the string in their match.  So rewriting this way produces what
-you'd expect; that is, case 5 will fail, but case 6 succeeds:
+Мы будем говорить, что за первой частью в $1 должна идти цифра
+ что-то не "123". Помните, что осмотр-вперед является выражением
+нулевой ширины -- они только так выглядят, но не потребляют никакой строки
+ во время поиска. Так что переписывания таким образом производит то, что 
+можно было бы ожидать; то есть 5 случай неуспешен, а 6 случай успешен:
 
     print "5: got $1\n" if $x =~ /^(\D*)(?=\d)(?!123)/;
     print "6: got $1\n" if $y =~ /^(\D*)(?=\d)(?!123)/;
 
     6: got ABC
 
-In other words, the two zero-width assertions next to each other work as though
-they're ANDed together, just as you'd use any built-in assertions:  C</^$/>
-matches only if you're at the beginning of the line AND the end of the
-line simultaneously.  The deeper underlying truth is that juxtaposition in
-regular expressions always means AND, except when you write an explicit OR
-using the vertical bar.  C</ab/> means match "a" AND (then) match "b",
-although the attempted matches are made at different positions because "a"
-is not a zero-width assertion, but a one-width assertion.
+Другими словами,работают два утверждения нулевой ширины рядом друг с другом
+они объединяются вместе, так же, как и любые встроенные утверждения:C</^$/>
+соответствует только если вы в начале строки и в конце
+строки одновременно. Более глубокая правда в том, что соседство в
+регулярные выражения всегда означает И, за исключением случаев, когда вы пишете явно ИЛИ
+, используя вертикальную черту. C</ab/> означает поиск "a" И (потом) поиск "b",
+хотя попытки поиска сделаны на разных позициях, потому что "a"
+это не утверждение нулевой ширины, а утверждение в ширину один символ.
 
-B<WARNING>: Particularly complicated regular expressions can take
-exponential time to solve because of the immense number of possible
-ways they can use backtracking to try for a match.  For example, without
-internal optimizations done by the regular expression engine, this will
-take a painfully long time to run:
+B<ПРЕДУПРЕЖДЕНИЕ>: особенно сложные регулярные выражения могут занимать
+экспоненциальное время для их решения из-за огромного количества возможных
+способов, которыми они могут использовать поиск с возвратом для поиска. Например, без
+внутренней оптимизации, сделанной обработчиком регулярных выражений, это будет
+ занимать много времени для работы:
 
     'aaaaaaaaaaaa' =~ /((a{0,5}){0,5})*[c]/
 
-And if you used C<*>'s in the internal groups instead of limiting them
-to 0 through 5 matches, then it would take forever--or until you ran
-out of stack space.  Moreover, these internal optimizations are not
-always applicable.  For example, if you put C<{0,5}> instead of C<*>
-on the external group, no current optimization is applicable, and the
-match takes a long time to finish.
+И если вы использовали C<*> на внутренние группы вместо их ограничения
+с 0 до 5 раз, то он будет считать вечно --или до тех пор, пока вы не достигнете
+переполнения стека. Кроме того эти внутренние оптимизации являются не
+всегда применимыми. Например, если вы поставили C<{0,5}> вместо C<*>
+на внешней группе, не применяется  текущая оптимизация и
+поиск занимает много времени для завершения.
 
-A powerful tool for optimizing such beasts is what is known as an
-"independent group",
-which does not backtrack (see L</C<< (?>pattern) >>>).  Note also that
-zero-length look-ahead/look-behind assertions will not backtrack to make
-the tail match, since they are in "logical" context: only
-whether they match is considered relevant.  For an example
-where side-effects of look-ahead I<might> have influenced the
-following match, see L</C<< (?>pattern) >>>.
+Мощный инструмент для оптимизации таких зверских выражений является то, что известно как
+"Независимая группа", которая не использует поиск с возвратом (см. L</C<< (?>pattern) >>>).
+Обратите внимание, что утверждения нулевой длины такие как осмотр-вперед/осмотр-назад  не будет
+делать поиск с возвратом, чтобы найти хвостовой поиск, так как они находятся в "логическом" контексте: 
+только то место, где они найдутся считается соответствующим. В качестве примера
+где побочные эффекты осмотра-вперед I<могут> иметь влияние на последующий поиск, см L</C<< (?>pattern) >>>.
 
-=head2 Version 8 Regular Expressions
+=head2 8 версия регулярных выражений
 X<regular expression, version 8> X<regex, version 8> X<regexp, version 8>
 
-In case you're not familiar with the "regular" Version 8 regex
-routines, here are the pattern-matching rules not described above.
+В случае, если вы не знакомы с "обычной" 8 версией регекс 
+процедур, вот правила сопоставления шаблонов, не описанные выше.
 
 Any single character matches itself, unless it is a I<metacharacter>
 with a special meaning described here or above.  You can cause
