@@ -2155,32 +2155,31 @@ X<regular expression, version 8> X<regex, version 8> X<regexp, version 8>
 В случае, если вы не знакомы с "обычной" 8 версией регекс 
 процедур, вот правила сопоставления шаблонов, не описанные выше.
 
-Any single character matches itself, unless it is a I<metacharacter>
-with a special meaning described here or above.  You can cause
-characters that normally function as metacharacters to be interpreted
-literally by prefixing them with a "\" (e.g., "\." matches a ".", not any
-character; "\\" matches a "\"). This escape mechanism is also required
-for the character used as the pattern delimiter.
+Любой один символ соответствует самому себе, если это не I<метасимвол>, которые имеют
+особое значение, описанное здесь или выше. Вы можете вызывать
+символы, которые обычно являются метасимволами буквально, 
+предваряя их  "\" (например, поис "\." найдет ".",а не какй-либо другой
+символ; "\\" найдет "\"). Этот механизм экранирования нужен также 
+для символа, используемого в качестве разделителя шаблона.
 
-A series of characters matches that series of characters in the target
-string, so the pattern C<blurfl> would match "blurfl" in the target
-string.
+Серия символов соответствует этой серии символов в целевой
+строке, поэтому шаблон C <blurfl> будет соответствовать "blurfl" в целевой
+строке.
 
-You can specify a character class, by enclosing a list of characters
-in C<[]>, which will match any character from the list.  If the
-first character after the "[" is "^", the class matches any character not
-in the list.  Within a list, the "-" character specifies a
-range, so that C<a-z> represents all characters between "a" and "z",
-inclusive.  If you want either "-" or "]" itself to be a member of a
-class, put it at the start of the list (possibly after a "^"), or
-escape it with a backslash.  "-" is also taken literally when it is
-at the end of the list, just before the closing "]".  (The
-following all specify the same class of three characters: C<[-az]>,
-C<[az-]>, and C<[a\-z]>.  All are different from C<[a-z]>, which
-specifies a class containing twenty-six characters, even on EBCDIC-based
-character sets.)  Also, if you try to use the character
-classes C<\w>, C<\W>, C<\s>, C<\S>, C<\d>, or C<\D> as endpoints of
-a range, the "-" is understood literally.
+Можно указать класс символов, заключив список символов
+в C<[]>, который будет соответствовать любому символу из списка. Если
+первый символ после  "["  "^",класс соответствует любому знаку, не
+в списке. В списке символ "-" указывает на диапазон, 
+так что C<a-z> представляет все символы между "a" и "z"
+включительно. Если вы хотите, чтобы либо "-" либо "]" сами собой были членами
+класса, поместите их в начале списка (возможно, после "^"), или
+поставьте перед символами обратный слеш. "-" также воспринимается буквально, когда оно находится
+в конце списка, непосредственно рядом с "]". (следующие выражения ниже указывают на класс из трех символов: C<[-az]>,
+C<[az-]> и C<[a\-z]>. Все они отличаются от C<[a-z]>, который
+указывает класс, содержащий двадцать шесть символов, даже на основе EBCDIC
+набора символов.) Кроме того, если вы попытаетесь использовать символ
+класса  C<\w>, C<\W>, C<\s>, C<\S>, C<\d>, или C<\D> как конечные точки
+диапазона, то "-" понимается буквально.
 
 Note also that the whole range idea is rather unportable between
 character sets--and even within character sets they may cause results
