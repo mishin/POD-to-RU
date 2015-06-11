@@ -2266,15 +2266,10 @@ B<ПРЕДУПРЕЖДЕНИЕ>: трудный материал (и проза)
 
     'foo' =~ m{ ( o? )* }x;
 
-The C<o?> matches at the beginning of C<'foo'>, and since the position
-in the string is not moved by the match, C<o?> would match again and again
-because of the C<*> quantifier.  Another common way to create a similar cycle
-is with the looping modifier C<//g>:
-
 C<o?> находит в начале C<'foo'> и с тех пор позиция
-в строке не перемещается, поиск, C <o?> будет соответствовать снова и снова
+в строке не перемещается, поиск, C<o?> будет искать снова и снова
 из-за квантификатора C<*> . Еще один распространенный способ создания аналогичного цикла
-является циклирующий  циклы C<//g>:
+является циклирующий модификатор C<//g>:
 
     @matches = ( 'foo' =~ m{ o? }xg );
 
@@ -2289,39 +2284,39 @@ C<o?> находит в начале C<'foo'> и с тех пор позиция
 , которым могут соответствовать подстроки нулевой длины. Вот простой пример того:
 
     @chars = split //, $string;           # // нет магии split()
-    ($whitewashed = $string) =~ s/()/ /g; # закрытые скобки избегают магия s// /
+    ($whitewashed = $string) =~ s/()/ /g; # закрытые скобки избегают магии s// /
 
-Thus Perl allows such constructs, by I<forcefully breaking
-the infinite loop>.  The rules for this are different for lower-level
-loops given by the greedy quantifiers C<*+{}>, and for higher-level
-ones like the C</g> modifier or split() operator.
+Таким образом Perl позволяет такие конструкции, чтобы I<насильственно разорвать
+бесконечный цикл>. Правила для этого различны для низк уровня
+циклов, предоставлены "жадные" повторители кванторыC<*+{}>,а  для более высокого уровня
+ циклов такие модификаторы, как C</g>  или оператор split().
 
-The lower-level loops are I<interrupted> (that is, the loop is
-broken) when Perl detects that a repeated expression matched a
-zero-length substring.   Таким образом
+Циклы нижнего уровня являются I<прерываемыми>(то есть цикл является
+сломанный) когда Perl обнаруживает, что повторяемое находит подстроку
+нулевой длины. Таким образом
 
    m{ (?: NON_ZERO_LENGTH | ZERO_LENGTH )* }x;
 
-is made equivalent to
+производит эквивалентно
 
    m{ (?: NON_ZERO_LENGTH )* (?: ZERO_LENGTH )? }x;
 
-For example, this program
+Например, эта программа
 
    #!perl -l
    "aaaaab" =~ /
      (?:
-        a                 # non-zero
-        |                 # or
-       (?{print "hello"}) # print hello whenever this
-                          #    branch is tried
-       (?=(b))            # zero-width assertion
-     )*  # any number of times
+        a                 # не равно нулю
+        |                 # или
+       (?{print "hello"}) # печатать hello всякий раз, когда эта
+                          #    ветка выбирается
+       (?=(b))            # утверждение нулевой длины
+     )*  # любое число раз
     /x;
    print $&;
    print $1;
 
-prints
+напечатает
 
    hello
    aaaaa
