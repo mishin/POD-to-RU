@@ -2322,9 +2322,10 @@ C<o?> находит в начале C<'foo'> и с тех пор позиция
    aaaaa
    b
 
-Notice that "hello" is only printed once, as when Perl sees that the sixth
-iteration of the outermost C<(?:)*> matches a zero-length string, it stops
-the C<*>.
+Обратите внимание, что "hello" будет напечатан один раз, 
+когда Perl увидит, что шестая
+итерация внешнего C<(?:)*> найдет строку нулевой длины,и он останавливает
+C<*>.
 
 The higher-level loops preserve an additional state between iterations:
 whether the last match was zero-length.  To break the loop, the following
