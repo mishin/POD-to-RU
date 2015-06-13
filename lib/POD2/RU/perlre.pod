@@ -2437,41 +2437,29 @@ C<S> имеет скобки, и где-то используются обрат
 
 =item C<(?(condition)yes-pattern|no-pattern)>
 
-Напомним, что из <yes-pattern> или C <no-pattern> фактически совпадающий
-уже определены. Заказ на матчи одинакова как для
-выбранного выражения.
-Recall that which of C<yes-pattern> or C<no-pattern> actually matches is
-already determined.  The ordering of the matches is the same as for the
-chosen subexpression.
+Вызов C<да-шаблона> или C<нет-шаблона> 
+уже определен своим совпадением. Последовательность (ordering) поиска
+такая же, как и выбранные подвыражения.
 
 =back
 
-Выше рецепты описывают порядок матчей я < в заданной позиции >.
-Еще одно правило необходимо понять, как соответствие определяется для
-Все регулярное выражение: матч на ранее позиции всегда лучше
-чем матч в поздней позиции.
+Рецепты выше описывают последовательность поиска I<в заданной позиции>.
+Еще одно правило необходимо понять, как поиск определяется для
+всего регулярного выражения: поиск на ранней позиции всегда лучше,
+чем успешный поиск в поздней позиции.
 
-The above recipes describe the ordering of matches I<at a given position>.
-One more rule is needed to understand how a match is determined for the
-whole regular expression: a match at an earlier position is always better
-than a match at a later position.
+=head2 Создание пользовательских движков РЕ (РЕГЕКСПОВ)
 
-=head2 Creating Custom RE Engines
+По состоянию на Perl 5.10.0 можно создать пользовательский движок регулярных выражений. Это не для слабонервных, так как они должны подключаться на уровне С.
+ См.L<perlreapi> для получения более подробной информации.
 
-As of Perl 5.10.0, one can create custom regular expression engines.  This
-is not for the faint of heart, as they have to plug in at the C level.  See
-L<perlreapi> for more details.
+В качестве альтернативы можно перегружать константы (см. C<overload>) предоставляют простой путь для расширения функциональности движка РЕ, 
+заменяя один шаблон другим.
 
-As an alternative, overloaded constants (see L<overload>) provide a simple
-way to extend the functionality of the RE engine, by substituting one
-pattern for another.
-
-Suppose that we want to enable a new RE escape-sequence C<\Y|> which
-matches at a boundary between whitespace characters and non-whitespace
-characters.  Note that C<(?=\S)(?<!\S)|(?!\S)(?<=\S)> matches exactly
-at these positions, so we want to have each C<\Y|> in the place of the
-more complicated version.  We can create a module C<customre> to do
-this:
+Предположим, что мы хотим, чтобы включить новую RE эскейп-последовательность C<\Y|>, которая ищет на границе между знаками пробела и непробельных
+символов. Обратите внимание что C<(?=\S)(?<!\S)|(?!\S)(?<=\S)>
+находит в точности на этих позициях, итак мы хотим иметь каждый C<\Y|> в месте  более сложной версии. Мы можем создать модуль C<customre>
+ для того, чтобы делать это:
 
     package customre;
     use overload;
@@ -2484,8 +2472,8 @@ this:
 
     sub invalid { die "/$_[0]/: invalid escape '\\$_[1]'"}
 
-    # We must also take care of not escaping the legitimate \\Y|
-    # sequence, hence the presence of '\\' in the conversion rules.
+    # Мы должны также позаботиться о том, чтобы неэскейпить законную \\Y|
+    # последовательность, поэтому присутствие '\\' в правилах преобразования.
     my %rules = ( '\\' => '\\\\',
                   'Y|' => qr/(?=\S)(?<!\S)|(?!\S)(?<=\S)/ );
     sub convert {
@@ -2497,12 +2485,13 @@ this:
       return $re;
     }
 
-Now C<use customre> enables the new escape in constant regular
-expressions, i.e., those without any runtime variable interpolations.
-As documented in L<overload>, this conversion will work only over
-literal parts of regular expressions.  For C<\Y|$re\Y|> the variable
-part of this regular expression needs to be converted explicitly
-(but only if the special meaning of C<\Y|> should be enabled inside $re):
+Теперь C<use customre> включает новую эсейп-последовательность
+ в постоянных регулярных выражениях, то есть без какого-либо выполнения переменных интерполяции.
+Как описано в L<overload>, это преобразование будет работать только над
+литеральными (символьными) частями регулярных выражений. 
+Для C<\Y|$re\Y|> переменная
+часть этиого регулярного выражения необходимо явно преобразовать
+(но только если особое значение C<\Y|> должно быть включено внутри $re):
 
     use customre;
     $re = <>;
@@ -2510,51 +2499,51 @@ part of this regular expression needs to be converted explicitly
     $re = customre::convert $re;
     /\Y|$re\Y|/;
 
-=head2 PCRE/Python Support
+=head2 Поддпержка PCRE/Python
 
-As of Perl 5.10.0, Perl supports several Python/PCRE-specific extensions
-to the regex syntax. While Perl programmers are encouraged to use the
-Perl-specific syntax, the following are also accepted:
+По состоянию на Perl 5.10.0 Perl поддерживает несколько расширений Python/PCRE-специфичного синтаксиса регекс. 
+В то время, как Perl программистов, рекомендуется использовать
+Perl специфический синтаксис, также принимаются следующие:
 
 =over 4
 
 =item C<< (?PE<lt>NAMEE<gt>pattern) >>
 
-Define a named capture group. Equivalent to C<< (?<NAME>pattern) >>.
+Определение именованную группу. Эквивалент C<< (?<NAME>pattern) >>.
 
 =item C<< (?P=NAME) >>
 
-Backreference to a named capture group. Equivalent to C<< \g{NAME} >>.
+Обратная ссылка на именованную группу. Эквивалент C<< \g{NAME} >>.
 
 =item C<< (?P>NAME) >>
 
-Subroutine call to a named capture group. Equivalent to C<< (?&NAME) >>.
+Вызов подпрограммы как именованной группы. Эквивалент C<< (?&NAME) >>.
 
 =back
 
-=head1 BUGS
+=head1 ОШИБКИ (BUGS)
 
-Many regular expression constructs don't work on EBCDIC platforms.
+Многие конструкции регулярных выражений не работают на платформах EBCDIC.
 
-There are a number of issues with regard to case-insensitive matching
-in Unicode rules.  See C<i> under L</Modifiers> above.
+Существует целый ряд проблем (issues) в отношении поиска без учета регистра
+в правилах Юникода. Смотрите C<i> в статье L</Модификаторы> выше.
 
-This document varies from difficult to understand to completely
-and utterly opaque.  The wandering prose riddled with jargon is
-hard to fathom in several places.
+Этот документ варьируется от сложного для понимания до полностью
+и совершенно непрозрачным. Блуждающие проза, изобилует жаргоном
+трудно понимаемым в нескольких местах.
 
-This document needs a rewrite that separates the tutorial content
-from the reference content.
+Этот документ нужно переписать, выделяя содержимое учебника
+из ссылки на содержание.
 
-=head1 SEE ALSO
+=head1 СМОТРИТЕ ТАКЖЕ
 
 L<perlrequick>.
 
 L<perlretut>.
 
-L<perlop/"Regexp Quote-Like Operators">.
+L<perlop/"Квотирование и Операторы заключения в кавычки">.
 
-L<perlop/"Gory details of parsing quoted constructs">.
+L<perlop/"Внутренние детали парсинга конструкций в кавычках">.
 
 L<perlfaq6>.
 
