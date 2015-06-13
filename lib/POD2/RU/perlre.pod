@@ -2327,6 +2327,13 @@ C<o?> находит в начале C<'foo'> и с тех пор позиция
 итерация внешнего C<(?:)*> найдет строку нулевой длины,и он останавливает
 C<*>.
 
+Высокого уровня цикл сохранения дополнительного состояния между итераций:
+является ли последний матч был нулевой длины. Чтобы разорвать цикл, следующие
+матч, после совпадения нулевой длины запрещается иметь нулевую длину.
+Этот запрет взаимодействует с возвратом (см. Л <"Backtracking">),
+и поэтому я < вторым лучшим > матч имеет выбрали если я <best>матч
+нулевой длины.
+
 The higher-level loops preserve an additional state between iterations:
 whether the last match was zero-length.  To break the loop, the following
 match after a zero-length match is prohibited to have a length of zero.
