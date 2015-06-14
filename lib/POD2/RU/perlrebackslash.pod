@@ -144,7 +144,7 @@ C<\n> соответствует логической новой строке. P
 
  $str =~ /\t/;   # Найдет, если $str содержит (горизонтальный) символ табуляции.
 
-=head3 Control characters
+=head3 Контрол символы
 
 C<\c> is used to denote a control character; the character following C<\c>
 determines the value of the construct.  For example the value of C<\cA> is
