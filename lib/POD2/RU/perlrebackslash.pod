@@ -144,154 +144,151 @@ C<\n> соответствует логической новой строке. P
 
  $str =~ /\t/;   # Найдет, если $str содержит (горизонтальный) символ табуляции.
 
-=head3 Контрол символы
+=head3 Управляющие символы (Control characters)
 
-C<\c> is used to denote a control character; the character following C<\c>
-determines the value of the construct.  For example the value of C<\cA> is
-C<chr(1)>, and the value of C<\cb> is C<chr(2)>, etc.
-The gory details are in L<perlop/"Regexp Quote-Like Operators">.  A complete
-list of what C<chr(1)>, etc. means for ASCII and EBCDIC platforms is in
+C<\c> используется для обозначения символа управления; символ следующий после C<\c>,
+определяет значение конструкции. Например значение C<\cA>
+C<chr(1)> и значение C<\cb> – C<chr(2)> и др.
+Подробные детали находятся в L<perlop/"Regexp операторы заключения в кавычки">. Полный
+cписок элементов C<chr(1)>, и т.д. средства для ASCII и EBCDIC платформ находится в
 L<perlebcdic/OPERATOR DIFFERENCES>.
 
-Note that C<\c\> alone at the end of a regular expression (or doubled-quoted
-string) is not valid.  The backslash must be followed by another character.
-That is, C<\c\I<X>> means C<chr(28) . 'I<X>'> for all characters I<X>.
+Обратите внимание что одна C<\c\> в конце регулярного выражения (или в двойных кавычках)
+ не является допустимым. Обратная косая черта должна сопровождаться другой символ.
+То есть, C<\c\I<X>> означает C<chr(28) . 'I<X>'> для всех символов I<X>.
 
-To write platform-independent code, you must use C<\N{I<NAME>}> instead, like
-C<\N{ESCAPE}> or C<\N{U+001B}>, see L<charnames>.
+Чтобы написать платформенно независимый код необходимо использовать  C<\N{I<NAME>}> вместо этого, например
+C<\N{ESCAPE}> или C<\N{U+001B}>, см. L<charnames>.
 
-Mnemonic: I<c>ontrol character.
+Назначанный символ (Мнемоника): символ I<c>ontrol.
 
-=head4 Example
+=head4 Пример
 
- $str =~ /\cK/;  # Matches if $str contains a vertical tab (control-K).
+ $str =~ /\cK/;  # Найдет, если $str содержит вертикальную табуляцию (control-K).
 
-=head3 Named or numbered characters and character sequences
+=head3 Именованные или нумерованные символы и последовательности символов
 
-Unicode characters have a Unicode name and numeric code point (ordinal)
-value.  Use the
-C<\N{}> construct to specify a character by either of these values.
-Certain sequences of characters also have names.
+Символы Юникода имеют Юникодное имя и числовой код (порядковый). 
+Используйте конструкцию C<\N{}> для указания символа по одному из этих значений.
+Некоторые последовательности символов также имеют имена.
 
-To specify by name, the name of the character or character sequence goes
-between the curly braces.
+Чтобы задать имя, имя символ символа или последовательности символов нужно писать
+между фигурными скобками.
 
-To specify a character by Unicode code point, use the form C<\N{U+I<code
-point>}>, where I<code point> is a number in hexadecimal that gives the
-code point that Unicode has assigned to the desired character.  It is
-customary but not required to use leading zeros to pad the number to 4
-digits.  Thus C<\N{U+0041}> means C<LATIN CAPITAL LETTER A>, and you will
-rarely see it written without the two leading zeros.  C<\N{U+0041}> means
-"A" even on EBCDIC machines (where the ordinal value of "A" is not 0x41).
+Чтобы указать символ с помощью Юникодного кода (Unicode code point) используйте форму  C<\N{U+I<код символа>}>, где I<код символа> — число в шестнадцатеричной форме, которое указывает на код символа Юникода,
+ которому в Юникоде присвоен соответствующий символ. 
+ Обычно, но не обязательно использовать нули в начале числа размером в 4 цифры. 
+ Таким образом C<\N{U+0041}> означает C<LATIN CAPITAL LETTER A>, и вы 
+редко сможете увидеть это написание без двух ведущих нулей. C<\N{U+0041}> означает
+"A" даже на машинах EBCDIC (где порядковое значение  "A" не является 0x41).
 
-It is even possible to give your own names to characters and character
-sequences.  For details, see L<charnames>.
+Возможно даже дать ваши собственные имена для символов и символьных
+последовательностей. Для подробностей см. L<charnames>.
 
-(There is an expanded internal form that you may see in debug output:
-C<\N{U+I<code point>.I<code point>...}>.
-The C<...> means any number of these I<code point>s separated by dots.
-This represents the sequence formed by the characters.  This is an internal
-form only, subject to change, and you should not try to use it yourself.)
+(Есть расширение внутренней формы, которое вы можете увидеть в выводе отладки:
+C<\N{U+I<кодовая точка>.I<кодовая точка>...}>.
+C<... > означает любое количество этих I<кодовых точек>, разделенных точками.
+Это представляет собой последовательность, образованную символами. Это только внутренняя
+ форма, она может меняться, и вы не должны пытаться использовать ее самостоятельно).
 
-Mnemonic: I<N>amed character.
+Mnemonic: I<И>менованные символы.
 
-Note that a character or character sequence expressed as a named
-or numbered character is considered a character without special
-meaning by the regex engine, and will match "as is".
+Обратите внимание, что символ или последовательность символов в виде именованного
+или пронумерованного символа рассматривается как символ без специального
+ смысла для движка регекс и будет искаться "как есть".
 
-=head4 Example
+=head4 Например
 
- $str =~ /\N{THAI CHARACTER SO SO}/;  # Matches the Thai SO SO character
+ $str =~ /\N{THAI CHARACTER SO SO}/;  # Найдет тайский смивол SO SO
 
- use charnames 'Cyrillic';            # Loads Cyrillic names.
- $str =~ /\N{ZHE}\N{KA}/;             # Match "ZHE" followed by "KA".
+ use charnames 'Cyrillic';            # Загружает кириллические имена.
+ $str =~ /\N{ZHE}\N{KA}/;             # Найдет "ZHE" следующис за "KA".
 
-=head3 Octal escapes
+=head3 Восьмеричные эскейп-последовательности
 
-There are two forms of octal escapes.  Each is used to specify a character by
-its code point specified in octal notation.
+Существует две формы Восьмеричной эскейп-последовательности. Каждая используется для указания символа
+его кодовой точкой, указанной в восьмеричной системе счисления.
 
-One form, available starting in Perl 5.14 looks like C<\o{...}>, where the dots
-represent one or more octal digits.  It can be used for any Unicode character.
+Одна из форм доступных начиная в Perl 5.14 выглядит как C<\o{...}>, где точки
+представляют собой один или несколько восьмеричных цифр. Она может использоваться для любого символа Юникода.
 
-It was introduced to avoid the potential problems with the other form,
-available in all Perls.  That form consists of a backslash followed by three
-octal digits.  One problem with this form is that it can look exactly like an
-old-style backreference (see
-L</Disambiguation rules between old-style octal escapes and backreferences>
-below.)  You can avoid this by making the first of the three digits always a
-zero, but that makes \077 the largest code point specifiable.
+Он был введен, чтобы избежать потенциальных проблем с другой формой,
+имеющейся в всех версия языка Перл. Эта форма состоит из косой черты за которой следуют три
+восьмеричные цифры. Одна из проблем с этой формой является то, что она может выглядеть так же, как
+старый стиль обратной ссылки (см.
+L</Разрешение неоднозначности правил между восьмеричным написанием в старинном стиле и обратной ссылкой>
+(L</Disambiguation rules between old-style octal escapes and backreferences>)
+ниже.) Этого можно избежать, сделав первый из трех цифр всегда
+ноль, но что делает \077 самой большой кодовой точкой в спецификации.
 
-In some contexts, a backslash followed by two or even one octal digits may be
-interpreted as an octal escape, sometimes with a warning, and because of some
-bugs, sometimes with surprising results.  Also, if you are creating a regex
-out of smaller snippets concatenated together, and you use fewer than three
-digits, the beginning of one snippet may be interpreted as adding digits to the
-ending of the snippet before it.  See L</Absolute referencing> for more
-discussion and examples of the snippet problem.
+В некоторых контекстах косая черта и два или даже одна восьмеричная цифра могут быть
+интерпретируется как восьмеричный эскйп символ, иногда с предупреждением и из-за некоторых
+ошибоки(bugs), иногда с неожиданными результатами. Кроме того если вы создаете регекс
+из небольших фрагментов, объединяемых вместе, и вы используете меньше, чем три
+цифры, начала одного фрагмента может быть истолковано как добавление цифр
+в окончание фрагмента перед ним. Смотрите L</Абсолютные ссылки> для более
+подробного обсуждения и примеров фрагментов с проблемами (snippet problem).
 
-Note that a character expressed as an octal escape is considered
-a character without special meaning by the regex engine, and will match
-"as is".
+Обратите внимание, что символ в виде как восьмеричный эскйп символа рассматривается, как
+ символ без особого значения в двигателе регекса и будет искаться "как есть" ("as is").
 
-To summarize, the C<\o{}> form is always safe to use, and the other form is
-safe to use for code points through \077 when you use exactly three digits to
-specify them.
+Подводя итог, C<\o{}> форма всегда является безопасным для использования, и другие формы
+безопасны для использования для кодовых точек от \077 при использовании ровно трёх цифр.
 
 Mnemonic: I<0>ctal or I<o>ctal.
 
-=head4 Examples (assuming an ASCII platform)
+=head4 Примеры (если платформа ASCII)
 
  $str = "Perl";
- $str =~ /\o{120}/;  # Match, "\120" is "P".
- $str =~ /\120/;     # Same.
- $str =~ /\o{120}+/; # Match, "\120" is "P",
-                     # it's repeated at least once.
- $str =~ /\120+/;    # Same.
- $str =~ /P\053/;    # No match, "\053" is "+" and taken literally.
- /\o{23073}/         # Black foreground, white background smiling face.
- /\o{4801234567}/    # Raises a warning, and yields chr(4).
+ $str =~ /\o{120}/;  # Найдет, "\120" это "P".
+ $str =~ /\120/;     # Тоже.
+ $str =~ /\o{120}+/; # Найдет, "\120" это "P",
+                     # Это повторяется по крайней мере один раз.
+ $str =~ /\120+/;    # Тоже.
+ $str =~ /P\053/;    # Не найдет, "\053" это "+" взятый буквально.
+ /\o{23073}/         # Черный на переднем плане, белый фон, улыбающееся лицо.(Black foreground, white background smiling face.)
+ /\o{4801234567}/    # Выдает предупреждение и дает chr(4).
 
-=head4 Disambiguation rules between old-style octal escapes and backreferences
+=head4 Разрешение неоднозначности правил между восьмеричным написанием в старинном стиле и обратной ссылкой
+(Disambiguation rules between old-style octal escapes and backreferences)
 
-Octal escapes of the C<\000> form outside of bracketed character classes
-potentially clash with old-style backreferences (see L</Absolute referencing>
-below).  They both consist of a backslash followed by numbers.  So Perl has to
-use heuristics to determine whether it is a backreference or an octal escape.
-Perl uses the following rules to disambiguate:
+Восьмеричная эсйкейп-последовательность C<\000> формируют вне символьных скобочных классов
+потенциально столкновение со старым стилем обратных ссылок (см. L</Абсолютные ссылки>
+ниже). Они оба состоят из косой черты, за которой идет число. Поэтому Perl
+использует эвристический подход для определения, является ли это обратной ссылкой или восьмеричный эскйеп символа.
+Perl использует следующие правила для однозначного определения:
 
 =over 4
 
 =item 1
 
-If the backslash is followed by a single digit, it's a backreference.
+Если за обратной косой чертой следует одна цифра, это обратная ссылка.
 
 =item 2
 
-If the first digit following the backslash is a 0, it's an octal escape.
+Если первая цифра после обратной косой черты имеет значение 0, это восьмеричный эскйеп символ.
 
 =item 3
 
-If the number following the backslash is N (in decimal), and Perl already
-has seen N capture groups, Perl considers this a backreference.  Otherwise,
-it considers it an octal escape. If N has more than three digits, Perl
-takes only the first three for the octal escape; the rest are matched as is.
+Если номер после обратной косой черты уже N (в десятичной системе) и Perl
+видел N групп захвата, Perl считает, что это обратная ссылка. В противном случае,
+он считает это Восьмеричным эскейп символом. Если N имеет более чем три цифры, Perl
+принимает только первые три для Восьмеричного эскейп символа; остальные совпадают, как есть.
 
  my $pat  = "(" x 999;
     $pat .= "a";
     $pat .= ")" x 999;
- /^($pat)\1000$/;   #  Matches 'aa'; there are 1000 capture groups.
- /^$pat\1000$/;     #  Matches 'a@0'; there are 999 capture groups
-                    #  and \1000 is seen as \100 (a '@') and a '0'.
+ /^($pat)\1000$/;   #  Найдет 'aa'; есть 1000 групп захвата.
+ /^$pat\1000$/;     #  Найдет 'a@0'; есть 999 групп захвата
+                    #  и \1000 выглядит, как \100 (a '@') и a '0'.
 
 =back
 
-You can force a backreference interpretation always by using the C<\g{...}>
-form.  You can the force an octal interpretation always by using the C<\o{...}>
-form, or for numbers up through \077 (= 63 decimal), by using three digits,
-beginning with a "0".
+Вы можете заставить интерпретировать обратную ссылку всегда с помощью  C<\g{...}>.
+Вы можете заставить интерпретировать восьмеричным эскейп символ с помощью формы C<\o{...}>
+, или для чисел вышк \077 (= 63 десятичных), с помощью трех цифр начинающихся с "0".
 
-=head3 Hexadecimal escapes
+=head3 Шестнадцатеричные эскейп-последовательности
 
 Like octal escapes, there are two forms of hexadecimal escapes, but both start
 with the same thing, C<\x>.  This is followed by either exactly two hexadecimal
