@@ -31,9 +31,6 @@ sub pod_info {
       perlreapi       => '5.18.0.1',
       perlre          => '5.18.0.1',
       perlsecret      => '5.18.0.1',
-      perlreapi       => '5.18.0.1',
-      perlglossary    => '5.18.0.1',   #для будущего перевода
-      perldebug    => '5.18.0.1',   #для будущего перевода
       ;
 }
 
