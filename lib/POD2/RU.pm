@@ -174,6 +174,8 @@ Nikolay Mishin E<lt> mi@ya.ru E<gt>
 
 =item * Zoffix Znet (L<ZOFFIX|https://metacpan.org/author/ZOFFIX>)
 
+=item * Дмитрий Анисимов
+
 =back
 
 =head1 COPYRIGHT
