@@ -2,6 +2,16 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * удалил непереведенные pod файлы
+           * добавил 
+           * - perlootut - Object-Oriented Programming in Perl Tutorial
+           * - perlopentut - simple recipes for opening files and pipes in Perl
+           * - perlreftut - Mark's very short tutorial about references
+           * - perlpacktut - tutorial on pack and unpack
+           * - perldebtut - Perl debugging tutorial
+           * - perlthrtut - Tutorial on threads in Perl
+           * - perlhacktut - Walk through the creation of a simple C code patch
+           * http://mail.pm.org/pipermail/moscow-pm/2015-June/019810.html
 5.18.0.1.72  2015-06-13 15:14:55 MSK
 
            * закончил перевод perlre, нужно думать, что переводить дальше
