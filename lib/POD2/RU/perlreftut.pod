@@ -532,6 +532,8 @@ courteous but is not required.
 =over
  
 =item * Николай Мишин C<< <mi@ya.ru> >>
-=item * Динар Жамалиев C<< <admin@perl5doc.ru> >> http://perl5doc.ru/perlreftut 
+
+=item * Динар Жамалиев C<< <admin@perl5doc.ru> >> L<http://perl5doc.ru/perlreftut>
+
 =back
 
