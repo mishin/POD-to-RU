@@ -1,23 +1,27 @@
-=head1 NAME
 
-perlreftut - Mark's very short tutorial about references
+=encoding utf8
 
-=head1 DESCRIPTION
+=head1 NAME/НАИМЕНОВАНИЕ
 
-One of the most important new features in Perl 5 was the capability to
-manage complicated data structures like multidimensional arrays and
-nested hashes.  To enable these, Perl 5 introduced a feature called
-'references', and using references is the key to managing complicated,
-structured data in Perl.  Unfortunately, there's a lot of funny syntax
-to learn, and the main manual page can be hard to follow.  The manual
-is quite complete, and sometimes people find that a problem, because
-it can be hard to tell what is important and what isn't.
+perlreftut - очень короткое руководство по ссылкам, которое написал Марк
 
-Fortunately, you only need to know 10% of what's in the main page to get
-90% of the benefit.  This page will show you that 10%.
+=head1 ОПИСАНИЕ
 
-=head1 Who Needs Complicated Data Structures?
+Одним из наиболее важных новых функций в Perl 5 была возможность
+управления сложными структурами данных такими, как многомерные массивы и
+вложенные хэши. Чтобы сделать это в Perl 5 появилась возможность
+ называемая 'ссылки' ('references') и использование ссылок является ключом к управлению сложными,
+структурированными данными в Perl. К сожалению есть много смешного синтаксиса
+для изучения, и главная страница маны (perlref) может быть сложна для изучения. Это Руководство - 
+ довольно полное, и иногда люди находят и здесь проблемы, потому что
+ иногда бывает трудно сказать, что важно, а что нет.
 
+К счастью вам только нужно знать только 10%, что находятся на главной странице (perlref), чтобы получить 
+90% выгоды. Эта страница покажет вам, что это за 10%.
+
+=head1 Кому нужны сложные структуры данных?
+
+http://perl5doc.ru/perlreftut
 One problem that comes up all the time is needing a hash whose values are
 lists.  Perl has hashes, of course, but the values have to be scalars;
 they can't be lists.
@@ -524,3 +528,12 @@ courteous but is not required.
 
 
 =cut
+
+=head1 ПЕРЕВОДЧИКИ
+ 
+=over
+ 
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
+
