@@ -63,39 +63,25 @@ perlreftut - очень короткое руководство по ссылк�
 Ко времени обкатки Perl 5 мы уже завязли в этой концепции: 
 Значениями хэша могут быть только скаляры. Решение пришло в виде ссылок.
 
-A reference is a scalar value that I<refers to> an entire array or an
-entire hash (or to just about anything else).  Names are one kind of
-reference that you're already familiar with.  Think of the President
-of the United States: a messy, inconvenient bag of blood and bones.
-But to talk about him, or to represent him in a computer program, all
-you need is the easy, convenient scalar string "Barack Obama".
+Ссылка — это скалярная величина, которая I<ссылается> на весь массив или на весь хэш (или еще на что-нибудь). Имена — один из видов ссылок, которые вам уже известны. Подумайте о президенте США: грязный, неудобный мешок с кровью и костями. Но чтобы говорить о нем, или представить его в компьютерной программе, все что для этого нужно - удобная скалярная строка "Барак Обама".
 
-References in Perl are like names for arrays and hashes.  They're
-Perl's private, internal names, so you can be sure they're
-unambiguous.  Unlike "Barack Obama", a reference only refers to one
-thing, and you always know what it refers to.  If you have a reference
-to an array, you can recover the entire array from it.  If you have a
-reference to a hash, you can recover the entire hash.  But the
-reference is still an easy, compact scalar value.
+Ссылки в Perl похожи на имена для списков или хэшей. Это частные, внутренние имена perl программы, поэтому можно быть уверенным, что они однозначны. В отличие от "Барака Обама", ссылка ссылается только на один объект, и вы всегда знаете, на какой. Если у вас есть ссылка
+в массив, то весь массив можно восстановить из нее. Если у вас есть
+ссылка на хэш, то вы можете восстановить весь хэш. 
+Но ссылка по-прежнему является простым, компактным скалярным значением.
 
-You can't have a hash whose values are arrays; hash values can only be
-scalars.  We're stuck with that.  But a single reference can refer to
-an entire array, and references are scalars, so you can have a hash of
-references to arrays, and it'll act a lot like a hash of arrays, and
-it'll be just as useful as a hash of arrays.
+Не может быть хэша, значения которого - массивы; значениями хэша могут быть только скалярами. Мы опять застряли. Но одна ссылка может указывать на целый массив, и при этом ссылка остается скаляром, так что можно создать хэш ссылок на массивы, и это будет работать, как хэш массивов, и будет таким же полезным, как и хэш массивов.
 
-We'll come back to this city-country problem later, after we've seen
-some syntax for managing references.
+Мы вернемся к проблеме городов и стран позже, после того, как рассмотрим синтаксис управления ссылками.
 
+=head1 Синтаксис
 
-=head1 Syntax
+Есть только два способа создать ссылку и только два способа использовать её, 
+как только она у вас есть.
 
-There are just two ways to make a reference, and just two ways to use
-it once you have it.
+=head2 Создание ссылок
 
-=head2 Making References
-
-=head3 B<Make Rule 1>
+=head3 B<Правило создания 1>
 
 If you put a C<\> in front of a variable, you get a
 reference to that variable.
