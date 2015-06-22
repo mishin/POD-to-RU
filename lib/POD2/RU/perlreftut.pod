@@ -162,73 +162,69 @@ C<{ ЭЛЕМЕНТЫ }> создает новый анонимный хэш и �
 	$h{'red'}	${$href}{'red'}	      Элемент хэша
 	$h{'red'} = 17	${$href}{'red'} = 17  Присвоение значения элементу
 
-Whatever you want to do with a reference, B<Use Rule 1> tells you how
-to do it.  You just write the Perl code that you would have written
-for doing the same thing to a regular array or hash, and then replace
-the array or hash name with C<{$reference}>.  "How do I loop over an
-array when all I have is a reference?"  Well, to loop over an array, you
-would write
+Все что можно сделать со ссылкой, делается по B<Правилу использования 1>.
+Вы просто пишите код на Perl, который делает то, что нужно с обычным
+массивом или хэшем, а затем заменяете имя массива или хэша C<{$ссылкой}>.
+"Как перебрать элементы массива, если у меня есть ссылка ?" 
+Чтобы перебрать элементы массива, нужно написать
+
 
         for my $element (@array) {
            ...
         }
 
-so replace the array name, C<@array>, with the reference:
+затем замените имя массива C<@array> ссылкой:
 
         for my $element (@{$aref}) {
            ...
         }
 
-"How do I print out the contents of a hash when all I have is a
-reference?"  First write the code for printing out a hash:
+"Как распечатать содержимое хэша, если у меня есть только ссылка?"
+Сначала напишем код для распечатки хэша:
 
         for my $key (keys %hash) {
           print "$key => $hash{$key}\n";
         }
 
-And then replace the hash name with the reference:
+И затем заменяем имя хэша ссылкой:
 
         for my $key (keys %{$href}) {
           print "$key => ${$href}{$key}\n";
         }
 
-=head3 B<Use Rule 2>
+=head3 B<Правило использования 2>
 
-B<Use Rule 1> is all you really need, because it tells you how to do
-absolutely everything you ever need to do with references.  But the
-most common thing to do with an array or a hash is to extract a single
-element, and the B<Use Rule 1> notation is cumbersome.  So there is an
-abbreviation.
+B<Правило использования 1> — это все, что вам действительно нужно,
+потому что оно описывает абсолютно все действия со ссылкой.
+Но чаще всего приходится извлекать единственный элемент массива
+или хэша, и запись по B<Правилу использования 1> громоздка.
+Поэтому есть несколько сокращений.
 
-C<${$aref}[3]> is too hard to read, so you can write C<< $aref->[3] >>
-instead.
+C<${$aref}[3]>  слишком трудно читать, так что вы можете писать $aref->[3]
+вместо этого.
 
-C<${$href}{red}> is too hard to read, so you can write
-C<< $href->{red} >> instead.
+C<${$href}{red}> слишком трудно читать, так что вы можете написать
+C<< $href->{red} >> вместо этого.
 
-If C<$aref> holds a reference to an array, then C<< $aref->[3] >> is
-the fourth element of the array.  Don't confuse this with C<$aref[3]>,
-which is the fourth element of a totally different array, one
-deceptively named C<@aref>.  C<$aref> and C<@aref> are unrelated the
-same way that C<$item> and C<@item> are.
+Если C<$aref> содержит ссылку на массив, тогда C<< $aref->[3] >> — 
+четвертый элемент массива. Не перепутайте его с  C<$aref[3]>, 
+что есть четвертый элемент совершенно другого массива,
+обманчиво названного C<@aref>.
+ C<$aref> и C<@aref> не связаны также, как и C<$item> и C<@item> .
 
-Similarly, C<< $href->{'red'} >> is part of the hash referred to by
-the scalar variable C<$href>, perhaps even one with no name.
-C<$href{'red'}> is part of the deceptively named C<%href> hash.  It's
-easy to forget to leave out the C<< -> >>, and if you do, you'll get
-bizarre results when your program gets array and hash elements out of
-totally unexpected hashes and arrays that weren't the ones you wanted
-to use.
+Аналогичным образом C<< $href->{'red'} >> — является частью хэша, на который указывает скалярная переменная $href,
+возможно даже безымянного.
+C<$href{'red'}> часть обманчиво названного хэша C<%href>. 
+Легко забыть вставить  C<< -> >> и в этом случае вы получите странные результаты, когда программа будет извлекать элементы совершенно неожиданных массивов и хэшей, которые вы совсем не хотели использовать.
 
+=head2 Пример
 
-=head2 An Example
+Небольшой пример того, как все это можно использовать.
 
-Let's see a quick example of how all this is useful.
+Во-первых, следует помнить, что C<[1, 2, 3]> создает анонимный массив, 
+содержащий C<(1, 2, 3)>, и возвращает ссылку на этот массив.
 
-First, remember that C<[1, 2, 3]> makes an anonymous array containing
-C<(1, 2, 3)>, and gives you a reference to that array.
-
-Now think about
+Теперь подумайте о
 
 	@a = ( [1, 2, 3],
                [4, 5, 6],
