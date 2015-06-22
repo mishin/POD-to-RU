@@ -535,5 +535,7 @@ courteous but is not required.
 
 =item * Динар Жамалиев C<< <admin@perl5doc.ru> >> L<http://perl5doc.ru/perlreftut>
 
+=item * Иван Рак C<< <rak@tut.by> >>
+
 =back
 
