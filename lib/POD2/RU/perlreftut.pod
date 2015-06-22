@@ -124,48 +124,43 @@ C<{ ЭЛЕМЕНТЫ }> создает новый анонимный хэш и �
 	@array = (1, 2, 3);
 	$aref = \@array;
 
+Первая строка — сокращение последующих двух строк, кроме того, 
+что она не создает лишней переменной массива C<@array>.
 
-The first line is an abbreviation for the following two lines, except
-that it doesn't create the superfluous array variable C<@array>.
+Если вы напишете просто C<[]>, вы получите новый пустой анонимный массив. 
+Если вы напишите просто C<{}>, вы получите новый пустой анонимный хэш.
 
-If you write just C<[]>, you get a new, empty anonymous array.
-If you write just C<{}>, you get a new, empty anonymous hash.
+=head2 Использование ссылок
 
+Что можно сделать со ссылкой после её создания ? 
+Мы уже видели, что её можно хранить как скалярную величину и 
+получить её значение. Есть только два способа её использования:
 
-=head2 Using References
+=head3 B<Правило использования 1>
 
-What can you do with a reference once you have it?  It's a scalar
-value, and we've seen that you can store it as a scalar and get it back
-again just like any scalar.  There are just two more ways to use it:
+Можно использовать ссылку на массив в фигурных скобках,
+вместо имени массива. Например, C<@{$aref}> вместо  C<@array>.
 
-=head3 B<Use Rule 1>
+Вот некоторые примеры этого:
 
-You can always use an array reference, in curly braces, in place of
-the name of an array.  For example, C<@{$aref}> instead of C<@array>.
+Массивы:
 
-Here are some examples of that:
+	@a		@{$aref}		Массив
+	reverse @a	reverse @{$aref}	Массив в обратном порядке
+	$a[3]		${$aref}[3]		Элемент массива
+	$a[3] = 17;	${$aref}[3] = 17	Присваивание значения элементу массива
 
-Arrays:
+В каждой строке два выражения, которые делают то же самое.
+В левой версии работают с массивом C<@a>. 
+В правой версии работают с массивом, на который ссылается C<$aref>.
+После нахождения массива оба варианта выполняют одинаковые операции.
 
+Использование ссылки на хэш I<точно> такое же:
 
-	@a		@{$aref}		An array
-	reverse @a	reverse @{$aref}	Reverse the array
-	$a[3]		${$aref}[3]		An element of the array
-	$a[3] = 17;	${$aref}[3] = 17	Assigning an element
-
-
-On each line are two expressions that do the same thing.  The
-left-hand versions operate on the array C<@a>.  The right-hand
-versions operate on the array that is referred to by C<$aref>.  Once
-they find the array they're operating on, both versions do the same
-things to the arrays.
-
-Using a hash reference is I<exactly> the same:
-
-	%h		%{$href}	      A hash
-	keys %h		keys %{$href}	      Get the keys from the hash
-	$h{'red'}	${$href}{'red'}	      An element of the hash
-	$h{'red'} = 17	${$href}{'red'} = 17  Assigning an element
+	%h		%{$href}	      Хэш
+	keys %h		keys %{$href}	      Получение ключей хэша
+	$h{'red'}	${$href}{'red'}	      Элемент хэша
+	$h{'red'} = 17	${$href}{'red'} = 17  Присвоение значения элементу
 
 Whatever you want to do with a reference, B<Use Rule 1> tells you how
 to do it.  You just write the Perl code that you would have written
