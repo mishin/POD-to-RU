@@ -231,39 +231,34 @@ C<$href{'red'}> часть обманчиво названного хэша C<%h
 	       [7, 8, 9]
              );
 
-@a is an array with three elements, and each one is a reference to
-another array.
+@a представляет собой массив из трех элементов, каждый из которых является ссылкой на другой массив.
 
-C<$a[1]> is one of these references.  It refers to an array, the array
-containing C<(4, 5, 6)>, and because it is a reference to an array,
-B<Use Rule 2> says that we can write C<< $a[1]->[2] >> to get the
-third element from that array.  C<< $a[1]->[2] >> is the 6.
-Similarly, C<< $a[0]->[1] >> is the 2.  What we have here is like a
-two-dimensional array; you can write C<< $a[ROW]->[COLUMN] >> to get
-or set the element in any row and any column of the array.
+C<$a[1]> одна из этих ссылок. Она ссылается на массив, содержащий
+(4, 5, 6), и, так как это ссылка на массив, то по B<Правилу использования 2>
+мы можем написать C<< $a[1]->[2] >>, чтобы получить третий элемент этого массива.
+C<< $a[1]->[2] >> это 6. Аналогично, C<< $a[0]->[1] >> это 2. То, что у нас есть
+похоже на двумерный массив, можно писать  C<< $a[СТРОКА]->[КОЛОНКА] >>, чтобы
+получить или внести элемент в любую строку любого столбца массива.
 
-The notation still looks a little cumbersome, so there's one more
-abbreviation:
+Но эта нотация все еще громоздка, поэтому есть еще одно сокращение:
 
-=head2 Arrow Rule
+=head2 Правило стрелки
 
-In between two B<subscripts>, the arrow is optional.
+Между двумя B<индексами> стрелка не обязательна.
 
-Instead of C<< $a[1]->[2] >>, we can write C<$a[1][2]>; it means the
-same thing.  Instead of C<< $a[0]->[1] = 23 >>, we can write
-C<$a[0][1] = 23>; it means the same thing.
+Вместо C<< $a[1]->[2] >>, мы можем написать C<$a[1][2]>; это значит тоже самое. 
+Аналогично, вместо C<< $a[0]->[1] = 23 >>, мы можем написать C<$a[0][1] = 23>.
 
-Now it really looks like two-dimensional arrays!
+Теперь это в самом деле выглядит, как двумерный массив!
 
-You can see why the arrows are important.  Without them, we would have
-had to write C<${$a[1]}[2]> instead of C<$a[1][2]>.  For
-three-dimensional arrays, they let us write C<$x[2][3][5]> instead of
-the unreadable C<${${$x[2]}[3]}[5]>.
+Из этого видно, почему важны стрелки. 
+Без них пришлось бы писать  C<${$a[1]}[2]> вместо C<$a[1][2]>. 
+Для трехмерных массивов можно писать C<$x[2][3][5]>
+вместо нечитаемого C<${${$x[2]}[3]}[5]>.
 
-=head1 Solution
+=head1 Решение
 
-Here's the answer to the problem I posed earlier, of reformatting a
-file of city and country names.
+Теперь — решение поставленнного в начале вопроса о переформатировании названий городов и стран.
 
     1   my %table;
 
@@ -281,12 +276,11 @@ file of city and country names.
    12     print ".\n";
    13	}
 
-
-The program has two pieces: Lines 2--7 read the input and build a data
-structure, and lines 8-13 analyze the data and print out the report.
-We're going to have a hash, C<%table>, whose keys are country names,
-and whose values are references to arrays of city names.  The data
-structure will look like this:
+В программе две части: Строки 2—7 считывают данные и создают 
+структуры данных, а строки 8—13 анализируют данные и распечатывают отчет.
+Мы получаем хэш  C<%table>, ключи которого — названия стран, а значения — 
+ссылки на массивы названий городов. Данная
+структура будет выглядеть следующим образом:
 
 
            %table
@@ -304,8 +298,7 @@ structure will look like this:
         |       |   |   +---------+------------+----------+
         +-------+---+
 
-We'll look at output first.  Supposing we already have this structure,
-how do we print it out?
+Рассмотрим сначала вывод. Предположим, что у нас уже есть эта структура, как ее распечатать?
 
     8   foreach $country (sort keys %table) {
     9     print "$country: ";
@@ -314,6 +307,7 @@ how do we print it out?
    12     print ".\n";
    13	}
 
+%table — обычный хэш, и мы получаем список его ключей, которые, как обычно, сортируем и перебираем. Единственное использование ссылки в строке 10. $table{$country} ищет в хэше ключ $country и получает значение — ссылку на массив городов этой страны. По Правилу использования 1 мы можем получить массив обратно используя конструкцию @{$table{$country}}. Строка 10 равносильна такой конструкции:
 C<%table> is an
 ordinary hash, and we get a list of keys from it, sort the keys, and
 loop over the keys as usual.  The only use of references is in line 10.
@@ -495,9 +489,6 @@ hereby placed into the public domain.  You are permitted and
 encouraged to use this code in your own programs for fun or for profit
 as you see fit.  A simple comment in the code giving credit would be
 courteous but is not required.
-
-
-
 
 =cut
 
