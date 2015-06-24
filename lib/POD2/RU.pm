@@ -176,6 +176,10 @@ Nikolay Mishin E<lt> mi@ya.ru E<gt>
 
 =item * Дмитрий Анисимов
 
+=item * Андрей Варлашкин
+
+=item * Кирилл Флоренский
+
 =back
 
 =head1 COPYRIGHT
