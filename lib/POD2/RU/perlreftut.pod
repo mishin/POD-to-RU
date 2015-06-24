@@ -473,7 +473,7 @@ to do with references.
 Author: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
 
 This article originally appeared in I<The Perl Journal>
-( http://www.tpj.com/ ) volume 3, #2.  Reprinted with permission.
+([1] http://www.tpj.com/ ) volume 3, #2.  Reprinted with permission.
 
 The original title was I<Understand References Today>.
 
@@ -490,7 +490,11 @@ encouraged to use this code in your own programs for fun or for profit
 as you see fit.  A simple comment in the code giving credit would be
 courteous but is not required.
 
-=cut
+=head1 ССЫЛКИ
+
+[1] L<http://www.tpj.com/>
+
+[2] L<http://perl5doc.ru/perlreftut>
 
 =head1 ПЕРЕВОДЧИКИ
  
@@ -498,7 +502,7 @@ courteous but is not required.
  
 =item * Николай Мишин C<< <mi@ya.ru> >>
 
-=item * Динар Жамалиев C<< <admin@perl5doc.ru> >> L<http://perl5doc.ru/perlreftut>
+=item * Динар Жамалиев C<< <admin@perl5doc.ru> >> [2]
 
 =item * Иван Рак C<< <rak@tut.by> >>
 
