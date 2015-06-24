@@ -936,5 +936,12 @@ L<perlunitut>
 =over
  
 =item * Николай Мишин C<< <mishin@cpan.org> >>
- 
+=item * Андрей Шитов
+=item * Дмитрий Анимимов
+=item * Андрей Варлашкин
+=item * Кирилл Флоренский
+
+ссылка на пост в facebook:
+L<https://www.facebook.com/nmishin/posts/10207602636370625?pnref=story>
+
 =back
