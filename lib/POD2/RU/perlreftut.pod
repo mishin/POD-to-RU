@@ -307,25 +307,20 @@ C<< $a[1]->[2] >> это 6. Аналогично, C<< $a[0]->[1] >> это 2. Т
    12     print ".\n";
    13	}
 
-%table — обычный хэш, и мы получаем список его ключей, которые, как обычно, сортируем и перебираем. Единственное использование ссылки в строке 10. $table{$country} ищет в хэше ключ $country и получает значение — ссылку на массив городов этой страны. По Правилу использования 1 мы можем получить массив обратно используя конструкцию @{$table{$country}}. Строка 10 равносильна такой конструкции:
-C<%table> is an
-ordinary hash, and we get a list of keys from it, sort the keys, and
-loop over the keys as usual.  The only use of references is in line 10.
-C<$table{$country}> looks up the key C<$country> in the hash
-and gets the value, which is a reference to an array of cities in that country.
-B<Use Rule 1> says that
-we can recover the array by saying
-C<@{$table{$country}}>.  Line 10 is just like
+C<%table> — обычный хэш, и мы получаем список его ключей, которые, 
+как обычно, сортируем и перебираем. Единственное использование ссылки 
+в строке 10. C<$table{$country}> ищет в хэше ключ  C<$country> и получает
+значение — ссылку на массив городов этой страны. По B<Правилу использования 1>
+мы можем получить массив обратно используя конструкцию C<@{$table{$country}}>.
+Строка 10 равносильна такой конструкции:
 
 	@cities = @array;
 
-except that the name C<array> has been replaced by the reference
-C<{$table{$country}}>.  The C<@> tells Perl to get the entire array.
-Having gotten the list of cities, we sort it, join it, and print it
-out as usual.
+кроме того, что имя  C<array> заменено ссылкой C<{$table{$country}}>. 
+Знак C<@> указывает интерпретатору Perl получить весь массив. 
+Получив список городов, как обычно, сортируем его соединяем и распечатываем.
 
-Lines 2-7 are responsible for building the structure in the first
-place.  Here they are again:
+Строки 2-7 отвечают в первую очередь за построение структуры. Приводим их еще раз:
 
     2   while (<>) {
     3    chomp;
@@ -334,24 +329,23 @@ place.  Here they are again:
     6     push @{$table{$country}}, $city;
     7   }
 
-Lines 2-4 acquire a city and country name.  Line 5 looks to see if the
-country is already present as a key in the hash.  If it's not, the
-program uses the C<[]> notation (B<Make Rule 2>) to manufacture a new,
-empty anonymous array of cities, and installs a reference to it into
-the hash under the appropriate key.
+В строках 2-4 мы получаем название города и страны. Строка 5 
+проверяет наличие такой страны в ключах хэша. Если ее нет, программа 
+использует запись C<[]> (B<Правило создания 2>), чтобы получить новый пустой 
+анонимный массив городов, и установить ссылку на него в качестве значения
+для соответствующего ключа хэша.
 
-Line 6 installs the city name into the appropriate array.
-C<$table{$country}> now holds a reference to the array of cities seen
-in that country so far.  Line 6 is exactly like
+Строка 6 добавляет название города в соответствующий массив. 
+C<$table{$country}> теперь содержит ссылку на массив городов в этой стране, 
+которые внесены до данного момента. Строка 6 подобна
 
 	push @array, $city;
 
-except that the name C<array> has been replaced by the reference
-C<{$table{$country}}>.  The C<push> adds a city name to the end of the
-referred-to array.
+кроме того, что имя C<array> заменено ссылкой C<{$table{$country}}>.
+C<push> добавляет название города в конец указываемого массива.
 
-There's one fine point I skipped.  Line 5 is unnecessary, and we can
-get rid of it.
+Есть один интересный момент, который я упустил.
+Строка 5 не является необходимой, и мы можем избавиться от неё.
 
     2   while (<>) {
     3    chomp;
@@ -360,135 +354,126 @@ get rid of it.
     6     push @{$table{$country}}, $city;
     7   }
 
-If there's already an entry in C<%table> for the current C<$country>,
-then nothing is different.  Line 6 will locate the value in
-C<$table{$country}>, which is a reference to an array, and push
-C<$city> into the array.  But
-what does it do when
-C<$country> holds a key, say C<Greece>, that is not yet in C<%table>?
+Если в  C<%table> уже есть запись для текущей страны C<$country>, 
+то ничего не изменится. Строка 6 найдет значение C<$table{$country}>, 
+которое указывает на массив, и добавит город C<$city> в массив. 
+Но что произойдет, если C<$country> содержит ключ, которого еще нет 
+в  C<%table>, например, C<Greece>?
 
-This is Perl, so it does the exact right thing.  It sees that you want
-to push C<Athens> onto an array that doesn't exist, so it helpfully
-makes a new, empty, anonymous array for you, installs it into
-C<%table>, and then pushes C<Athens> onto it.  This is called
-'autovivification'--bringing things to life automatically.  Perl saw
-that the key wasn't in the hash, so it created a new hash entry
-automatically. Perl saw that you wanted to use the hash value as an
-array, so it created a new empty array and installed a reference to it
-in the hash automatically.  And as usual, Perl made the array one
-element longer to hold the new city name.
+Это Perl, поэтому он сделает верно. Он видит, что вы хотите
+положить C<Athens> в массив, который не существует, поэтому он услужливо
+делает новый, пустой, анонимный массив для вас, устанавливает его в
+C<%table>, а затем помещает C<Athens> в него. Это называется
+'autovivification' — приведение вещей к жизни автоматически. Perl видит, 
+что ключ не был в хэше, поэтому он создал новую запись хэша
+автоматически. Perl увидел, что вы хотели использовать хэш-значение как
+массив, поэтому он создал новый пустой массив и установил на него ссылку
+в хэш автоматически. И как обычно, Perl сделал массив на один 
+элемент больше, чтобы сохранить имя нового города.
 
-=head1 The Rest
+=head1 The Остальное
 
-I promised to give you 90% of the benefit with 10% of the details, and
-that means I left out 90% of the details.  Now that you have an
-overview of the important parts, it should be easier to read the
-L<perlref> manual page, which discusses 100% of the details.
+Я обещал дать 90% возможностей, используя 10% подробностей, 
+и это значит, что 90% подробностей я упустил. Теперь, 
+после обзора самого важного, вам будет легче читать perlref,
+в котором даны 100% информации.
 
-Some of the highlights of L<perlref>:
+Некоторые из самых значимых моментов L<perlref>:
 
 =over 4
 
 =item *
 
-You can make references to anything, including scalars, functions, and
-other references.
+Можно создавать ссылки на все объекты, включая скаляры, функции, и другие ссылки.
 
 =item *
 
-In B<Use Rule 1>, you can omit the curly brackets whenever the thing
-inside them is an atomic scalar variable like C<$aref>.  For example,
-C<@$aref> is the same as C<@{$aref}>, and C<$$aref[1]> is the same as
-C<${$aref}[1]>.  If you're just starting out, you may want to adopt
-the habit of always including the curly brackets.
+По B<правилу использования 1> можно опустить фигурные скобки, 
+когда в них атомарная скалярная переменная такая как C<$aref>. Например,
+C<@$aref> — то же самое, что и C<@{$aref}>, а C<$$aref[1]> — то же, что и C<${$aref}[1]>.
+Пока вы не освоитесь, вам лучше привыкнуть всегда писать фигурные скобки.
 
 =item *
 
-This doesn't copy the underlying array:
+Так массив не скопировать:
 
         $aref2 = $aref1;
 
-You get two references to the same array.  If you modify
-C<< $aref1->[23] >> and then look at
-C<< $aref2->[23] >> you'll see the change.
+Вы получаете две ссылки на один и тот же массив. 
+Если вы измените C<< $aref1->[23] >> и затем посмотрите на C<< $aref2->[23] >>, вы увидите, что они не равны.
 
-To copy the array, use
+Чтобы скопировать массив, используйте
 
         $aref2 = [@{$aref1}];
 
-This uses C<[...]> notation to create a new anonymous array, and
-C<$aref2> is assigned a reference to the new array.  The new array is
-initialized with the contents of the array referred to by C<$aref1>.
+Здесь используется запись C<[...]> для создания нового анонимного массива.
+Переменной C<$aref2>  присваивается ссылка на новый массив. Новый массив 
+инициализируется содержимым массива, на который указывает  C<$aref1>.
 
-Similarly, to copy an anonymous hash, you can use
+Похожим способом можно скопировать анонимный хэш:
 
         $href2 = {%{$href1}};
 
 =item *
 
-To see if a variable contains a reference, use the C<ref> function.  It
-returns true if its argument is a reference.  Actually it's a little
-better than that: It returns C<HASH> for hash references and C<ARRAY>
-for array references.
+Чтобы узнать, содержит ли переменная ссылку, используйте функцию C<ref>. 
+Она возвращает истину, если ее аргумент является ссылкой. На самом деле она 
+делает даже лучше: возвращает C<HASH> для ссылки на хэш и C<ARRAY> для ссылки на массив.
 
 =item *
 
-If you try to use a reference like a string, you get strings like
+Если попробуете использовать ссылку как строку, вы получите строки вроде таких
 
-	ARRAY(0x80f5dec)   or    HASH(0x826afc0)
+	ARRAY(0x80f5dec)   или    HASH(0x826afc0)
 
-If you ever see a string that looks like this, you'll know you
-printed out a reference by mistake.
+Если вы увидите строку, которая выглядят подобным образом, знайте — вы по ошибке распечатали ссылку.
 
-A side effect of this representation is that you can use C<eq> to see
-if two references refer to the same thing.  (But you should usually use
-C<==> instead because it's much faster.)
+Побочный эффект такого представления в том, что вы можете использовать C<eq> для проверки 
+того, на один ли и тот же объект указывают ссылки. (Но обычно лучше использовать C<==>,
+потому что так работает намного быстрее).
 
 =item *
 
-You can use a string as if it were a reference.  If you use the string
-C<"foo"> as an array reference, it's taken to be a reference to the
-array C<@foo>.  This is called a I<soft reference> or I<symbolic
-reference>.  The declaration C<use strict 'refs'> disables this
-feature, which can cause all sorts of trouble if you use it by accident.
+Вы можете использовать строку, как если бы она была ссылкой. 
+Если вы используете строку C<"foo"> как ссылку на массив, она считается как 
+ссылка на массив C<@foo>. Это так называемая I<мягкая ссылка> или I<символическая ссылка>.
+Объявление C<use strict 'refs'> отключает эту возможность, которая может вызвать
+всевозможные неприятности, если вы используете её случайно.
 
 =back
 
-You might prefer to go on to L<perllol> instead of L<perlref>; it
-discusses lists of lists and multidimensional arrays in detail.  After
-that, you should move on to L<perldsc>; it's a Data Structure Cookbook
-that shows recipes for using and printing out arrays of hashes, hashes
-of arrays, and other kinds of data.
+Возможно, вместо  L<perlref>, вам стоит сначала прочесть L<perllol>, 
+в ней детально обсуждаются списки списков и многомерные массивы.
+После этого ознакомьтесь с L<perldsc> — справочник структур данных, в котором даны 
+рецепты по использованию и распечатки массива хэшей, хэшей массивов, и других типов данных.
 
-=head1 Summary
+=head1 Резюме
 
-Everyone needs compound data structures, and in Perl the way you get
-them is with references.  There are four important rules for managing
-references: Two for making references and two for using them.  Once
-you know these rules you can do most of the important things you need
-to do with references.
+Всем нужны сложные структуры данных, и Perl позволяет создавать их с 
+помощью ссылок. Есть четыре правила управления ссылками: два правила 
+создания и два правила использования. Когда вы усвоите эти правила,
+вы сможете делать почти все важное, что можно сделать со ссылками.
 
-=head1 Credits
+=head1  Похвала
 
-Author: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
+Автор: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
 
-This article originally appeared in I<The Perl Journal>
-([1] http://www.tpj.com/ ) volume 3, #2.  Reprinted with permission.
+Впервые статья появилась в I<The Perl Journal>
+([1] http://www.tpj.com/ ) том 3, #2.  Перепечатывается с разрешения.
 
-The original title was I<Understand References Today>.
+Первоначально статья называлась I<Пойми ссылки сегодня> (анг. I<Understand References Today>).
 
-=head2 Distribution Conditions
+=head2 Условия распространения
 
 Copyright 1998 The Perl Journal.
 
-This documentation is free; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+Этот документ распространяется свободно, и вы можете свободно распространять
+и/или изменять его на тех же условиях, как и сам Perl.
 
-Irrespective of its distribution, all code examples in these files are
-hereby placed into the public domain.  You are permitted and
-encouraged to use this code in your own programs for fun or for profit
-as you see fit.  A simple comment in the code giving credit would be
-courteous but is not required.
+Независимо от распространения, все примеры кода в этом файле являются публичным достоянием. 
+Разрешается и поощряется использование этого кода в ваших собственных программах для
+развлечения или для получения прибыли. 
+Простой комментарий с указанием авторства приятен, но не обязателен.
 
 =head1 ССЫЛКИ
 
