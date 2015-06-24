@@ -930,18 +930,20 @@ L<perlunitut>
 
 [2] L<http://www.unicode.org>
 
+[3] L<https://www.facebook.com/nmishin/posts/10207602636370625?pnref=story>
 
 =head1 ПЕРЕВОДЧИКИ
  
 =over
  
 =item * Николай Мишин C<< <mishin@cpan.org> >>
-=item * Андрей Шитов
-=item * Дмитрий Анимимов
-=item * Андрей Варлашкин
-=item * Кирилл Флоренский
 
-ссылка на пост в facebook:
-L<https://www.facebook.com/nmishin/posts/10207602636370625?pnref=story>
+=item * Андрей Шитов
+
+=item * Дмитрий Анимимов
+
+=item * Андрей Варлашкин
+
+=item * Кирилл Флоренский
 
 =back
