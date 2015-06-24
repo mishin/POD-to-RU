@@ -106,6 +106,9 @@ Nikolay Mishin < mi@ya.ru >
 - Yusuke Kawasaki ([KAWASAKI](https://metacpan.org/author/KAWASAKI))
 - Вячеслав Тихановский ([VTI](https://metacpan.org/author/VTI))
 - Zoffix Znet ([ZOFFIX](https://metacpan.org/author/ZOFFIX))
+- Дмитрий Анисимов
+- Андрей Варлашкин
+- Кирилл Флоренский
 
 # COPYRIGHT
 
