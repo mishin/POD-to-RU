@@ -1,47 +1,49 @@
 =encoding utf8
 
 =for comment
-Consistent formatting of this file is achieved with:
+Последовательное форматирование этого файла осуществляется с:
   perl ./Porting/podtidy pod/perlootut.pod
 
-=head1 NAME
+=head1 NAME/НАИМЕНОВАНИЕ
 
-perlootut - Object-Oriented Programming in Perl Tutorial
+perlootut - учебник Объектно-Ориентированного программирования на Perl
 
 =head1 DATE
 
-This document was created in February, 2011, and the last major
-revision was in February, 2013.
+Этот документ был создан в феврале 2011 года, и последний крупный пересмотр был в феврале 2013 года.
 
-If you are reading this in the future then it's possible that the state
-of the art has changed. We recommend you start by reading the perlootut
-document in the latest stable release of Perl, rather than this
-version.
+Если вы читаете это в будущем, то вполне возможно, что положение дел изменилось. 
+Мы рекомендуем вам начать чтение perlootut последнего стабильного релиза Perl
+вместо этой версии.
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
-This document provides an introduction to object-oriented programming
-in Perl. It begins with a brief overview of the concepts behind object
-oriented design. Then it introduces several different OO systems from
-L<CPAN|http://search.cpan.org> which build on top of what Perl
-provides.
+Этот документ представляет собой введение в объектно ориентированное программирование на Perl.
+Она начинается с краткого обзора концепции объектно-ориентированного проектирования.
+Затем он рассказывает о нескольких различных OO системах из L<CPAN|http://search.cpan.org> ,
+которые являются вершиной того, что может предоставить Perl.
 
-By default, Perl's built-in OO system is very minimal, leaving you to
-do most of the work. This minimalism made a lot of sense in 1994, but
-in the years since Perl 5.0 we've seen a number of common patterns
-emerge in Perl OO. Fortunately, Perl's flexibility has allowed a rich
-ecosystem of Perl OO systems to flourish.
+По умолчанию встроенная в Perl OO система является минималистичной, она оставляет вам делать 
+большую часть работы. Этот минимализм имел много смысла в 1994 году, но годы, начиная 
+с Perl 5.0 мы увидели появление ряда общих шаблонов в Perl OO. К счастью гибкость Perl 
+ позволяет создавать богатые и процветающие экосистемы Perl OO.
 
-If you want to know how Perl OO works under the hood, the L<perlobj>
-document explains the nitty gritty details.
+Если вы хотите знать, как Perl OO работает под капотом,
+в документе L<perlobj> объясняются все мелкие детали.
 
-This document assumes that you already understand the basics of Perl
-syntax, variable types, operators, and subroutine calls. If you don't
-understand these concepts yet, please read L<perlintro> first. You
-should also read the L<perlsyn>, L<perlop>, and L<perlsub> documents.
+Этот документ предполагает, что вы уже понимаете основы синтаксиса Perl,
+типы переменных, операторов и вызовов подпрограмм. Если вы не понимаете 
+эти концепции еще, пожалуйста, прочитайте  L<perlintro> сначала. 
+Вы также должны прочитать документы L<perlsyn>, L<perlop>, и L<perlsub>.
 
-=head1 OBJECT-ORIENTED FUNDAMENTALS
+=head1 ОСНОВЫ ОБЪЕКТНО ОРИЕНТИРОВАННОСТИ
 
+Большинство объектных систем имеют ряд общих концепций. Вы, вероятно, 
+ ранее слышали такие термины, как "класс", "объект", "метод" и "атрибут". 
+Понимание концепций будет сделать его гораздо легче читать и писать объектно
+ориентированного кода. Если вы уже знакомы с этими терминами, должны по-прежнему 
+обезжиренное этот раздел, так как он объясняет каждое понятие с точки зрения 
+осуществления OO Perl.
 Most object systems share a number of common concepts. You've probably
 heard terms like "class", "object, "method", and "attribute" before.
 Understanding the concepts will make it much easier to read and write
