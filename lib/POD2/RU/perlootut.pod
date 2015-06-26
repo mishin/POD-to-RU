@@ -74,25 +74,24 @@ F</etc/hostname> на машине с именем "foo.example.com", то пу�
 
 =head2 Класс
 
-A B<class> defines the behavior of a category of objects. A class is a
-name for a category (like "File"), and a class also defines the
-behavior of objects in that category.
+B<Класс> определяет поведение категории объектов. Класс является именем категории
+(например, "Файл"), и класс также определяет поведение объектов в данной категории.
 
-All objects belong to a specific class. For example, our
-F</etc/hostname> object belongs to the C<File> class. When we want to
-create a specific object, we start with its class, and B<construct> or
-B<instantiate> an object. A specific object is often referred to as an
-B<instance> of a class.
+Все объекты принадлежат к определенному классу. Например наш F</etc/hostname>
+объект принадлежит к классу C<File> . Когда мы хотим создать определенный объект, 
+мы начинаем с его класса и B<создаем> или B<инициализируем> (B<instantiate>) 
+экземпляр объекта. Конкретный 
+объект часто именуется как C<экземпляр> (B<instance>) класса.
 
-In Perl, any package can be a class. The difference between a package
-which is a class and one which isn't is based on how the package is
-used. Here's our "class declaration" for the C<File> class:
+В Perl любой пакет может быть классом. Разница между пакетом, 
+который является классом и пакетом не являющимся классом состоит в том, как 
+используется пакет. Вот наше "объявление класса" для класса C<File>:
 
   package File;
 
-In Perl, there is no special keyword for constructing an object.
-However, most OO modules on CPAN use a method named C<new()> to
-construct a new object:
+В Perl Существует нет специального ключевого слова для построения объекта.
+Однако большинство OO модулей на CPAN использовать метод с именем C<new()>, 
+ чтобы создать новый объект:
 
   my $hostname = File->new(
       path          => '/etc/hostname',
@@ -100,31 +99,32 @@ construct a new object:
       last_mod_time => 1304974868,
   );
 
-(Don't worry about that C<< -> >> operator, it will be explained
-later.)
+(Не беспокойтесь оператор C<< -> >> будет объяснен позже.)
 
-=head3 Blessing
+=head3 Благословение (Blessing)
 
-As we said earlier, most Perl objects are hashes, but an object can be
-an instance of any Perl data type (scalar, array, etc.). Turning a
-plain data structure into an object is done by B<blessing> that data
-structure using Perl's C<bless> function.
+Как мы уже говорили ранее, большинство Perl объектов хэши, 
+но объект может быть экземпляром любого типа данных Perl (скалярны,
+массивы, и т.д.). Превращение структуру простых данных в объект 
+осуществляется B<благословением>  B<blessing>() данной структуры с
+использованием Perl функции C<bless>.
 
-While we strongly suggest you don't build your objects from scratch,
-you should know the term B<bless>. A B<blessed> data structure (aka "a
-referent") is an object. We sometimes say that an object has been
-"blessed into a class".
+Хотя мы настоятельно рекомендуем вам не строить объекты с нуля, 
+вы должны знать, термин, B<благословлять> (B<bless>). 
+B<Благословленная> (<blessed>) структура данных (ака "ссылка") — это объект. 
+Мы иногда говорим, что объект был "благословлен в класс" ("blessed into a class").
 
-Once a referent has been blessed, the C<blessed> function from the
-L<Scalar::Util> core module can tell us its class name. This subroutine
-returns an object's class when passed an object, and false otherwise.
+После того, как ссылка была благословлена, функция  C<blessed> из модуля
+ядра L<Scalar::Util> может сказать нам  имя ее класса. Эта подпрограмма 
+возвращает объект класса, если она видит, что передали объект и ложь 
+(false) в противном случае.
 
   use Scalar::Util 'blessed';
 
   print blessed($hash);      # undef
   print blessed($hostname);  # File
 
-=head3 Constructor
+=head3 Конструктор
 
 A B<constructor> creates a new object. In Perl, a class's constructor
 is just another method, unlike some other languages, which provide
