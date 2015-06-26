@@ -136,7 +136,7 @@ Perl использовать C<new> как имя для их конструк�
 =head2 Методы
 
 Вы уже узнали, что B<методом> является подпрограмма, которая работает
-с объектом. Вы можете думать о методе как о вещи, которую что объект может делать.
+с объектом. Вы можете думать о методе как о вещи, которую объект может делать.
 Если объект является существительным, то методы будут его глаголами
 (сохранить, печатать, открывать).
 
@@ -173,50 +173,50 @@ Perl использовать C<new> как имя для их конструк�
 
 =head2 Атрибуты
 
-Each class can define its B<attributes>. When we instantiate an object,
-we assign values to those attributes. For example, every C<File> object
-has a path. Attributes are sometimes called B<properties>.
+Каждый класс может определить свои B<атрибуты>.
+Когда мы создаем экземпляр объекта, мы присваиваем значения этим
+атрибутам. Например каждый объект  C<File> имеет путь. 
+Атрибуты, иногда называются B<свойствами> (B<properties>).
 
-Perl has no special syntax for attributes. Under the hood, attributes
-are often stored as keys in the object's underlying hash, but don't
-worry about this.
+Perl не имеет специального синтаксиса для атрибутов.
+Под капотом атрибуты часто хранятся в виде ключей в базовом
+хэше объекта, но не беспокойтесь об этом.
 
-We recommend that you only access attributes via B<accessor> methods.
-These are methods that can get or set the value of each attribute. We
-saw this earlier in the C<print_info()> example, which calls C<<
-$self->path >>.
+Мы рекомендуем, что вы имели доступ к атрибутам только через методы B<доступа> ( B<accessor> methods).
+Это методы, с помощью которых можно получить или задать значение каждого атрибута. 
+Мы видели это раньше в примере C<print_info()>, который вызывает C<<$self->path >>.
 
-You might also see the terms B<getter> and B<setter>. These are two
-types of accessors. A getter gets the attribute's value, while a setter
-sets it. Another term for a setter is B<mutator>
+Вы также можете знать термины B<геттер> и B<сеттер> (B<getter> и B<setter>). 
+Это два типа доступа. Геттер получает значение атрибута, 
+в то время как сеттер устанавливает его. Еще один термин для сеттера это B<мутатор> (B<mutator>)
 
-Attributes are typically defined as read-only or read-write. Read-only
-attributes can only be set when the object is first created, while
-read-write attributes can be altered at any time.
+Атрибуты обычно определяются как только для чтения (read-only) или для чтения и записи ( read-write). 
+Атрибуты только для чтения(read-only) устанавливаются только, когда создается
+объект, в то время как атрибуты чтения-записи(read-write) могут быть изменены в любое время.
 
-The value of an attribute may itself be another object. For example,
-instead of returning its last mod time as a number, the C<File> class
-could return a L<DateTime> object representing that value.
+Значением атрибута может быть другой объект. Например
+вместо возвращения времени последней модификации (mod time) в виде числа, класс 
+ C<File> может вернуть объект L<DateTime>, представляющий это значение.
 
-It's possible to have a class that does not expose any publicly
-settable attributes. Not every class has attributes and methods.
+Это позволяет иметь класс, который не предоставляет каких-либо 
+публично настраиваемых атрибутов. Не каждый класс имеет атрибуты и методы.
 
-=head2 Polymorphism
+=head2 Полиморфизм
 
-B<Polymorphism> is a fancy way of saying that objects from two
-different classes share an API. For example, we could have C<File> and
-C<WebPage> classes which both have a C<print_content()> method. This
-method might produce different output for each class, but they share a
-common interface.
+B<Полиморфизм> -это причудливый способ сказать, что 
+объекты из двух различных классов используют единое API.
+Например мы могли бы иметь классы C<File> и C<WebPage> , которые
+оба имеют метод C<print_content()>. Этот метод может создавать
+разные выходные данные для каждого класса, но они имеют общий интерфейс (common interface).
 
-While the two classes may differ in many ways, when it comes to the
-C<print_content()> method, they are the same. This means that we can
-try to call the C<print_content()> method on an object of either class,
-and B<we don't have to know what class the object belongs to!>
+В то время как два класса могут отличаться во многих отношениях,
+но, когда речь заходит о методе C<print_content()>, то они одинаковы. Это 
+означает, что мы можем попытаться вызвать метод C<print_content()>
+ на объекте класса, и B<нам не нужно знать, какому классу принадлежит объект!>
 
-Polymorphism is one of the key concepts of object-oriented design.
+Полиморфизм — одна из ключевых концепций объектно ориентированного проектирования(object-oriented design).
 
-=head2 Inheritance
+=head2 Наследование
 
 B<Inheritance> lets you create a specialized version of an existing
 class. Inheritance lets the new class reuse the methods and attributes
