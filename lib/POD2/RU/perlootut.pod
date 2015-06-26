@@ -126,23 +126,22 @@ B<Благословленная> (<blessed>) структура данных (�
 
 =head3 Конструктор
 
-A B<constructor> creates a new object. In Perl, a class's constructor
-is just another method, unlike some other languages, which provide
-syntax for constructors. Most Perl classes use C<new> as the name for
-their constructor:
+B<Конструктор> создает новый объект. В Perl конструктор класса 
+— это просто еще один метод, в отличие от некоторых других языков, 
+которые предоставляют синтаксис для конструкторов. Большинство классов
+Perl использовать C<new> как имя для их конструктора:
 
   my $file = File->new(...);
 
-=head2 Methods
+=head2 Методы
 
-You already learned that a B<method> is a subroutine that operates on
-an object. You can think of a method as the things that an object can
-I<do>. If an object is a noun, then methods are its verbs (save, print,
-open).
+Вы уже узнали, что B<методом> является подпрограмма, которая работает
+с объектом. Вы можете думать о методе как о вещи, которую что объект может делать.
+Если объект является существительным, то методы будут его глаголами
+(сохранить, печатать, открывать).
 
-In Perl, methods are simply subroutines that live in a class's package.
-Methods are always written to receive the object as their first
-argument:
+В Perl методы являются просто подпрограммами, которые живут в классе пакета. 
+Методы всегда записываются так, чтобы получить объект в качестве первого аргумента.
 
   sub print_info {
       my $self = shift;
@@ -153,13 +152,14 @@ argument:
   $file->print_info;
   # The file is at /etc/hostname
 
-What makes a method special is I<how it's called>. The arrow operator
-(C<< -> >>) tells Perl that we are calling a method.
+Что делает метод специальным так это то, I<как он вызывается>. 
+Оператора стрелка (C<< -> >>) говорит Perl, что мы вызываем метод.
 
-When we make a method call, Perl arranges for the method's B<invocant>
-to be passed as the first argument. B<Invocant> is a fancy name for the
-thing on the left side of the arrow. The invocant can either be a class
-name or an object. We can also pass additional arguments to the method:
+Когда мы делаем вызов метода, Perl делает так, что
+ в качестве первого аргумента передается B<вызыватель> (B<invocant>).
+ B<вызыватель> (B<Invocant>) это причудливое название для вещи с левой стороны 
+ стрелки. Вызывателем (Invocant) может быть или имя класса или имя объекта. 
+ Мы также можем передать дополнительные аргументы в метод:
 
   sub print_info {
       my $self   = shift;
@@ -171,7 +171,7 @@ name or an object. We can also pass additional arguments to the method:
   $file->print_info("The file is located at ");
   # The file is located at /etc/hostname
 
-=head2 Attributes
+=head2 Атрибуты
 
 Each class can define its B<attributes>. When we instantiate an object,
 we assign values to those attributes. For example, every C<File> object
