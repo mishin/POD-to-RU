@@ -180,6 +180,8 @@ Nikolay Mishin E<lt> mi@ya.ru E<gt>
 
 =item * Кирилл Флоренский
 
+=item * Андрей Асякин C<< <asan999 at gmail.com> >>
+
 =back
 
 =head1 COPYRIGHT

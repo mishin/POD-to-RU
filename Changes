@@ -2,6 +2,9 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * поприветствуем нового переводчика
+           * Андрея Асякина C<< <asan999 at gmail.com> >>
+           * он помог перевести perlootut
 5.18.0.1.75  2015-06-29 02:32:46 MSK
 
            * для https://twitter.com/backendsecret
