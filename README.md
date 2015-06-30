@@ -109,6 +109,7 @@ Nikolay Mishin < mi@ya.ru >
 - Дмитрий Анисимов
 - Андрей Варлашкин
 - Кирилл Флоренский
+- Андрей Асякин `<asan999 at gmail.com>`
 
 # COPYRIGHT
 
