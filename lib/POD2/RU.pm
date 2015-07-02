@@ -62,12 +62,17 @@ POD2::RU - документация Perl по-русски
 
   use POD2::RU;
   print_pods();
-  print_pod('pod_foo', 'pod_baz');
+  print_pod('perlre', 'perlootut');
 
 =head1 DESCRIPTION
 
-Модуль POD2::RU содержит перевод Perl-документации на русский. 
+POD2::RU - проект перевода Perl-документации на русский язык.
+
+=head1 REPOSITORY
+
 Домашняя страница проекта ─ L<https://github.com/mishin/POD-to-RU>. 
+
+=head1 USAGE
 
 Примеры использования
 
