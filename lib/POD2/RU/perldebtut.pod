@@ -1,21 +1,27 @@
-=head1 NAME
 
-perldebtut - Perl debugging tutorial
+=encoding utf8
 
-=head1 DESCRIPTION
+=head1 NAME/НАИМЕНОВАНИЕ
 
-A (very) lightweight introduction in the use of the perl debugger, and a
-pointer to existing, deeper sources of information on the subject of debugging
-perl programs.  
+perldebtut - учебник по отладке Perl кода
 
-There's an extraordinary number of people out there who don't appear to know
-anything about using the perl debugger, though they use the language every
-day.  
-This is for them.  
+=head1 ОПИСАНИЕ
 
+(Очень) упрощенное введение в использование perl отладчика (perl debugger) и
+указатель на существующие, более глубокие источники информации по вопросу отладки
+Perl программ.
+
+Существует невероятное множество людей, которые даже не слышали ничего
+ об отладчике perl, хотя они используют этот язык каждый день.
+Это для них.
 
 =head1 use strict
 
+Во-первых есть несколько вещей, которые вы можете сделать, чтобы сделать вашу жизнь намного больше
+просто, когда речь заходит о отладки perl программ, без использования
+отладчика на всех. Чтобы продемонстрировать, вот простой скрипт, с именем «hello»,
+проблема:
+	
 First of all, there's a few things you can do to make your life a lot more
 straightforward when it comes to debugging perl programs, without using the
 debugger at all.  To demonstrate, here's a simple script, named "hello", with
@@ -703,6 +709,8 @@ L<perldebug>,
 L<perldebguts>, 
 L<perldiag>,
 L<perlrun>
+отличная презентация на YAPC RUSSIA 2015
+L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>
 
 
 =head1 AUTHOR
@@ -719,4 +727,12 @@ Ronald J Kimball <rjk@linguist.dartmouth.edu>
 Hugo van der Sanden <hv@crypt0.demon.co.uk>
 
 Peter Scott <Peter@PSDT.com>
+
+=head1 ПЕРЕВОДЧИКИ
+
+=over
+
+=item * Николай Мишин  C<< <mishin@cpan.org> >>
+
+=back
 
