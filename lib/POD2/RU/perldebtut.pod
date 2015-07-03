@@ -17,41 +17,35 @@ Perl программ.
 
 =head1 use strict
 
-Во-первых есть несколько вещей, которые вы можете сделать, чтобы сделать вашу жизнь намного больше
-просто, когда речь заходит о отладки perl программ, без использования
-отладчика на всех. Чтобы продемонстрировать, вот простой скрипт, с именем «hello»,
-проблема:
-	
-First of all, there's a few things you can do to make your life a lot more
-straightforward when it comes to debugging perl programs, without using the
-debugger at all.  To demonstrate, here's a simple script, named "hello", with
-a problem:
+Во-первых есть несколько вещей, которые вы можете сделать, чтобы сделать вашу жизнь намного проще
+, когда речь заходит об отладке perl программ, без использования отладчика вовсе. 
+Чтобы это показать, вот простой скрипт, с именем "hello" с проблемой:
 
 	#!/usr/bin/perl
 
-	$var1 = 'Hello World'; # always wanted to do that :-)
+	$var1 = 'Hello World'; # всегда хотел сделать это :-)
 	$var2 = "$varl\n";
 
 	print $var2; 
 	exit;
 
-While this compiles and runs happily, it probably won't do what's expected,
-namely it doesn't print "Hello World\n" at all;  It will on the other hand do
-exactly what it was told to do, computers being a bit that way inclined.  That
-is, it will print out a newline character, and you'll get what looks like a
-blank line.  It looks like there's 2 variables when (because of the typo)
-there's really 3:
+Хотя он компилируется и выполняется успешно, он,  вероятно не будет делать то, что мы ожидаем, а
+именно, он не напечатает "Hello World\n" вовсе; с другой стороны он сделает
+именно то, что ему было приказано, компьютеры склонны делать то, что им говорят. 
+Он распечатает символ новой строки, и вы получите то, что выглядит, как
+пустая строка. Все выглядит так, как будто у вас есть 2 переменные, тогда как (из-за опечатки)
+их на самом деле 3:
 
 	$var1 = 'Hello World';
 	$varl = undef;
 	$var2 = "\n";
 
-To catch this kind of problem, we can force each variable to be declared
-before use by pulling in the strict module, by putting 'use strict;' after the
-first line of the script.
+Чтобы поймать такого рода проблемы, мы может заставить, чтобы каждая переменная быть объявлена
+перед использованием, включив модуль, следящий за строгим стилем программирования, поставив 'use strict;' после
+первой строки скрипта.
 
-Now when you run it, perl complains about the 3 undeclared variables and we
-get four error messages because one variable is referenced twice:
+Теперь когда вы запускаете скрипт, perl жалуется на 3 не объявленные переменные и мы
+получаем четыре сообщения об ошибках, потому что одна переменная будет упоминаться дважды:
 
  Global symbol "$var1" requires explicit package name at ./t1 line 4.
  Global symbol "$var2" requires explicit package name at ./t1 line 5.
@@ -59,8 +53,8 @@ get four error messages because one variable is referenced twice:
  Global symbol "$var2" requires explicit package name at ./t1 line 7.
  Execution of ./hello aborted due to compilation errors.     
 
-Luvverly! and to fix this we declare all variables explicitly and now our
-script looks like this:	
+Изумительно! и для исправления этих ошибок мы объявляем все переменные явно и теперь наш
+сценарий выглядит следующим образом:
 
 	#!/usr/bin/perl
 	use strict;
@@ -72,15 +66,14 @@ script looks like this:
 	print $var2; 
 	exit;
 
-We then do (always a good idea) a syntax check before we try to run it again:
+Мы затем мы сделаем (всегда хорошая идея) проверку синтаксиса, прежде чем мы попробовать запустить его снова:
 
 	> perl -c hello
 	hello syntax OK 
 
-And now when we run it, we get "\n" still, but at least we know why.  Just
-getting this script to compile has exposed the '$varl' (with the letter 'l')
-variable, and simply changing $varl to $var1 solves the problem.
-
+И теперь, когда мы запускаем скрипт, мы все еще получаем "\n", но мы по крайней мере мы знаем, почему. 
+Просто успешно откомпилировав скрипт мы выявили переменную '$varl' (с буквы 'l')
+ и простое изменение $varl на $var1 решает проблему.
 
 =head1 Looking at data and -w and v
 
