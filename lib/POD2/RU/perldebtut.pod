@@ -53,7 +53,7 @@ Perl программ.
  Global symbol "$var2" requires explicit package name at ./t1 line 7.
  Execution of ./hello aborted due to compilation errors.     
 
-Изумительно! и для исправления этих ошибок мы объявляем все переменные явно и теперь наш
+Изумительно! Для исправления этих ошибок мы объявляем все переменные явно и теперь наш
 сценарий выглядит следующим образом:
 
 	#!/usr/bin/perl
@@ -75,10 +75,10 @@ Perl программ.
 Просто успешно откомпилировав скрипт мы выявили переменную '$varl' (с буквы 'l')
  и простое изменение $varl на $var1 решает проблему.
 
-=head1 Looking at data and -w and v
+=head1 Глядя на данные и -w и v
 
-Ok, but how about when you want to really see your data, what's in that
-dynamic variable, just before using it?
+Хорошо, но как насчет того, если вы действительно хотите увидеть данные, находящиеся в 
+динамической переменной, как раз перед её использованием?
 
 	#!/usr/bin/perl 
 	use strict;
@@ -95,28 +95,27 @@ dynamic variable, just before using it?
 	print "$data{$key}\n";
 	exit;                               
 
-Looks OK, after it's been through the syntax check (perl -c scriptname), we
-run it and all we get is a blank line again!  Hmmmm.
+Выглядит нормально, после того, как мы сделала проверку синтаксиса (perl -c scriptname), 
+запустили его и опять получили пустую строку! Да уж..
 
-One common debugging approach here, would be to liberally sprinkle a few print
-statements, to add a check just before we print out our data, and another just
-after:
+Один из распространенных подходов к отладке будет использование оператора print
+, чтобы добавить проверку перед тем, как мы распечатаем наши данные и другую проверку
+ сразу после:
 
 	print "All OK\n" if grep($key, keys %data);
 	print "$data{$key}\n";
 	print "done: '$data{$key}'\n";
 
-And try again:
+И попровать еще раз:
 
 	> perl data
 	All OK     
 
 	done: ''
 
-After much staring at the same piece of code and not seeing the wood for the
-trees for some time, we get a cup of coffee and try another approach.  That
-is, we bring in the cavalry by giving perl the 'B<-d>' switch on the command
-line:
+После долгого времени вглядывания в один и тот и тот же кусок кода и не видя леса
+за деревьями, мы выпили чашку кофе и попробовали другой подход. Что
+Что ж, придется применить кавалерию, перл нам дает ключ для командной строки 'B<-d>':
 
 	> perl -d data 
 	Default die handler restored.
@@ -128,26 +127,24 @@ line:
 
 	main::(./data:4):     my $key = 'welcome';   
 
-Now, what we've done here is to launch the built-in perl debugger on our
-script.  It's stopped at the first line of executable code and is waiting for
-input.
+Теперь, применение этого флага здесь вызывает встроенный отладчик perl на нашем
+сценарии. Он останавливается на первой строке исполняемого кода и ожидает
+ввода команды.
 
-Before we go any further, you'll want to know how to quit the debugger: use
-just the letter 'B<q>', not the words 'quit' or 'exit':
+Прежде чем мы пойдем дальше, вы захотите узнать, как выйти из отладчика:
+ просто используйте букву 'B<q>', а не слова 'quit' или 'exit':
 
 	DB<1> q
 	>
 
-That's it, you're back on home turf again.
+Вот это, вы снова вернулись на родную землю.
 
+=head1 справка
 
-=head1 help
-
-Fire the debugger up again on your script and we'll look at the help menu. 
-There's a couple of ways of calling help: a simple 'B<h>' will get the summary 
-help list, 'B<|h>' (pipe-h) will pipe the help through your pager (which is 
-(probably 'more' or 'less'), and finally, 'B<h h>' (h-space-h) will give you 
-the entire help screen.  Here is the summary page:
+Запустите отладчик с нашим сценарием снова, и мы посмотрим на меню справка (help).
+Существует несколько способов вызова справки: простой 'B<h>' даст суммарно весь список команд,
+'B<|h>' (пайп-h) запустит просмотр помощи через программу просмотра (вероятно 'more' или 'less')
+и, наконец, 'B<h h>' (h-space-h) выведет вам все команды с описанием. Вот суммарный список команд:
 
 DB<1>h
 
