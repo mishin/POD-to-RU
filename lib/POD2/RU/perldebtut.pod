@@ -114,7 +114,7 @@ Perl программ.
 	done: ''
 
 После долгого времени вглядывания в один и тот и тот же кусок кода и не видя леса
-за деревьями, мы выпили чашку кофе и попробовали другой подход. Что
+за деревьями, мы выпили чашку кофе и попробовали другой подход.
 Что ж, придется применить кавалерию, перл нам дает ключ для командной строки 'B<-d>':
 
 	> perl -d data 
@@ -151,12 +151,12 @@ DB<1>h
 
  Показ/поис строка исходного кода:        Команды управления выполнением:
   l [ln|sub]  Показать исходный код       T           Трассировка стека
-  - or .      List previous/current line  s [expr]    Single step [in expr]
-  v [line]    View around line            n [expr]    Next, steps over subs
-  f filename  View source in file         <CR/Enter>  Repeat last n or s
-  /pattern/ ?patt?   Search forw/backw    r           Return from subroutine
-  M           Show module versions        c [ln|sub]  Continue until position
- Debugger controls:                       L           List break/watch/actions
+  - или .     Предыдущая/текущая строка   s [expr]    Один шаг [in expr] (single)
+  v [line]    Строки вокруг               n [expr]    Следующий, не заходя в процедуры (next)
+  f filename  Исходный текст файла        <CR/Enter>  Повторить последние n или s
+  /pattern/ ?patt?   Поиск вперед/назад   r           Вернуться из процедуры (return)
+  M           Показать версии модулей     c [ln|sub]   Продолжить до позиции (continue)
+ Управление отладчиком:                   L           Посмотреть на точки останова(break)/слежка (watch)/действия(actions) (list)
   o [...]     Set debugger options        t [expr]    Toggle trace [trace expr]
   <[<]|{[{]|>[>] [cmd] Do pre/post-prompt b [ln|event|sub] [cnd] Set breakpoint
   ! [N|pat]   Redo a previous command     B ln|*      Delete a/all breakpoints
