@@ -144,13 +144,13 @@ Perl программ.
 Запустите отладчик с нашим сценарием снова, и мы посмотрим на меню справка (help).
 Существует несколько способов вызова справки: простой 'B<h>' даст суммарно весь список команд,
 'B<|h>' (пайп-h) запустит просмотр помощи через программу просмотра (вероятно 'more' или 'less')
- (осторожно, этот способ не работает по Windows! - примечание переводчика)
+ (осторожно, этот способ не работает по Windows! - примечание переводчика, пришлось mingw ставить, чтобы проверить эту опцию)
 и, наконец, 'B<h h>' (h-пробел-h) выведет вам все команды с описанием. Вот суммарный список команд:
 
 DB<1>h
 
- List/search source lines:               Control script execution:
-  l [ln|sub]  List source code            T           Stack trace
+ Показ/поис строка исходного кода:        Команды управления выполнением:
+  l [ln|sub]  Показать исходный код       T           Трассировка стека
   - or .      List previous/current line  s [expr]    Single step [in expr]
   v [line]    View around line            n [expr]    Next, steps over subs
   f filename  View source in file         <CR/Enter>  Repeat last n or s
