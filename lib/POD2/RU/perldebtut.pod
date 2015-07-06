@@ -241,10 +241,11 @@ DB<1>h
 	DB<5> .
 	main::(./data_a:4):     my $key = 'welcome';  
 
-The line shown is the one that is about to be executed B<next>, it hasn't
-happened yet.  So while we can print a variable with the letter 'B<p>', at
-this point all we'd get is an empty (undefined) value back.  What we need to
-do is to step through the next executable statement with an 'B<s>':
+
+Сейчас нам показывается строка кода, которая будет выполнена B<следующей>, та, которая еще не исполнялась. 
+Так, теперь мы можем напечатать переменную с помощью буквы 'B<p>', в
+ данный момент мы получили пустое (неопределенное) значение (undefined).
+ Теперь нам нужно перейти к следующему исполняемому оператору с помощью буквы 'B<s>':
 
 	DB<6> s
 	main::(./data_a:5):     my %data = (
@@ -254,14 +255,15 @@ do is to step through the next executable statement with an 'B<s>':
 	main::(./data_a:9):             'zip' => q(welcome),
 	main::(./data_a:10):    );   
 
-Now we can have a look at that first ($key) variable:
+Теперь мы можем увидеть первую переменную ($key):
 
 	DB<7> p $key 
 	welcome 
 
-line 13 is where the action is, so let's continue down to there via the letter
-'B<c>', which by the way, inserts a 'one-time-only' breakpoint at the given
-line or sub routine:
+
+13 строка -это та, где находится действие, так что давайте продолжать до нее через символ
+'B<c>',который, кстати, вставляет точку останова 'на одно только время'  в заданной
+строке или sub процедуры:
 
 	DB<8> c 13
 	All OK
