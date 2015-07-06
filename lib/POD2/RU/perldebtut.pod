@@ -269,13 +269,14 @@ DB<1>h
 	All OK
 	main::(./data_a:13):    print "$data{$key}\n";
 
-We've gone past our check (where 'All OK' was printed) and have stopped just
-before the meat of our task.  We could try to print out a couple of variables
-to see what is happening:
+
+Мы прошли мимо нашей проверки (где было напечатано 'All OK') и просто встали прямо
+перед целью нашей задачи. Мы могли бы попытаться распечатать несколько переменных
+чтобы увидеть, что происходит:
 
 	DB<9> p $data{$key}
 
-Not much in there, lets have a look at our hash:
+Здесь не так много, давайте взглянем на нашем хэш:
 
 	DB<10> p %data
 	Hello Worldziptomandwelcomejerrywelcomethisthat 
