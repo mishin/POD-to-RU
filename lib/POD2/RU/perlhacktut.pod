@@ -4,11 +4,11 @@
 Consistent formatting of this file is achieved with:
   perl ./Porting/podtidy pod/perlhacktut.pod
 
-=head1 NAME
+=head1 NAME/НАИМЕНОВАНИЕ
 
-perlhacktut - Walk through the creation of a simple C code patch
+perlhacktut - Путь по созданию простого патча на C
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
 This document takes you through a simple patch example.
 
@@ -186,3 +186,11 @@ See L<perlhack> for details on how to submit this patch.
 
 This document was originally written by Nathan Torkington, and is
 maintained by the perl5-porters mailing list.
+
+=head1 ПЕРЕВОДЧИКИ
+  
+=over
+  
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
