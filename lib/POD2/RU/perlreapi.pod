@@ -3,7 +3,7 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perlreapi - Perl regular expression plugin interface
+perlreapi - Интерфейс плагинов к регулярным выражениям Perl
 
 =head1 ОПИСАНИЕ
 
@@ -827,3 +827,11 @@ This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.
 
 =cut
+
+=head1 ПЕРЕВОДЧИКИ
+
+=over
+
+=item * Николай Мишин  C<< <mishin@cpan.org> >>
+
+=back

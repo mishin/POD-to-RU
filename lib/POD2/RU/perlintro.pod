@@ -3,7 +3,7 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perlintro -- краткое введение и обзор Perl
+perlintro - Краткое введение и обзор Perl
 
 =head1 ОПИСАНИЕ
 

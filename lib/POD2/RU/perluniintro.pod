@@ -2,7 +2,7 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perluniintro - введение в Perl Юникод
+perluniintro - Введение в Perl Юникод
 
 =head1 ОПИСАНИЕ
 
