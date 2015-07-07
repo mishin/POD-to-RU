@@ -1,10 +1,10 @@
 =encoding utf8
 
-=head1 NAME
+=head1 NAME/НАИМЕНОВАНИЕ
 
-perlpodspec - Plain Old Documentation: format specification and notes
+perlpodspec - Простая старая документация: спецификация формата и примечания
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
 This document is detailed notes on the Pod markup language.  Most
 people will only have to read L<perlpod|perlpod> to know how to write
@@ -1913,4 +1913,12 @@ Sean M. Burke
 
 =cut
 
+
+=head1 ПЕРЕВОДЧИКИ
+  
+=over
+  
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
 
