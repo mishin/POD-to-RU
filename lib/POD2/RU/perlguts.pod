@@ -1,6 +1,6 @@
 =encoding utf8
 
-=head1 НАЗВАНИЕ
+=head1 NAME/НАИМЕНОВАНИЕ
 
 perlguts - Введение в Perl API
 
