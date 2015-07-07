@@ -1,6 +1,8 @@
-=head1 NAME
+=encoding utf8
 
-perlpacktut - tutorial on C<pack> and C<unpack>
+=head1 NAME/НАИМЕНОВАНИЕ
+
+perlpacktut - Учебник по C<pack> и C<unpack>
 
 =head1 DESCRIPTION
 
@@ -1263,3 +1265,10 @@ spacing - 16 bytes to a line:
 
 Simon Cozens and Wolfgang Laun.
 
+=head1 ПЕРЕВОДЧИКИ
+  
+=over
+  
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
