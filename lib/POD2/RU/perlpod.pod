@@ -1,14 +1,15 @@
+=encoding utf8
 
 =for comment
 This document is in Pod format.  To read this, use a Pod formatter,
 like "perldoc perlpod".
 
-=head1 NAME
+=head1 NAME/НАИМЕНОВАНИЕ
 X<POD> X<plain old documentation>
 
-perlpod - the Plain Old Documentation format
+perlpod - Формат простая старой документации (Plain Old Documentation POD)
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
 Pod is a simple-to-use markup language used for writing documentation
 for Perl, Perl programs, and Perl modules.
@@ -733,3 +734,11 @@ L<perlnewmod>, L<perldoc>, L<pod2html>, L<pod2man>, L<podchecker>.
 Larry Wall, Sean M. Burke
 
 =cut
+
+=head1 ПЕРЕВОДЧИКИ
+  
+=over
+  
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back

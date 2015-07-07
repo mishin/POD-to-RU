@@ -1,14 +1,17 @@
-=head1 NAME
+=encoding utf8
 
-perlpodstyle - Perl POD style guide
+=head1 NAME/НАИМЕНОВАНИЕ
 
-=head1 DESCRIPTION
+perlpodstyle - Руководство по стилю Perl POD
 
-These are general guidelines for how to write POD documentation for Perl
-scripts and modules, based on general guidelines for writing good UNIX man
-pages.  All of these guidelines are, of course, optional, but following
-them will make your documentation more consistent with other documentation
-on the system.
+
+=head1 ОПИСАНИЕ
+
+Это общие рекомендации о том, как писать документацию Perl POD документацию
+ для скриптов и модулей, на основе общих руководящих принципах для написания хорошей страницы
+ UNIX man (далее маны). Все эти руководящие принципы являются, конечно, необязательными, но следование им
+сделает вашу документацию более последовательной по отношению к другой документации
+в системе.
 
 The name of the program being documented is conventionally written in bold
 (using BE<lt>E<gt>) wherever it occurs, as are all program options.
@@ -293,3 +296,11 @@ This documentation is free software; you may redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
+
+=head1 ПЕРЕВОДЧИКИ
+  
+=over
+  
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
