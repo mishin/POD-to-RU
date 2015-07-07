@@ -62,7 +62,7 @@ __END__
 
 =head1 NAME
 
-POD2::RU - документация Perl по-русски
+POD2::RU - Документация Perl по-русски
 
 =for HTML 
 <a href="https://travis-ci.org/mishin/POD-to-RU"><img src="https://camo.githubusercontent.com/4d5013ccad85146ce9c975dce7d677e20a632b5a/68747470733a2f2f7472617669732d63692e6f72672f6d697368696e2f504f442d746f2d52552e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/mishin/POD-to-RU.svg?branch=master" style="max-width:100%;"></a>
