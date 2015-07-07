@@ -127,8 +127,8 @@ Perl программ.
 
 	main::(./data:4):     my $key = 'welcome';   
 
-Теперь, применение этого флага здесь вызывает встроенный отладчик perl на нашем
-сценарии. Он останавливается на первой строке исполняемого кода и ожидает
+Теперь, применение этого флага здесь вызывает встроенный отладчик perl с нашим
+сценарием. Он останавливается на первой строке исполняемого кода и ожидает
 ввода команды.
 
 Прежде чем мы пойдем дальше, вы захотите узнать, как выйти из отладчика:
@@ -137,17 +137,17 @@ Perl программ.
 	DB<1> q
 	>
 
-Вот это, вы снова вернулись на родную землю.
+Вот и отлично - вы снова вернулись на родную землю.
 
 =head1 справка
 
 Запустите отладчик с нашим сценарием снова, и мы посмотрим на меню справка (help).
 Существует несколько способов вызова справки: простой 'B<h>' даст суммарно весь список команд,
 'B<|h>' (пайп-h) запустит просмотр помощи через программу просмотра (вероятно 'more' или 'less')
- (осторожно, этот способ не работает по Windows! - примечание переводчика, пришлось mingw ставить, чтобы проверить эту опцию)
+ (не работает под Windows, как среду без поддержки пайпов)
 и, наконец, 'B<h h>' (h-пробел-h) выведет вам все команды с описанием. Вот суммарный список команд:
 
-DB<1>h
+ DB<1>h
 
  Показ/поис строка исходного кода:        Команды управления выполнением:
   l [ln|sub]  Показать исходный код       T           Трассировка стека
@@ -199,7 +199,7 @@ DB<1>h
 	DM<3>X ~err
 	FileHandle(stderr) => fileno(2)    
 
-Помните, что мы в нашей крошечной программе с проблемой, мы должны взглянуть на то,
+Помните, что мы в нашей крошечной программе с проблемой должны взглянуть на то,
 где мы находимся, и как выглядят наши данные. Прежде всего рассмотрим код
 в нашей текущей позиции (первая строка кода в данном случае), через 'B<v>':
 
@@ -284,8 +284,9 @@ DB<1>h
 	DB<11> p keys %data
 	Hello Worldtomwelcomejerrythis  
 
-Well, this isn't very easy to read, and using the helpful manual (B<h h>), the
-'B<x>' command looks promising:
+
+Ну, это не очень легко читать и, используя полезное руководство (B<h h>),
+команда 'B<x>' выглядит многообещающе:
 
 	DB<12> x %data
 	0  'Hello World'
@@ -299,10 +300,11 @@ Well, this isn't very easy to read, and using the helpful manual (B<h h>), the
 	8  'this'
 	9  'that'     
 
-That's not much help, a couple of welcomes in there, but no indication of
-which are keys, and which are values, it's just a listed array dump and, in
-this case, not particularly helpful.  The trick here, is to use a B<reference>
-to the data structure:
+
+Это не очень нам поможет - пара 'welcome', но никаких признаков того, что
+является ключами, а что значениями, это просто дамп массива и, в
+данном случае, не особенно полезная. Хитростью здесь является использование B<ссылки>
+ на структуру данных:
 
 	DB<13> x \%data
 	0  HASH(0x8194bc4)
@@ -312,31 +314,35 @@ to the data structure:
 	   'tom' => 'and'
 	   'welcome' => undef  
 
-The reference is truly dumped and we can finally see what we're dealing with. 
-Our quoting was perfectly valid but wrong for our purposes, with 'and jerry'
-being treated as 2 separate words rather than a phrase, thus throwing the
-evenly paired hash structure out of alignment.
 
-The 'B<-w>' switch would have told us about this, had we used it at the start,
-and saved us a lot of trouble: 
+Ссылка отлично показывается в виде дампа, и мы, наконец, можем увидеть, что мы имеем дело со
+строками в кавычках, что вполне допустимо, но для наших целей, 'and jerry'
+ рассматривается как 2 отдельных слова, а не единая фраза, что разрушает
+наши равномерные парные структуры хэша.
+
+Параметр 'B<-w>' сказал бы нам об этом, если бы мы использовали его в начале
+и спас бы нас от многих неприятностей:
 
 	> perl -w data
 	Odd number of elements in hash assignment at ./data line 5.    
+	
+	Нечетное число элементов в хэше назначения в ./data строка 5.    
 
-We fix our quoting: 'tom' => q(and jerry), and run it again, this time we get
-our expected output:
+
+Мы исправить наш скобочный оператор на q: 'tom' => q(and jerry), и запустим его снова, на этот раз мы получаем
+ ожидаемый результат:
 
 	> perl -w data
 	Hello World
 
 
-While we're here, take a closer look at the 'B<x>' command, it's really useful
-and will merrily dump out nested references, complete objects, partial objects
-- just about whatever you throw at it:
+Пока мы здесь, рассотрим поближе на команду 'B<x>', она действительно полезна
+и будет весело и успешно дампить вложенные ссылки, объекты целиком, часть объектов
+- почти все, что вы хотите исследовать:
 
-Let's make a quick object and x-plode it, first we'll start the debugger:
-it wants some form of input from STDIN, so we give it something non-committal,
-a zero:
+
+Давайте сделаем быстрый объект и исследуем его, во-первых мы запустим отладчик:
+он захочет чтото на ввод из STDIN, поэтому мы даем ему что-то необязательный ноль:
 
 	> perl -de 0
 	Default die handler restored.
@@ -348,12 +354,12 @@ a zero:
 
 	main::(-e:1):   0                       
 
-Now build an on-the-fly object over a couple of lines (note the backslash):
+Теперь создадим объект-на-лету из пары строк (обратите внимание, обратная косая черта):
 
 	DB<1> $obj = bless({'unique_id'=>'123', 'attr'=> \
 	cont: 	{'col' => 'black', 'things' => [qw(this that etc)]}}, 'MY_class')
 
-And let's have a look at it:
+И давайте посмотрим на это:
 
   	DB<2> x $obj
 	0  MY_class=HASH(0x828ad98)
@@ -366,8 +372,8 @@ And let's have a look at it:
    		'unique_id' => 123       
   	DB<3>
 
-Useful, huh?  You can eval nearly anything in there, and experiment with bits
-of code or regexes until the cows come home:
+Полезно, не правда ли? Вы можете выполнить почти все что угодно и экспериментировать с битами
+кода или регулярными выражениями до тех пор, пока коровы не придут домой (до второго пришествия;)):
 
 	DB<3> @data = qw(this that the other atheism leather theory scythe)
 
@@ -380,7 +386,7 @@ of code or regexes until the cows come home:
 	theory  
 	saw -> 6
 
-If you want to see the command History, type an 'B<H>':
+Если вы хотите увидеть историю команд, введите 'B<H>':
 
 	DB<5> H
 	4: p 'saw -> '.($cnt += map { print "\t:\t$_\n" } grep(/the/, sort @data))
@@ -390,7 +396,7 @@ If you want to see the command History, type an 'B<H>':
 	{'col' => 'black', 'things' => [qw(this that etc)]}}, 'MY_class')
 	DB<5>
 
-And if you want to repeat any previous command, use the exclamation: 'B<!>':
+И если вы хотите повторить любую предыдущую команду, используйте восклицательный знак: 'B<!>':
 
 	DB<5> !4
 	p 'saw -> '.($cnt += map { print "$_\n" } grep(/the/, sort @data))
@@ -402,13 +408,13 @@ And if you want to repeat any previous command, use the exclamation: 'B<!>':
 	theory  
 	saw -> 12
 
-For more on references see L<perlref> and L<perlreftut>
+Еще больше о ссылках вы можете прочитать в L<perlref> и L<perlreftut>
 
 
-=head1 Stepping through code
+=head1 Пошаговое выполнение кода
 
-Here's a simple program which converts between Celsius and Fahrenheit, it too
-has a problem:
+Вот простая программа, которая преобразует градусы между Цельсиями и Фаренгейтами, в ней тоже
+есть проблема:
 
 	#!/usr/bin/perl -w
 	use strict;
@@ -445,9 +451,8 @@ has a problem:
 		return $f;
 	}
 
-
-For some reason, the Fahrenheit to Celsius conversion fails to return the
-expected output.  This is what it does:
+По некоторым причинам, преобразуя Фаренгейт в Цельсии  не удается вернуть
+ожидаемый результат. Вот то, что она делает:
 
 	> temp -c0.72
 	33.30 f
@@ -455,15 +460,15 @@ expected output.  This is what it does:
 	> temp -f33.3
 	162.94 c
 
-Not very consistent!  We'll set a breakpoint in the code manually and run it
-under the debugger to see what's going on.  A breakpoint is a flag, to which
-the debugger will run without interruption, when it reaches the breakpoint, it
-will stop execution and offer a prompt for further interaction.  In normal
-use, these debugger commands are completely ignored, and they are safe - if a
-little messy, to leave in production code.
+Не очень последовательно! Мы установим точку останова в коде вручную и запустим его
+в отладчике (debugger), чтобы увидеть, что происходит. Точка останова (breakpoint) — это флаг до которого
+отладчик будет выполнять команды скрипта без перерыва пока он не достигнет точки останова, он
+остановит выполнение и предложит подсказку для дальнейшего взаимодействия. В обычном режиме
+эти команды отладчика полностью игнорируются и они являются безопасными - если
+ их случайно оставить в производственном коде.
 
 	my ($in, $out) = ($num, $num);
-	$DB::single=2; # insert at line 9!
+	$DB::single=2; # вставить на 9 строке!
 	if ($deg eq 'c') 
 		...
 
@@ -477,12 +482,12 @@ little messy, to leave in production code.
 
 	main::(temp:4): my $arg = $ARGV[0] || '-c100';     
 
-We'll simply continue down to our pre-set breakpoint with a 'B<c>':
+Мы просто будем продолжать вплоть до нашего заданной точки останова, нажимая на клавишу 'B<c>':
 
   	DB<1> c
 	main::(temp:10):                if ($deg eq 'c') {   
 
-Followed by a view command to see where we are:
+Затем команда осмотр (view) 'v', чтобы увидеть, где мы находимся:
 
 	DB<1> v
 	7:              my ($deg, $num) = ($1, $2);
@@ -496,29 +501,29 @@ Followed by a view command to see where we are:
 	15:                     $out = &f2c($num);
 	16              }                             
 
-And a print to show what values we're currently using:
+И print, чтобы показать, какие значения мы в настоящее время используем:
 
 	DB<1> p $deg, $num
 	f33.3
 
-We can put another break point on any line beginning with a colon, we'll use
-line 17 as that's just as we come out of the subroutine, and we'd like to
-pause there later on:
+Мы можем установить другую точку останова на любой строке, начинающейся с двоеточия, мы будем использовать
+строку 19, так как это то место, где мы вышли из подпрограммы, и мы хотели бы
+остановиться здесь:
 
-	DB<2> b 17
+	DB<2> b 19
 
-There's no feedback from this, but you can see what breakpoints are set by
-using the list 'L' command:
+Здесь нет обратной связи от нашей команды, но вы можете увидеть установленные точки останова 
+используя команду списка 'L' (list):
 
 	DB<3> L
 	temp:
  		17:            print "$out $deg\n";
    		break if (1)     
 
-Note that to delete a breakpoint you use 'B'.
+Обратите внимание, что для удаления точки останова можно использовать 'B'.
 
-Now we'll continue down into our subroutine, this time rather than by line
-number, we'll use the subroutine name, followed by the now familiar 'v':
+Сейчас мы продолжим вниз по нашей подпрограмме, на этот раз, а не по номеру
+строки, мы будем использовать имя подпрограммы, а затем уже знакомый 'v':
 
 	DB<3> c f2c
 	main::f2c(temp:30):             my $f = shift;  
@@ -535,23 +540,23 @@ number, we'll use the subroutine name, followed by the now familiar 'v':
 	32      sub c2f {
 	33:             my $c = shift;   
 
+Обратите внимание, что если был вызов подпрограммы между нами и строкой 28, и мы хотели
+ пройти через него b<шаг-за-шагом> (single-step), мы могли бы использовать команду 'B<s>',
+ чтобы пропустить функцию нужно использовать 'B<n>', которая выполнит подпрограмму, не заходя в нее внутрь
+ для проверки. В этом случае, мы просто продолжаем выполнение вплоть до строки 28:
 
-Note that if there was a subroutine call between us and line 29, and we wanted
-to B<single-step> through it, we could use the 'B<s>' command, and to step
-over it we would use 'B<n>' which would execute the sub, but not descend into
-it for inspection.  In this case though, we simply continue down to line 29:
+	DB<4> c 28  
+	main::f2c(temp:28):             return $c;
 
-	DB<4> c 29  
-	main::f2c(temp:29):             return $c;
-
-And have a look at the return value:
+И посмотрим на возвращаемое значение:
 
 	DB<5> p $c
 	162.944444444444
 
-This is not the right answer at all, but the sum looks correct.  I wonder if
-it's anything to do with operator precedence?  We'll try a couple of other
-possibilities with our sum:
+
+Это совсем не правильный ответ, но сумма выглядит верной. Мне интересно, есть
+ возможность что-нибудь сделать с приоритетом операторов? Мы можем попытать пару других
+возможностей с нашими суммами:
 
 	DB<6> p (5 * $f - 32 / 9)
 	162.944444444444
@@ -565,15 +570,15 @@ possibilities with our sum:
 	DB<9> p 5 * ($f - 32) / 9
 	0.722222222222221
 
-:-) that's more like it!  Ok, now we can set our return variable and we'll
-return out of the sub with an 'r':
+:-) о, это уже больше нравится! Ладно, теперь мы можем установить нашу возвращаемую переменную, и мы будем
+выходить из подпрограммы с помощью 'r':
 
 	DB<10> $c = 5 * ($f - 32) / 9
 
 	DB<11> r
 	scalar context return from main::f2c: 0.722222222222221
 
-Looks good, let's just continue off the end of the script:
+Выглядит не плохо, давайте просто продолжим до конца скрипта:
 
 	DB<12> c
 	0.72 c 
@@ -581,13 +586,12 @@ Looks good, let's just continue off the end of the script:
   	use O inhibit_exit to avoid stopping after program termination,
   	h q, h R or h O to get additional info.   
 
-A quick fix to the offending line (insert the missing parentheses) in the
-actual program and we're finished.
+Быстро исправили неверную строку (вставив недостающие скобки) в
+ нашей программе и все, мы все исправили.
 
+=head1 Заполнитель (placeholder) для a, w, t, T
 
-=head1 Placeholder for a, w, t, T
-
-Actions, watch variables, stack traces etc.: on the TODO list.
+Действия, наблюдение переменных, трассировка стека и т.д.: в TODO листе.
 
 	a 
 
@@ -598,12 +602,18 @@ Actions, watch variables, stack traces etc.: on the TODO list.
 	T
 
 
-=head1 REGULAR EXPRESSIONS
+=head1 РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
 
-Ever wanted to know what a regex looked like?  You'll need perl compiled with
-the DEBUGGING flag for this one:
+Вы когда-нибудь хотели знать как выглядит regex? Вам понадобится perl, скомпилированный с 
+ флагом отладки для этого:
 
 	> perl -Dr -e '/^pe(a)*rl$/i'
+
+на самом деле этого не нужно, правильная строка отладки(исправление ошибки, примечание переводчика!):
+
+	perl -Mre=debug -e '/^pe(a)*rl$/i'
+	perl '-Mre qw(debug)' -e '/^pe(a)*rl$/i' #то же самое
+
 	Compiling REx `^pe(a)*rl$'
 	size 17 first at 2
 	rarest char
@@ -626,104 +636,113 @@ anchored(BOL) minlen 4
 
 	Freeing REx: `^pe(a)*rl$'  
 
-Did you really want to know? :-)
-For more gory details on getting regular expressions to work, have a look at
-L<perlre>, L<perlretut>, and to decode the mysterious labels (BOL and CURLYN,
-etc. above), see L<perldebguts>.
+Вы действительно хотите знать? :-)
+Если вы хотите глубже узнать о работе регулярных выражений, то вам нужно взглянуть на
+L<perlre>, L<perlretut>, и расшифровать загадочные знаки (BOL и CURLYN, и т.д. выше), см. L<perldebguts>.
 
 
-=head1 OUTPUT TIPS
+=head1 СОВЕТЫ ПО ВЫВОДУ (OUTPUT TIPS)
 
-To get all the output from your error log, and not miss any messages via
-helpful operating system buffering, insert a line like this, at the start of
-your script:
+Чтобы получить весь вывод из вашего журнала ошибок и не пропустить любые сообщения, включая
+ полезные сообщения, буферизированные операцилнной системой, вставьте эту строку в начале вашего скрипта:
 
 	$|=1;	
 
-To watch the tail of a dynamically growing logfile, (from the command line):
+Чтобы видеть конец динамично растущего логфайла (logfile), (из командной строки):
 
 	tail -f $error_log
 
-Wrapping all die calls in a handler routine can be useful to see how, and from
-where, they're being called, L<perlvar> has more information:
+Обертка всех вызовов 'die' в процедуру обработчика, чтобы можно было увидеть, как и как и от
+кого они вызываются, L<perlvar> содержит еще больше информации:
 
 	BEGIN { $SIG{__DIE__} = sub { require Carp; Carp::confess(@_) } }
 
-Various useful techniques for the redirection of STDOUT and STDERR filehandles
-are explained in L<perlopentut> and L<perlfaq8>.
-
+Различные полезные методы для перенаправление дескрипторов STDOUT и STDERR (filehandles)
+описаны в  L<perlopentut> и L<perlfaq8>.
 
 =head1 CGI
 
-Just a quick hint here for all those CGI programmers who can't figure out how
-on earth to get past that 'waiting for input' prompt, when running their CGI
-script from the command-line, try something like this:
+Быстрая подсказка для всех этих CGI программистов, которые не могут понять, как
+ прийти к земле, чтобы получить последний  'ждущий ввода' ('waiting for input') запрос, при выполнении их CGI
+сценариев из командной строки, попробуйте что-то вроде этого:
 
 	> perl -d my_cgi.pl -nodebug 
 
-Of course L<CGI> and L<perlfaq9> will tell you more.
+Конечно L<CGI> и L<perlfaq9> расскажут вам больше.
 
+=head1 GUIs (ГПИ - графический пользовательский интерфейс)
 
-=head1 GUIs
+Интерфейс командной строки тесно интегрирован с расширением B<emacs>
+и с B<vi> интерфейсом тоже.
 
-The command line interface is tightly integrated with an B<emacs> extension
-and there's a B<vi> interface too.  
+Вам не придется делать это все в командной строке, хотя, есть несколько GUI
+вариантов вне этого. Отличная вещь состоит в том, что вы провести мышью над
+переменной и дамп ее данных будет отображаться в соответствующем окне, или во
+ всплывающем шаре(подсказке), без утомительного нажимания 'x $varname':-)
 
-You don't have to do this all on the command line, though, there are a few GUI
-options out there.  The nice thing about these is you can wave a mouse over a
-variable and a dump of its data will appear in an appropriate window, or in a
-popup balloon, no more tiresome typing of 'x $varname' :-)
+В частности, вы можете поохотиться на следующих:
 
-In particular have a hunt around for the following:
+B<ptkdb> основанный на perlTK оболочке, встроенный отладчик
 
-B<ptkdb> perlTK based wrapper for the built-in debugger
+B<ddd> отладчика отображения данных (data display debugger)
 
-B<ddd> data display debugger
+B<PerlDevKit> и B<PerlBuilder> специфичные для NT
 
-B<PerlDevKit> and B<PerlBuilder> are NT specific
+NB.(более подробная информация по этим и другим было бы желательно).
 
-NB. (more info on these and others would be appreciated).
+=head1 ИТОГ
 
+Мы увидели, как поощрает нас надлежащая практика кодирования с B<use strict> и
+B<-w>.  Мы можем запустить отладчик perl B<perl -d scriptname>, чтобы увидеть наши
+данные в отладчике perl с помощью команд B<p> и B<x>. Вы можете
+пройти через ваш код, установив точки останова командой B<b> и пошагово выполнять код
+ командой B<s> или B<n>,продолжить B<c> (continue) и вернуться из подпрограммы B<r> (return). Довольно
+интуитивно понятные вещи, когда вы ими попользуетесь.
 
-=head1 SUMMARY
+Конечно есть еще много о чем стоит узнать, это просто царапины на
+поверхности. Лучший способ узнать больше - это использовать perldoc, чтобы узнать больше о
+языке, чтобы прочитать он-лайн помощь (L<perldebug>, вероятно, следующее
+место куда вам нужно пойти) и, конечно, эксперименты.
 
-We've seen how to encourage good coding practices with B<use strict> and
-B<-w>.  We can run the perl debugger B<perl -d scriptname> to inspect your
-data from within the perl debugger with the B<p> and B<x> commands.  You can
-walk through your code, set breakpoints with B<b> and step through that code
-with B<s> or B<n>, continue with B<c> and return from a sub with B<r>.  Fairly
-intuitive stuff when you get down to it.  
-
-There is of course lots more to find out about, this has just scratched the
-surface.  The best way to learn more is to use perldoc to find out more about
-the language, to read the on-line help (L<perldebug> is probably the next
-place to go), and of course, experiment.  
-
-
-=head1 SEE ALSO
+=head1 СМОТРИТЕ ТАКЖЕ
 
 L<perldebug>, 
 L<perldebguts>, 
 L<perldiag>,
-L<perlrun>
+L<perlrun>  
 отличная презентация на YAPC RUSSIA 2015
-L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>
+L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>  
+суперполезное видео от Сабо Габора L<Using the built-in debugger of Perl as REPL |http://www.youtube.com/watch?v=pL_nDlXNqLY>    
+
+Еще отладчики
+
+    perl5db.pl Стандартный perl отладчик, входящий в состав perl
+    Devel::trepan Новый модульный отладчик
+    Devel::ebug Мультиинтерфейсный отладчик (Консоль, GUI, Web)
+    Devel::sdb форк perl5db.pl, с отображением выполняемого кода
+    Devel::hdb Отладчик с Web интерфейсом (REST и HTML)
+    Devel::PDB Отладчик c TUI интерфейсом
+    Devel::ptkdb Отладчик с GUI интерфейсом (Perl/Tk)
+
+    Enbugger Включает отладчик или профайлер рантайм. С помощью gdb можно подключится к любом perl процессу без какой-либо модификации программы
+    Regexp::Debugger Аддский PurePerl модуль для интерактиной отладки регексов
+    Tie::Watch Полезен для гибкого наблюдения за чтением/записью в переменные
+    Debug::Fork::Tmux Привязка get_fork_TTY к tmux
 
 
-=head1 AUTHOR
+=head1 АВТОР
 
-Richard Foley <richard.foley@rfi.net> Copyright (c) 2000
+Ричард Фоли (Richard Foley) <richard.foley@rfi.net> Copyright (c) 2000
 
+=head1 УЧАСТНИКИ
 
-=head1 CONTRIBUTORS
+Различные люди внесли полезные предложения и материалы, в частности:
 
-Various people have made helpful suggestions and contributions, in particular:
+Рональд Дж Кимбол (Ronald J Kimball) <rjk@linguist.dartmouth.edu>
 
-Ronald J Kimball <rjk@linguist.dartmouth.edu>
+Хьюго ван дер Санден (Hugo van der Sanden) <hv@crypt0.demon.co.uk>
 
-Hugo van der Sanden <hv@crypt0.demon.co.uk>
-
-Peter Scott <Peter@PSDT.com>
+Петер Скотт (Peter Scott) <Peter@PSDT.com>
 
 =head1 ПЕРЕВОДЧИКИ
 
