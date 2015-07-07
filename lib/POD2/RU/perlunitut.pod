@@ -2,7 +2,7 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perlunitut - Perl Unicode Tutorial
+perlunitut - Учебник по Юникоду в Perl
 
 =head1 ОПИСАНИЕ
 
