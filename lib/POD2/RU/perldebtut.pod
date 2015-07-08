@@ -710,8 +710,8 @@ L<perldebug>,
 L<perldebguts>, 
 L<perldiag>,
 L<perlrun>  
-отличная презентация на YAPC RUSSIA 2015
-L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>  
+
+отличная презентация на YAPC RUSSIA 2015 L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>  
 суперполезное видео от Сабо Габора L<Using the built-in debugger of Perl as REPL |http://www.youtube.com/watch?v=pL_nDlXNqLY>    
 
 Еще отладчики
