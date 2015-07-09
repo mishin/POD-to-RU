@@ -699,7 +699,7 @@ B<-w>.  Мы можем запустить отладчик perl B<perl -d scrip
  командой B<s> или B<n>,продолжить B<c> (continue) и вернуться из подпрограммы B<r> (return). Довольно
 интуитивно понятные вещи, когда вы ими попользуетесь.
 
-Конечно есть еще много о чем стоит узнать, это просто царапины на
+Конечно есть еще много вещей, о которых стоит знать, это просто царапины на
 поверхности. Лучший способ узнать больше - это использовать perldoc, чтобы узнать больше о
 языке, чтобы прочитать он-лайн помощь (L<perldebug>, вероятно, следующее
 место куда вам нужно пойти) и, конечно, эксперименты.
@@ -709,10 +709,8 @@ B<-w>.  Мы можем запустить отладчик perl B<perl -d scrip
 L<perldebug>, 
 L<perldebguts>, 
 L<perldiag>,
-L<perlrun>  
-
-отличная презентация на YAPC RUSSIA 2015 L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>  
-суперполезное видео от Сабо Габора L<Using the built-in debugger of Perl as REPL |http://www.youtube.com/watch?v=pL_nDlXNqLY>    
+L<perlrun>, отличная презентация на YAPC RUSSIA 2015 L<Интерактивная отладка Perl программ|http://cossacks-server.net/remark/#1>, 
+ суперполезное видео от Сабо Габора L<Using the built-in debugger of Perl as REPL |http://www.youtube.com/watch?v=pL_nDlXNqLY>    
 
 Еще отладчики
 
