@@ -6,29 +6,30 @@ perlunitut - Учебник по Юникоду в Perl
 
 =head1 ОПИСАНИЕ
 
-The days of just flinging strings around are over. It's well established that
-modern programs need to be capable of communicating funny accented letters, and
-things like euro symbols. This means that programmers need new habits. It's
-easy to program Unicode capable software, but it does require discipline to do
-it right.
+Дни простой обработки строк закончились. Установлено, что
+современные программы должны быть способны общаться смешанными акцентированными буквами и
+такими вещами, как символы евро. Это означает, что программистам нужно новые привычки. 
+Легко программировать Юникодо-совместимое программное обеспечение, но для этого требуется дисциплина, чтобы делать
+ это правильно.
 
-There's a lot to know about character sets, and text encodings. It's probably
-best to spend a full day learning all this, but the basics can be learned in
-minutes. 
+Существует много знаний о наборах символов и кодировках текста. Вероятно,
+лучше всего провести целый день для их изучения, но основы могут быть изучены за минуты.
 
-These are not the very basics, though. It is assumed that you already
-know the difference between bytes and characters, and realise (and accept!)
-that there are many different character sets and encodings, and that your
-program has to be explicit about them. Recommended reading is "The Absolute
-Minimum Every Software Developer Absolutely, Positively Must Know About Unicode
-and Character Sets (No Excuses!)" by Joel Spolsky, at
-L<http://joelonsoftware.com/articles/Unicode.html>.
+Это вообще-то не самые основы. Предполагается, что вы уже
+знаете разницу между байтом и символом и понимаете (и принимаете!),
+что существует много различных наборов символов и кодировок и, что ваша
+Программа должна четко знать о них. Рекомендуется для чтения  
+"Абсолютный Минимум, который Каждый Разработчик Программного Обеспечения Обязательно Должен Знать о Unicode и Наборах Символов" 
+ Джоэла Спольски , в
+L<http://joelonsoftware.com/articles/Unicode.html>
+ и перевод этой статьи
+L<Абсолютный Минимум, который Каждый Разработчик Программного Обеспечения Обязательно Должен Знать о Unicode и Наборах Символов|http://local.joelonsoftware.com/wiki/%D0%90%D0%B1%D1%81%D0%BE%D0%BB%D1%8E%D1%82%D0%BD%D1%8B%D0%B9_%D0%9C%D0%B8%D0%BD%D0%B8%D0%BC%D1%83%D0%BC,_%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9_%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9_%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA_%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%9E%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F_%D0%9E%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE_%D0%94%D0%BE%D0%BB%D0%B6%D0%B5%D0%BD_%D0%97%D0%BD%D0%B0%D1%82%D1%8C_%D0%BE_Unicode_%D0%B8_%D0%9D%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%85_%D0%A1%D0%B8%D0%BC%D0%B2%D0%BE%D0%BB%D0%BE%D0%B2>.
 
-This tutorial speaks in rather absolute terms, and provides only a limited view
-of the wealth of character string related features that Perl has to offer. For
-most projects, this information will probably suffice.
+Этот учебник говорит о довольно абсолютных терминах и предоставляет лишь ограниченное представление
+о богатстве функций обработки символов, которые Perl может предложить. Для
+большинства проектов этой информации, вероятно, будет достаточно.
 
-=head2 Definitions
+=head2 Определения
 
 It's important to set a few things straight first. This is the most important
 part of this tutorial. This view may conflict with other information that you
