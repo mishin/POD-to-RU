@@ -24,7 +24,7 @@ B<perl>	S<[ B<-sTtuUWX> ]>
 
 F<perldoc> Программа дает вам доступ ко всей документации, которая поставляется с Perl.  Вы можете получить более подробную документацию, руководства и интернет-сообщество поддержки на L<http://www.perl.org/>.
 
-Если вы новичок в Perl, вы должны начать, запустив C<perldoc perlintro>, которая представляет собой общее введение для новичков и дает некоторые базовые навыки, чтобы помочь вам ориентироваться в остальной обширной документации Perl.  Запустите С<perldoc perldoc> чтобы узнать больше, которые вы можете сделать с F<perldoc> .
+Если вы новичок в Perl, то вы должны начать, запустив C<perldoc perlintro>, которая представляет собой общее введение для новичков и дает некоторые базовые навыки, чтобы помочь вам ориентироваться в остальной обширной документации Perl.  Запустите С<perldoc perldoc> чтобы узнать больше о том, как вы можете работать с F<perldoc> .
 
 Для удобства чтения руководство Perl был разделено на несколько частей.
 
@@ -55,22 +55,22 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
 
 =head2 Учебники
 
-    perlreftut		Perl краткое введение в ссылки
+    perlreftut		Краткое руководство по ссылкам, которое написал Марк
     perldsc		Perl введение в структуры данных
     perllol		Структуры данных Perl: массивы массивов
 
-    perlrequick 	Регулярные выражения Perl быстрый старт
-    perlretut		Perl регулярные выражения учебник
+    perlrequick 	Быстрый старт использования регулярных выражений Perl
+    perlretut		Учебник регулярных выражений Perl
 
-    perlootut		Perl OO учебник для начинающих
+    perlootut		Руководство по Объектно-ориентированному Программированию в Perl
 
     perlperf		Perl Производительность и Методы оптимизации
 
-    perlstyle		Perl руководство по стилю программирования
+    perlstyle		Стиль написания Perl-кода
 
-    perlcheat		Perl шпаргалка
+    perlcheat		Perl 5 Шпаргалка
     perltrap		Perl ловушки для неосторожных
-    perldebtut		Perl Учебник отладки
+    perldebtut		Учебник по отладке Perl кода
 
     perlfaq		Perl часто задаваемые вопросы
       perlfaq1		Общие вопросы о Perl
@@ -90,19 +90,19 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perlop		Perl операторы и их приоритет
     perlsub		Perl подпрограммы
     perlfunc		Perl встроенные функции
-      perlopentut	Perl open() учебник
-      perlpacktut	Perl pack() и unpack() учебник
-    perlpod		Perl простая старая документация
-    perlpodspec 	Perl простая старая документация спецификация формата
-    perlpodstyle	Perl POD руководство по стилю
+    perlopentut	        Учебник по открытию разных сущностей в Perl
+    perlpacktut	        Учебник по pack и unpack
+    perlpod		Формат простой старой документации (Plain Old Documentation POD)
+    perlpodspec 	Простая старая документация: спецификация формата и примечания
+    perlpodstyle	Руководство по стилю Perl POD
     perldiag		Perl диагностические сообщения
     perllexwarn 	Perl  предупреждения и управление ими
     perldebug		Perl отладка
     perlvar		Perl предопределенные переменные
-    perlre		Perl  регулярные выражения, остальная часть истории
-    perlrebackslash	Perl регулярные выражения  последовательности с обратным слэшем
-    perlrecharclass	Perl  регулярные выражения классы символов
-    perlreref		Perl регулярные выражения краткий справочник
+    perlre		Регулярные выражения Perl
+    perlrebackslash	Бэкслеш и Эскейп последовательности в регулярных выражениях Perl
+    perlrecharclass	Классы символов регулярных выражений Perl
+    perlreref		Справочник регулярных выражений Perl
     perlref		Perl ссылки, остальная часть истории
     perlform		Perl форматы
     perlobj		Perl объекты
@@ -113,15 +113,15 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perlfork		Perl fork() информация
     perlnumber		Perl семантики числа
 
-    perlthrtut		Perl потоки учебник
+    perlthrtut		Учебник на потокам в Perl
 
     perlport		Perl руководство по переносимости
     perllocale		Perl языковая поддержка
-    perluniintro	Perl введение в Unicode
-    perlunicode 	Perl  поддержка юникода
+    perluniintro	Введение в Perl Юникод
+    perlunicode 	Поддержка Юникода в Perl
     perlunifaq		Perl Unicode FAQ
     perluniprops	Каталог свойств Unicode в Perl
-    perlunitut		Perl Unicode учебник
+    perlunitut		Учебник по Юникоду в Perl
     perlebcdic		Соображения для запуска Perl на EBCDIC платформах
 
     perlsec		Perl безопасность
@@ -129,9 +129,9 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perlmod		Perl модули: как они работают
     perlmodlib		Perl модули: как писать и использовать
     perlmodstyle	Perl модули: правильный стиль написания модулей
-    perlmodinstall	Perl  модули: как установить из CPAN
+    perlmodinstall	Perl модули: как установить из CPAN
     perlnewmod		Perl модули: подготовка нового модуля для опубликования
-    perlpragma		Perl модули: написание пользовательской pragma (директивы компилятору)
+    perlpragma		Perl модули: как писать пользовательские прагмы (директивы компилятору)
 
     perlutil		утилиты, идущие в комплекте с поставкой Perl
 
@@ -149,11 +149,11 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perlxs		Perl XS интерфейс прикладного программирования
     perlxstypemap	Perl XS C/Perl инструменты преобразования типов
     perlclib		Внутренние замены для стандартных библиотечных функций C
-    perlguts		Perl внутренние функции для тех, кто делает расширения
+    perlguts		Введение в Perl API, Perl внутренние функции для тех, кто делает расширения
     perlcall		Perl соглашения о вызове из C
     perlmroapi		Perl метод резолюции интерфейса плагинов
-    perlreapi		Perl регулярные выражения интерфейс плагина
-    perlreguts		Perl регулярные внутренние внутренности движка
+    perlreapi		Интерфейс плагинов к регулярным выражениям Perl
+    perlreguts		Описание машины регулярных выражений Perl
 
     perlapi		Perl API объявления (автоматически сгенерированные)
     perlintern		Perl внутренние функции (автоматически сгенерированные)
@@ -163,17 +163,18 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perlhack		Руководство хакера Perl
     perlsource		Руководство по дереву исходного кода Perl
     perlinterp		Обзор исходного кода интерпретатора Perl и как он работает
-    perlhacktut 	Прогулка по созданию простого патча кода на C
+    perlhacktut 	Путь по созданию простого патча на C
     perlhacktips	Советы как хачить(взламывать) код ядра Perl на С
     perlpolicy		Perl политики(установки) разработки
     perlgit		Использование Git с Perl репозиторием
 
 =head2 Разное
 
-    perlbook		Perl информация о книгах
+    perlsecret          Cекретные операторы и константы Perl
+    perlbook		Информация о книгах по Perl
     perlcommunity	Информация о Perl сообществе
 
-    perldoc		Посмотрите Perl документацию в формате Pod
+    perldoc		Perl-документация в POD-формате
 
     perlhist		Записи истории Perl
     perldelta		Perl  изменения с предыдущей версии
@@ -210,7 +211,7 @@ aux a2p c2ph h2ph h2xs perlbug pl2pm pod2html pod2man s2p splain xsubpp
     perl5005delta	Perl изменения в версии 5.005
     perl5004delta	Perl изменения в версии 5.004
 
-    perlexperiment	Cписок экспериментальных функций в Perl
+    perlexperiment	Список экспериментальных функций в Perl
 
     perlartistic	Perl Лицензия Художников (Artistic License)
     perlgpl		Универсальная Общественная Лицензия GNU
@@ -347,7 +348,7 @@ Perl отдает на милость определения вашей маши
 
 Вы можете отправить ваши сообщения об ошибке (не забудьте включить полную информацию о конфигурации в качестве вывода myconfig программы в Perl дереве исходных текстов, или посредством C<perl -V>) на perlbug@perl.org .  Если вы преуспели в компиляции perl, the L<perlbug> сценарий в F<utils/> подкаталоге может быть использован, чтобы помочь для написания письма с отчетом об ошибке.
 
-Perl на самом деле обозначает Паталогически Эклектичный Мусорный Листер, но никому не говорите, что я это сказал.
+Perl на самом деле обозначает Патологически Эклектичный Мусорный Листер (Pathologically Eclectic Rubbish Lister), но никому не говорите, что я это сказал.
 
 =head1 ПРИМЕЧАНИЯ
 
