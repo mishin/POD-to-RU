@@ -2009,10 +2009,6 @@ I<первым> "foo" и I<последним> "bar". Здесь более эф
         print "Beginning is <$1>, number is <$2>.\n";
     }
 
-That won't work at all, because C<.*> was greedy and gobbled up the
-whole string. As C<\d*> can match on an empty string the complete
-regular expression matched successfully.
-
 Это не будет работать совсем, потому что C<.*> жадный и съест вверх
 всю строку. Так как C<\d*> может соответствовать пустой строке, то полное
 регулярное выражение будет успешно найдено.
