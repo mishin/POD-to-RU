@@ -81,37 +81,33 @@ B<Текстовые строки>, или B<символьные строки> 
 
 =head3 Двоичные строки (строки байтов)
 
-B<Двоичные строки>, или B<строки байтов> изготовлены из байтов. Здесь вы не должны
-символов, просто байт. Все коммуникации с внешним миром (ничего
-за пределами вашего текущего процесса Perl) делается в двоичном виде.
+B<Двоичные строки>, или B<строки байтов> изготовлены из байтов. Здесь вы не имеете
+символы, просто байты. Все коммуникации с внешним миром (что-либо
+за пределами вашего текущего процесса Perl) делаются в двоичном виде.
 
-B<Binary strings>, or B<byte strings> are made of bytes. Here, you don't have
-characters, just bytes. All communication with the outside world (anything
-outside of your current Perl process) is done in binary.
-
-On a binary string, you would do things like:
+С двоичной строкой вы могли бы сделать такие вещи, как:
 
     my (@length_content) = unpack "(V/a)*", $binary;
-    $binary =~ s/\x00\x0F/\xFF\xF0/;  # for the brave :)
+    $binary =~ s/\x00\x0F/\xFF\xF0/;  # для смелых :)
     print {$fh} $binary;
     my $byte_count = length $binary;
 
-=head3 Encoding
+=head3 Кодирование (Encoding)
 
-B<Encoding> (as a verb) is the conversion from I<text> to I<binary>. To encode,
-you have to supply the target encoding, for example C<iso-8859-1> or C<UTF-8>.
-Some encodings, like the C<iso-8859> ("latin") range, do not support the full
-Unicode standard; characters that can't be represented are lost in the
-conversion.
+B<Кодирование> (как глагол) является преобразованием от I<текста> к I<двоичным данным>. Для кодирования,
+вы должны указать целевую кодировку, например С<iso-8859-1> или С<UTF-8>.
+Некоторые кодировки такие, как C<iso-8859> ("латинский") диапазон, не поддерживают полный
+Стандарт Юникода; символы, которые не могут быть представлены теряются во время
+преобразования.
 
-=head3 Decoding
+=head3 Декодирование (Decoding)
 
-B<Decoding> is the conversion from I<binary> to I<text>. To decode, you have to
-know what encoding was used during the encoding phase. And most of all, it must
-be something decodable. It doesn't make much sense to decode a PNG image into a
-text string.
+B<Декодирование> является преобразованием от I<двоичного формата> к I<тексту>. 
+Чтобы декодировать, вы должны знаеть, какая кодировка используется на этапе кодирования.
+И самое главное это должно быть что-то что поддается декодированию.
+Не будет большого смысла для декодирования изображения в формате PNG в текстовую строку.
 
-=head3 Internal format
+=head3 Внутренний формат
 
 Perl has an B<internal format>, an encoding that it uses to encode text strings
 so it can store them in memory. All text strings are in this internal format.
