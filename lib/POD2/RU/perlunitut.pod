@@ -109,101 +109,99 @@ B<Декодирование> является преобразованием о
 
 =head3 Внутренний формат
 
-Perl has an B<internal format>, an encoding that it uses to encode text strings
-so it can store them in memory. All text strings are in this internal format.
-In fact, text strings are never in any other format!
+Perl имеет B<внутренний формат> (B<internal format>), кодирования, который он использует для кодирования текстовых строк
+так, что он их может хранить в памяти. Все текстовые строки находятся этом внутреннем формате.
+В самом деле текстовые строки никогда не бывают в любом другом формате!
 
-You shouldn't worry about what this format is, because conversion is
-automatically done when you decode or encode.
+Вы не должны беспокоиться о том, что это за формат, потому что преобразование
+автоматически делается, когда вы декодируете или кодируете.
 
-=head2 Your new toolkit
+=head2 Ваш новый инструментарий
 
-Add to your standard heading the following line:
+Добавьте в ваш стандартный заголовок следующую строку:
 
     use Encode qw(encode decode);
 
-Or, if you're lazy, just:
+Или, если вы ленивы, просто:
 
     use Encode;
 
-=head2 I/O flow (the actual 5 minute tutorial)
+=head2 Поток ввода-вывода (I/O flow) (фактические 5 минутный учебник)
 
-The typical input/output flow of a program is:
+Типичный поток ввода-вывода программы состоит из:
 
-    1. Receive and decode
-    2. Process
-    3. Encode and output
+    1. Получение и декодирование (Receive and decode)
+    2. Процесс (Process)
+    3. Кодирование и вывод (Encode and output)
 
-If your input is binary, and is supposed to remain binary, you shouldn't decode
-it to a text string, of course. But in all other cases, you should decode it.
+Если ваши входящие данные являются двоичными, то они и должны оставаться двоичными, вы не должны декодировать
+их в текстовую строку, конечно. Но, во всех остальных случаях, вы должны их декодировать.
 
-Decoding can't happen reliably if you don't know how the data was encoded. If
-you get to choose, it's a good idea to standardize on UTF-8.
+Декодирование не может произойти надежно, если вы не знаете как закодированны данные. Если
+вы можете выбрать, то хорошей идеей будет сделать стандартом UTF-8.
 
     my $foo   = decode('UTF-8', get 'http://example.com/');
     my $bar   = decode('ISO-8859-1', readline STDIN);
     my $xyzzy = decode('Windows-1251', $cgi->param('foo'));
 
-Processing happens as you knew before. The only difference is that you're now
-using characters instead of bytes. That's very useful if you use things like
-C<substr>, or C<length>.
+Обработка происходит также, как вы знали раньше. Единственное различие заключается в том, что сейчас
+вы используете символы вместо байт. Это очень полезно, когда вы используете такие функции, как
+C<substr>, или C<length>.
 
-It's important to realize that there are no bytes in a text string. Of course,
-Perl has its internal encoding to store the string in memory, but ignore that.
-If you have to do anything with the number of bytes, it's probably best to move
-that part to step 3, just after you've encoded the string. Then you know
-exactly how many bytes it will be in the destination string.
+Важно понимать, что у нас нет байт в текстовой строке. Конечно
+Perl имеет свою внутреннюю кодировку для хранения строк в памяти, но нужно игнорировать это.
+Если вам нужно сделать что-нибудь байтами, то, вероятно, лучше сделать эту часть это сделать на
+ шаге 3, только после того, как вы закодируете строки. Тогда вы знаете
+точно сколько байт будет в строке назначения.
 
-The syntax for encoding text strings to binary strings is as simple as decoding:
+Синтаксис для кодирования строк текста в двоичные строки также прост, как и для декодирования:
 
     $body = encode('UTF-8', $body);
 
-If you needed to know the length of the string in bytes, now's the perfect time
-for that. Because C<$body> is now a byte string, C<length> will report the
-number of bytes, instead of the number of characters. The number of
-characters is no longer known, because characters only exist in text strings.
+Если вам необходимо знать длину строки в байтах, теперь пришло идеальное время
+для этого. Потому что C<$body> теперь строка байтов и C<length> сообщит 
+ число байт, а не число знаков. Число символов
+ больше не известно, потому что символы существуют только в текстовых строк.
 
     my $byte_count = length $body;
 
-And if the protocol you're using supports a way of letting the recipient know
-which character encoding you used, please help the receiving end by using that
-feature! For example, E-mail and HTTP support MIME headers, so you can use the
-C<Content-Type> header. They can also have C<Content-Length> to indicate the
-number of I<bytes>, which is always a good idea to supply if the number is
-known.
+И, если вы используете протокол, который поддерживает способ дать получателем информацию,
+какие кодировки символов вы использовали, пожалуйста, помогите принимающей стороне, используя эту возможность!
+ Например, электронная почта (E-mail) и HTTP поддерживают MIME-заголовки, поэтому вы можете использовать
+заголовок C<Content-Type>. Они также могут иметь C<Content-Length> для обозначения
+числа I<байт>, так что это всегда хорошая идея указать его, если это число известно.
 
     "Content-Type: text/plain; charset=UTF-8",
     "Content-Length: $byte_count"
 
-=head1 SUMMARY
+=head1 РЕЗЮМЕ
 
-Decode everything you receive, encode everything you send out. (If it's text
-data.)
+Декодируйте все, что вы получаете, кодируйте все, что вы посылаете. (Если это текстовые
+данные.)
 
-=head1 Q and A (or FAQ)
+=head1 В и О (или ВИО) Вопросы и Ответы. (Q and A (or FAQ))
 
-After reading this document, you ought to read L<perlunifaq> too. 
+После прочтения этого документа, вы должны прочитать и L<perlunifaq> тоже.
 
-=head1 ACKNOWLEDGEMENTS
+=head1 БЛАГОДАРНОСТИ
 
-Thanks to Johan Vromans from Squirrel Consultancy. His UTF-8 rants during the
-Amsterdam Perl Mongers meetings got me interested and determined to find out
-how to use character encodings in Perl in ways that don't break easily.
+Спасибо Джохану Вромансу (Johan Vromans) из Squirrel Consultancy. Его замечательная речь про UTF-8  во время
+встречи Амстердам Perl Монгерс заинтересовала меня и позволила выяснить,
+как использовать кодировки символов в Perl способами, которые не ломаются легко.
 
-Thanks to Gerard Goossen from TTY. His presentation "UTF-8 in the wild" (Dutch
-Perl Workshop 2006) inspired me to publish my thoughts and write this tutorial.
+Спасибо Джерарду Гуссену (Gerard Goossen) из TTY. Его презентация "UTF-8 в дикой природе" ("UTF-8 in the wild")(Голландский
+Perl-воркшоп 2006) вдохновила меня опубликовать мои мысли и написать этот учебник.
 
-Thanks to the people who asked about this kind of stuff in several Perl IRC
-channels, and have constantly reminded me that a simpler explanation was
-needed.
+Спасибо людям, которые просили о такого рода вещах в нескольких Perl IRC
+каналах и постоянно напоминают мне о том, что требуется более простое объяснение.
 
-Thanks to the people who reviewed this document for me, before it went public.
-They are: Benjamin Smith, Jan-Pieter Cornet, Johan Vromans, Lukas Mai, Nathan
-Gray.
+Спасибо людям, которые рассмотрели этот документ для меня прежде, чем он дошел до общественности.
+Это: Бенджамин Смит (Benjamin Smith), Ян-Питер Корнет (Jan-Pieter Cornet), Джохан Вроманс (Johan Vromans),
+ Лукас Май (Lukas Mai), Натан Грей (Nathan Gray).
 
 =head1 AUTHOR
 
-Juerd Waalboer <#####@juerd.nl>
+Юерд Ваалбоер (Juerd Waalboer) <#####@juerd.nl>
 
 =head1 SEE ALSO
 
