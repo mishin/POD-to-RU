@@ -7,7 +7,7 @@
 
 # NAME
 
-POD2::RU - документация Perl по-русски
+POD2::RU - Документация Perl по-русски
 
 # SYNOPSIS
 
