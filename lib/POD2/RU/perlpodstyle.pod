@@ -13,19 +13,19 @@ perlpodstyle - Руководство по стилю Perl POD
 сделает вашу документацию более последовательной по отношению к другой документации
 в системе.
 
-The name of the program being documented is conventionally written in bold
-(using BE<lt>E<gt>) wherever it occurs, as are all program options.
-Arguments should be written in italics (IE<lt>E<gt>).  Function names are
-traditionally written in italics; if you write a function as function(),
-Pod::Man will take care of this for you.  Literal code or commands should
-be in CE<lt>E<gt>.  References to other man pages should be in the form
-C<manpage(section)> or C<LE<lt>manpage(section)E<gt>>, and Pod::Man will
-automatically format those appropriately.  The second form, with
-LE<lt>E<gt>, is used to request that a POD formatter make a link to the
-man page if possible.  As an exception, one normally omits the section
-when referring to module documentation since it's not clear what section
-module documentation will be in; use C<LE<lt>Module::NameE<gt>> for module
-references instead.
+Имя программы пишется жирным шрифтом
+(с использованием BE<lt>E<gt>) везде, где оно упоминается, как и все опции программы.
+Аргументы должны быть написаны курсивом(italics) (IE<lt>E<gt>). Имена функций 
+традиционно пишутся курсивом; если вы пишете функцию, как function(), то
+Pod::Man позаботиться об этом за вас. Исходный код или команды должны
+быть в CE<lt>E<gt>. Ссылки на другие man страницы должны быть в форме
+C<manpage(section)> или C<LE<lt>manpage(section)E<gt>>, и Pod::Man
+будет автоматически форматировать их надлежащим образом. Вторая форма, с
+LE<lt>E<gt>, используется для запроса, когда POD форматтер делает ссылку на
+man страницу, если это возможно. Как исключение некоторые обычно опускают секцию
+, когда ссылаются на документацю имодуля , поскольку не ясно, какой раздел
+ документации использовать; используйте C<LE<lt>Module::NameE<gt>> для модуля
+вместо ссылки.
 
 References to other programs or functions are normally in the form of man
 page references so that cross-referencing tools can provide the user with
