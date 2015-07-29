@@ -114,7 +114,7 @@ Nikolay Mishin < mi@ya.ru >
 - Дмитрий Анисимов
 - Андрей Варлашкин
 - Кирилл Флоренский
-- Андрей Асякин `<asan999 at gmail.com>`
+- Андрей Асякин ([asan999](https://metacpan.org/pod/asan999&#x20;at&#x20;gmail.com))
 
 # COPYRIGHT
 
