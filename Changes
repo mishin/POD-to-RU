@@ -2,6 +2,8 @@ Revision history for POD2-RU
 
 {{$NEXT}}
 
+           * закончил перевод 
+           * perlpodstyle - Руководство по стилю Perl POD
 5.18.0.1.80  2015-07-26 13:55:34 MSK
 
            * поправил явные ляпы в perlunitut

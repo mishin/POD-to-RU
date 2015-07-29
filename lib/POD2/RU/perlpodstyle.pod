@@ -5,7 +5,7 @@
 perlpodstyle - Руководство по стилю Perl POD
 
 
-=head1 ОПИСАНИЕ
+=head1 DESCRIPTION (ОПИСАНИЕ)
 
 Это общие рекомендации о том, как писать документацию Perl POD документацию
  для скриптов и модулей, на основе общих руководящих принципах для написания хорошей страницы
@@ -43,7 +43,7 @@ man страницу, если это возможно. Как исключен�
 
 =over 4
 
-=item NAME
+=item NAME (НАИМЕНОВАНИЕ)
 
 Обязательная Секция; следует список с разделителями запятыми программ или
 функций, которые задокументированы на этой POD странице , такие как:
@@ -59,14 +59,14 @@ man страницу, если это возможно. Как исключен�
  где-лиюбо в этой строке. Функции не должна писаться с C<()> или тому подобное. 
  Для описания идеально подходит одна строка, даже если ман-программа заменяет тире несколькими табуляторами.
 
-=item SYNOPSIS
+=item SYNOPSIS (КРАТКИЙ СИНТАКСИС)
 
 Короткий пример использования программ и функций. Этот раздел
 является обязательным для 3 раздела страницы. Для документации Perl модуля
  обычно удобнее иметь содержимое этой секции в виде короткого блока
   с типичными способами использования модуля.
    
-=item DESCRIPTION
+=item DESCRIPTION (ОПИСАНИЕ)
 
 Расширенное описание и обсуждение программы или функции, или
 тела документации ман-страницы документа (программы). Если этот раздел
@@ -81,214 +81,214 @@ man страницу, если это возможно. Как исключен�
 
 или то, что подходит для вашей документации.
 
-For a module, this is generally where the documentation of the interfaces
-provided by the module goes, usually in the form of a list with an
-C<=item> for each interface.  Depending on how many interfaces there are,
-you may want to put that documentation in separate METHODS, FUNCTIONS,
-CLASS METHODS, or INSTANCE METHODS sections instead and save the
-DESCRIPTION section for an overview.
+Для модуля, как правило, документации интерфейсов
+ обычно идет в виде списка с C<=item> для каждого интерфейса. 
+ В зависимости от числа интерфейсов вы можете расположить документацию 
+ раздельно по секциям для METHODS (МЕТОДОВ), FUNCTIONS (ФУНКЦИЙ),
+CLASS METHODS (МЕТОДОВ КЛАССА), или INSTANCE METHODS (МЕТОДОВ ЭКЗЕМПЛЯРА КЛАССА)
+  и сохранить раздел DESCRIPTION для небольшого описания.
 
-=item OPTIONS
+=item OPTIONS (ПАРАМЕТРЫ)
 
-Detailed description of each of the command-line options taken by the
-program.  This should be separate from the description for the use of
-parsers like L<Pod::Usage>.  This is normally presented as a list, with
-each option as a separate C<=item>.  The specific option string should be
-enclosed in BE<lt>E<gt>.  Any values that the option takes should be
-enclosed in IE<lt>E<gt>.  For example, the section for the option
-B<--section>=I<manext> would be introduced with:
+Подробное описание каждого из параметров командной строки, которые принимает
+программа. Это описание должно быть отдельно от введения (description)
+, т.к. его могут использовать парсеры такие, как L<Pod::Usage>. 
+Обычно этот раздел представляется в виде списка, где каждый 
+параметр находится в отдельном C<=item>. Специфические строковые параметры должны быть
+заключены в BE<lt>E<gt>. Любые значения, которые принимает параметр должны быть
+заключены в IE<lt>E<gt>. Например, раздел для параметра
+B<--section>=I<manext> может быть показан, как:
 
     =item B<--section>=I<manext>
 
-Synonymous options (like both the short and long forms) are separated by a
-comma and a space on the same C<=item> line, or optionally listed as their
-own item with a reference to the canonical name.  For example, since
-B<--section> can also be written as B<-s>, the above would be:
+Синонимомы параметров (например, короткие и длинные формы), разделенные
+запятой и пробелом на той же C<=item> линии, или опционально в списке представлены, как их
+собственный элемент со ссылкой на каноническое имя. Например, 
+B<--section> также может быть записана как B<-s>, выше, то будет:
 
     =item B<-s> I<manext>, B<--section>=I<manext>
 
-Writing the short option first is recommended because it's easier to read.
-The long option is long enough to draw the eye to it anyway and the short
-option can otherwise get lost in visual noise.
+Написание коротких вариантов рекомендуется сначала, потому что так легче читать.
+Длинный вариант должен быть достаточно длинен, чтобы глаза все равно обратили на него внимание,
+а короткий вариант может потерятся в визуальном шуме.
 
-=item RETURN VALUE
+=item RETURN VALUE (ВОЗВРАЩАЕМОЕ ЗНАЧЕНИЕ)
 
-What the program or function returns, if successful.  This section can be
-omitted for programs whose precise exit codes aren't important, provided
-they return 0 on success and non-zero on failure as is standard.  It
-should always be present for functions.  For modules, it may be useful to
-summarize return values from the module interface here, or it may be more
-useful to discuss return values separately in the documentation of each
-function or method the module provides.
+То, что программа или функция возвращает, если выполнена успешно. Этот раздел может быть
+опущен для программ чьи коды точного выхода не важны,
+они возвращают 0 на успех и не нулевой ответ в случае провала как стандарт. Этот раздел
+всегда должен присутствовать для функций. Для модулей это может быть полезным для
+суммирования возвращаемых значений из интерфейса модуля, или это может больше
+полезно для обсуждения возвращаемых значений отдельно в документации каждой
+функции или метода, которыми обеспечивает модуль.
 
-=item ERRORS
+=item ERRORS (ОШИБКИ)
 
-Exceptions, error return codes, exit statuses, and errno settings.
-Typically used for function or module documentation; program documentation
-uses DIAGNOSTICS instead.  The general rule of thumb is that errors
-printed to C<STDOUT> or C<STDERR> and intended for the end user are
-documented in DIAGNOSTICS while errors passed internal to the calling
-program and intended for other programmers are documented in ERRORS.  When
-documenting a function that sets errno, a full list of the possible errno
-values should be given here.
+Исключения (exceptions), ошибки кодов возврата, статусы выхода (exit statuses) и параметры номеров ошибок (errno settings).
+Обычно используется для функции или документации модуля; документация программы
+вместо этого использует диагностики (DIAGNOSTICS). Общее эмпирическое правило, что ошибки,
+выводящиеся на C<STDOUT> или C<STDERR> и предназначенные для конечного пользователя
+документируются в диагностике (DIAGNOSTICS), а ошибки внутреннего (internal) вызова
+программы, предназначенные для других программистов описаны в ошибках(ERRORS). Когда
+документируемая функция устанавливает номер ошибки (errno), то полный список возможных номеров ошибок (errno)
+ должен быть приведен здесь.
 
-=item DIAGNOSTICS
+=item DIAGNOSTICS (ДИАГНОСТИКА)
 
-All possible messages the program can print out and what they mean.  You
-may wish to follow the same documentation style as the Perl documentation;
-see perldiag(1) for more details (and look at the POD source as well).
+Все возможные сообщения, которые программа может распечатать, и что они означают. Вы
+возможно, пожелает следовать тому же стилю документации, что и документация Perl;
+посмотрете perldiag(1) для получения более подробной информации (и посмотрите также исходный код (source) POD).
 
-If applicable, please include details on what the user should do to
-correct the error; documenting an error as indicating "the input buffer is
-too small" without telling the user how to increase the size of the input
-buffer (or at least telling them that it isn't possible) aren't very
-useful.
+Если это возможно, просьба включите подробную информацию о то, что должен сделать пользователь для того, чтобы
+исправить ошибку; документирование ошибки как "входной буфер слишком маленький" ( "the input buffer is
+too small"), не сообщая пользователю, как увеличить размер входного буфера (input
+buffer) (или по крайней мере сказать им, что это невозможно) не очень полезно.
 
-=item EXAMPLES
+=item EXAMPLES (ПРИМЕРЫ)
 
-Give some example uses of the program or function.  Don't skimp; users
-often find this the most useful part of the documentation.  The examples
-are generally given as verbatim paragraphs.
+Дайте несколько примеров использования программы или функции. Не скупитесь; 
+пользователи часто находят это наиболее полезной частью документации. Примеры
+обычно предоставляются в виде подробных параграфов.
 
-Don't just present an example without explaining what it does.  Adding a
-short paragraph saying what the example will do can increase the value of
-the example immensely.
+Не показывайте пример не объясняя, что он делает. Добавление
+короткий параграф, говорящего, что пример будет делать может увеличить значение этого
+примера безмерно(immensely).
 
-=item ENVIRONMENT
+=item ENVIRONMENT (ОКРУЖЕНИЕ)
 
-Environment variables that the program cares about, normally presented as
-a list using C<=over>, C<=item>, and C<=back>.  For example:
+Переменные среды, в которых работает программа обычно представлены в виде
+списка, используя C<=over>, C<=item>, и C<=back>. Например:
 
     =over 6
 
     =item HOME
 
-    Used to determine the user's home directory.  F<.foorc> in this
-    directory is read for configuration details, if it exists.
+    Используется для определения домашнего каталога пользователя. F<.foorc> в этом
+    каталоге читается для подробной конфигурации, если он существует.
 
     =back
 
-Since environment variables are normally in all uppercase, no additional
-special formatting is generally needed; they're glaring enough as it is.
+Так как переменные среды, как правило, представлены прописными буквами, никакого дополнительного
+специального форматирования не нужно; они сами достаточно яркие.
 
 =item FILES
 
-All files used by the program or function, normally presented as a list,
-and what it uses them for.  File names should be enclosed in FE<lt>E<gt>.
-It's particularly important to document files that will be potentially
-modified.
+Все файлы, используемые программой или функцией, обычно представлены в виде списка,
+и то, как он их используют. Имена файлов должны быть заключены в FE<lt>E<gt>.
+Это особенно важно для файлов документов, которые будут потенциально
+изменены.
 
-=item CAVEATS
+=item CAVEATS (ПРЕДОСТЕРЕЖЕНИЯ)
 
-Things to take special care with, sometimes called WARNINGS.
+Вещи, которые требуют особого внимания, иногда называются предупреждениями (WARNINGS).
 
-=item BUGS
+=item BUGS (ОШИБКИ)
 
-Things that are broken or just don't work quite right.
+Вещи, которые ломаются или просто не работают правильно.
 
-=item RESTRICTIONS
+=item RESTRICTIONS (ОГРАНИЧЕНИЯ)
 
-Bugs you don't plan to fix.  :-)
+Ошибки, которые вы не планируете исправить. :-)
 
-=item NOTES
+=item NOTES (ПРИМЕЧАНИЯ)
 
-Miscellaneous commentary.
+Прочие комментарии.
 
-=item AUTHOR
+=item AUTHOR (АВТОР)
 
-Who wrote it (use AUTHORS for multiple people).  It's a good idea to
-include your current e-mail address (or some e-mail address to which bug
-reports should be sent) or some other contact information so that users
-have a way of contacting you.  Remember that program documentation tends
-to roam the wild for far longer than you expect and pick a contact method
-that's likely to last.
+Кто написал это (используйте АВТОРЫ (AUTHORS) для несколько человек). Хорошей идеей будет
+ включить ваш текущий адрес электронной почты (или некоторые адреса электронной почты, на которые
+  должны быть отправлены отчеты об ошибках ) или некоторая другая контактная информация так, чтобы пользователи
+ могли связаться с вами. Помните, документацию программы, как правило,
+читают дикие гораздо дольше, чем вы ожидаете и выбрайте метод контакта именно для них;).
 
 =item HISTORY
 
-Programs derived from other sources sometimes have this.  Some people keep
-a modification log here, but that usually gets long and is normally better
-maintained in a separate file.
+Программы, полученные из других источников, иногда имеют этот раздел. Некоторые люди держат
+ лог модификации здесь, но, он обычно достаточно длинный и обычно лучше его
+сохранять в отдельном файле.
 
-=item COPYRIGHT AND LICENSE
+=item COPYRIGHT AND LICENSE (АВТОРСКИЕ ПРАВА И ЛИЦЕНЗИЯ)
 
-For copyright
+Для авторского права (For copyright)
 
     Copyright YEAR(s) YOUR NAME(s)
 
-(No, (C) is not needed.  No, "all rights reserved" is not needed.)
+((C) не обязателен.  Также не обязательно писать "all rights reserved".)
 
-For licensing the easiest way is to use the same licensing as Perl itself:
+Для лицензирования самым простым способом является использование лицензии Perl:
 
     This library is free software; you may redistribute it and/or modify
     it under the same terms as Perl itself.
 
-This makes it easy for people to use your module with Perl.  Note that
-this licensing example is neither an endorsement or a requirement, you are
-of course free to choose any licensing.
+Такая лицензия позволит использовать ваш модуль вместе с Perl. Обратите внимание, что
+данный пример лицензирования не является обязательным или требованием, вы
+конечно, свободны выбирать любую лицензию (any licensing).
 
-=item SEE ALSO
+=item SEE ALSO (СМОТРИТЕ ТАКЖЕ)
 
-Other man pages to check out, like man(1), man(7), makewhatis(8), or
-catman(8).  Normally a simple list of man pages separated by commas, or a
-paragraph giving the name of a reference work.  Man page references, if
-they use the standard C<name(section)> form, don't have to be enclosed in
-LE<lt>E<gt> (although it's recommended), but other things in this section
-probably should be when appropriate.
+Другие ман-страницы (man pages), для проверки, такие как man(1), man(7), makewhatis(8), или
+catman(8). Обычно простой список ман-страниц, разделенных запятыми, или
+пункт, дающий работающие ссылки. Ссылки на ман-страницы, если
+они используют стандартную форму C<name(section)>, не должны быть заключены в
+LE<lt>E<gt> (хотя это рекомендуется).
 
-If the package has a mailing list, include a URL or subscription
-instructions here.
+Если пакет имеет список рассылки, то включая URL-адрес или инструкции о том, как на нее подписаться здесь.
 
-If the package has a web site, include a URL here.
+Если пакет имеет веб-сайт, то его URL-адрес включают здесь.
 
 =back
 
-Documentation of object-oriented libraries or modules may want to use
-CONSTRUCTORS and METHODS sections, or CLASS METHODS and INSTANCE METHODS
-sections, for detailed documentation of the parts of the library and save
-the DESCRIPTION section for an overview.  Large modules with a function
-interface may want to use FUNCTIONS for similar reasons.  Some people use
-OVERVIEW to summarize the description if it's quite long.
+Для документации объектно ориентированных библиотек или модулей может понадобиться использовать
+ секции CONSTRUCTORS (КОНСТРУКТОРЫ) и  METHODS (МЕТОДЫ), или  CLASS METHODS (МЕТОДЫ КЛАССА) и 
+ INSTANCE METHODS (МЕТОДЫ ЭКЗЕМПЛЯРА КЛАССА)
+ , для подробной документации частей библиотеки и сохраняя параграф DESCRIPTION (Описание) для небольшого обзора. 
+ Большим модулям с функциональным интерфейсом могут потребоваться использовать параграфы FUNCTIONS (ФУНКЦИИ)
+  по аналогичным причинам. Некоторые люди используют OVERVIEW (Обзор) для суммарного описания, если оно достаточно большое.
 
-Section ordering varies, although NAME must always be the first section
-(you'll break some man page systems otherwise), and NAME, SYNOPSIS,
-DESCRIPTION, and OPTIONS generally always occur first and in that order if
-present.  In general, SEE ALSO, AUTHOR, and similar material should be
-left for last.  Some systems also move WARNINGS and NOTES to last.  The
-order given above should be reasonable for most purposes.
+Последовательность разделов варьируется, хотя NAME (НАИЕНОВАНИЕ) всегда должно быть первой секцией
+(иначе вы сломаете систему ман-страниц) и NAME (НАИМЕНОВАНИЕ), SYNOPSIS(КРАТКИЙ ОБЗОР),
+DESCRIPTION (ОПИСАНИЕ), и OPTIONS (ОПЦИИ, ПАРАМЕТРЫ)
+ обычно всегда располагаются в начале и в таком порядке, как они представлены. 
+ Обычно SEE ALSO (СМОТРИТЕ ТАКЖЕ), AUTHOR (АВТОР) и аналогичные материалы должны быть
+ оставлены для окончания страницы. Некоторые системы также перемещают  WARNINGS (ПРЕДУПРЕЖДЕНИЯ) и NOTES (ПРИМЕЧАНИЯ) в конец.
+Приведенный выше порядок должен быть разумным для большинства целей.
 
-Some systems use CONFORMING TO to note conformance to relevant standards
-and MT-LEVEL to note safeness for use in threaded programs or signal
-handlers.  These headings are primarily useful when documenting parts of a
-C library.
+Некоторые системы используют  CONFORMING TO (СООТВЕТСТВУЮТ ЭТОМУ), чтобы обратить внимание на соответствие стандартам
+и MT-LEVEL (УРОВЕНЬ МНТИРОВАНИЯ) чтобы отметить одновременно безвредность для использования в многопоточных программах или обработчиками сигналов (signal
+handlers). Эти заголовки в первую очередь полезны при документировании частей
+ библиотек C.
 
-Finally, as a general note, try not to use an excessive amount of markup.
-As documented here and in L<Pod::Man>, you can safely leave Perl
-variables, function names, man page references, and the like unadorned by
-markup and the POD translators will figure it out for you.  This makes it
-much easier to later edit the documentation.  Note that many existing
-translators will do the wrong thing with e-mail addresses when wrapped in
-LE<lt>E<gt>, so don't do that.
+Наконец, общее замечание старайтесь не использовать чрезмерное количество разметки.
+Как описано здесь и в L<Pod::Man>, вы можете спокойно оставить Perl
+переменные, имена функций, ссылки на ман-страницы и т.п. без всяких украшений,
+разметки и POD переводчики будут вычислять его для вас. Это делает возможным
+редактирование документации позднее гораздо легче. Обратите внимание, что многие существующие
+переводчики будут делать неправильные вещи с адресами электронной почты, завернутой в LE<lt>E<gt>
+, так что не делайте этого.
 
-=head1 SEE ALSO
+=head1 СМОТРИТЕ ТАКЖЕ (SEE ALSO)
 
-For additional information that may be more accurate for your specific
-system, see either L<man(5)> or L<man(7)> depending on your system manual
-section numbering conventions.
+Для получения дополнительной информации, которая может быть более точной для ваших конкретных
+система, см в зависимости от вашей системы нумерации руководств или L<man(5)> или L<man(7)>.
 
-This documentation is maintained as part of the podlators distribution.
-The current version is always available from its web site at
+Эта документация ведется в рамках распределения podlators.
+Текущая версия всегда доступна со своего веб-сайта на
 <http://www.eyrie.org/~eagle/software/podlators/>.
 
-=head1 AUTHOR
+=head1 АВТОР (AUTHOR)
 
-Russ Allbery <rra@stanford.edu>, with large portions of this documentation
-taken from the documentation of the original B<pod2man> implementation by
-Larry Wall and Tom Christiansen.
+Русс Албери (Russ Allbery) <rra@stanford.edu>, значительная часть этой документации
+взята из документации оригинала B<pod2man> реализованной
+Лари Воллом (Larry Wall) и Томом Кристиансеном (Tom Christiansen).
 
-=head1 COPYRIGHT AND LICENSE
+=head1 АВТОРСКИЕ ПРАВА И ЛИЦЕНЗИЯ (COPYRIGHT AND LICENSE)
 
 Copyright 1999, 2000, 2001, 2004, 2006, 2008, 2010 Russ Allbery
 <rra@stanford.edu>.
+
+Эта документация является свободным программным обеспечением; вы можете распространять её и/или модифицировать
+ на тех же условиях, как и сам Perl.
 
 This documentation is free software; you may redistribute it and/or modify
 it under the same terms as Perl itself.
