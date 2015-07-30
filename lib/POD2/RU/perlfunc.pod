@@ -1,7 +1,9 @@
-=head1 NAME
+=encoding utf8
+
+=head1 NAME/НАИМЕНОВАНИЕ
 X<function>
 
-perlfunc - Perl builtin functions
+perlfunc - Встроенные функции Perl
 
 =head1 DESCRIPTION
 
@@ -5715,7 +5717,7 @@ X<require>
 
 =item require
 
-=for Pod::Functions load in external functions from a library at runtime
+=for Pod::Functions загрузка внешних функций из библиотеки во время выполнения (load in external functions)
 
 Demands a version of Perl specified by VERSION, or demands some semantics
 specified by EXPR or by C<$_> if EXPR is not supplied.
@@ -9194,3 +9196,11 @@ documented in L<perlsyn/"Switch Statements"> .
 =back
 
 =cut
+
+=head1 ПЕРЕВОДЧИК
+ 
+=over
+ 
+=item * Николай Мишин C<< <mi@ya.ru> >>
+ 
+=back
