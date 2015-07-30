@@ -312,10 +312,10 @@ Perl доступен для большинства операционных с�
 
 =head1 СМОТРИТЕ ТАКЖЕ
 
-L<домашняя страница Perl|http://www.perl.org>      
-L<статьи Perl (O'Reilly)|http://www.perl.com/>       
-L<the Comprehensive Perl Archive (Всеобъемлющий Perl Архив)|http://www.cpan.org/>       
-L<the Perl Mongers|http://www.pm.org/>         
+L<домашняя страница Perl|http://www.perl.org>  
+L<статьи Perl (O'Reilly)|http://www.perl.com/>  
+L<the Comprehensive Perl Archive (Всеобъемлющий Perl Архив)|http://www.cpan.org/>  
+L<the Perl Mongers|http://www.pm.org/>  
 
 =head1 ДИАГНОСТИКА
 
