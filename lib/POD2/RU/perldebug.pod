@@ -4,41 +4,44 @@
 
 X<debug> X<debugger>
 
-perldebug - Perl debugging
+perldebug - Отладка кода в Perl (Perl debugging)
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
-First of all, have you tried using the B<-w> switch?
+Во-первых, вы пытались использовать ключ B<-w> (warnings предупреждения)?
 
+Если вы новичок в отладке Perl кода, вам лучше сначала прочитать
+L<perldebtut>, который представляет собой учебник по пользованию отладчика (debugger).
 
-If you're new to the Perl debugger, you may prefer to read
-L<perldebtut>, which is a tutorial introduction to the debugger.
+=head1 Отладчик Perl
 
-=head1 The Perl Debugger
-
-If you invoke Perl with the B<-d> switch, your script runs under the
-Perl source debugger.  This works like an interactive Perl
-environment, prompting for debugger commands that let you examine
-source code, set breakpoints, get stack backtraces, change the values of
-variables, etc.  This is so convenient that you often fire up
-the debugger all by itself just to test out Perl constructs
-interactively to see what they do.  For example:
+Если вы вызываете Perl с ключом B<-d>, ваш скрипт начинает работать под
+отладчиком исходного кода Perl(Perl source debugger). Это работает, как интерактивная среда Perl
+, где выполнение команды отладчика позволяет изучить
+исходный код, установить точки останова, получите трассировку стека, изменить значения
+переменных и т.д. Это настолько удобно, что вы часто запускаете
+отладчик сама по себе просто чтобы проверить Perl конструкции
+интерактивно для того, чтобы увидеть, что они делают. Например:
 X<-d>
 
     $ perl -d -e 42
 
-In Perl, the debugger is not a separate program the way it usually is in the
-typical compiled environment.  Instead, the B<-d> flag tells the compiler
-to insert source information into the parse trees it's about to hand off
-to the interpreter.  That means your code must first compile correctly
-for the debugger to work on it.  Then when the interpreter starts up, it
-preloads a special Perl library file containing the debugger.
+В Perl, отладчик не является отдельной программой так, как это обычно бывает в
+типичной скомпилированной среде. Вместо этого, флаг B<-d> сообщает компилятору, 
+вставлять информацию об исходном коде в деревья разбора и передать их интерпретатору. 
+Это означает, что код сначала должен правильно скомпилироваться для отладчика для работы в нем. 
+Затем, когда интерпретатор запускается, он
+предварительно загружает специальный файл библиотеки Perl, содержащий отладчик.
 
-The program will halt I<right before> the first run-time executable
-statement (but see below regarding compile-time statements) and ask you
-to enter a debugger command.  Contrary to popular expectations, whenever
-the debugger halts and shows you a line of code, it always displays the
-line it's I<about> to execute, rather than the one it has just executed.
+Программа будет остановливаться  I<прямо перед> первой исполняемой конструкцией
+(но см. ниже относительно конструкций времени компиляции) и попросить вас
+ ввести команды отладчика. Вопреки популярным ожиданий, когда
+отладчик останавливается и показывает вам строку кода, он всегда отображает
+строку, которую I<собирается> выполнить, а не ту, что он только что исполнил.
+
+Любая команда, не распознаваемые отладчиком непосредственно выполняется
+(C <eval>имел) как Perl код в текущем пакете. (Отладчик
+использует пакет DB для держать свои собственные сведения о состоянии).
 
 Any command not recognized by the debugger is directly executed
 (C<eval>'d) as Perl code in the current package.  (The debugger
@@ -1240,3 +1243,13 @@ from your keyboard or a socket) and haven't set up your own C<$SIG{INT}>
 handler, then you won't be able to CTRL-C your way back to the debugger,
 because the debugger's own C<$SIG{INT}> handler doesn't understand that
 it needs to raise an exception to longjmp(3) out of slow syscalls.
+
+
+=head1 ПЕРЕВОДЧИК
+
+=over
+
+=item * Николай Мишин  C<< <mishin@cpan.org> >>
+
+=back
+
