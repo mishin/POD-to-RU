@@ -6,30 +6,37 @@ perlpacktut - Учебник по C<pack> и C<unpack>
 
 =head1 DESCRIPTION
 
-C<pack> and C<unpack> are two functions for transforming data according
-to a user-defined template, between the guarded way Perl stores values
-and some well-defined representation as might be required in the 
-environment of a Perl program. Unfortunately, they're also two of 
-the most misunderstood and most often overlooked functions that Perl
-provides. This tutorial will demystify them for you.
+C<pack> и C<unpack> это две функции для преобразования данных в соответствии с
+пользовательским шаблоном, между способом хранить значения, который охраняет Perl 
+и некоторыми четко определенными представлениями этой строки, как она может хранится по требованию окружающей среды Perl-программы. К сожалению они также две из
+наиболее недооцененных и наиболее часто упускаемых из виду функции, которые  предоставляет Perl. Этот учебник будет демистификатором этих функций для вас.
 
+=head1 Основной принцип
 
-=head1 The Basic Principle
+Большинство языков программирования не раскрывают память где сохраняется переменная. 
+В C, например, вы можете взять адрес некоторой переменной,
+и оператор C<sizeof> скажет вам сколько байтов выделены для
+переменной. Используя адрес и размер, вы может получить доступ к хранилищу
+ сердца вашей программы.
 
-Most programming languages don't shelter the memory where variables are
-stored. In C, for instance, you can take the address of some variable,
-and the C<sizeof> operator tells you how many bytes are allocated to
-the variable. Using the address and the size, you may access the storage
-to your heart's content.
+В Perl, вы просто не можете получить доступ к памяти наугад, но структурные и
+представительские преобразования C<pack> и C<unpack> - это
+отличная альтернатива. Функция C<pack> преобразует значения - в последовательность байтов
+, которая содержит представление согласно данной спецификации,
+аргумент, так называемый "шаблон". C<unpack> — это обратный процесс получения
+некоторых значений из содержимого строки байтов. (Будьбе осторожны,
+ что не все, что было упакован вместе может быть аккуратно распаковано -
+ у нас есть очень общий опыт и мы, как опытные путешественники, это поджтверждаем.)
 
-In Perl, you just can't access memory at random, but the structural and
-representational conversion provided by C<pack> and C<unpack> is an
-excellent alternative. The C<pack> function converts values to a byte
-sequence containing representations according to a given specification,
-the so-called "template" argument. C<unpack> is the reverse process,
-deriving some values from the contents of a string of bytes. (Be cautioned,
-however, that not all that has been packed together can be neatly unpacked - 
-a very common experience as seasoned travellers are likely to confirm.)
+Почему вы можете спросить, вам потребуется кусок памяти, содержащих некоторые значения
+в двоичном представлении? Одна хорошая причина, ввода и вывода доступ
+Некоторые файла, устройство, или сетевое подключение, whereby этот двоичный файл
+представление является либо вынужден на вас или будет дать вам некоторую пользу
+в обработке. Другой причиной передача данных в некоторых системный вызов
+не доступен как функции Perl: C <syscall>необходимо предоставить
+параметры, хранящиеся в то, что это происходит в программе C. Даже текст обработки
+(как показано в следующем разделе) могут быть упрощены с разумное использование
+из этих двух функций.
 
 Why, you may ask, would you need a chunk of memory containing some values
 in binary representation? One good reason is input and output accessing
