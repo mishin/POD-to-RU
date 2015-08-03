@@ -37,7 +37,7 @@ Perl вставляет содержимое C<$ENV{PERL5DB}> (или C<BEGIN {r
 =item *
 
 Каждый массив  C<@{"_<$filename"}>  держит строки $filename для
-файла, скомпилированного с Perl. То же самое верно для C<выполняемых> (C<eval>ed) строк, 
+файла, скомпилированного с Perl. То же самое верно для C<выполняемых> (C<eval>) строк, 
 которые содержат подпрограммы, или которых выполняются в настоящее время.
 $filename для C<выполняемых> строк выглядит как C<(eval 34)>.
 
@@ -52,33 +52,29 @@ $filename для C<выполняемых> строк выглядит как C<
 значения, используемые F<perl5db.pl> имеют форму
 C<"$break_condition\0$action">. 
 
-То же самое для выполняемых строках, которые содержат подпрограммы, или
-которые в настоящее время выполняются.$ Файла для С <> Eval строк ред
-Похоже, С <(Eval 34)>.
-The same holds for evaluated strings that contain subroutines, or
-which are currently being executed.  The $filename for C<eval>ed strings
-looks like C<(eval 34)>.
+То же самое хранится для исполняемых строк, которые содержат подпрограммы, или
+которые, выполняются в настоящее время. $filename для C<выполняемых> строк 
+выглядит как C<(eval 34)>.
 
 =item *
 
-Each scalar C<${"_<$filename"}> contains C<"_<$filename">.  This is
-also the case for evaluated strings that contain subroutines, or
-which are currently being executed.  The $filename for C<eval>ed
-strings looks like C<(eval 34)>.
+Каждый скаляр C<${"_<$filename"}> содержит C<"_<$filename">. 
+Это также в случае выполнения строк, которые содержат подпрограммы, или
+которые в настоящее время выполняются. $filename для C<выполняемых> строк 
+выглядит как C<(eval 34)>.
 
 =item *
 
-After each C<require>d file is compiled, but before it is executed,
-C<DB::postponed(*{"_<$filename"})> is called if the subroutine
-C<DB::postponed> exists.  Here, the $filename is the expanded name of
-the C<require>d file, as found in the values of %INC.
+После компиляции каждого C<требуемого> файла, но перед выполнением,
+вызывается процедура C<DB::postponed(*{"_<$filename"})> , если существует
+C<DB::postponed>.  Здесь $filename - это развернутое имя
+ C<требуемого> файла, как он найдет в значениях (values) %INC.
 
 =item *
 
-After each subroutine C<subname> is compiled, the existence of
-C<$DB::postponed{subname}> is checked.  If this key exists,
-C<DB::postponed(subname)> is called if the C<DB::postponed> subroutine
-also exists.
+После компиляции каждого C<подимени>, проверяется
+C<$DB::postponed{subname}> , если она существует.  Если этот ключ существует, то
+вызывается C<DB::postponed(subname)>, если существует процедура C<DB::postponed>.
 
 =item *
 
