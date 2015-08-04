@@ -78,26 +78,26 @@ C<$DB::postponed{subname}> , если она существует.  Если э�
 
 =item *
 
-A hash C<%DB::sub> is maintained, whose keys are subroutine names
-and whose values have the form C<filename:startline-endline>.
-C<filename> has the form C<(eval 34)> for subroutines defined inside
-C<eval>s.
+Поддерживается хэш C<%DB::sub>, чьи ключи являются именами подпрограмм
+и значения которых имеют форму C<filename:startline-endline>.
+C<filename> имеет форму C<(eval 34)> для подпрограмм, определенные внутри
+C<eval>.
 
 =item *
 
-When the execution of your program reaches a point that can hold a
-breakpoint, the C<DB::DB()> subroutine is called if any of the variables
-C<$DB::trace>, C<$DB::single>, or C<$DB::signal> is true.  These variables
-are not C<local>izable.  This feature is disabled when executing
-inside C<DB::DB()>, including functions called from it 
-unless C<< $^D & (1<<30) >> is true.
+Когда выполнение программы достигнет точки, на которой может стоять
+точка останова, подпрограмма C<DB::DB()> вызывается, если любая из переменных
+C<$DB::trace>, C<$DB::single>, или C<$DB::signal>имеет значение true. Эти переменные
+не являются C<локализованными>. Эта функция отключена при выполнении
+внутри  C<DB::DB()>, включая функции, которые вызываются из нее
+Пока выражение C<< $^D & (1<<30) >>  имеет значение true.
 
 =item *
 
-When execution of the program reaches a subroutine call, a call to
-C<&DB::sub>(I<args>) is made instead, with C<$DB::sub> holding the
-name of the called subroutine. (This doesn't happen if the subroutine
-was compiled in the C<DB> package.)
+Когда выполнение программы достигает вызов подпрограммы,  вместо этого производится вызов 
+C<&DB::sub>(I<args>) с C<$DB::sub>, которая содержит
+имя вызываемой подпрограммы. (Этого не случиться, если подпрограмма
+была скомпилирована из C<DB> пакета.)
 
 =back
 
