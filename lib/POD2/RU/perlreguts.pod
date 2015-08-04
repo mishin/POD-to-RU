@@ -158,7 +158,7 @@ C<regnode_1> структуры имеют тот же заголовок, за 
 
 За C<regnode_string> структурами, используемыми для строковых литералов, следует заголовок
  длиной в один байт и затем строковые данные. Строки дополняются в конце  
- нулевым байтом таким образом, чтобы общая длина узла делилаь на четыре байта:
+ нулевым байтом таким образом, чтобы общая длина узла делилась на четыре байта:
 
     regnode_string           char string[1];
                              U8 str_len; /* overrides flags */
@@ -185,31 +185,35 @@ POSIX char классов под названием C<regnode_charclass_class>, 
 
 =back
 
-F<regnodes.h> defines an array called C<regarglen[]> which gives the size
-of each opcode in units of C<size regnode> (4-byte). A macro is used
-to calculate the size of an C<EXACT> node based on its C<str_len> field.
+F<regnodes.h> определяется массив под названием C<regarglen[]>, который дает размер
+каждой из операций (opcode) в единицах C<размера regnode> (4-байтные). Используется макрос,
+чтобы вычислить размер C<ТОЧНЫЙ> (C<EXACT>) узел (node), основанный на его поле C<str_len>.
 
-The regops are defined in F<regnodes.h> which is generated from
-F<regcomp.sym> by F<regcomp.pl>. Currently the maximum possible number
-of distinct regops is restricted to 256, with about a quarter already
-used.
+Операции (regops) определены в F<regnodes.h>, который генерится из
+F<regcomp.sym> скриптом F<regcomp.pl>. В настоящее время максимально возможное число
+из различных regops ограничено 256, и около четверти уже
+используется.
 
-A set of macros makes accessing the fields
-easier and more consistent. These include C<OP()>, which is used to determine
-the type of a C<regnode>-like structure; C<NEXT_OFF()>, which is the offset to
-the next node (more on this later); C<ARG()>, C<ARG1()>, C<ARG2()>, C<ARG_SET()>,
-and equivalents for reading and setting the arguments; and C<STR_LEN()>,
-C<STRING()> and C<OPERAND()> for manipulating strings and regop bearing
-types.
+Набор макросов делает доступ к полям
+проще и более последовательным. К ним относятся C<OP()>, который используется для определения
+тип C <regnode>-подобной структуры; C<NEXT_OFF()>, которая является смещением до
+следующего узла (подробнее об этом позже); C<ARG()>, C<ARG1()>, C<ARG2()>, C<ARG_SET()>,
+и эквивалентые для чтения и задания аргументов; и C<STR_LEN()>,
+C<STRING()> и C<OPERAND()> для манипулирования строками и типами операций (regop bearing types).
 
-=head3 What regop is next?
+=head3 Какие операции (regop) следующие
 
-There are three distinct concepts of "next" in the regex engine, and
-it is important to keep them clear.
+Существует три различных понятия "следующих" ("next") в обработчике regex(regex engine), и
+важно понимать их ясно.
 
 =over 4
 
 =item *
+
+Существует "следующий regnode" от данного regnode, значение которого является
+редко полезным, за исключением, что иногда это совпадает с точки зрения стоимости
+с одним из других и что иногда код предполагает, чтобы это
+всегда быть так.
 
 There is the "next regnode" from a given regnode, a value which is
 rarely useful except that sometimes it matches up in terms of value
