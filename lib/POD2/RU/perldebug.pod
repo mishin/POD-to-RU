@@ -39,77 +39,71 @@ X<-d>
 отладчик останавливается и показывает вам строку кода, он всегда отображает
 строку, которую I<собирается> выполнить, а не ту, что он только что исполнил.
 
-Любая команда, не распознаваемые отладчиком непосредственно выполняется
-(C <eval>имел) как Perl код в текущем пакете. (Отладчик
-использует пакет DB для держать свои собственные сведения о состоянии).
+Любая команда, которая не распознается отладчиком непосредственно выполняется
+(с помощью C<eval>), как Perl код в текущем пакете. (Отладчик
+использует пакет DB для хранения своих собственных сведений о состоянии).
 
-Any command not recognized by the debugger is directly executed
-(C<eval>'d) as Perl code in the current package.  (The debugger
-uses the DB package for keeping its own state information.)
+Обратите внимание, что с выполнением C<eval> связана неявная область (implicit scope). Как
+результат любые новые лексические переменные или изменение
+содержимое буфера захвата (capture buffer content) теряется после eval. Отладчик предоставляет
+удобное окружение (nice environment) для изучения Perl, но если ваш интерактивный эксперимент использует
+материал, который должен быть в той же области(same scope), то тогда писать его нужно в одну строку.
 
-Note that the said C<eval> is bound by an implicit scope. As a
-result any newly introduced lexical variable or any modified
-capture buffer content is lost after the eval. The debugger is a
-nice environment to learn Perl, but if you interactively experiment using
-material which should be in the same scope, stuff it in one line.
+Для любого текста, введенного в командной строке отладчика, начальные и конечные пробелы
+сначала удаляется перед дальнейшей обработкой. Если команды отладчика
+совпадает с некоторыми функциями в вашей собственной программе, просто перед
+функцией поставьте то, что не выглядит как команды отладчика, такие
+как ведущий C<;> или возможно C<+>, или путем заключения в кругые или фигурные скобки.
 
-For any text entered at the debugger prompt, leading and trailing whitespace
-is first stripped before further processing.  If a debugger command
-coincides with some function in your own program, merely precede the
-function with something that doesn't look like a debugger command, such
-as a leading C<;> or perhaps a C<+>, or by wrapping it with parentheses
-or braces.
+=head2 Вызов отладчика (Calling the Debugger)
 
-=head2 Calling the Debugger
-
-There are several ways to call the debugger:
+Существует несколько способов вызова отладчика:
 
 =over 4
 
 =item perl -d program_name
 
-On the given program identified by C<program_name>.
+В данной программе определяется C<program_name>.
 
 =item perl -d -e 0 
 
-Interactively supply an arbitrary C<expression> using C<-e>.
+Интерактивно укажите произвольное C<выражение>, с помощью C<-e>.
 
 =item perl -d:Ptkdb program_name
 
-Debug a given program via the C<Devel::Ptkdb> GUI.
+Отладки данной программы через C<Devel::Ptkdb> GUI.
 
 =item perl -dt threaded_program_name
 
-Debug a given program using threads (experimental).
+Отладка программы с использованием потоков (экспериментальная возможность).
 
 =back
 
-=head2 Debugger Commands
+=head2 Команды отладчика
 
-The interactive debugger understands the following commands:
+Интерактивный отладчик распознает следующие команды:
 
 =over 12
 
 =item h
 X<debugger command, h>
 
-Prints out a summary help message
+Выводит на экран краткую справку
 
 =item h [command]
 
-Prints out a help message for the given debugger command.
+Выводит справку для данной команды отладчика.
 
 =item h h
 
-The special argument of C<h h> produces the entire help page, which is quite long.
+Специальный аргумент C<h h> выводит всю страницу помощи, которая достаточно длинная.
 
-If the output of the C<h h> command (or any command, for that matter) scrolls
-past your screen, precede the command with a leading pipe symbol so
-that it's run through your pager, as in
+Чтобы вывод команды C<h h> (или любой команды, коль на то пошло) можно было удобно просмотреть
+ нужно поставить в начале трубу (pipe), тогда он пошлет документацию на программу просмотра (пейджер), как в
 
     DB> |h h
 
-You may change the pager which is used via C<o pager=...> command.
+Вы можете изменить пейджер, который используется через  команду C<o pager=...>.
 
 =item p expr
 X<debugger command, p>
