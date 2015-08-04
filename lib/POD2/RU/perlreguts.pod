@@ -134,12 +134,12 @@ B<ЗАМЕЧАНИЕ> (B<NOTE>): согласно метафоре железн�
         U16 next_off; /* Смещение на размер регноде (regnode) */
     };
 
-Other larger C<regnode>-like structures are defined in F<regcomp.h>. They
-are almost like subclasses in that they have the same fields as
-C<regnode>, with possibly additional fields following in
-the structure, and in some cases the specific meaning (and name)
-of some of base fields are overridden. The following is a more
-complete description.
+Другие большие C<регнодо>-подобные структуры определяются в F<regcomp.h>. Они
+ почти как подклассы в том, что они имеют те же поля, что
+C<regnode>, а возможно и дополнительные поля в
+структуре и в некоторых случаях конкретное значение (и название)
+ некоторых из базовых полей переопределено. Ниже приведено более
+полное описание.
 
 =over 4
 
@@ -147,38 +147,37 @@ complete description.
 
 =item C<regnode_2>
 
-C<regnode_1> structures have the same header, followed by a single
-four-byte argument; C<regnode_2> structures contain two two-byte
-arguments instead:
+C<regnode_1> структуры имеют тот же заголовок, за которым следует
+4 байтовый аргумент; C<regnode_2> структуры содержат два двухбайтовых
+аргумента вместо этого:
 
     regnode_1                U32 arg1;
     regnode_2                U16 arg1;  U16 arg2;
 
 =item C<regnode_string>
 
-C<regnode_string> structures, used for literal strings, follow the header
-with a one-byte length and then the string data. Strings are padded on
-the end with zero bytes so that the total length of the node is a
-multiple of four bytes:
+За C<regnode_string> структурами, используемыми для строковых литералов, следует заголовок
+ длиной в один байт и затем строковые данные. Строки дополняются в конце  
+ нулевым байтом таким образом, чтобы общая длина узла делилаь на четыре байта:
 
     regnode_string           char string[1];
                              U8 str_len; /* overrides flags */
 
 =item C<regnode_charclass>
 
-Character classes are represented by C<regnode_charclass> structures,
-which have a four-byte argument and then a 32-byte (256-bit) bitmap
-indicating which characters are included in the class.
+Классы символов представлены структурами C<regnode_charclass> ,
+которые имеют 4 байтовый аргумент, а затем растровое (bitmap) изображение 32-byte (256-бит)
+, которое указывает, какие символы включены в класс.
 
     regnode_charclass        U32 arg1;
                              char bitmap[ANYOF_BITMAP_SIZE];
 
 =item C<regnode_charclass_class>
 
-There is also a larger form of a char class structure used to represent
-POSIX char classes called C<regnode_charclass_class> which has an
-additional 4-byte (32-bit) bitmap indicating which POSIX char classes
-have been included.
+Существует также более крупные формы структура класса char, используемые для представления
+POSIX char классов под названием C<regnode_charclass_class>, которые имеют
+ дополнительные 4-байтовые (32-разрядные версии) точечных (bitmap) рисунков , указывающих какие классы 
+ POSIX char были включены.
 
    regnode_charclass_class  U32 arg1;
                             char bitmap[ANYOF_BITMAP_SIZE];
