@@ -210,134 +210,137 @@ C<STRING()> и C<OPERAND()> для манипулирования строкам
 
 =item *
 
-Существует "следующий regnode" от данного regnode, значение которого является
-редко полезным, за исключением, что иногда это совпадает с точки зрения стоимости
-с одним из других и что иногда код предполагает, чтобы это
-всегда быть так.
+Существует "следующий regnode" от данного regnode, значение которого 
+редко полезно, за исключением, что иногда оно совпадает с точки зрения стоимости
+с одним из других и что иногда код предполагает, что это
+всегда будет так.
 
-There is the "next regnode" from a given regnode, a value which is
+(There is the "next regnode" from a given regnode, a value which is
 rarely useful except that sometimes it matches up in terms of value
 with one of the others, and that sometimes the code assumes this to
-always be so.
+always be so.)
 
 =item *
 
-There is the "next regop" from a given regop/regnode. This is the
-regop physically located after the current one, as determined by
-the size of the current regop. This is often useful, such as when
-dumping the structure we use this order to traverse. Sometimes the code
-assumes that the "next regnode" is the same as the "next regop", or in
-other words assumes that the sizeof a given regop type is always going
-to be one regnode large.
+Существует "следующий regop" от данного regop/regnode. Этот
+regop, физически расположен после текущего, так, как он определяется
+ по размеру текущего regop. Это часто полезно, например, при
+дампе структуры, которую мы используем в порядке прохода 
+( This is often useful, such as when dumping the structure we use this order to traverse.).
+Иногда код предполагает, что "следующий regnode" такой же, как и "следующий regop", или 
+другими словами, предполагается, что sizeof (размер) типа данного regop будет всегда
+ одной большой regnode.
 
 =item *
 
-There is the "regnext" from a given regop. This is the regop which
-is reached by jumping forward by the value of C<NEXT_OFF()>,
-or in a few cases for longer jumps by the C<arg1> field of the C<regnode_1>
-structure. The subroutine C<regnext()> handles this transparently.
-This is the logical successor of the node, which in some cases, like
-that of the C<BRANCH> regop, has special meaning.
+Существует "regnext" от данного regop. Это regop который
+достигается путем прыжка вперед по значению C<NEXT_OFF()>,
+или в некоторых случаях для больших прыжков по полю  C<arg1>  структура C<regnode_1>.
+Подпрограммы C<regnext()> обрабатывает это прозрачно.
+Это является логическим преемником узла (node), который в некоторых случаях, как эта C<ВЕТКА>
+ (C<BRANCH>) regop, имеет особое значение.
+ (This is the logical successor of the node, which in some cases, like
+that of the C<BRANCH> regop, has special meaning.)
 
 =back
 
-=head1 Process Overview
+=head1 Обзор процесса
 
-Broadly speaking, performing a match of a string against a pattern
-involves the following steps:
+Вообще говоря, выполнение сопоставления строки с шаблоном
+включает в себя следующие шаги:
 
 =over 5
 
-=item A. Compilation
+=item A. Компиляция
 
 =over 5
 
-=item 1. Parsing for size
+=item 1. Парсинг (Синтаксический анализ) для размера (Parsing for size)
 
-=item 2. Parsing for construction
+=item 2. Парсинг (Синтаксический анализ) конструкций (Parsing for construction)
 
-=item 3. Peep-hole optimisation and analysis
+=item 3. Оптимизация на глаз и анализ (Peep-hole optimisation and analysis)
 
 =back
 
-=item B. Execution
+=item B. Выполнение
 
 =over 5
 
-=item 4. Start position and no-match optimisations
+=item 4. Стартовая позиция и оптимизация без поиска (Start position and no-match optimisations)
 
-=item 5. Program execution
-
-=back
+=item 5. Выполнение программы (Program execution)
 
 =back
 
+=back
 
-Where these steps occur in the actual execution of a perl program is
-determined by whether the pattern involves interpolating any string
-variables. If interpolation occurs, then compilation happens at run time. If it
-does not, then compilation is performed at compile time. (The C</o> modifier changes this,
-as does C<qr//> to a certain extent.) The engine doesn't really care that
-much.
+Где происходят эти действия фактическое выполнение perl-программы 
+определяется шаблоном, включая интерполяции любой строки переменных.
+Если интерполяция происходит, то компиляция происходит во время выполнения. Если нет,
+ то компиляция выполняется во время компиляции. (Модификатор C</o> изменяет это,
+как и делает это C<qr//> в определенной степени). Движок (engine) не волнуется слишком много об этом.
 
-=head2 Compilation
+=head2 Компиляция
 
-This code resides primarily in F<regcomp.c>, along with the header files
-F<regcomp.h>, F<regexp.h> and F<regnodes.h>.
+Этот код находится преимущественно в F<regcomp.c>, наряду с заголовочными файлами
+F<regcomp.h>, F<regexp.h> и F<regnodes.h>.
 
-Compilation starts with C<pregcomp()>, which is mostly an initialisation
-wrapper which farms work out to two other routines for the heavy lifting: the
-first is C<reg()>, which is the start point for parsing; the second,
-C<study_chunk()>, is responsible for optimisation.
+Компиляция начинается с C<pregcomp()>, который является главным инициализатором
+оболочки (initialisation wrapper), который формирует работу для двух других подпрограмм для тяжелой обработки (heavy lifting):
+Во-первых это C<reg()>, который является стартовой точкой для парсинга; 
+Во-вторых, это C<study_chunk()>, которая отвечает за оптимизацию.
 
-Initialisation in C<pregcomp()> mostly involves the creation and data-filling
-of a special structure, C<RExC_state_t> (defined in F<regcomp.c>).
-Almost all internally-used routines in F<regcomp.h> take a pointer to one
-of these structures as their first argument, with the name C<pRExC_state>.
-This structure is used to store the compilation state and contains many
-fields. Likewise there are many macros which operate on this
-variable: anything that looks like C<RExC_xxxx> is a macro that operates on
-this pointer/structure.
+Инициализация в C<pregcomp()> главным образом включает в себя создание и заполнение данными
+специальных структур, C<RExC_state_t> (определенных в F<regcomp.c>).
+Почти все внутренне используемые процедуры в F<regcomp.h> принимают указатель на одну
+из этих структур, как их первый аргумент с именем C<pRExC_state>.
+Эта структура используется для хранения состояния компиляции и содержит много
+полей. Также существует много макросов, которые работают с этой
+переменной: все, что выглядит как C<RExC_xxxx> - это макрос, который работает с
+этим указателем/структурой.
 
-=head3 Parsing for size
+=head3 Парсинг для размера (Parsing for size)
 
-In this pass the input pattern is parsed in order to calculate how much
-space is needed for each regop we would need to emit. The size is also
-used to determine whether long jumps will be required in the program.
+На этом этапе шаблон ввода анализируется для того, чтобы рассчитать, сколько
+пространства необходимо для каждого regop, которое мы будем предоставлять ( we would need to emit). Размер
+ также используется для определения, требуются ли длинные прыжки ( long jumps) в программе.
 
-This stage is controlled by the macro C<SIZE_ONLY> being set.
+Этот этап управляется установкой макроса C<SIZE_ONLY>.
 
-The parse proceeds pretty much exactly as it does during the
+Разбор продолжается почти точно так, как он делает во время
+фазы построения (construction phase), за исключением того, что большинство подпрограм коротко замкнуты на
+ изменение размера поля C<RExC_size> и не делают ничего больше.
+
+(The parse proceeds pretty much exactly as it does during the
 construction phase, except that most routines are short-circuited to
-change the size field C<RExC_size> and not do anything else.
+change the size field C<RExC_size> and not do anything else.)
 
-=head3 Parsing for construction
+=head3 Парсинг для построения. Синтаксический анализ для строительства (Parsing for construction)
 
-Once the size of the program has been determined, the pattern is parsed
-again, but this time for real. Now C<SIZE_ONLY> will be false, and the
-actual construction can occur.
+После того, как определен размер программы, шаблон обрабатывается
+ снова, но на этот раз для реальности. Теперь C<SIZE_ONLY> будет иметь значение false и
+фактическое построение  может произойти. (actual construction can occur.)
 
-C<reg()> is the start of the parse process. It is responsible for
-parsing an arbitrary chunk of pattern up to either the end of the
-string, or the first closing parenthesis it encounters in the pattern.
-This means it can be used to parse the top-level regex, or any section
-inside of a grouping parenthesis. It also handles the "special parens"
-that perl's regexes have. For instance when parsing C</x(?:foo)y/> C<reg()>
-will at one point be called to parse from the "?" symbol up to and
-including the ")".
+C<reg()> является началом процесса анализа(parse process). Он отвечает за
+синтаксический анализ произвольного фрагмента шаблона либо до конца 
+строки, или до первой закрывающей скобки, с которыми она сталкивается в шаблоне.
+Это означает, что она может использоваться для разбора верхнего уровня регекса ( top-level regex) или любого раздела
+ внутри группирующих скобок . Он также обрабатывает "специальные скобки" ("special parens")
+ которые имеют perl регексы. Например при анализе C</x(?:foo)y/> C<reg()>
+в одной точке будет вызываться для разобора от символа "?"  до закрывающей скобки ")", включая её.
 
-Additionally, C<reg()> is responsible for parsing the one or more
-branches from the pattern, and for "finishing them off" by correctly
-setting their next pointers. In order to do the parsing, it repeatedly
-calls out to C<regbranch()>, which is responsible for handling up to the
-first C<|> symbol it sees.
+Кроме того C<reg()> отвечает за синтаксический анализ одной или нескольких
+ветвей из шаблона и чтобы "прикончить их" ("finishing them off") правильно
+ устанавливая их указатели следующего элемента. Для того чтобы сделать парсинг (синтаксический анализ), он неоднократно
+вызывает  C<regbranch()>, который отвечает за обработку до первого символа C<|>, который он видит.
 
-C<regbranch()> in turn calls C<regpiece()> which
-handles "things" followed by a quantifier. In order to parse the
-"things", C<regatom()> is called. This is the lowest level routine, which
-parses out constant strings, character classes, and the
-various special symbols like C<$>. If C<regatom()> encounters a "("
-character it in turn calls C<reg()>.
+C<regbranch()> в свою очередь вызывает C<regpiece()>, который
+обрабатывает(handles "things"), следующие после повторителя (квантификатора). 
+Для того, чтобы разобрать "вещи" ("things") вызывается C<regatom()>. Это низкоуровневая процедура, которая
+разбирает постоянные строки (constant strings), классы символов и
+различные специальные символы такие, как C< $>. Если C<regatom()> встречает символ"("
+, то он, в свою очередь, вызывает C<reg()>.
 
 The routine C<regtail()> is called by both C<reg()> and C<regbranch()>
 in order to "set the tail pointer" correctly. When executing and
