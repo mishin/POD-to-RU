@@ -358,25 +358,25 @@ C<regbranch()> в свою очередь вызывает C<regpiece()>, кот
 
 Граф вызовов выглядит следующим образом:
 
- reg()                        # parse a top level regex, or inside of
-                              # parens
-     regbranch()              # parse a single branch of an alternation
-         regpiece()           # parse a pattern followed by a quantifier
-             regatom()        # parse a simple pattern
-                 regclass()   #   used to handle a class
-                 reg()        #   used to handle a parenthesised
-                              #   subpattern
+ reg()                        # разбора регкса верхнего уровня, или внутри
+                              # парных скобок
+     regbranch()              # разбор одной ветви чередования (alternation)
+         regpiece()           # разбор шаблона за которым следует повторитель (квантификатор)
+             regatom()        # разбор простого шаблона
+                 regclass()   #    используется для обработки класса (used to handle a class)
+                 reg()        #    используется для обработки круглы скобок (used to handle a parenthesized - ошибка в слове parenthesised)
+                              #    подшаблон (подмаска subpattern)
                  ....
          ...
-         regtail()            # finish off the branch
+         regtail()            # окончание обработки ветси (finish off the branch)
      ...
-     regtail()                # finish off the branch sequence. Tie each
-                              # branch's tail to the tail of the
-                              # sequence
-                              # (NEW) In Debug mode this is
+     regtail()                # окончание последовательности веток. Свяжите каждую (finish off the branch sequence. Tie each)
+                              # ветвь хвост к хвосту (branch's tail to the tail of the)
+                              # последовательности (sequence)
+                              # (Новый) В режиме отладки это ((NEW) In Debug mode this is)
                               # regtail_study().
 
-A grammar form might be something like this:
+Грамматические формы могут быть какими-нибудь такими:
 
     atom  : constant | class
     quant : '*' | '+' | '?' | '{min,max}'
@@ -390,7 +390,21 @@ A grammar form might be something like this:
     piece : _piece
           | _piece quant
 
-=head3 Parsing complications
+=head3 Синтаксический анализ осложнений (Parsing complications)
+
+Выше описания подразумевается, что шаблон содержит вложенные
+скобки приведет к граф вызовов, который циклически C <reg()>,
+C <regbranch()>, C <regpiece()>, C <regatom()>, C <reg()>, C <regbranch()> я <etc>
+несколько раз, пока не будет достигнуто глубокий уровень вложенности. Все выше
+процедуры возвращают указатель на C < regnode >, который, как правило, последний regnode
+добавлены в программу. Однако одно осложнение — что что reg() возвращает NULL
+для разбора C < (? :)> синтаксис для встроенных модификаторы, установив флаг
+C <TRYAGAIN>. C <TRYAGAIN>распространяется вверх до тех пор, пока он захватил, в
+некоторых случаях, C <regatom()>, но в остальном безоговорочно
+C <regbranch()>. Поэтому он никогда не будет возвращен C <regbranch()> для
+C <reg()>. Этот флаг позволяет шаблонов, таких как C <(?i)+> быть определена как
+ошибки (я < кванторов следует ничего в regex; отмечен <--здесь, в m/(?i) +
+<--ЗДЕСЬ / >).
 
 The implication of the above description is that a pattern containing nested
 parentheses will result in a call graph which cycles through C<reg()>,
