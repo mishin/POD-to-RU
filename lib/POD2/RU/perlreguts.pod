@@ -339,24 +339,24 @@ C<regbranch()> в свою очередь вызывает C<regpiece()>, кот
 обрабатывает(handles "things"), следующие после повторителя (квантификатора). 
 Для того, чтобы разобрать "вещи" ("things") вызывается C<regatom()>. Это низкоуровневая процедура, которая
 разбирает постоянные строки (constant strings), классы символов и
-различные специальные символы такие, как C< $>. Если C<regatom()> встречает символ"("
+различные специальные символы такие, как C<$>. Если C<regatom()> встречает символ"("
 , то он, в свою очередь, вызывает C<reg()>.
 
-The routine C<regtail()> is called by both C<reg()> and C<regbranch()>
-in order to "set the tail pointer" correctly. When executing and
-we get to the end of a branch, we need to go to the node following the
-grouping parens. When parsing, however, we don't know where the end will
-be until we get there, so when we do we must go back and update the
-offsets as appropriate. C<regtail> is used to make this easier.
+Процедура C<regtail()> вызывается процедурами C<reg()> и C<regbranch()>
+для того, чтобы "установить указатель на хвост (конец)" ( "set the tail pointer") правильно. При выполнении и
+ получении конца ветки, нам нужно перейти к узлу, следующему за 
+группирующими скобками (grouping parens). При синтаксическом анализе (parsing), однако, мы не знаем, где будет конец
+ до тех пор, пока мы туда не доберемся, поэтому, когда мы делаем, мы должны вернуться назад и обновить
+смещения (offsets) в соответствующих случаях. C<regtail> используется, чтобы сделать это проще.
 
-A subtlety of the parsing process means that a regex like C</foo/> is
-originally parsed into an alternation with a single branch. It is only
-afterwards that the optimiser converts single branch alternations into the
-simpler form.
+Тонкости процесса синтаксического анализа означает, что регулярное выражение такое как C</foo/>
+первоначально преобразовывается альтернативу с одной ветвью. И только
+после этого оптимизатор преобразует одноветвенную альтернативу в
+простую форму.
 
-=head3 Parse Call Graph and a Grammar
+=head3 Анализ графа вызовов и грамматика (Parse Call Graph and a Grammar)
 
-The call graph looks like this:
+Граф вызовов выглядит следующим образом:
 
  reg()                        # parse a top level regex, or inside of
                               # parens
