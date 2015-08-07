@@ -20,7 +20,7 @@ Perl предоставляет механизм изменения простр
 исключением тех немногих идентификаторов, которые, будучи
 неквалифицированными, по умолчанию находятся в пакете main, как будет описано
 ниже. Инструкция package затрагивает только динамические
-переменные--включая те, к которым применили local()--но I<не> лексические 
+переменные--включая те, к которым применили local() -- но I<не> лексические 
 переменные, создаваемые при помощи my(). Обычно package будет первым
 объявлением в файле, который вы подключаете используя операторы C<do>,
 C<require> или C<use>. Вы можете переключится в пакет в различных местах; это
@@ -107,50 +107,50 @@ X<symbol table> X<stash> X<%::> X<%main::> X<typeglob> X<glob> X<alias>
 записи, которые уже не являются typeglobs, не определены и являются предметом изменения
  в следующих релизах perl (subject to change between releases of perl). 
 
-Присвоение тайпглобу (typeglob) выполняет операцию алиасирования (синонимирования, другое имя тому же объекту), т.е.
+Присвоение тайпглобу (глобальном типу, typeglob) выполняет операцию алиасирования (сделать псевдоним, синонимирования, другое имя тому же объекту), т.е.
 (Assignment to a typeglob performs an aliasing operation, i.e.,)
 
     *dick = *richard;
 
-приводит к тому, что переменные, подпрограммы, форматов и дескрипторов файлов и каталогов
-доступные через идентификатор C <richard>также для того, чтобы быть доступны через
-Идентификатор C <dick>. Если вы хотите псевдоним только отдельную переменную или
-подпрограммы, вместо этого назначить ссылку:
-	
-causes variables, subroutines, formats, and file and directory handles
-accessible via the identifier C<richard> also to be accessible via the
-identifier C<dick>.  If you want to alias only a particular variable or
-subroutine, assign a reference instead:
+приводит к тому, что переменные, подпрограммы, форматы и дескрипторы  файлов и каталогов
+доступные через идентификатор C<richard> также будут быть доступны через
+идентификатор C<dick>. Если, вместо этого, вы хотите сделать алиас (псевдоним) 
+только для конкретной переменной или подпрограммы, присвойте ссылку:
 
     *dick = \$richard;
 
-Which makes $richard and $dick the same variable, but leaves
-@richard and @dick as separate arrays.  Tricky, eh?
+Что делает $richard и $dick той же переменной, но оставляет
+@richard и @dick независимыми массивами. Хитро, да? (Tricky, eh?)
 
-There is one subtle difference between the following statements:
+Существует один тонкое (subtle) различие между следующими инструкциями:
 
     *foo = *bar;
     *foo = \$bar;
 
-C<*foo = *bar> makes the typeglobs themselves synonymous while
-C<*foo = \$bar> makes the SCALAR portions of two distinct typeglobs
-refer to the same scalar value. This means that the following code:
+C<*foo = *bar> делает тайпглобы синонимами на самих себя, тогда как (makes the typeglobs themselves synonymous while)
+C<*foo = \$bar> делает СКАЛЯРНЫЕ части  двух отдельных тайпглобов (typeglobs) СКАЛЯРНЫХ portions of two distinct typeglobs
+ссылающимися на теже скалярное значение (refer to the same scalar value). Это означает, что следующий код:
 
     $bar = 1;
-    *foo = \$bar;       # Make $foo an alias for $bar
+    *foo = \$bar;       # Делает $foo алиасом для $bar
 
     {
-        local $bar = 2; # Restrict changes to block
-        print $foo;     # Prints '1'!
+        local $bar = 2; # Изменение ограничено блоком (Restrict changes to block)
+        print $foo;     # Напечатает '1'!
     }
 
-Would print '1', because C<$foo> holds a reference to the I<original>
-C<$bar>. The one that was stuffed away by C<local()> and which will be
-restored when the block ends. Because variables are accessed through the
-typeglob, you can use C<*foo = *bar> to create an alias which can be
-localized. (But be aware that this means you can't have a separate
-C<@foo> and C<@bar>, etc.)
+Будет печатать '1',  потому что C<$foo> содержит ссылку на I<оригинал>
+C<$bar>. На тот, который был набит независимо от C<local()> и, который будет
+восстановлен, когда блок заканчится. Поскольку переменные доступны через
+тайпглоб (typeglob), вы можете использовать  C<*foo = *bar>, чтобы создать псевдоним, который будет
+локальным. (Однако следует знать, что это означает, что вы не сможете иметь отдельных
+C<@foo> и C<@bar>, и т.д.)
 
+Что делает все это важно, что экспортер модуль использует шар
+ступенчатость как механизм импорта/экспорта. Ли или не вы можете правильно
+локализовать переменной, которые были экспортированы из модуля зависит как
+оно экспортировалось:
+	
 What makes all of this important is that the Exporter module uses glob
 aliasing as the import/export mechanism. Whether or not you can properly
 localize a variable that has been exported from a module depends on how
