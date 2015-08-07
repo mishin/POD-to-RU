@@ -392,33 +392,36 @@ C<regbranch()> в свою очередь вызывает C<regpiece()>, кот
 
 =head3 Синтаксический анализ осложнений (Parsing complications)
 
-Вышеописанное подразумевается так, что шаблон содержит вложенные
-скобки приведет к граф вызовов, который циклически C <reg()>,
-C <regbranch()>, C <regpiece()>, C <regatom()>, C <reg()>, C <regbranch()> я <etc>
-несколько раз, пока не будет достигнуто глубокий уровень вложенности. Все выше
-процедуры возвращают указатель на C < regnode >, который, как правило, последний regnode
-добавлены в программу. Однако одно осложнение — что что reg() возвращает NULL
-для разбора C < (? :)> синтаксис для встроенных модификаторы, установив флаг
-C <TRYAGAIN>. C <TRYAGAIN>распространяется вверх до тех пор, пока он захватил, в
-некоторых случаях, C <regatom()>, но в остальном безоговорочно
-C <regbranch()>. Поэтому он никогда не будет возвращен C <regbranch()> для
-C <reg()>. Этот флаг позволяет шаблонов, таких как C <(?i)+> быть определена как
-ошибки (я < кванторов следует ничего в regex; отмечен <--здесь, в m/(?i) +
-<--ЗДЕСЬ / >).
-
-The implication of the above description is that a pattern containing nested
-parentheses will result in a call graph which cycles through C<reg()>,
+Вышеописанное подразумевается так, что шаблон, содержащий вложенные
+скобки, приведет к графу вызовов, который зацикливается через C<reg()>,
 C<regbranch()>, C<regpiece()>, C<regatom()>, C<reg()>, C<regbranch()> I<etc>
-multiple times, until the deepest level of nesting is reached. All the above
-routines return a pointer to a C<regnode>, which is usually the last regnode
-added to the program. However, one complication is that reg() returns NULL
-for parsing C<(?:)> syntax for embedded modifiers, setting the flag
-C<TRYAGAIN>. The C<TRYAGAIN> propagates upwards until it is captured, in
-some cases by by C<regatom()>, but otherwise unconditionally by
-C<regbranch()>. Hence it will never be returned by C<regbranch()> to
-C<reg()>. This flag permits patterns such as C<(?i)+> to be detected as
-errors (I<Quantifier follows nothing in regex; marked by <-- HERE in m/(?i)+
+несколько раз, пока не будет достигнут самый глубокий уровень вложенности. Все выше
+процедуры возвращают указатель на C<regnode>, который, как правило, последний regnode, 
+добавленный в программу. Однако одно осложнение — то, что reg() возвращает NULL
+для разбора  C<(?:)> синтаксиса для встроенных модификаторов, устанавливая флаг
+C<TRYAGAIN>. C<TRYAGAIN> распространяется вверх до тех пор, пока он захватил, в
+некоторых случаях, C<regatom()>, но в остальных безоговорочно C<regbranch()>.
+Поэтому он никогда не вернет C<regbranch()> для C<reg()>.
+Этот флаг позволяет шаблоны, таких как C<(?i)+> определять как
+ошибку (I<Повторители, которые идут за пустотой в регексе; обозначаются как <-- HERE in m/(?i)+
+<-- HERE />
+I<Quantifier follows nothing in regex; marked by <-- HERE in m/(?i)+
 <-- HERE />).
+
+Другое осложнение отличается, что представления, используемые для программы
+Если необходимо хранить Unicode, но это не всегда возможно точно знать
+ли она до середине синтаксического анализа. Представление в формате Юникод для
+Программа больше и не может быть сопоставлен как эффективно. (См. Л < / Unicode
+и поддержка локализации > ниже для более подробной информации о том, почему.) Если шаблон
+содержит литерала Юникода, очевидно, что программе необходимо хранить
+Unicode. В противном случае синтаксический анализатор оптимистически предполагает, что чем больше
+эффективное представление могут быть использованы и начинает калибровки на этой основе.
+Однако если затем обнаруживает что-то в шаблоне, которые должны быть сохранены
+как Юникод, например C <\x{...}> escape-последовательность, представляющая символ
+литерал, то это означает, что все ранее вычисляемые размеры должны быть
+переделать, используя значения для представления Unicode. В настоящее время,
+все конструкции регулярных выражений, которые могут вызвать это обрабатываются кодом
+в C <regatom()>.
 
 Another complication is that the representation used for the program differs
 if it needs to store Unicode, but it's not always possible to know for sure
