@@ -2,7 +2,7 @@
 
 =head1 NAME/НАИМЕНОВАНИЕ
 
-perlmod - Модули Perl (пакеты и таблицы симолов)
+perlmod - Perl модули (пакеты и таблицы симолов)
 
 =head1 ОПИСАНИЕ
 
@@ -90,11 +90,13 @@ C<$_> или C<sub _>, по прежнему принудительно нахо
 =head2 Таблицы символов (Symbol Tables)
 X<symbol table> X<stash> X<%::> X<%main::> X<typeglob> X<glob> X<alias>
 
-The symbol table for a package happens to be stored in the hash of that
-name with two colons appended.  The main symbol table's name is thus
-C<%main::>, or C<%::> for short.  Likewise the symbol table for the nested
-package mentioned earlier is named C<%OUTER::INNER::>.
+Таблица символов пакета храниться в хэше с именем, за которым идут два двоеточия.
+Главной таблицей символов, таким образом, будет C<%main::>, или C< %:: > для краткости. 
+Аналогичным образом таблицой символов для вложенных пакетов
+является упоминаемое ранее имя C<%OUTER::INNER::>.
 
+Значением в каждой записи хэша является то, что вы имеете в виду когда вы
+используйте typeglob нотацию C<*name>.
 The value in each entry of the hash is what you are referring to when you
 use the C<*name> typeglob notation.
 
