@@ -96,24 +96,27 @@ X<symbol table> X<stash> X<%::> X<%main::> X<typeglob> X<glob> X<alias>
 является упоминаемое ранее имя C<%OUTER::INNER::>.
 
 Значением в каждой записи хэша является то, что вы имеете в виду когда вы
-используйте typeglob нотацию C<*name>.
-The value in each entry of the hash is what you are referring to when you
-use the C<*name> typeglob notation.
+используйте typeglob (глобальный тип) нотацию C<*name>.
 
     local *main::foo    = *main::bar;
 
-You can use this to print out all the variables in a package, for
-instance.  The standard but antiquated F<dumpvar.pl> library and
-the CPAN module Devel::Symdump make use of this.
+Вы можете использовать это, например для того, чтобы распечатать все переменные в пакете.
+Стандартная, но устаревшая библиотека F<dumpvar.pl> и CPAN модуль Devel::Symdump используют это.
 
-The results of creating new symbol table entries directly or modifying any
-entries that are not already typeglobs are undefined and subject to change
-between releases of perl.
+Результаты создания новых записей в таблице символов непосредственно или изменение любой
+записи, которые уже не являются typeglobs, не определены и являются предметом изменения
+ в следующих релизах perl (subject to change between releases of perl). 
 
-Assignment to a typeglob performs an aliasing operation, i.e.,
+Присвоение тайпглобу (typeglob) выполняет операцию алиасирования (синонимирования, другое имя тому же объекту), т.е.
+(Assignment to a typeglob performs an aliasing operation, i.e.,)
 
     *dick = *richard;
 
+приводит к тому, что переменные, подпрограммы, форматов и дескрипторов файлов и каталогов
+доступные через идентификатор C <richard>также для того, чтобы быть доступны через
+Идентификатор C <dick>. Если вы хотите псевдоним только отдельную переменную или
+подпрограммы, вместо этого назначить ссылку:
+	
 causes variables, subroutines, formats, and file and directory handles
 accessible via the identifier C<richard> also to be accessible via the
 identifier C<dick>.  If you want to alias only a particular variable or
