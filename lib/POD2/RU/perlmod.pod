@@ -140,65 +140,59 @@ C<*foo = \$bar> делает СКАЛЯРНЫЕ части  двух отдел�
     }
 
 Будет печатать '1',  потому что C<$foo> содержит ссылку на I<оригинал>
-C<$bar>. На тот, который был набит независимо от C<local()> и, который будет
-восстановлен, когда блок заканчится. Поскольку переменные доступны через
+C<$bar>. На тот, который был наполнен независимо от C<local()> и, который будет
+восстановлен, когда блок закончится. Поскольку переменные доступны через
 тайпглоб (typeglob), вы можете использовать  C<*foo = *bar>, чтобы создать псевдоним, который будет
 локальным. (Однако следует знать, что это означает, что вы не сможете иметь отдельных
 C<@foo> и C<@bar>, и т.д.)
 
-Что делает все это важно, что экспортер модуль использует шар
-ступенчатость как механизм импорта/экспорта. Ли или не вы можете правильно
-локализовать переменной, которые были экспортированы из модуля зависит как
-оно экспортировалось:
-	
-What makes all of this important is that the Exporter module uses glob
-aliasing as the import/export mechanism. Whether or not you can properly
-localize a variable that has been exported from a module depends on how
-it was exported:
+Все это становится важным, потому что модуль Exporter использует глоб алиасинг (glob
+aliasing ) как механизм импорта/экспорта. Сможете ли вы или нет правильно
+локализовать переменную, которая была экспортирована из модуля зависит от того, как
+эта она экспортировалась:
 
-    @EXPORT = qw($FOO); # Usual form, can't be localized
-    @EXPORT = qw(*FOO); # Can be localized
+    @EXPORT = qw($FOO); # Обычная форма, не можеть быть локализована
+    @EXPORT = qw(*FOO); # Можеть быть локализована
 
-You can work around the first case by using the fully qualified name
-(C<$Package::FOO>) where you need a local value, or by overriding it
-by saying C<*FOO = *Package::FOO> in your script.
+Вы можете обойти (work around) это в первом случае, 
+используя полное имя (C<$Package::FOO>) там, где требуется локальное значение, 
+или путем переопределения его сказав, C<*FOO = *Package::FOO> в скрипте.
 
-The C<*x = \$y> mechanism may be used to pass and return cheap references
-into or from subroutines if you don't want to copy the whole
-thing.  It only works when assigning to dynamic variables, not
-lexicals.
+Механизм C<*x = \$y>  может использоваться для передачи и возврата дешевой ссылки
+в или из подпрограмм, если вы не хотите, копировать переменную целиком. 
+Это работает только при присваивании динамических переменных, не лексических.
 
-    %some_hash = ();			# can't be my()
+    %some_hash = ();			# не может быть my()
     *some_hash = fn( \%another_hash );
     sub fn {
 	local *hashsym = shift;
-	# now use %hashsym normally, and you
-	# will affect the caller's %another_hash
-	my %nhash = (); # do what you want
+	# теперь используем %hashsym нормально, и вы
+	# будет влиять на вызвавшего процедуру (caller's) %another_hash
+	my %nhash = (); # делаете то, что вы хотите
 	return \%nhash;
     }
 
-On return, the reference will overwrite the hash slot in the
-symbol table specified by the *some_hash typeglob.  This
-is a somewhat tricky way of passing around references cheaply
-when you don't want to have to remember to dereference variables
-explicitly.
+По возврате значения из процедуры, ссылка будет перезаписывать хэш слот в
+таблице символов, указанный в тайпглобе *some_hash. 
+Это несколько хитрый способ передачи сылки дешево,
+когда вы не хотите помнить обязанность разыменовать переменные
+явным образом.
 
-Another use of symbol tables is for making "constant" scalars.
+Другое использование таблиц символов — для создания "постоянных" скаляров.
 X<constant> X<scalar, constant>
 
     *PI = \3.14159265358979;
 
-Now you cannot alter C<$PI>, which is probably a good thing all in all.
-This isn't the same as a constant subroutine, which is subject to
-optimization at compile-time.  A constant subroutine is one prototyped
-to take no arguments and to return a constant expression.  See
-L<perlsub> for details on these.  The C<use constant> pragma is a
-convenient shorthand for these.
+Теперь вы не сможете изменить C<$PI>, что, вероятно, является, в общем, хорошей вещью.
+Это не то же самое, как постоянная подпрограмма, которая подлежит
+оптимизации во время компиляции. Постоянная подпрограмма (constant subroutine) является одним прототипом
+не принимающим аргументов и возвращает константное выражение. См.
+L<perlsub> для подробной информации о них. Прагма C<use constant> является
+удобным сокращением для этого.
 
-You can say C<*foo{PACKAGE}> and C<*foo{NAME}> to find out what name and
-package the *foo symbol table entry comes from.  This may be useful
-in a subroutine that gets passed typeglobs as arguments:
+Вы можете распечтатать значения C<*foo{PACKAGE}> и C<*foo{NAME}>, чтобы узнать, из какого имени и
+ из какого пакета появляется *foo в таблице символов. Это может быть полезным
+в подпрограмме, которой передаются тайпглобы в качестве аргументов:
 
     sub identify_typeglob {
         my $glob = shift;
@@ -207,36 +201,36 @@ in a subroutine that gets passed typeglobs as arguments:
     identify_typeglob *foo;
     identify_typeglob *bar::baz;
 
-This prints
+Это выведет
 
     You gave me main::foo
     You gave me bar::baz
 
-The C<*foo{THING}> notation can also be used to obtain references to the
-individual elements of *foo.  See L<perlref>.
+Нотация C<*foo{THING}>  может также использоваться для получения ссылки на
+отдельные элементы *foo. Смотрите L<perlref>.
 
-Subroutine definitions (and declarations, for that matter) need
-not necessarily be situated in the package whose symbol table they
-occupy.  You can define a subroutine outside its package by
-explicitly qualifying the name of the subroutine:
+Определение подпрограммы  (и объявления(declarations), коль на то пошло) 
+не обязательно должно находиться в пакете, символьную таблицу которого они
+занимают. Вы можете определить подпрограмму за пределами пакета
+явно квалифицируя имя подпрограммы:
 
     package main;
-    sub Some_package::foo { ... }   # &foo defined in Some_package
+    sub Some_package::foo { ... }   # &foo определяется в пакете Some_package
 
-This is just a shorthand for a typeglob assignment at compile time:
+Это просто краткая запись для присвоения тайпглобу (typeglob) во время компиляции:
 
     BEGIN { *Some_package::foo = sub { ... } }
 
-and is I<not> the same as writing:
+и это I<не> то же самое, что писать:
 
     {
 	package Some_package;
 	sub foo { ... }
     }
 
-In the first two versions, the body of the subroutine is
-lexically in the main package, I<not> in Some_package. So
-something like this:
+В первых двух версиях тело подпрограммы лексически лежит
+ в основном пакете, а I<не> в Some_package. Так
+что-то вроде этого:
 
     package main;
 
@@ -249,31 +243,41 @@ something like this:
 
     Some_package::foo();
 
-prints:
+напечатает:
 
     in main: $name is 'barney'
 
-rather than:
+вместо:
 
     in Some_package: $name is 'fred'
 
-This also has implications for the use of the SUPER:: qualifier
-(see L<perlobj>).
+Это также имеет последствия для использования SUPER:: квалификатор
+(См. L<perlobj>).
 
-=head2 BEGIN, UNITCHECK, CHECK, INIT and END
+=head2 BEGIN, UNITCHECK, CHECK, INIT и END
 X<BEGIN> X<UNITCHECK> X<CHECK> X<INIT> X<END>
 
-Five specially named code blocks are executed at the beginning and at
-the end of a running Perl program.  These are the C<BEGIN>,
-C<UNITCHECK>, C<CHECK>, C<INIT>, and C<END> blocks.
+Существуют блоков специально именованного кода, которые выполняются в начале и в
+в конце работающей программы Perl. Это блоки C<BEGIN>,
+C<UNITCHECK>, C<CHECK>, C<INIT>, и C<END>.
 
-These code blocks can be prefixed with C<sub> to give the appearance of a
-subroutine (although this is not considered good style).  One should note
-that these code blocks don't really exist as named subroutines (despite
-their appearance). The thing that gives this away is the fact that you can
-have B<more than one> of these code blocks in a program, and they will get
-B<all> executed at the appropriate moment.  So you can't execute any of
-these code blocks by name.
+Эти блоки кода могут быть префиксом C<sub>, что дать внешний вид
+подпрограммы (хотя это не считается хорошим стилем). Следует отметить
+что эти блоки кода в действительности не существуют как именованные подпрограммы (несмотря на
+их внешний вид). Эти блоки дают такую возможность, что вы можете иметь
+B<более, чем один> такой блок кода в программе, и они 
+B<все> будут выполнены в соответствующий момент. 
+Таким образом вы не можете выполнять любой из 
+этих блоков кода по имени.
+
+Блок кода C<BEGIN> выполняется как можно скорее, как только он полностью определён
+ даже до анализа остального содержимого файла (или строки). 
+Вы можете иметь несколько блоков C<BEGIN> внутри файла (или в
+eval'ed строке); они будут выполнены в порядке определения. Потому что блок C<BEGIN>
+выполняется немедленно  код блока, он может тянуть в определениях подпрограмм
+и такое от других файлов во времени, чтобы быть видимым для остальной части компиляции
+и во время выполнения. После того, как С <Начало> закончились, сразу определено и любой
+Код раньше возвращается пула памяти в Perl.
 
 A C<BEGIN> code block is executed as soon as possible, that is, the moment
 it is completely defined, even before the rest of the containing file (or
