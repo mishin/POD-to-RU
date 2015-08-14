@@ -240,15 +240,26 @@ C<strict>).  Остальные названия модулей должны н�
 
 =back
 
+=head1 СМОТРИТЕ ТАКЖЕ
+
+L<http://linux.opennet.ru/base/dev/perlstyle.txt>.
+
 =head1 ПЕРЕВОДЧИКИ
 
 =over
 
+=item * Andrey Sapozhnikov <sapa@icb.chel.su>
+
 =item * Николай Мишин  C<< <mishin@cpan.org> >>
+
 =item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
-=item * Алексей Суриков (Language) C<< <KSURi> >>
+
+=item * Алексей Суриков (Language) C<< <KSURi
+
 =item * Михаил Любимов (Language) C<< <mikhail.lyubimov> >>
+
 =item * Дмитрий Константинов (Language) C<< <Dim_K> >>
+
 =item * Евгений Баранов (Language) C<< <Baranov> >>
 
 =back    
