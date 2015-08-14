@@ -254,7 +254,7 @@ L<http://linux.opennet.ru/base/dev/perlstyle.txt>.
 
 =item * Анатолий Шарифулин  C<< <sharifulin@gmail.com> >>
 
-=item * Алексей Суриков (Language) C<< <KSURi
+=item * Алексей Суриков (Language) C<< <KSURi> >>
 
 =item * Михаил Любимов (Language) C<< <mikhail.lyubimov> >>
 
