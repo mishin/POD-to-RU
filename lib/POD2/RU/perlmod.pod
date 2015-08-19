@@ -290,10 +290,10 @@ B<все> будут выполнены в соответствующий мом
 вышел (last in, first out) (LIFO). C<END> блоки не выполняются при запуске perl с
  ключем C<-c>, или, если происходит сбой компиляции.
 
-Note that C<END> code blocks are B<not> executed at the end of a string
-C<eval()>: if any C<END> code blocks are created in a string C<eval()>,
-they will be executed just as any other C<END> code block of that package
-in LIFO order just before the interpreter is being exited.
+Обратите внимание, что блоки кода C<END> B<не> выполняются в конце строки
+C<eval()>: если любые блоки кода C<END> создаются в строке C<eval()>,
+то они будут выполняться так же, как любой другой C<END> блок пакетного кода
+в порядке LIFO сразу перед тем, как интерпретатор будет выходить (just before the interpreter is being exited).
 
 Inside an C<END> code block, C<$?> contains the value that the program is
 going to pass to C<exit()>.  You can modify C<$?> to change the exit
