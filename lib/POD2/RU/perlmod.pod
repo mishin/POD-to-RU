@@ -315,13 +315,9 @@ X<$?>
 Блоки C<BEGIN> и C<UNITCHECK> не связаны непосредственно фазами
 интерпретатора Perl. Они могут быть созданы и выполняться во время любой фазы.
 
-Блоки кода C<CHECK> выполняются только после окончания компиляции фазы <initial>Perl B
-и до выполнения начинается, в порядке LIFO. C <CHECK>используются блоки кода
-в комплект компилятора Perl для сохранения скомпилированного состояния программы.
-
-C<CHECK> code blocks are run just after the B<initial> Perl compile phase ends
-and before the run time begins, in LIFO order.  C<CHECK> code blocks are used
-in the Perl compiler suite to save the compiled state of the program.
+Блоки кода C<CHECK> выполняются только после фазы окончания B<начальной> компиляции Perl
+и до начала времени выполнения (run time), в порядке LIFO. Блоки кода C<CHECK> используются 
+в комплекте компилятора Perl (Perl compiler suite) для сохранения скомпилированного состояния программы.
 
 Inside of a C<CHECK> block, the value of C<${^GLOBAL_PHASE}> will be
 C<"CHECK">.
