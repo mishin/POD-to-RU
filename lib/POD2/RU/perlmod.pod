@@ -295,10 +295,9 @@ C<eval()>: если любые блоки кода C<END> создаются в 
 то они будут выполняться так же, как любой другой C<END> блок пакетного кода
 в порядке LIFO сразу перед тем, как интерпретатор будет выходить (just before the interpreter is being exited).
 
-Inside an C<END> code block, C<$?> contains the value that the program is
-going to pass to C<exit()>.  You can modify C<$?> to change the exit
-value of the program.  Beware of changing C<$?> by accident (e.g. by
-running something via C<system>).
+Внутри блока C<END>, C<$?> содержит значение, которые программа
+собирается передать C<exit()>. Вы можете изменить C<$?>, чтобы изменить выходное (exit
+value of the program) значение программы. Остерегайтесь изменения C<$?> случайно (например, запуск чего-то через C<system>).
 X<$?>
 
 Inside of a C<END> block, the value of C<${^GLOBAL_PHASE}> will be
