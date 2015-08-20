@@ -300,12 +300,17 @@ C<eval()>: если любые блоки кода C<END> создаются в 
 value of the program) значение программы. Остерегайтесь изменения C<$?> случайно (например, запуск чего-то через C<system>).
 X<$?>
 
-Inside of a C<END> block, the value of C<${^GLOBAL_PHASE}> will be
-C<"END">.
+Внутри блока C<END>, значение C<${^GLOBAL_PHASE}> будет C<"END">.
 
-C<UNITCHECK>, C<CHECK> and C<INIT> code blocks are useful to catch the
-transition between the compilation phase and the execution phase of
-the main program.
+Блоки кода C<UNITCHECK>, C<CHECK> и C<INIT> являются полезными для того, чтобы поймать
+переход между фазой компиляции и фазой выполнения
+основной программы(execution phase of the main program).
+
+Блоки C<UNITCHECK> выполняются только после того, как юнит, определенный им будет откомпилирован. 
+Файл основной программы и каждого загружаемого ей модуля, это
+единицы компиляции, такие как строка C<eval>s, во время выполнения кода, скомпилированного с помощью
+C<(?{ })>  построить в regex, звонить C < ФАЙЛА >, C < требуют файл настроек,
+и код после C <-e> переключателя командной строки.
 
 C<UNITCHECK> blocks are run just after the unit which defined them has
 been compiled.  The main program file and each module it loads are
