@@ -307,19 +307,17 @@ X<$?>
 основной программы(execution phase of the main program).
 
 Блоки C<UNITCHECK> выполняются только после того, как юнит, определенный им будет откомпилирован. 
-Файл основной программы и каждого загружаемого ей модуля, это
-единицы компиляции, такие как строка C<eval>s, во время выполнения кода, скомпилированного с помощью
-C<(?{ })>  построить в regex, звонить C < ФАЙЛА >, C < требуют файл настроек,
-и код после C <-e> переключателя командной строки.
+Файл основной программы и каждый загружаемый ей модуль - это
+единицы компиляции, такие как строка C<eval>s, во время выполнения код компилируется с помощью
+конструкции C<(?{ })> в регексе, вызова C<do FILE>, C<require FILE>,
+и кода после ключа C<-e> командной строки.
 
-C<UNITCHECK> blocks are run just after the unit which defined them has
-been compiled.  The main program file and each module it loads are
-compilation units, as are string C<eval>s, run-time code compiled using the
-C<(?{ })> construct in a regex, calls to C<do FILE>, C<require FILE>,
-and code after the C<-e> switch on the command line.
+Блоки C<BEGIN> и C<UNITCHECK> не связаны непосредственно фазами
+интерпретатора Perl. Они могут быть созданы и выполняться во время любой фазы.
 
-C<BEGIN> and C<UNITCHECK> blocks are not directly related to the phase of
-the interpreter.  They can be created and executed during any phase.
+Блоки кода C<CHECK> выполняются только после окончания компиляции фазы <initial>Perl B
+и до выполнения начинается, в порядке LIFO. C <CHECK>используются блоки кода
+в комплект компилятора Perl для сохранения скомпилированного состояния программы.
 
 C<CHECK> code blocks are run just after the B<initial> Perl compile phase ends
 and before the run time begins, in LIFO order.  C<CHECK> code blocks are used
