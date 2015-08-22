@@ -319,8 +319,7 @@ X<$?>
 и до начала времени выполнения (run time), в порядке LIFO. Блоки кода C<CHECK> используются 
 в комплекте компилятора Perl (Perl compiler suite) для сохранения скомпилированного состояния программы.
 
-Inside of a C<CHECK> block, the value of C<${^GLOBAL_PHASE}> will be
-C<"CHECK">.
+Внутри блока C<CHECK>, значение переменной C<${^GLOBAL_PHASE}> будет C<"CHECK">.
 
 C<INIT> blocks are run just before the Perl runtime begins execution, in
 "first in, first out" (FIFO) order.
