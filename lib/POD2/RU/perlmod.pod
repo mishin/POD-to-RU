@@ -321,10 +321,10 @@ X<$?>
 
 Внутри блока C<CHECK>, значение переменной C<${^GLOBAL_PHASE}> будет C<"CHECK">.
 
-C<INIT> blocks are run just before the Perl runtime begins execution, in
-"first in, first out" (FIFO) order.
+Блоки C<INIT> выполняются сразу перед началом времени выполнения Perl (Perl runtime begins execution), 
+ в последовательности "первый вошел, первый вышл" (FIFO).
 
-Inside of an C<INIT> block, the value of C<${^GLOBAL_PHASE}> will be C<"INIT">.
+Внутри блока C<INIT> , значение C<${^GLOBAL_PHASE}> будет C<"INIT">.
 
 The C<CHECK> and C<INIT> blocks in code compiled by C<require>, string C<do>,
 or string C<eval> will not be executed if they occur after the end of the
