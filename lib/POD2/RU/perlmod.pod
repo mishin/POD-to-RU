@@ -326,18 +326,18 @@ X<$?>
 
 Внутри блока C<INIT> , значение C<${^GLOBAL_PHASE}> будет C<"INIT">.
 
-The C<CHECK> and C<INIT> blocks in code compiled by C<require>, string C<do>,
-or string C<eval> will not be executed if they occur after the end of the
-main compilation phase; that can be a problem in mod_perl and other persistent
-environments which use those functions to load code at runtime.
+Блоки C<CHECK> и C <INIT> в коде компилируются с помощью C<require>, строкой C <do>,
+или строкой C<eval> не будет выполняться, если они возникают после окончания
+фазы основной компиляции; Это может быть проблемой в mod_perl и других стойких
+средах (persistent environments), использующих эти функции для загрузки кода во время выполнения.
 
-When you use the B<-n> and B<-p> switches to Perl, C<BEGIN> and
-C<END> work just as they do in B<awk>, as a degenerate case.
-Both C<BEGIN> and C<CHECK> blocks are run when you use the B<-c>
-switch for a compile-only syntax check, although your main code
-is not.
+При использовании ключей B<-n> и B<-p> в Perl, C<BEGIN> и C<END>
+ работают так же, как они работают в B<awk>, как вырожденный случай.
+Оба и C<BEGIN> и C<CHECK> блоки выполняются при использовании ключа B<-c>
+ для компиляции только для проверки синтаксиса , хотя основной код
+не выполняется.
 
-The B<begincheck> program makes it all clear, eventually:
+Программа B<begincheck> показывает ясно это поведение, в конечном счете:
 
   #!/usr/bin/perl
 
@@ -372,31 +372,64 @@ The B<begincheck> program makes it all clear, eventually:
 
   __END__
 
-=head2 Perl Classes
+  #!/usr/bin/perl
+
+  # begincheck_ru
+
+  print         "10. Обычный код, работающий во время выполнения.\n";
+
+  END { print   "16.  Так что это конец сказки.\n" }
+  INIT { print  " 7. Блоки INIT запускают FIFO непосредственно перед рантаймом (runtime).\n" }
+  UNITCHECK {
+    print       " 4.   И поэтому перед любым блоком CHECK.\n"
+  }
+  CHECK { print " 6.   Так что это шестая строка.\n" }
+
+  print         "11.   Она выполняется последовательно, конечно.\n";
+
+  BEGIN { print " 1. BEGIN блоки запускаются FIFO во время компиляции.\n" }
+  END { print   "15.   Читайте perlmod для остальной части рассказа.\n" }
+  CHECK { print " 5. CHECK блоки запускаются LIFO после всей компиляции.\n" }
+  INIT { print  " 8.   Запустить это снова, используя ключ Perl -c.\n" }
+
+  print         "12.   Это анти запутанный код.\n";
+
+  END { print   "14. END блоки запускаются LIFO во время времени выходя из программы.\n" }
+  BEGIN { print " 2.   Так что эта линия выходит второй.\n" }
+  UNITCHECK {
+   print " 3. UNITCHECK блоки запускаются LIFO после того, как каждый файл откомпилируется.\n"
+  }
+  INIT { print  " 9.   Вы сразу увидите разницу.\n" }
+
+  print         "13.   Это просто _выглядит_ так, как она должна быть запутанным. (It merely _looks_ like it should be confusing.)\n";
+
+  __END__
+
+=head2 Perl Классы
 X<class> X<@ISA>
 
-There is no special class syntax in Perl, but a package may act
-as a class if it provides subroutines to act as methods.  Such a
-package may also derive some of its methods from another class (package)
-by listing the other package name(s) in its global @ISA array (which
-must be a package global, not a lexical).
+Не существует специального синтаксиса класса в Perl, но пакет может действовать
+как класс, если он предоставляет подпрограммы в качестве методов. Такие
+пакеты могут также предоставить некоторые из методов его от другого класса (пакета)
+перечисляя другие имена пакета в глобальной массиве @ISA  (который
+должен быть глобальным пакетом, не локальным (package global, not a lexical)).
 
-For more on this, see L<perlootut> and L<perlobj>.
+Подробнее об этом см. L<perlootut> и L<perlobj>.
 
-=head2 Perl Modules
+=head2 Perl Модули
 X<module>
 
-A module is just a set of related functions in a library file, i.e.,
-a Perl package with the same name as the file.  It is specifically
-designed to be reusable by other modules or programs.  It may do this
-by providing a mechanism for exporting some of its symbols into the
-symbol table of any package using it, or it may function as a class
-definition and make its semantics available implicitly through
-method calls on the class and its objects, without explicitly
-exporting anything.  Or it can do a little of both.
+Модуль это просто набор связанных функций в файле библиотеки, т.е.
+Perl пакет с тем же именем, что и файл. Он специально
+предназначен для повторного использования в других модулях или программ. Он может сделать это
+предоставляя механизм для экспорта некоторых из его символов в
+таблицу символов любого пакета, котрый его использует, или он может функционировать как определение класса
+ и сделать доступным свою семантику неявно через
+вызовы методов в классе и его объекты, без явного
+экспорт процедур. Или он может быть и тем и другим.
 
-For example, to start a traditional, non-OO module called Some::Module,
-create a file called F<Some/Module.pm> and start with this template:
+Например чтобы начать традиционный, не-OO модуль под названием Some::Module,
+создайте файл с именем F<Some/Module.pm> и начните с помощью этого шаблона:
 
     package Some::Module;  # assumes Some/Module.pm
 
@@ -451,46 +484,55 @@ create a file called F<Some/Module.pm> and start with this template:
 
     1;  # don't forget to return a true value from the file
 
-Then go on to declare and use your variables in functions without
-any qualifications.  See L<Exporter> and the L<perlmodlib> for
-details on mechanics and style issues in module creation.
+Затем перейдите к декларации и использовании переменных в функциях без
+какой-либо квалификации. См. L<Exporter> и L<perlmodlib> для
+ более подробной информация по вопросам механики и стиля создания модуля.
 
-Perl modules are included into your program by saying
+Perl модули могут быть включены в вашу программу с помощью объявления
 
     use Module;
 
-or
+или
 
     use Module LIST;
 
-This is exactly equivalent to
+Это точно эквивалентно
 
     BEGIN { require 'Module.pm'; 'Module'->import; }
 
-or
+или
 
     BEGIN { require 'Module.pm'; 'Module'->import( LIST ); }
 
-As a special case
+Как особый случай
 
     use Module ();
 
-is exactly equivalent to
+это эквивалентно
 
     BEGIN { require 'Module.pm'; }
 
-All Perl module files have the extension F<.pm>.  The C<use> operator
-assumes this so you don't have to spell out "F<Module.pm>" in quotes.
-This also helps to differentiate new modules from old F<.pl> and
-F<.ph> files.  Module names are also capitalized unless they're
-functioning as pragmas; pragmas are in effect compiler directives,
-and are sometimes called "pragmatic modules" (or even "pragmata"
-if you're a classicist).
+Все файлы Perl модулей  имеют расширение F<.pm>. Оператор C<use>
+предполагает это, так что вам не нужно писать точно "F<Module.pm>" в кавычках.
+Это также помогает разделять новые модули от старых F<.pl> и
+F<.ph> файлов. Имена модулей также пишутся большими буквами (капитализируются), если они не
+функционируют как прагмы; прагмы здесь выступают, как директивы компилятора,
+и иногда называются "прагматичными модулями" ( "pragmatic modules") (или даже "pragmata"
+если вы являетесь последователем классицизма).
 
-The two statements:
+Эти два выражения:
 
     require SomeModule;
     require "SomeModule.pm";
+
+отличаются друг от друга двумя способами. В первом случае, любой двойной
+двоеточие в имени модуля, например C <Some::Module>, переводятся
+в вашей системе каталогов разделитель, обычно «/». Второй
+дело не и должны быть указаны буквально. Другой
+разница что видя первый C <require>улики в компиляторе
+использующий косвенное дополнение нотации с участием «SomeModule», как
+в C < $ob = очистить SomeModule >, являются вызовы метода, а не функция.
+(Да, это действительно можно сделать различие.)
 
 differ from each other in two ways.  In the first case, any double
 colons in the module name, such as C<Some::Module>, are translated
