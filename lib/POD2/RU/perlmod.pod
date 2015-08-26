@@ -564,81 +564,67 @@ Perl пакеты могут быть вложены в другие имена 
 C<Text::Soundex>, то его определение на самом деле находится в библиотеке
 файла F<Text/Soundex.pm>.
 
-Модули Perl всегда есть файл F<.pm>, но там также может быть
-динамически связанные исполняемые файлы (часто заканчивается в F<.so>) или автозагрузки
-подпрограмму определения (часто заканчивается в F<.al>), связанные с
-модуль. Если это так, они будут полностью прозрачно для пользователя
-модуль. Это ответственность на F<.pm> файл для загрузки
-(или организовать автозагрузку) любые дополнительные функциональные возможности. Например,
-Хотя модуль POSIX случается делать оба динамической загрузки и
-Автозагрузка, пользователь может сказать просто C < использование POSIX >, чтобы получить все это.
+Модули Perl всегда имеют файл F<.pm>, но там также могут быть
+динамически связанные исполняемые файлы (часто заканчиваются на F<.so>) или автозагружаемые
+определения подпрограмм (autoloaded subroutine definitions)  (часто заканчиваются в F<.al>), связанные с
+модулем. Если это так, то они будут полностью прозрачны для пользователя
+модуля. На файле F<.pm> лежит ответственность по загрузке
+(или организации автозагрузки) любых дополнительных функциональных возможностей. Например,
+хотя для модуль POSIX случается делать и динамическую загрузку и
+автозагрузку (POSIX module happens to do both dynamic loading and
+autoloading), пользователь может сказать просто C<use POSIX>, чтобы получить и то и другое.
 
-Perl modules always have a F<.pm> file, but there may also be
-dynamically linked executables (often ending in F<.so>) or autoloaded
-subroutine definitions (often ending in F<.al>) associated with the
-module.  If so, these will be entirely transparent to the user of
-the module.  It is the responsibility of the F<.pm> file to load
-(or arrange to autoload) any additional functionality.  For example,
-although the POSIX module happens to do both dynamic loading and
-autoloading, the user can say just C<use POSIX> to get it all.
-
-=head2 Making your module threadsafe
+=head2 Делаем ваш модуль потокозащищенным (Making your module threadsafe)
 X<threadsafe> X<thread safe>
 X<module, threadsafe> X<module, thread safe>
 X<CLONE> X<CLONE_SKIP> X<thread> X<threads> X<ithread>
 
-Perl supports a type of threads called interpreter threads (ithreads).
-These threads can be used explicitly and implicitly.
+Perl поддерживает тип потоков называемый интерпретатор потоков (interpreter threads)(ithreads).
+Эти потоки могут использоваться явно и неявно.
 
-Ithreads work by cloning the data tree so that no data is shared
-between different threads. These threads can be used by using the C<threads>
-module or by doing fork() on win32 (fake fork() support). When a
-thread is cloned all Perl data is cloned, however non-Perl data cannot
-be cloned automatically.  Perl after 5.8.0 has support for the C<CLONE>
-special subroutine.  In C<CLONE> you can do whatever
-you need to do,
-like for example handle the cloning of non-Perl data, if necessary.
-C<CLONE> will be called once as a class method for every package that has it
-defined (or inherits it).  It will be called in the context of the new thread,
-so all modifications are made in the new area.  Currently CLONE is called with
-no parameters other than the invocant package name, but code should not assume
-that this will remain unchanged, as it is likely that in future extra parameters
-will be passed in to give more information about the state of cloning.
 
-If you want to CLONE all objects you will need to keep track of them per
-package. This is simply done using a hash and Scalar::Util::weaken().
+Ithreads работают путем клонирования дерева данных таким образом, чтобы данные не разделялись
+между различными потоками. Эти потоки могут быть использованы с помощью модуля C<threads>
+ или выполнив fork() на win32 (поддержка поддельной функции fork() ). Когда
+ поток клонируется - все данные Perl клонируются, хотя не-Perl данные не могут
+клонироваться автоматически. Perl 5.8.0 имеет поддержку специальной подпрограммы C<CLONE>.
+ С C<CLONE> вы можете делать все, что вам нужно сделать,
+как например обрабатывать клонированные не-Perl данные, в случае необходимости.
+C<CLONE> будет вызван один раз как метод класса для каждого пакета, в котором о
+определен (или геде его наследуют). Он будет вызываться в контексте нового потока,
+таким образом, все изменения будут сделаны уже в новой области. В настоящее время CLONE вызывается
+без параметров не считая имени вызвавшего пакета, но код не должен предполагать
+что это будет оставаться без изменений, так как, вероятно, что в будущем дополнительные параметры
+будут передаваться, чтобы в дать больше информации о состоянии клонирования.
 
-Perl after 5.8.7 has support for the C<CLONE_SKIP> special subroutine.
-Like C<CLONE>, C<CLONE_SKIP> is called once per package; however, it is
-called just before cloning starts, and in the context of the parent
-thread. If it returns a true value, then no objects of that class will
-be cloned; or rather, they will be copied as unblessed, undef values.
-For example: if in the parent there are two references to a single blessed
-hash, then in the child there will be two references to a single undefined
-scalar value instead.
-This provides a simple mechanism for making a module threadsafe; just add
-C<sub CLONE_SKIP { 1 }> at the top of the class, and C<DESTROY()> will
-now only be called once per object. Of course, if the child thread needs
-to make use of the objects, then a more sophisticated approach is
-needed.
+Если вы хотите КЛОНИРОВАТЬ (CLONE) все объекты, вам нужно будет отслеживать изменения в
+их пакетах. Это просто выполняется с помощью хэша и Scalar::Util::weaken().
 
-Like C<CLONE>, C<CLONE_SKIP> is currently called with no parameters other
-than the invocant package name, although that may change. Similarly, to
-allow for future expansion, the return value should be a single C<0> or
-C<1> value.
+Perl после 5.8.7 имеет поддержку для специальной подпрограммы C<CLONE_SKIP>.
+Как и С<CLONE> C<CLONE_SKIP> вызывается один раз для каждого пакета, однако, он
+вызывается непосредственно перед началом клонирования и в контексте родительского
+потока. Если он возвращает значение true, то объекты этого класса не будут
+клонироваться; или, скорее они будут скопированы как неблагословленные, неопределенные значения (unblessed, undef value).
+Например: если в родителе есть две ссылки на один благословленный
+хэш, то у ребенка вместо этого будут две ссылки на одно неопределенное скалярное значение.
+Это обеспечивает простой механизм для создания потокозащищенного(threadsafe) модуля; просто добавьте
+C<sub CLONE_SKIP { 1 }> в верхней части класса и C<DESTROY()> будет
+теперь вызываться только один раз за объект. Конечно, если дочерний поток
+ требует, чтобы использовались объекты, то требуется более сложный подход.
+
+Как С<CLONE> C<CLONE_SKIP> в настоящее время вызывается без параметров кроме
+ имени вызывающего пакета, хотя это может измениться. Аналогично,
+ для разрешить будущего расширения, возвращаемое значение должно быть одним значением C<0> или C<1>.
 
 =head1 SEE ALSO
 
-See L<perlmodlib> for general style issues related to building Perl
-modules and classes, as well as descriptions of the standard library
-and CPAN, L<Exporter> for how Perl's standard import/export mechanism
-works, L<perlootut> and L<perlobj> for in-depth information on
-creating classes, L<perlobj> for a hard-core reference document on
-objects, L<perlsub> for an explanation of functions and scoping,
-and L<perlxstut> and L<perlguts> for more information on writing
-extension modules.
+Смотрите L<perlmodlib> по вопросам общего стиля создания Perl модулей и классов,
+ а также описания стандартной библиотеки и CPAN, смотрите L<Exporter> для того, чтобы узнать о тот, как работает стандартный механизм импорта/экспорта в Perl 
+, L<perlootut> and L<perlobj> для подробной информации о создании классов, 
+L<perlobj> для подробнейшего справочного документа по объектам, L<perlsub> для объяснений функций и областей их действия (scoping),
+и L<perlxstut> и L<perlguts> для получения дополнительной информации по написанию модулей расширения.
 
-=head1 ПЕРЕВОДЧИКИ
+=head1 ПЕРЕВОДЧИК
   
 =over
 
