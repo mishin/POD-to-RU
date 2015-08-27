@@ -6,22 +6,32 @@ X<reference> X<pointer> X<data structure> X<structure> X<struct>
 
 perlref - Perl ссылки и вложенные структуры  данных (Perl references and nested data structures)
 
-=head1 NOTE
+=head1 ПРИМЕЧАНИЕ
 
-This is complete documentation about all aspects of references.
-For a shorter, tutorial introduction to just the essential features,
-see L<perlreftut>.
+Это полная документация обо всех аспектах ссылок.
+Более коротко, учебник-введение в только основные функции 
+смотрите L<perlreftut>.
 
-=head1 DESCRIPTION
+=head1 ОПИСАНИЕ
 
-Before release 5 of Perl it was difficult to represent complex data
-structures, because all references had to be symbolic--and even then
-it was difficult to refer to a variable instead of a symbol table entry.
-Perl now not only makes it easier to use symbolic references to variables,
-but also lets you have "hard" references to any piece of data or code.
-Any scalar may hold a hard reference.  Because arrays and hashes contain
-scalars, you can now easily build arrays of arrays, arrays of hashes,
-hashes of arrays, arrays of hashes of functions, and so on.
+До релиза Perl 5 было трудно представить сложных структуры данных
+, потому что все ссылки должны были быть символическими -- и даже тогда
+было трудно ссылаться на переменную вместо записи таблицы символов.
+Perl теперь не только делает более легким использование символических ссылок на переменные,
+но также позволяет вам иметь "жесткие" (hard) ссылки на любую часть данных или кода.
+Любой скаляр может содержать жесткую ссылку. Поскольку массивы и хэши содержат
+скалярные значения, можно теперь легко создавать массивы массивов, массивы хэшей,
+хэши массивов, массивы хэшей функций, и так далее.
+
+Жесткие ссылки умны -- они отслеживают подсчет ссылок для вас,
+автоматически освобождая вещь на которую ссылаются, когда ее счетчик ссылок
+ становится равным нулю. (Счетчики ссылок для значений в собственн-referential или
+циклических данных структуры не могут идти к нулю без помощи; см.
+L < / «Циклические Ссылки» > для подробного объяснения.)
+Если это происходит в качестве объекта, объект разрушаются. См.
+L <perlobj>для больше об объектах. (В смысле, все в Perl является
+Объект, но мы обычно резерва слово для ссылок на объекты,
+официально «благословил» в пакет класса.)
 
 Hard references are smart--they keep track of reference counts for you,
 automatically freeing the thing referred to when its reference count goes
