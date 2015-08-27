@@ -7,7 +7,7 @@ use strict;
 use utf8;
 use base 'POD2::Base';
 
-our $VERSION = '5.18.0.1.81';
+our $VERSION = '5.18.0.1.82';
 
 # Versions list
 sub pod_info {
