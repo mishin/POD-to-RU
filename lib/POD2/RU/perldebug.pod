@@ -29,36 +29,25 @@ X<-d>
 
 В случае ошибки (под Windows)
 
-Loading DB routines from perl5db.pl version 1.44
-Editor support available.
+    Loading DB routines from perl5db.pl version 1.44
+    Editor support available.
 
-Enter h or 'h h' for help, or 'perldoc perldebug' for more help.
+    Enter h or 'h h' for help, or 'perldoc perldebug' for more help.
 
-main::(-e:1):   1
+    main::(-e:1):   1
 
-SetConsoleMode failed, LastError=|6| at C:/Users/TOSH/Documents/GitHub/dwimperl-
-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/vendor/lib/Term/ReadKey.pm
-line 309.
- at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32b
-it-portable/perl/vendor/lib/Term/ReadLine/readline.pm line 1581.
-        readline::readline("  DB<1> ") called at C:/Users/TOSH/Documents/GitHub/
-dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/vendor/lib/Term/Re
-adLine/Perl.pm line 11
-        Term::ReadLine::Perl::readline(Term::ReadLine::Perl=ARRAY(0x1d1ffec), "
- DB<1> ") called at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-p
-erl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line 7285
-        DB::readline("  DB<1> ") called at C:/Users/TOSH/Documents/GitHub/dwimpe
-rl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line 1832
-
-        DB::_DB__read_next_cmd(undef) called at C:/Users/TOSH/Documents/GitHub/d
-wimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line
- 2745
+    SetConsoleMode failed, LastError=|6| at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/vendor/lib/Term/ReadKey.pmline 309. at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/vendor/lib/Term/ReadLine/readline.pm line 1581.
+    readline::readline("  DB<1> ") called at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/vendor/lib/Term/ReadLine/Perl.pm line 11
+    Term::ReadLine::Perl::readline(Term::ReadLine::Perl=ARRAY(0x1d1ffec), "
+    DB<1> ") called at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line 7285
+        DB::readline("  DB<1> ") called at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line 1832
+        DB::_DB__read_next_cmd(undef) called at C:/Users/TOSH/Documents/GitHub/dwimperl-windows/strawberry-perl-5.20.0.1-32bit-portable/perl/lib/perl5db.pl line 2745
         DB::DB called at -e line 1
-  DB<1>
+    DB<1>
 
 делайте так
 
-set TERM=dumb
+    set TERM=dumb
 
 В Perl, отладчик не является отдельной программой так, как это обычно бывает в
 типичной скомпилированной среде. Вместо этого, флаг B<-d> сообщает компилятору, 
