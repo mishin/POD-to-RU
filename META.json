@@ -1,26 +1,26 @@
 {
-   "abstract" : "Perl Документация по-русски",
+   "abstract" : "Perl \u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f \u043f\u043e-\u0440\u0443\u0441\u0441\u043a\u0438\r",
    "author" : [
-      "Nikolay Mishin < mi@ya.ru >"
+      "Nikolay Mishin < mi@ya.ru >\r"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.037, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Dist::Zilla version 6.005, Dist::Milla version v1.0.16, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "POD2-RU",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
+         "eg",
+         "examples",
          "inc",
          "share",
-         "eg",
-         "examples"
+         "t",
+         "xt"
       ]
    },
    "prereqs" : {
@@ -37,7 +37,7 @@
       },
       "develop" : {
          "requires" : {
-            "Dist::Milla" : "v1.0.15",
+            "Dist::Milla" : "v1.0.16",
             "ExtUtils::Manifest" : "1.70",
             "List::Util" : "1.41",
             "Scalar::Util" : "1.41",
@@ -85,7 +85,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#ru.pm"
    },
-   "version" : "5.18.0.1.82",
+   "version" : "5.18.0.1.83",
    "x_contributors" : [
       "Andrey Asyakin <asan999@gmail.com>",
       "Nikolay Mishin <mi@ya.ru>",

@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/mishin/POD-to-RU.svg?branch=master)](https://travis-ci.org/mishin/POD-to-RU)
-[![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.png?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
+[![Coverage Status](https://coveralls.io/repos/mishin/POD-to-RU/badge.svg?branch=master)](https://coveralls.io/r/mishin/POD-to-RU?branch=master)
 [![Kwalitee status](http://cpants.cpanauthors.org/dist/POD2-RU.png)](http://cpants.charsbar.org/dist/overview/POD2-RU)
 [![GitHub issues](https://img.shields.io/github/issues/mishin/POD-to-RU.svg)](https://github.com/mishin/POD-to-RU/issues)
 [![Cpan license](https://img.shields.io/cpan/l/POD2-RU.svg)](https://metacpan.org/release/POD2-RU)
