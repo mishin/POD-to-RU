@@ -4,20 +4,20 @@
 
 perlmodstyle - стиль написания модулей на Perl
 
-=head1 INTRODUCTION
+=head1 ВВЕДЕНИЕ
 
-This document attempts to describe the Perl Community's "best practice"
-for writing Perl modules.  It extends the recommendations found in 
-L<perlstyle> , which should be considered required reading
-before reading this document.
+Этот документ пытается описать "наилучшие практики" ("best practice") 
+ Perl-сообщества для написания Perl модулей. Она расширяет рекомендации, 
+ найденные в L<perlstyle> , который должен быть внимательно рассмотрен 
+перед чтением этого документа.
 
-While this document is intended to be useful to all module authors, it is
-particularly aimed at authors who wish to publish their modules on CPAN.
+Хотя этот документ призван быть полезным для всех авторов модулей, 
+в частности он направлен на авторов, которые хотят опубликовать свои модули на CPAN.
 
-The focus is on elements of style which are visible to the users of a 
-module, rather than those parts which are only seen by the module's 
-developers.  However, many of the guidelines presented in this document
-can be extrapolated and applied successfully to a module's internals.
+Основной упор делается на элементы стиля, которые видны для остальных пользователей
+модуля, а не те части, которые будут видны только его разработчикам. 
+Тем не менее, многие из руководящих принципов, представленных в настоящем документе
+могут быть экстраполированы и успешно применятся для разработки внутренних (не-CPAN) модулей.
 
 This document differs from L<perlnewmod> in that it is a style guide
 rather than a tutorial on creating CPAN modules.  It provides a
