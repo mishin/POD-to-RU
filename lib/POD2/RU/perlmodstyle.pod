@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-perlmodstyle - Perl module style guide
+perlmodstyle - стиль написания модулей на Perl
 
 =head1 INTRODUCTION
 
