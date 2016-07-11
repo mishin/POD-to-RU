@@ -19,135 +19,137 @@ perlmodstyle - стиль написания модулей на Perl
 Тем не менее, многие из руководящих принципов, представленных в настоящем документе
 могут быть экстраполированы и успешно применятся для разработки внутренних (не-CPAN) модулей.
 
-This document differs from L<perlnewmod> in that it is a style guide
-rather than a tutorial on creating CPAN modules.  It provides a
-checklist against which modules can be compared to determine whether
-they conform to best practice, without necessarily describing in detail
-how to achieve this.  
+Этот документ отличается от L<perlnewmod> тем, что это руководство по стилю
+ создания модулей CPAN, а не учебник их созданию. Он представляет
+чеклист с которым можно сравнить, удовлетворяет ли данный модуль
+ наилучшим практикам или нет, без подробнобностей того, как этого добиться.
 
-All the advice contained in this document has been gleaned from
-extensive conversations with experienced CPAN authors and users.  Every
-piece of advice given here is the result of previous mistakes.  This
-information is here to help you avoid the same mistakes and the extra
-work that would inevitably be required to fix them.
+Все рекомендации, содержащиеся в данном документе, была почерпнуты из
+обширных бесед с опытными авторами и пользователями CPAN. Каждая
+часть рекомендаций данных здесь является результатом предыдущих ошибок. 
+Информация, содержащаяся здесь поможет вам тех же ошибок и дополнительной
+работы, которая неизбежно потребуется, чтобы исправить их.
 
-The first section of this document provides an itemized checklist; 
-subsequent sections provide a more detailed discussion of the items on 
-the list.  The final section, "Common Pitfalls", describes some of the 
-most popular mistakes made by CPAN authors.
+В первом разделе настоящего документа приводится подробный перечень;
+в последующих разделах приводится более подробное обсуждение пунктов этого 
+списка. В заключительном разделе "Общие Ловушки" ("Common Pitfalls"), описываются некоторые
+самые популярные ошибки, сделанные авторами CPAN.
 
-=head1 QUICK CHECKLIST
+=head1 БЫСТРЫЙ ЧЕКЛИСТ
 
-For more detail on each item in this checklist, see below.
+Для более подробной информации по каждому пункту в этом чеклисте, смотрите ниже.
 
-=head2 Before you start
+=head2 Прежде чем ты начнешь
 
 =over 4
 
 =item *
 
-Don't re-invent the wheel
+Не изобретайте колесо (Don't re-invent the wheel)
 
 =item *
 
-Patch, extend or subclass an existing module where possible
+Создайте патч, расширение или подкласс существующего модуля там, где это возможно
+(Patch, extend or subclass an existing module where possible)
 
 =item *
 
-Do one thing and do it well
+Делайте одну вещь и делать это хорошо
 
 =item *
 
-Choose an appropriate name
+Выберите подходящее имя
 
 =back
 
-=head2 The API
+=head2 API - интерфейс модуля 
 
 =over 4
 
 =item *
 
-API should be understandable by the average programmer
+API должен быть понятным среднего программиста
 
 =item *
 
-Simple methods for simple tasks
+Простые методы для решения простых задач
 
 =item *
 
-Separate functionality from output
+Разделяйте функции по своему результату
 
 =item *
 
-Consistent naming of subroutines or methods
+Последовательное наименование подпрограмм или методов
 
 =item *
 
-Use named parameters (a hash or hashref) when there are more than two
-parameters
+Используйте именованные параметры (хэш-или hashref) при наличии более двух
+параметров
 
 =back
 
-=head2 Stability
+=head2 Стабильность
 
 =over 4
 
 =item *
 
-Ensure your module works under C<use strict> and C<-w>
+Убедитесь, что ваш модуль работает под C<use strict> и C<-w>
 
 =item *
 
-Stable modules should maintain backwards compatibility
+Стабильные модули должны поддерживать обратную совместимость
 
 =back
 
-=head2 Documentation
+=head2 Документация
 
 =over 4
 
 =item *
 
-Write documentation in POD
+Пишите документацию в POD
 
 =item *
 
-Document purpose, scope and target applications
+Назначения документа, сфера применения и целевые приложения
+(Document purpose, scope and target applications)
 
 =item *
 
-Document each publically accessible method or subroutine, including params and return values
+Документируйте каждый публично доступный метод или подпрограмму, 
+ в том числе параметры и возвращаемые значения
 
 =item *
 
-Give examples of use in your documentation
+Приведите примеры использования в документации
 
 =item *
 
-Provide a README file and perhaps also release notes, changelog, etc
+Предоставьте файл README и, возможно, также заметки о выпуске(release notes), изменения(changelog) и т.д.
 
 =item *
 
-Provide links to further information (URL, email)
+Обеспечить ссылки на дополнителную информацию (URL, адрес электронной почты)
 
 =back
 
-=head2 Release considerations
+=head2 Соображения о релизе (Release considerations)
 
 =over 4
 
 =item *
 
-Specify pre-requisites in Makefile.PL or Build.PL
+Укажите зависимости в Makefile.PL или Build.PL
 
 =item *
 
-Specify Perl version requirements with C<use>
+Указывайте версию Perl в кляузе C<use>
 
 =item *
 
-Include tests with your module
+Включите в ваш модуль тесты
 
 =item *
 
@@ -163,30 +165,31 @@ Package the module using "make dist"
 
 =item *
 
-Choose an appropriate license (GPL/Artistic is a good default)
+Выберите соответствующую лицензию (GPL/Artistic будет хорошим значением по умолчанию)
 
 =back
 
-=head1 BEFORE YOU START WRITING A MODULE
+=head1 ПЕРЕД НАЧАЛОМ НАПИСАНИЯ МОДУЛЯ
 
-Try not to launch headlong into developing your module without spending
-some time thinking first.  A little forethought may save you a vast
-amount of effort later on.
+Старайтесь не кидаться с головой в разработку своего модуля, не тратя
+ некоторого времени на обдумывание в первую очередь. 
+ Небольшая предусмотрительность может сэкономить вам огромное
+количество усилий в дальнейшем. ( A little forethought may save you a vast amount of effort later on.)
 
-=head2 Has it been done before?
+=head2 Был ли было сделано раньше?
 
-You may not even need to write the module.  Check whether it's already 
-been done in Perl, and avoid re-inventing the wheel unless you have a 
-good reason.
+Возможно, вам даже не нужно писать модуль. Проверьте, где это уже
+было сделано в Perl, и не изобретайте колесо, если у Вас нет на это
+хорошей причины.
 
-Good places to look for pre-existing modules include
-http://search.cpan.org/ and asking on modules@perl.org
+Хорошее места, чтобы искать уже существующие модули будет
+http://search.cpan.org/ и спрашивайте на modules@perl.org
 
-If an existing module B<almost> does what you want, consider writing a
-patch, writing a subclass, or otherwise extending the existing module
-rather than rewriting it.
+Если существующий модуль B<почти> делает то, что вы хотите, рассмотрите возможность написания
+патча, подкласса, или иным образом расширьте существующий модуль
+ не переписывая его.
 
-=head2 Do one thing and do it well
+=head2 Сделайте одну вещь и сделайте это хорошо
 
 At the risk of stating the obvious, modules are intended to be modular.
 A Perl developer should be able to use modules to put together the
