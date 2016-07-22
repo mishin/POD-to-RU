@@ -191,69 +191,69 @@ http://search.cpan.org/ и спрашивайте на modules@perl.org
 
 =head2 Сделайте одну вещь и сделайте это хорошо
 
-At the risk of stating the obvious, modules are intended to be modular.
-A Perl developer should be able to use modules to put together the
-building blocks of their application.  However, it's important that the
-blocks are the right shape, and that the developer shouldn't have to use
-a big block when all they need is a small one.
+Рискуем констатировать очевидное , что модули предназначены для модульности.
+Разработчик Perl должен иметь возможность использовать модули, что поставить вместе
+строительные блоки своего применения. Тем не менее , важно , чтобы
+блоки были правильной формы , и что разработчик не должен использовать
+большой блок , когда все он нуждается маленьком.
 
-Your module should have a clearly defined scope which is no longer than
-a single sentence.  Can your module be broken down into a family of
-related modules?
+Ваш модуль должен иметь четко определенную сферу , которую описывает не более чем
+одно предложение. Можно ли ваш модуль разбить на семейство 
+связанных модулей?
 
-Bad example:
+Плохой пример:
 
-"FooBar.pm provides an implementation of the FOO protocol and the
-related BAR standard."
+"FooBar.pm обеспечивает реализацию протокола FOO 
+ в соответствии со стандартом BAR ".
 
-Good example:
+Хороший пример:
 
-"Foo.pm provides an implementation of the FOO protocol.  Bar.pm
-implements the related BAR protocol."
+"Foo.pm обеспечивает реализацию протокола Foo. Bar.pm
+реализует соответствующий протокол BAR ".
 
-This means that if a developer only needs a module for the BAR standard,
-they should not be forced to install libraries for FOO as well.
+Это означает, что если разработчику необходим только модуль для стандарта BAR,
+он не должен для этого быть вынужден устанавливать библиотеку также и для FOO.
 
-=head2 What's in a name?
+=head2 Какое будет имя?
 
-Make sure you choose an appropriate name for your module early on.  This
-will help people find and remember your module, and make programming
-with your module more intuitive.
+Убедитесь, что вы выбрали подходящее имя для вашего модуля на ранних стадиях. Это
+поможет людям находить и помнить выш ​​модуль и сделает программирование
+ с вашим модулем более интуитивным.
 
-When naming your module, consider the following:
+При выборе названия вашего модуля , необходимо учитывать следующее:
 
 =over 4
 
 =item *
 
-Be descriptive (i.e. accurately describes the purpose of the module).
+Будьте описательными ( т.е. точно описывайте цель модуля ) .
 
 =item * 
 
-Be consistent with existing modules.
+Согласовывайте имя с существующими модулями.
 
 =item *
 
-Reflect the functionality of the module, not the implementation.
+Имя отражает функциональность модуля , а не его реализацию.
 
 =item *
 
-Avoid starting a new top-level hierarchy, especially if a suitable
-hierarchy already exists under which you could place your module.
+Старайтесь не начинать новую иерархию верхнего уровня , особенно если подходящая
+иерархия уже существует в соответствии с которой вы могли бы поместить ваш модуль.
 
 =back
 
-You should contact modules@perl.org to ask them about your module name
-before publishing your module.  You should also try to ask people who 
-are already familiar with the module's application domain and the CPAN
-naming system.  Authors of similar modules, or modules with similar
-names, may be a good place to start.
+Вы должны связаться с modules@perl.org, чтобы спросить их о вашем имени
+перед публикацией модуля. Вы должны также попытаться спросить людей, которые
+уже знакомы с областью применения модуля, а также исследовать систему наименований моделей CPAN. 
+Авторы подобных модулей , или модули с аналогичными характеристиками
+имена , могутт быть хорошим местом для начала.
 
-=head1 DESIGNING AND WRITING YOUR MODULE
+=head1 ПРОЕКТИРОВАНИЕ И НАПИСАНИЕ ВАШЕГО МОДУЛЯ
 
-Considerations for module design and coding:
+Соображения по конструкции(дизайну) модуля и его кодирования:
 
-=head2 To OO or not to OO?
+=head2 OO или не OO?
 
 Your module may be object oriented (OO) or not, or it may have both kinds 
 of interfaces available.  There are pros and cons of each technique, which 
