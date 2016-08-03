@@ -255,78 +255,77 @@ http://search.cpan.org/ и спрашивайте на modules@perl.org
 
 =head2 OO или не OO?
 
-Your module may be object oriented (OO) or not, or it may have both kinds 
-of interfaces available.  There are pros and cons of each technique, which 
-should be considered when you design your API.
+Ваш модуль может быть объектно-ориентированным (ОО) или нет , или же он может иметь оба этих
+ интерфейса. Есть плюсы и минусы у каждого метода, которые
+следует учитывать при разработке вашего API.
 
-In I<Perl Best Practices> (copyright 2004, Published by O'Reilly Media, Inc.),
-Damian Conway provides a list of criteria to use when deciding if OO is the
-right fit for your problem:
+В I<Perl Best Practices> (copyright 2004, Published by O'Reilly Media, Inc.)
+Дамиан Конвей предоставляет список критериев, котрый используется при принятии решения,
+ подходит ли OO для вашей проблемы:
 
 =over 4
 
 =item *
 
-The system being designed is large, or is likely to become large.
+Система разрабатывается большая, или, вероятно, станет большой.
 
 =item *
 
-The data can be aggregated into obvious structures, especially if
-there's a large amount of data in each aggregate.
+Данные могут быть объединены в очевидные структуры, особенно, если
+есть большое количество данных в каждом агрегате.
 
 =item *
 
-The various types of data aggregate form a natural hierarchy that
-facilitates the use of inheritance and polymorphism.
+Различные типы совокупности данных образующие естественную иерархию,
+облегчают использование наследования и полиморфизма .
 
 =item *
 
-You have a piece of data on which many different operations are
-applied.
+У вас есть часть данных, к которым применяются много различных операций.
 
 =item *
 
-You need to perform the same general operations on related types of
-data, but with slight variations depending on the specific type of data
-the operations are applied to.
+Вы должны выполнить те же самые общие операции со связанными типами
+данных, но с небольшими изменениями в зависимости от их конкретного типа.
 
 =item *
 
-It's likely you'll have to add new data types later.
+Вполне вероятно, что позже вам придется добавлять новые типы данных.
 
 =item *
 
-The typical interactions between pieces of data are best represented by
-operators.
+
+Типичные взаимодействия между частями данных лучше всего представить в виде
+операторов.
 
 =item *
 
-The implementation of individual components of the system is likely to
-change over time.
+Реализация отдельных компонентов системы, скорее всего,
+ будет изменена с течением времени.
 
 =item *
 
-The system design is already object-oriented.
+Дизайн системы уже объектно-ориентированный.
 
 =item *
 
-Large numbers of other programmers will be using your code modules.
+Большое количество других программистов будут использовать ваши модули.
 
 =back
 
-Think carefully about whether OO is appropriate for your module.
-Gratuitous object orientation results in complex APIs which are
-difficult for the average module user to understand or use.
+Подумайте тщательно о том, подходит ли OO  для вашего модуля.
+Безпричинным результатом объектной ориентации будет сложное API, которое
+ будет трудно для среднего пользователя для понимания или использования.
 
-=head2 Designing your API
+=head2 Проектирование вашего API
 
-Your interfaces should be understandable by an average Perl programmer.  
-The following guidelines may help you judge whether your API is
-sufficiently straightforward:
+Ваши интерфейсы должны быть понятны средним Perl программистам.
+Следующие рекомендации могут помочь вам определить, является ли ваш API
+достаточно простым:
 
 =over 4
 
-=item Write simple routines to do simple things.
+=item Напишите простые процедуры, чтобы делать простые вещи.
 
 It's better to have numerous simple routines than a few monolithic ones.
 If your routine changes its behaviour significantly based on its
