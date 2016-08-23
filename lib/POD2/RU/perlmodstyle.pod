@@ -327,54 +327,54 @@ http://search.cpan.org/ и спрашивайте на modules@perl.org
 
 =item Напишите простые процедуры, чтобы делать простые вещи.
 
-It's better to have numerous simple routines than a few monolithic ones.
-If your routine changes its behaviour significantly based on its
-arguments, it's a sign that you should have two (or more) separate
-routines.
+Лучше иметь много простых процедур, чем немного, но очень больших и сложных монолитов.
+Если ваша подпрограмма существенно меняет свое поведение  на основе своих
+аргументов, то это признак того, что вы должны иметь две (или более ) отдельные
+подпрограммы.
 
-=item Separate functionality from output.  
+=item Создавайте отдельные функции для потока вывода (output).  
 
-Return your results in the most generic form possible and allow the user 
-to choose how to use them.  The most generic form possible is usually a
-Perl data structure which can then be used to generate a text report,
-HTML, XML, a database query, or whatever else your users require.
+Возвращайте результаты в наиболее общей форме насколько это возможно и позволяйте пользователю
+ выбирать, как использовать их. Наиболее общая форма - это,возможно , как правило,
+структура данных Perl, которая затем может быть использована для создания текстового отчета,
+HTML, XML, запроса к базе данных , или то, что требуется пользователям.
 
-If your routine iterates through some kind of list (such as a list of
-files, or records in a database) you may consider providing a callback
-so that users can manipulate each element of the list in turn.
-File::Find provides an example of this with its 
-C<find(\&wanted, $dir)> syntax.
+Если процедура перебирает какой-то список (например, список
+файлов или записей в базе данных), вы можете рассмотреть вопрос о предоставлении обратного вызова
+так, чтобы пользователи могли манипулировать каждым элементом списка в свою очередь.
+File::Find дает пример этого с его
+C<find(\&wanted, $dir)> синтаксисом.
 
-=item Provide sensible shortcuts and defaults.
+=item Обеспечте разумные сокращения и значения по умолчанию.
 
-Don't require every module user to jump through the same hoops to achieve a
-simple result.  You can always include optional parameters or routines for 
-more complex or non-standard behaviour.  If most of your users have to
-type a few almost identical lines of code when they start using your
-module, it's a sign that you should have made that behaviour a default.
-Another good indicator that you should use defaults is if most of your 
-users call your routines with the same arguments.
+Не требовать от каждого пользователя модуля прыгать через обручи для достижения
+простого результата . Вы всегда можете включить дополнительные параметры или процедуры для
+более сложного или нестандартного поведения. Если большинство ваших пользователей должны
+введите несколько почти одинаковых строк кода, когда они начинают использовать ваш модуль, то это признак того, 
+что вы должны были сделать это поведение по умолчанию.
+Еще один хороший показатель того, что вы должны использовать значения по умолчанию, если большинство ваших
+пользователей вызывают ваши подпрограммы с одинакомыми же аргументами.
 
-=item Naming conventions
+=item Соглашения об именовании
 
-Your naming should be consistent.  For instance, it's better to have:
+Ваше именование должно быть последовательным. Например, лучше иметь:
 
 	display_day();
 	display_week();
 	display_year();
 
-than
+чем
 
 	display_day();
 	week_display();
 	show_year();
 
-This applies equally to method names, parameter names, and anything else
-which is visible to the user (and most things that aren't!)
+Это в равной степени относится к именам методов, именам параметров, и всего остального, 
+которое видно пользователю (и к большинству вещей , которые этим не являются! )
 
-=item Parameter passing
+=item Передача параметров
 
-Use named parameters. It's easier to use a hash like this:
+Используйте именованные параметры . Проще использовать хэш следующим образом:
 
     $obj->do_something(
 	    name => "wibble",
@@ -382,22 +382,22 @@ Use named parameters. It's easier to use a hash like this:
 	    size => 1024,
     );
 
-... than to have a long list of unnamed parameters like this:
+... чем иметь длинный список безымянных параметров таких, как этот:
 
     $obj->do_something("wibble", "text", 1024);
 
-While the list of arguments might work fine for one, two or even three
-arguments, any more arguments become hard for the module user to
-remember, and hard for the module author to manage.  If you want to add
-a new parameter you will have to add it to the end of the list for
-backward compatibility, and this will probably make your list order
-unintuitive.  Also, if many elements may be undefined you may see the
-following unattractive method calls:
+В то время как список аргументов может прекрасно работать с одним, двумя или даже с тремя 
+аргументами, все больше аргументов становятся трудными для запоминания
+, и трудыми для управления автором модуля. Если вы хотите добавить
+новый параметр, вам придется добавить его в конец списка для
+обратной совместимости, и это, вероятно, сделает ваш список заказа
+неинтуитивными. Кроме того, если многие элементы могут быть неопределенными вы можете увидеть
+следующие непривлекательные вызовы методов:
 
     $obj->do_something(undef, undef, undef, undef, undef, undef, 1024);
-
-Provide sensible defaults for parameters which have them.  Don't make
-your users specify parameters which will almost always be the same.
+    
+Обеспечьте разумные значения по умолчанию для параметров. Не вынуждате
+пользователей указывать параметры, которые почти всегда будут одинаковыми.
 
 The issue of whether to pass the arguments in a hash or a hashref is
 largely a matter of personal style. 
