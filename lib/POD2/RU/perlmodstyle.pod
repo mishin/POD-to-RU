@@ -399,41 +399,40 @@ C<find(\&wanted, $dir)> синтаксисом.
 Обеспечьте разумные значения по умолчанию для параметров. Не вынуждате
 пользователей указывать параметры, которые почти всегда будут одинаковыми.
 
-The issue of whether to pass the arguments in a hash or a hashref is
-largely a matter of personal style. 
+Вопрос о том, чтобы передать аргументы в виде хэша или ссылки на хэш(hashref)
+в значительной степени вопрос личного стиля.
 
-The use of hash keys starting with a hyphen (C<-name>) or entirely in 
-upper case (C<NAME>) is a relic of older versions of Perl in which
-ordinary lower case strings were not handled correctly by the C<=E<gt>>
-operator.  While some modules retain uppercase or hyphenated argument
-keys for historical reasons or as a matter of personal style, most new
-modules should use simple lower case keys.  Whatever you choose, be
-consistent!
+Использование хэш-ключей, начинающихся с дефиса (C<-name>) или полностью в
+верхнем регистре (C<NAME>) является пережитком старых версий Perl, в котором
+обычные нижние строки могли быть не правильно обработаны с помощью оператора C<=E<gt>>.
+В то время как некоторые модули оставляют переменные в верхнем регистре 
+или аргументы с дефисом (-) по историческим причинам или как вопрос личного стиля, 
+большинству новых модулей следует использовать простые нижний регистр для ключей.
+Что бы вы ни выбрали, будьте последовательны!
 
 =back
 
-=head2 Strictness and warnings
+=head2 Строгость и предупреждения (Strictness and warnings)
 
-Your module should run successfully under the strict pragma and should
-run without generating any warnings.  Your module should also handle 
-taint-checking where appropriate, though this can cause difficulties in
-many cases.
+Ваш модуль должен успешно работать под прагмой use strict и должен
+ работать без создания каких-либо предупреждений.
+ Ваш модуль должен также обрабатывать проверки заразности (taint-checking), где это уместно, хотя это может вызвать трудности во
+многих случаях.
 
-=head2 Backwards compatibility
+=head2 Обратная совместимость
 
-Modules which are "stable" should not break backwards compatibility
-without at least a long transition phase and a major change in version
-number.
+Модули, которые являются "стабильными"("stable") не должны нарушать обратную совместимость
+по крайней мере без длительного переходного этапа и главного (major) изменения в номере версии.
 
-=head2 Error handling and messages
+=head2 Обработка ошибок и сообщения
 
-When your module encounters an error it should do one or more of:
+Когда ваш модуль обнаружил ошибку он должен сделать одно или более из следующего:
 
 =over 4
 
 =item *
 
-Return an undefined value.
+Возврат неопределенного(undefined) значения.
 
 =item *
 
