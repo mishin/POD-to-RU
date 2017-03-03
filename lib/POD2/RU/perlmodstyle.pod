@@ -436,36 +436,36 @@ C<find(\&wanted, $dir)> синтаксисом.
 
 =item *
 
-set C<$Module::errstr> or similar (C<errstr> is a common name used by
-DBI and other popular modules; if you choose something else, be sure to
-document it clearly).
+установите C<$Module::errstr> или подобное имя (C<errstr> как общее имя для ошибок, как это сделано
+ в моделу DBI и других пополярных модулях; если вы выбете другое имя, то не забудьте
+ это понятно задокументировать).
 
 =item *
 
-C<warn()> or C<carp()> a message to STDERR.  
+Используйте C<warn()> или C<carp()> сообщение для посылки в  STDERR.  
 
 =item *
 
-C<croak()> only when your module absolutely cannot figure out what to
-do.  (C<croak()> is a better version of C<die()> for use within 
-modules, which reports its errors from the perspective of the caller.  
-See L<Carp> for details of C<croak()>, C<carp()> and other useful
-routines.)
+Используйте C<croak()> только тогда, когда ваш модуль абсолютно не может понять, что
+делать.  (C<croak()> - это лучшая версия C<die()> для использования внутри модулей
+, который передает свои ошибки с точки зрения вызывающей процедуры (caller). 
+Смотри L<Carp> для деталей по C<croak()>, C<carp()> и другие полезные процедуры.)
 
 =item *
 
-As an alternative to the above, you may prefer to throw exceptions using 
-the Error module.
+В качестве альтернативы, указанной выше, вы можете предпочесть бросать исключения, используя
+модуль Error.
 
 =back
 
-Configurable error handling can be very useful to your users.  Consider
-offering a choice of levels for warning and debug messages, an option to
-send messages to a separate file, a way to specify an error-handling
-routine, or other such features.  Be sure to default all these options
-to the commonest use.
+Настраиваемая обработка ошибок может быть очень полезной для пользователей. Можно 
+ предлагать выбор уровней для предупреждений и отладочных сообщений, возможность
+отправлять сообщения в отдельный файл, способ задания процедур обработки ошибок
+, или другие подобные функции. Убедитесь, что по умолчанию все эти параметры
+  применяются в обычном использования.
 
-=head1 DOCUMENTING YOUR MODULE
+
+=head1 ДОКУМЕНТИРОВАНИЕ ВАШЕГО МОДУЛЯ
 
 =head2 POD
 
