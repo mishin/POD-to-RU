@@ -469,34 +469,34 @@ C<find(\&wanted, $dir)> синтаксисом.
 
 =head2 POD
 
-Your module should include documentation aimed at Perl developers.
-You should use Perl's "plain old documentation" (POD) for your general 
-technical documentation, though you may wish to write additional
-documentation (white papers, tutorials, etc) in some other format.  
-You need to cover the following subjects:
+Ваш модуль должен включать в себя документацию, направленную на разработчиков Perl.
+Вы должны использовать перловую "обычную старую документацию" ("plain old documentation) (POD) для общей
+технической документации, хотя вы можете написать дополнительную
+документацию (технические документы(white papers), учебные пособия(tutorials) и т.д.) в каком-то другом формате.
+Вы должны охватывать следующие темы:
 
 =over 4
 
 =item *
 
-A synopsis of the common uses of the module
+Краткое описание(synopsis) того, для чего нужен модуль
 
 =item *
 
-The purpose, scope and target applications of your module
+Цель, сфера применения(scope) и целевые приложения(target applications) модуля
 
 =item *
 
-Use of each publically accessible method or subroutine, including
-parameters and return values
+Использование каждого публично доступного метода или подпрограммы, в том числе
+ его параметры и возвращаемые значения
 
 =item *
 
-Examples of use
+Примеры использования
 
 =item *
 
-Sources of further information
+Источники дополнительной информации
 
 =item *
 
