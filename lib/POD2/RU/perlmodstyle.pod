@@ -500,62 +500,69 @@ C<find(\&wanted, $dir)> синтаксисом.
 
 =item *
 
-A contact email address for the author/maintainer
+Контактный адрес электронной почты автора/сопровождающего(maintainer)
 
 =back
 
-The level of detail in Perl module documentation generally goes from
-less detailed to more detailed.  Your SYNOPSIS section should contain a
-minimal example of use (perhaps as little as one line of code; skip the
-unusual use cases or anything not needed by most users); the
-DESCRIPTION should describe your module in broad terms, generally in
-just a few paragraphs; more detail of the module's routines or methods,
-lengthy code examples, or other in-depth material should be given in 
-subsequent sections.
+Уровень детализации в документации модуля Perl? как правило, идет от
+менее подробного до более детального. Ваша раздел СИНТАКСИСА(SYNOPSIS) должен содержать
+минимальный пример использования (возможно это всего лишь одна строка кода, пропустить
+необычные случаи использования или что-нибудь не нужное большинству пользователей);
+ОПИСАНИЕ(DESCRIPTION) должно описывать ваш модуль в широком смысле, как правило, в
+всего в нескольких абзацах; более подробное описание процедур или методов работы модуля,
+длинные примеры кода, или другой углубленный материал должен быть приведен в
+последующих разделах.
 
-Ideally, someone who's slightly familiar with your module should be able
-to refresh their memory without hitting "page down".  As your reader
-continues through the document, they should receive a progressively
-greater amount of knowledge.
-
-The recommended order of sections in Perl module documentation is:
+В идеале, любой, кто немного знаком с модулем должен быть в состоянии
+ освежить свою память, не проворачивая "страницу вниз". Читатель
+ , просматривающий документ, они должен получать максимально
+  насыщенное количество знаний.
+  
+Рекомендуемый порядок разделов в документации модуля Perl является:
 
 =over 4
 
 =item * 
 
-NAME
+ИМЯ (NAME)
 
 =item *
 
-SYNOPSIS
+СИНТАКСИС (SYNOPSIS)
 
 =item *
 
-DESCRIPTION
+ОПИСАНИЕ (DESCRIPTION)
 
 =item *
 
-One or more sections or subsections giving greater detail of available 
-methods and routines and any other relevant information.
+Один или несколько разделов или подразделов, дающие более подробную
+ информацию о присутствующих методах и процедурах и 
+  может быть любая другая подходящая информация.
 
 =item *
 
-BUGS/CAVEATS/etc
+ОШИБКИ/ПРЕДОСТЕРЕЖЕНИЯ/ и т.д. (BUGS/CAVEATS/etc)
 
 =item *
 
-AUTHOR
+АВТОР (AUTHOR)
 
 =item *
 
-SEE ALSO
+СМОТРИТЕ ТАКЖЕ (SEE ALSO)
 
 =item *
 
-COPYRIGHT and LICENSE
+Авторское право и лицензии (COPYRIGHT and LICENSE)
 
 =back
+
+Держите документации рядом с кодом документы ( "инлайн"
+документация). Включите POD для данного метода прямо над что
+подпрограммой метода. Это делает его легче держать документацию вверх
+до настоящего времени, и позволяет избежать необходимости документировать каждый фрагмент кода дважды (один раз в
+POD и один раз в комментариях).
 
 Keep your documentation near the code it documents ("inline"
 documentation).  Include POD for a given method right above that 
