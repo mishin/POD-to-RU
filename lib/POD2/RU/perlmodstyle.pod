@@ -558,25 +558,19 @@ C<find(\&wanted, $dir)> синтаксисом.
 
 =back
 
-Держите документации рядом с кодом документы ( "инлайн"
-документация). Включите POD для данного метода прямо над что
-подпрограммой метода. Это делает его легче держать документацию вверх
-до настоящего времени, и позволяет избежать необходимости документировать каждый фрагмент кода дважды (один раз в
+Держите документации рядом с кодом, который вы документируете ( "инлайн" 
+документация). Включите POD для данного метода прямо над этим
+ методом. Это облегчает поддержание актуальности документации, 
+ и позволяет избежать необходимости документировать каждый фрагмент кода дважды (один раз в
 POD и один раз в комментариях).
 
-Keep your documentation near the code it documents ("inline"
-documentation).  Include POD for a given method right above that 
-method's subroutine.  This makes it easier to keep the documentation up
-to date, and avoids having to document each piece of code twice (once in
-POD and once in comments).
+=head2 README, INSTALL, примечания к выпуску(release notes), записи изменений (changelogs)
 
-=head2 README, INSTALL, release notes, changelogs
+Ваш модуль должен также включать файл README, описывающий модуль и
+ дающий указатели на дополнительную информацию (веб-сайт, электронную почту автора).
 
-Your module should also include a README file describing the module and
-giving pointers to further information (website, author email).  
-
-An INSTALL file should be included, and should contain simple installation 
-instructions. When using ExtUtils::MakeMaker this will usually be:
+Такжен должен быть включен файл INSTALL, который должен содержать простую инструкцию установки.
+При использовании ExtUtils::MakeMaker это будет так:
 
 =over 4
 
@@ -590,7 +584,7 @@ instructions. When using ExtUtils::MakeMaker this will usually be:
 
 =back
 
-When using Module::Build, this will usually be:
+При использовании Module::Build это обычно будет:
 
 =over 4
 
@@ -604,9 +598,9 @@ When using Module::Build, this will usually be:
 
 =back
 
-Release notes or changelogs should be produced for each release of your
-software describing user-visible changes to your module, in terms
-relevant to the user.
+Заметки о выпуске(Release notes) или записи изменений(changelogs) следует создавать для каждого выпуска(release) вашего
+программного обеспечения, описывающее видимые пользователю изменения в вашем модуле, в терминах
+ понятны пользователю.
 
 =head1 RELEASE CONSIDERATIONS
 
