@@ -505,7 +505,7 @@ C<find(\&wanted, $dir)> синтаксисом.
 =back
 
 Уровень детализации в документации модуля Perl? как правило, идет от
-менее подробного до более детального. Ваша раздел СИНТАКСИСА(SYNOPSIS) должен содержать
+менее до более подробного. Ваш раздел СИНТАКСИСА(SYNOPSIS) должен содержать
 минимальный пример использования (возможно это всего лишь одна строка кода, пропустить
 необычные случаи использования или что-нибудь не нужное большинству пользователей);
 ОПИСАНИЕ(DESCRIPTION) должно описывать ваш модуль в широком смысле, как правило, в
@@ -558,7 +558,7 @@ C<find(\&wanted, $dir)> синтаксисом.
 
 =back
 
-Держите документации рядом с кодом, который вы документируете ( "инлайн" 
+Держите документацию рядом с кодом, который вы документируете ( "инлайн" 
 документация). Включите POD для данного метода прямо над этим
  методом. Это облегчает поддержание актуальности документации, 
  и позволяет избежать необходимости документировать каждый фрагмент кода дважды (один раз в
@@ -602,25 +602,24 @@ POD и один раз в комментариях).
 программного обеспечения, описывающее видимые пользователю изменения в вашем модуле, в терминах
  понятны пользователю.
 
-=head1 RELEASE CONSIDERATIONS
+=head1 РАССМОТРЕНИЕ ВЫПУСКА (RELEASE CONSIDERATIONS)
 
-=head2 Version numbering
+=head2 Нумерация версий (Version numbering)
 
-Version numbers should indicate at least major and minor releases, and
-possibly sub-minor releases.  A major release is one in which most of
-the functionality has changed, or in which major new functionality is
-added.  A minor release is one in which a small amount of functionality
-has been added or changed.  Sub-minor version numbers are usually used
-for changes which do not affect functionality, such as documentation
-patches.
+Номера версий должны содержать как минимум основные(major) и второстепенные(minor) версии, а также
+возможно незначительные релизы. Основной релиз(major release) - это выпуск, в котором большая часть
+функциональности изменилась или в котором добавлены новые функциональные возможности
+. Небольшой(minor) релиз - это тот, в котором небольшое количество функциональных возможностей
+было добавлено или изменено. Номера вспомогательных (Sub-minor) версия используются 
+для изменений, которые не влияют на функциональность, или для таких, где измененяется документация.
 
-The most common CPAN version numbering scheme looks like this:
+Наиболее распространенная схема нумерации версий CPAN выглядит так:
 
     1.00, 1.10, 1.11, 1.20, 1.30, 1.31, 1.32
 
-A correct CPAN version number is a floating point number with at least 
-2 digits after the decimal. You can test whether it conforms to CPAN by 
-using
+Верный номер версии CPAN - это число с плавающей точкой, по крайней мере
+2 цифры после запятой. Вы можете проверить, соответствует ли он CPAN
+с помощью
 
     perl -MExtUtils::MakeMaker -le 'print MM->parse_version(shift)' 'Foo.pm'
 
