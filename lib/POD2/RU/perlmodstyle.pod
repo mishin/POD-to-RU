@@ -623,61 +623,62 @@ POD и один раз в комментариях).
 
     perl -MExtUtils::MakeMaker -le 'print MM->parse_version(shift)' 'Foo.pm'
 
-If you want to release a 'beta' or 'alpha' version of a module but
-don't want CPAN.pm to list it as most recent use an '_' after the
-regular version number followed by at least 2 digits, eg. 1.20_01. If
-you do this, the following idiom is recommended:
+Если вы хотите выпустить 'бету' или 'альфу'-версию модуля, но
+не хотите, чтобы CPAN.pm отображал его как самый последний, используйте '_' после
+номера обычной версии и еще минимум две цифры, например. 1.20_01. Если
+вы делаете это, рекомендуется следующая идиома:
 
   $VERSION = "1.12_01";
-  $XS_VERSION = $VERSION; # only needed if you have XS code
+  $XS_VERSION = $VERSION; # нужен только, если у вас есть XS-код (only needed if you have XS code)
   $VERSION = eval $VERSION;
 
-With that trick MakeMaker will only read the first line and thus read
-the underscore, while the perl interpreter will evaluate the $VERSION
-and convert the string into a number. Later operations that treat
-$VERSION as a number will then be able to do so without provoking a
-warning about $VERSION not being a number.
+С помощью этого трюка MakeMaker будет читать только первую строку и таким образом читать
+подчеркивание, в то время как интерпретатор perl будет выполнять(evaluate) $VERSION
+и преобразовывать строку в число. Более поздние операции, которые используют
+$VERSION, как число, будет иметь возможность сделать это без
+предупреждение о том, что $VERSION не является числом.
 
-Never release anything (even a one-word documentation patch) without
-incrementing the number.  Even a one-word documentation patch should
-result in a change in version at the sub-minor level.
+Никогда не выпускайте ничего (даже патч с одним словом документации) без
+увеличения номера версии. Патч даже и измененным одним словом должен
+приводить к изменению версии на уровне полуминорной версии (sub-minor level).
+ (Even a one-word documentation patch should result in a change in version at the sub-minor level.)
 
-=head2 Pre-requisites
+=head2 Требования (Pre-requisites)
 
-Module authors should carefully consider whether to rely on other
-modules, and which modules to rely on.
+Авторы модулей должны тщательно рассмотреть вопрос о том, полагаться ли на другие
+модули и на какие модули опираться.
 
-Most importantly, choose modules which are as stable as possible.  In
-order of preference: 
+Наиболее важно выбрать модули, которые настолько стабильны, насколько это возможно. В
+порядке предпочтения:
 
 =over 4
 
 =item *
 
-Core Perl modules
+Модули ядра Perl (Core Perl modules)
 
 =item *
 
-Stable CPAN modules
+Стабильные модули CPAN (Stable CPAN modules)
 
 =item *
 
-Unstable CPAN modules
+Нестабильные модули CPAN (Unstable CPAN modules)
 
 =item *
 
-Modules not available from CPAN
+Модули, недоступные в CPAN (Modules not available from CPAN)
 
 =back
 
-Specify version requirements for other Perl modules in the
-pre-requisites in your Makefile.PL or Build.PL.
+Укажите требования к версии для других модулей Perl в
+предварительных условиях (pre-requisites) в Makefile.PL или Build.PL.
 
-Be sure to specify Perl version requirements both in Makefile.PL or
-Build.PL and with C<require 5.6.1> or similar. See the section on
-C<use VERSION> of L<perlfunc/require> for details.
+Обязательно укажите требования к версии Perl как в Makefile.PL, так и в
+Build.PL C<require 5.6.1> или аналогичный. См. Раздел
+C<use VERSION> для L<perlfunc/require>.
 
-=head2 Testing
+=head2 Тестирование
 
 All modules should be tested before distribution (using "make disttest"),
 and the tests should also be available to people installing the modules 
