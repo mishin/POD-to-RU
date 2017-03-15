@@ -680,21 +680,23 @@ C<use VERSION> для L<perlfunc/require>.
 
 =head2 Тестирование
 
-All modules should be tested before distribution (using "make disttest"),
-and the tests should also be available to people installing the modules 
-(using "make test").  
-For Module::Build you would use the C<make test> equivalent C<perl Build test>.
+Все модули должны быть протестированы перед распространением 
+(с использованием "make disttest"), и тесты также должны быть доступны для людей, 
+устанавливающих модули (с помощью "make test"). 
+Для Module::Build вы должны использовать эквивалент C<make test> такой как C<perl Build test>.
 
-The importance of these tests is proportional to the alleged stability of a 
-module. A module which purports to be stable or which hopes to achieve wide 
-use should adhere to as strict a testing regime as possible.
+Важность этих тестов пропорциональна предполагаемой стабильности модуля. 
+Модуль, который стремится быть стабильным или который надеется достичь широкого использования, 
+должен придерживаться как можно более жесткого режима тестирования.
 
-Useful modules to help you write tests (with minimum impact on your 
-development process or your time) include Test::Simple, Carp::Assert 
-and Test::Inline.
-For more sophisticated test suites there are Test::More and Test::MockObject.
+Полезные модули, которые помогут вам писать тесты 
+(с минимальным воздействием на ваш процесс разработки или ваше время), 
+включают Test::Simple, Carp::Assert и Test::Inline. 
+Для более сложных тестовых наборов( test suites) есть Test::More и Test::MockObject.
 
-=head2 Packaging
+=head2 Пакетизация (Packaging)
+
+Модули следует упаковывать с использованием одного из стандартных инструментов упаковки. В настоящее время у вас есть выбор между ExtUtils :: MakeMaker и более независимым от платформы модулем Module :: Build, что позволяет устанавливать модули последовательно. При использовании ExtUtils :: MakeMaker вы можете использовать «make dist» для создания своего пакета. Существуют инструменты, которые помогут вам создать свой модуль в стиле MakeMaker. К ним относятся ExtUtils :: ModuleMaker и h2xs. См. Также L <perlnewmod>.
 
 Modules should be packaged using one of the standard packaging tools.
 Currently you have the choice between ExtUtils::MakeMaker and the
