@@ -696,94 +696,75 @@ C<use VERSION> для L<perlfunc/require>.
 
 =head2 Пакетизация (Packaging)
 
-Модули следует упаковывать с использованием одного из стандартных инструментов упаковки. В настоящее время у вас есть выбор между ExtUtils :: MakeMaker и более независимым от платформы модулем Module :: Build, что позволяет устанавливать модули последовательно. При использовании ExtUtils :: MakeMaker вы можете использовать «make dist» для создания своего пакета. Существуют инструменты, которые помогут вам создать свой модуль в стиле MakeMaker. К ним относятся ExtUtils :: ModuleMaker и h2xs. См. Также L <perlnewmod>.
+Модули следует упаковывать с использованием одного из стандартных инструментов упаковки(packaging tools). 
+В настоящее время у вас есть выбор между ExtUtils::MakeMaker и более независимым от платформы модулем Module::Build,
+что позволяет устанавливать модули последовательно. При использовании ExtUtils::MakeMaker вы можете использовать "make dist" для создания своего пакета. Существуют инструменты, которые помогут вам создать свой модуль в стиле MakeMaker. К ним относятся ExtUtils::ModuleMaker и h2xs. См. Также L<perlnewmod>.
 
-Modules should be packaged using one of the standard packaging tools.
-Currently you have the choice between ExtUtils::MakeMaker and the
-more platform independent Module::Build, allowing modules to be installed in a
-consistent manner.
-When using ExtUtils::MakeMaker, you can use "make dist" to create your
-package. Tools exist to help you to build your module in a MakeMaker-friendly
-style. These include ExtUtils::ModuleMaker and h2xs.  See also L<perlnewmod>.
+=head2 Лицензирование
 
-=head2 Licensing
+Убедитесь, что ваш модуль имеет лицензию, и что полный текст её включен в дистрибутив 
+(если только он не является общим(it's a common one), и в условиях лицензии не требуется включать его).
 
-Make sure that your module has a license, and that the full text of it
-is included in the distribution (unless it's a common one and the terms
-of the license don't require you to include it).
+Если вы не знаете, какую лицензию использовать, двойное лицензирование под лицензиями GPL и Artistic (то же самое, что и сам Perl) - хорошая идея. См. L<perlgpl> и L<perlartistic>.
 
-If you don't know what license to use, dual licensing under the GPL
-and Artistic licenses (the same as Perl itself) is a good idea.
-See L<perlgpl> and L<perlartistic>.
+=head1 РАСПРОСТРАНЕННЫЕ ОШИБКИ (COMMON PITFALLS)
 
-=head1 COMMON PITFALLS
+=head2 Изобретение колеса (Reinventing the wheel)
 
-=head2 Reinventing the wheel
+Есть определенные области применения, которые уже очень хорошо обслуживаются CPAN. 
+Один пример - это системы шаблонов, другой - модули даты и времени, и их гораздо больше. 
+Хотя это может быть и обряд - напсение своей собственной версии этих вещей, пожалуйста, внимательно рассмотрите
+будет ли мир на Perl действительно нуждается в вас, чтобы опубликовать его
 
-There are certain application spaces which are already very, very well
-served by CPAN.  One example is templating systems, another is date and
-time modules, and there are many more.  While it is a rite of passage to
-write your own version of these things, please consider carefully
-whether the Perl world really needs you to publish it.
+=head2 Попытка сделать слишком много
 
-=head2 Trying to do too much
+Ваш модуль будет частью инструментария разработчика. Он сам по себе не будет составлять набор инструментов B<всего>. Заманчиво добавлять дополнительные функции, пока ваш код не будет монолитной системой, а не набором модульных строительных блоков.
 
-Your module will be part of a developer's toolkit.  It will not, in
-itself, form the B<entire> toolkit.  It's tempting to add extra features
-until your code is a monolithic system rather than a set of modular
-building blocks.
+=head2 Несоответствующая документация
 
-=head2 Inappropriate documentation
+Не попадайтесь в ловушку, чтобы писать не той аудитории. 
+Ваша основная аудитория - опытный разработчик с минимальным пониманием области приложения вашего модуля, который только что загрузил ваш модуль и хочет начать использовать его как можно быстрее.
 
-Don't fall into the trap of writing for the wrong audience.  Your
-primary audience is a reasonably experienced developer with at least 
-a moderate understanding of your module's application domain, who's just 
-downloaded your module and wants to start using it as quickly as possible.
+Учебники, документация конечного пользователя, научные статьи, часто задаваемые вопросы и т. не подходят в основной документации модуля. Если вы действительно хотите их написать, включите их в качестве суб-документов, таких как C<My::Module::Tutorial> и
+C<My::Module::FAQ>, и укажите ссылку в разделе СМОТРИТЕ ТАКЖЕ(SEE ALSO) основной документации.
 
-Tutorials, end-user documentation, research papers, FAQs etc are not 
-appropriate in a module's main documentation.  If you really want to 
-write these, include them as sub-documents such as C<My::Module::Tutorial> or
-C<My::Module::FAQ> and provide a link in the SEE ALSO section of the
-main documentation.  
-
-=head1 SEE ALSO
+=head1 СМОТРИТЕ ТАКЖЕ
 
 =over 4
 
 =item L<perlstyle>
 
-General Perl style guide
+Общее руководство по стилю Perl разработки
 
 =item L<perlnewmod>
 
-How to create a new module
+Как создать новый модуль
 
 =item L<perlpod>
 
-POD documentation
+документация POD
 
 =item L<podchecker>
 
-Verifies your POD's correctness
+Проверка корректности вашего POD
 
-=item Packaging Tools
+=item Инструменты создания модулей (Packaging Tools)
 
 L<ExtUtils::MakeMaker>, L<Module::Build>
 
-=item Testing tools
+=item Инструменты тестирования
 
 L<Test::Simple>, L<Test::Inline>, L<Carp::Assert>, L<Test::More>, L<Test::MockObject>
 
 =item http://pause.perl.org/
 
-Perl Authors Upload Server.  Contains links to information for module
-authors.
+Сервер загрузки Perl.(Perl Authors Upload Server. - PAUSE) Содержит ссылки на информацию для авторов модулей.
 
-=item Any good book on software engineering
+=item Любая хорошая книга по разработке программного обеспечения
 
 =back
 
-=head1 AUTHOR
+=head1 АВТОР
 
 Kirrily "Skud" Robert <skud@cpan.org>
 
