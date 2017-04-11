@@ -147,15 +147,15 @@ F<~/.perldb> под Unix), который может устанавливать 
 (Здесь также можно определить подпрограмму (C<&afterinit>), она выполняется
 после того как отладчик завершит свою инициализацию.)
 
-After the rc file is read, the debugger reads the PERLDB_OPTS
-environment variable and uses it to set debugger options. The
-contents of this variable are treated as if they were the argument
-of an C<o ...> debugger command (q.v. in L<perldebug/"Configurable Options">).
+После считывания файла rc отладчик считывает переменную окружения PERLDB_OPTS
+ и использует ее для установки параметров отладчика. СОДЕРЖАНИЕ
+Содержимое этой переменной обрабатывается так, как если бы они были аргументом
+ C<o ...> команды отладчика (q.v. в L<perldebug/"Configurable Options">) (q.v. в L<perldebug/"Настраиваемые параметры">). 
 
-=head3 Debugger Internal Variables
+=head3 Внутренние переменные отладчика (Debugger Internal Variables)
 
-In addition to the file and subroutine-related variables mentioned above,
-the debugger also maintains various magical internal variables.
+В дополнение к упомянутым выше переменным, связанным с файлом и подпрограммой,
+отладчик также поддерживает различные магические внутренние переменные.
 
 =over 4
 
