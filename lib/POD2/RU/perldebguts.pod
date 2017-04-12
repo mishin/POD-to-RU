@@ -161,61 +161,62 @@ F<~/.perldb> под Unix), который может устанавливать 
 
 =item *
 
-C<@DB::dbline> is an alias for C<@{"::_<current_file"}>, which
-holds the lines of the currently-selected file (compiled by Perl), either
-explicitly chosen with the debugger's C<f> command, or implicitly by flow
-of execution.
+C<@DB::dbline> является псевдонимом для C<@{"::_<current_file"}>, который
+содержит строки выбранного в данный момент файла (скомпилированного Perl), либо
+явно выбранный с помощью команды отладчика C<f> или неявно по потоку
+исполнения.
 
-Values in this array are magical in numeric context: they compare
-equal to zero only if the line is not breakable.
+Значения в этом массиве являются магическими в числовом контексте: они сравнивают
+равенство нулю только в том случае, если строка не является хрупкой.(they compare
+equal to zero only if the line is not breakable.)
 
 =item *
 
-C<%DB::dbline> is an alias for C<%{"::_<current_file"}>, which
-contains breakpoints and actions keyed by line number in
-the currently-selected file, either explicitly chosen with the
-debugger's C<f> command, or implicitly by flow of execution.
+C<%DB::dbline> является псевдонимом для C<%{"::_<current_file"}>, который
+содержит точки останова и действия, заданные номером строки в
+выбранный в данный момент файл, либо явно выбранный с помощью
+команды отладчика C<f> , или неявно по потоку выполнения.
 
-As previously noted, individual entries (as opposed to the whole hash)
-are settable.  Perl only cares about Boolean true here, although
-the values used by F<perl5db.pl> have the form
+Как отмечалось ранее, отдельные записи (в отличие от всего хеша)
+могут устанавливаться. Perl только заботится о булевой истине здесь, хотя
+значения, используемые F<perl5db.pl> имеют вид
 C<"$break_condition\0$action">.
 
 =back
 
-=head3 Debugger Customization Functions
+=head3 Функции настройки отладчика
 
-Some functions are provided to simplify customization.
+Некоторые функции предусмотрены для упрощения настройки.
 
 =over 4
 
 =item *
 
-See L<perldebug/"Configurable Options"> for a description of options parsed by
+См. L<perldebug/"Configurable Options"> (L<perldebug/"Настраиваемые параметры">) для описания параметров, проанализированных
 C<DB::parse_options(string)>.
 
 =item *
 
-C<DB::dump_trace(skip[,count])> skips the specified number of frames
-and returns a list containing information about the calling frames (all
-of them, if C<count> is missing).  Each entry is reference to a hash
-with keys C<context> (either C<.>, C<$>, or C<@>), C<sub> (subroutine
-name, or info about C<eval>), C<args> (C<undef> or a reference to
-an array), C<file>, and C<line>.
+C<DB::dump_trace(skip[,count])> пропускает указанное количество кадров
+и возвращает список, содержащий информацию о вызывающих кадрах (все
+из них, если C<count> отсутствует).  Каждая запись является ссылкой на хэш
+с ключами C<context> (либо C<.>, C<$>, or C<@>), C<sub> (имя подпрограммы
+ или сведения о C<eval>), C<args> (C<undef>  или ссылка на
+массив), C<file>, и C<line>.
 
 =item *
 
-C<DB::print_trace(FH, skip[, count[, short]])> prints
-formatted info about caller frames.  The last two functions may be
-convenient as arguments to C<< < >>, C<< << >> commands.
+C<DB::print_trace(FH, skip[, count[, short]])> печатает
+отформатированную информацию о кадрах вызывающего (caller frames). Последние две функции могут быть
+удобными в качестве аргументов командам  C<< < >>, C<< << >>.
 
 =back
 
-Note that any variables and functions that are not documented in
-this manpages (or in L<perldebug>) are considered for internal   
-use only, and as such are subject to change without notice.
+Обратите внимание, что любые переменные и функции, не документированные в
+эти манах (или в L<perldebug>) рассматриваются только для внутреннего
+использования и, как таковые, могут быть изменены без предварительного уведомления.
 
-=head1 Frame Listing Output Examples
+=head1 Примеры вывода списка кадров (Frame Listing Output Examples)
 
 The C<frame> option can be used to control the output of frame 
 information.  For example, contrast this expression trace:
