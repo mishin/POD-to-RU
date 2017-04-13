@@ -218,11 +218,11 @@ C<DB::print_trace(FH, skip[, count[, short]])> печатает
 
 =head1 Примеры вывода списка кадров (Frame Listing Output Examples)
 
-The C<frame> option can be used to control the output of frame 
-information.  For example, contrast this expression trace:
+Опцию C<frame> можно использовать для управления выходом кадра
+информации. Например, сравните этот вывод трейса:
 
  $ perl -de 42
- Stack dump during die enabled outside of evals.
+ Дамп стека во время смерти включен за пределами проверки. (Stack dump during die enabled outside of evals.)
 
  Loading DB routines from perl5db.pl patch level 0.94
  Emacs support available.
@@ -240,7 +240,7 @@ information.  For example, contrast this expression trace:
  main::bar((eval 170):2):
  42
 
-with this one, once the C<o>ption C<frame=2> has been set:
+с этим, как только C<o>ption C<frame=2> был установлен:
 
    DB<4> o f=2
                 frame = '2'
@@ -254,13 +254,12 @@ with this one, once the C<o>ption C<frame=2> has been set:
  exited main::bar
  42
 
-By way of demonstration, we present below a laborious listing
-resulting from setting your C<PERLDB_OPTS> environment variable to
-the value C<f=n N>, and running I<perl -d -V> from the command line.
-Examples using various values of C<n> are shown to give you a feel
-for the difference between settings.  Long though it may be, this
-is not a complete listing, but only excerpts.
-
+В качестве демонстрации ниже мы приведем трудоемкий список
+в результате установки переменной окружения  C<PERLDB_OPTS> на
+значение C<f=n N>, и запуск I<perl -d -V> из командной строки.
+Показано, что примеры, использующие различные значения C<n> дают вам почувстовать
+ разницу между настройками. Хотя это может быть длинно, это не полный список, а только выдержки.
+ 
 =over 4
 
 =item 1
@@ -384,22 +383,21 @@ is not a complete listing, but only excerpts.
 
 =back
 
-In all cases shown above, the line indentation shows the call tree.
-If bit 2 of C<frame> is set, a line is printed on exit from a
-subroutine as well.  If bit 4 is set, the arguments are printed
-along with the caller info.  If bit 8 is set, the arguments are
-printed even if they are tied or references.  If bit 16 is set, the
-return value is printed, too.
+Во всех случаях, показанных выше, отступ строки показывает дерево вызовов.
+Если бит 2 C<frame> установлен, строка будет успешно напечатана при выходе из подпрограммы. 
+Если бит 4 установлен,  аргументы печатаются наряду с информацией о вызывающей функции
+Если бит 8 установлен, аргументы напечатаются, даже если они связаны или ссылаются. (even if they are tied or references.)
+Если бит 16 установлен, то возвращаемое значение также печатается.
 
-When a package is compiled, a line like this
+Когда пакет компилируется, строка, подобная этой
 
     Package lib/Carp.pm.
 
-is printed with proper indentation.
+Печатается с правильным отступом.
 
-=head1 Debugging Regular Expressions
+=head1 Отладка регулярных выражений
 
-There are two ways to enable debugging output for regular expressions.
+Есть два способа включить вывод отладки для регулярных выражений.
 
 If your perl is compiled with C<-DDEBUGGING>, you may use the
 B<-Dr> flag on the command line.
