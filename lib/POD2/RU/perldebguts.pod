@@ -399,16 +399,16 @@ C<DB::print_trace(FH, skip[, count[, short]])> печатает
 
 Есть два способа включить вывод отладки для регулярных выражений.
 
-If your perl is compiled with C<-DDEBUGGING>, you may use the
-B<-Dr> flag on the command line.
+Если ваш perl скомпилирован с помощью  C<-DDEBUGGING>, вы можете использовать флаг
+B<-Dr> в командной строке.
 
-Otherwise, one can C<use re 'debug'>, which has effects at
-compile time and run time.  Since Perl 5.9.5, this pragma is lexically
-scoped.
+В противном случае вы можете использовать C<use re 'debug'>, который работает и во
+ время компиляции и во время выполнения. Начиная с Perl 5.9.5, эта прагма имеет лексическую 
+область видимости.
 
-=head2 Compile-time Output
+=head2 Вывод лога во время компиляции (Compile-time Output)
 
-The debugging output at compile time looks like this:
+Вывод отладки во время компиляции выглядит так:
 
   Compiling REx '[bc]d(ef*g)+h[ij]k$'
   size 45 Got 364 bytes for offset annotations.
@@ -439,6 +439,18 @@ The debugging output at compile time looks like this:
   	11[1] 0[0] 12[0] 12[0] 13[1] 0[0] 14[4] 0[0] 0[0] 0[0] 0[0]
   	0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 18[1] 0[0] 19[1] 20[0]  
   Omitting $` $& $' support.
+
+The first line shows the pre-compiled form of the regex.  The second
+shows the size of the compiled form (in arbitrary units, usually
+4-byte words) and the total number of bytes allocated for the
+offset/length table, usually 4+C<size>*8.  The next line shows the
+label I<id> of the first node that does a match.
+
+Первая строка показывает предварительно скомпилированную форму регулярного выражения. Второй
+Показывает размер скомпилированной формы (в произвольных единицах, обычно
+4-байтные слова) и общее количество байт, выделенных для
+Таблица смещения / длины, обычно 4 + C <размер> * 8. Следующая строка показывает
+Label I <id> первого узла, который выполняет сопоставление.
 
 The first line shows the pre-compiled form of the regex.  The second
 shows the size of the compiled form (in arbitrary units, usually
