@@ -440,23 +440,11 @@ B<-Dr> в командной строке.
   	0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 18[1] 0[0] 19[1] 20[0]  
   Omitting $` $& $' support.
 
-The first line shows the pre-compiled form of the regex.  The second
-shows the size of the compiled form (in arbitrary units, usually
-4-byte words) and the total number of bytes allocated for the
-offset/length table, usually 4+C<size>*8.  The next line shows the
-label I<id> of the first node that does a match.
-
-Первая строка показывает предварительно скомпилированную форму регулярного выражения. Второй
-Показывает размер скомпилированной формы (в произвольных единицах, обычно
+Первая строка показывает предварительно скомпилированную форму регулярного выражения. Вторая
+показывает размер скомпилированной формы (в произвольных единицах, обычно
 4-байтные слова) и общее количество байт, выделенных для
-Таблица смещения / длины, обычно 4 + C <размер> * 8. Следующая строка показывает
-Label I <id> первого узла, который выполняет сопоставление.
-
-The first line shows the pre-compiled form of the regex.  The second
-shows the size of the compiled form (in arbitrary units, usually
-4-byte words) and the total number of bytes allocated for the
-offset/length table, usually 4+C<size>*8.  The next line shows the
-label I<id> of the first node that does a match.
+таблицы смещения/длины, обычно 4+C<размер>* 8 (offset/length table, usually 4+C<size>*8). Следующая строка показывает
+ метку I<id> первого узла, с которым выполнилось сопоставление (первого найденного узла).
 
 The 
 
