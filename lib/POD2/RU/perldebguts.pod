@@ -446,22 +446,22 @@ B<-Dr> в командной строке.
 таблицы смещения/длины, обычно 4+C<размер>* 8 (offset/length table, usually 4+C<size>*8). Следующая строка показывает
  метку I<id> первого узла, с которым выполнилось сопоставление (первого найденного узла).
 
-The 
+ Привязанный 'de' к 1 плавающей 'gh' в 3..2147483647 (проверка плавающей)
+        Stclass 'ANYOF [bc]' minlen 7
 
-  anchored 'de' at 1 floating 'gh' at 3..2147483647 (checking floating) 
-        stclass 'ANYOF[bc]' minlen 7 
+  (anchored 'de' at 1 floating 'gh' at 3..2147483647 (checking floating) 
+        stclass 'ANYOF[bc]' minlen 7) 
+	
+cтрока (разделенная на две строки) содержит информацию оптимизатора. 
+В показанном примере оптимизатор обнаружил, что совпадение
+должно содержать подстроку C<de> со смещением 1 плюс подстрока C<gh>
+при некотором смещении между 3 и бесконечностью. Более того, при проверке на
+эти подстроки (чтобы отказаться от невозможных совпадений быстро), Perl проверит
+для подстроки C<gh> перед проверкой подстроки C<de>. 
+Оптимизатор также может использовать знания о том, что начало матча (на
+C<first> I<id>) с символьным классом и строка короче 7 символов не может быть найдена.
 
-line (split into two lines above) contains optimizer
-information.  In the example shown, the optimizer found that the match 
-should contain a substring C<de> at offset 1, plus substring C<gh>
-at some offset between 3 and infinity.  Moreover, when checking for
-these substrings (to abandon impossible matches quickly), Perl will check
-for the substring C<gh> before checking for the substring C<de>.  The
-optimizer may also use the knowledge that the match starts (at the
-C<first> I<id>) with a character class, and no string 
-shorter than 7 characters can possibly match.
-
-The fields of interest which may appear in this line are
+Поля, представляющие интерес, могут отображаться в этой строке:
 
 =over 4
 
