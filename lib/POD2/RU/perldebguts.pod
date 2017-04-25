@@ -469,45 +469,45 @@ C<first> I<id>) с символьным классом и строка коро�
 
 =item C<floating> I<STRING> C<at> I<POS1..POS2>
 
-See above.
+См. Выше.
 
 =item C<matching floating/anchored>
 
-Which substring to check first.
+Какую подстроку проверить в первую очередь.
 
 =item C<minlen>
 
-The minimal length of the match.
+Минимальная длина поиска(match).
 
 =item C<stclass> I<TYPE>
 
-Type of first matching node.
+Тип первого совпадающего узла.
 
 =item C<noscan>
 
-Don't scan for the found substrings.
+Не сканируйте найденные подстроки.
 
 =item C<isall>
 
-Means that the optimizer information is all that the regular
-expression contains, and thus one does not need to enter the regex engine at
-all.
+Означает, что информация оптимизатора - это все, что
+ содержит регулярное выражение, и, таким образом, нет необходимости вводить регулярное выражение вообще
+ (does not need to enter the regex engine at all.)
 
 =item C<GPOS>
 
-Set if the pattern contains C<\G>.
+Установите, если шаблон содержит C<\G>.
 
 =item C<plus> 
 
-Set if the pattern starts with a repeated char (as in C<x+y>).
+Установите, если шаблон начинается с повторяющегося символа (как в C<x+y>).
 
 =item C<implicit>
 
-Set if the pattern starts with C<.*>.
+Установите, если шаблон начинается с C<.*>.
 
 =item C<with eval> 
 
-Set if the pattern contain eval-groups, such as C<(?{ code })> and
+Установите, если шаблон содержит eval-группы, такие как C<(?{ code })> и
 C<(??{ code })>.
 
 =item C<якорный(ТИП)> (C<anchored(TYPE)>)
@@ -561,11 +561,11 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
  SEOL               no         То же,предполагая одностроку.
  BOUND              no         Найдет "" при любом использовании границы слова
                                при родной семантике кодировки для не-utf8
- BOUNDL             no         Match "" at any locale word boundary
- BOUNDU             no         Match "" at any word boundary using
-                               Unicode semantics
- BOUNDA             no         Match "" at any word boundary using ASCII
-                               semantics
+ BOUNDL             no         Найдет "" в любой локальной границе слова ( Match "" at any locale word boundary)
+ BOUNDU             no         Найдет "" в любой локальной границе слова
+                               используя семантику Юникода
+ BOUNDA             no         Найдет "" в любой локальной границе слова используя ASCII
+                               семантику
  NBOUND             no         Match "" at any word non-boundary using
                                native charset semantics for non-utf8
  NBOUNDL            no         Match "" at any locale word non-boundary
