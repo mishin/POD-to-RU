@@ -566,26 +566,29 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
                                используя семантику Юникода
  BOUNDA             no         Найдет "" в любой локальной границе слова используя ASCII
                                семантику
- NBOUND             no         Match "" at any word non-boundary using
-                               native charset semantics for non-utf8
- NBOUNDL            no         Match "" at any locale word non-boundary
- NBOUNDU            no         Match "" at any word non-boundary using
-                               Unicode semantics
- NBOUNDA            no         Match "" at any word non-boundary using
-                               ASCII semantics
- GPOS               no         Matches where last m//g left off.
+ NBOUND             no         Найдет "" в любой не-границе слова используя
+                               родные не-UTF кодировку (native charset semantics for non-utf8)
+ NBOUNDL            no         Найдет "" в любой локальной не-границе слова
+ NBOUNDU            no         Найдет "" в любой не-границе слова используя
+                               семантику Юникода
+ NBOUNDA            no         Найдет "" в любой не-границе слова используя
+                               ASCII семантику
+ GPOS               no         Совпадения, в которых остановились последние m//g.
 
- # [Special] alternatives:
+ # [Специальные] альтернативы:
 
- REG_ANY            no         Match any one character (except newline).
- SANY               no         Match any one character.
- CANY               no         Match any one byte.
- ANYOF              sv         Match character in (or not in) this
-                               class, single char match only
- ANYOF_WARN_SUPER   sv         Match character in (or not in) this
+ REG_ANY            no         Соответствует любому символу (кроме символа новой строки).
+ SANY               no         Соответствует любому одному символу.
+ CANY               no         Соответствует любому одному байту.
+ ANYOF              sv         Сопоставить символ в (или не в) этого
+                               класса, только односимвольное соответствие
+ ANYOF_WARN_SUPER   sv         Сопоставить символ в (или не в) этого
+                               класса, кидает ворнинги (если включено) после нахождения
+                               Char выше Unicode максимального юникода (max);
+                               (Match character in (or not in) this
                                class, warn (if enabled) upon matching a
-                               char above Unicode max;
- ANYOF_SYNTHETIC    sv         Synthetic start class
+                               char above Unicode max;)
+ ANYOF_SYNTHETIC    sv         Синтетический стартовый класс (Synthetic start class)
 
  POSIXD             none       Some [[:class:]] under /d; the FLAGS
                                field gives which one
