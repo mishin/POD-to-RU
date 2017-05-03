@@ -590,25 +590,35 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
                                char above Unicode max;)
  ANYOF_SYNTHETIC    sv         Синтетический стартовый класс (Synthetic start class)
 
- POSIXD             none       Some [[:class:]] under /d; the FLAGS
-                               field gives which one
- POSIXL             none       Some [[:class:]] under /l; the FLAGS
-                               field gives which one
- POSIXU             none       Some [[:class:]] under /u; the FLAGS
-                               field gives which one
- POSIXA             none       Some [[:class:]] under /a; the FLAGS
-                               field gives which one
- NPOSIXD            none       complement of POSIXD, [[:^class:]]
- NPOSIXL            none       complement of POSIXL, [[:^class:]]
- NPOSIXU            none       complement of POSIXU, [[:^class:]]
- NPOSIXA            none       complement of POSIXA, [[:^class:]]
+ POSIXD             none       Некоторым [[:class:]] под /d; 
+                               ставит один флаг (the FLAGS field gives which one)
+ POSIXL             none       Некоторым [[:class:]] под /l; 
+                               ставит один флаг (the FLAGS field gives which one)
+ POSIXU             none       Некоторым [[:class:]] под /u; 
+                               ставит один флаг (the FLAGS field gives which one)
+ POSIXA             none       Некоторым [[:class:]] под /a; 
+                               ставит один флаг (the FLAGS field gives which one)
+ NPOSIXD            none       дополнение класса POSIXD, [[:^class:]] (его отрицание)
+ NPOSIXL            none       дополнение класса POSIXL, [[:^class:]]
+ NPOSIXU            none       дополнение класса POSIXU, [[:^class:]]
+ NPOSIXA            none       дополнение класса POSIXA, [[:^class:]]
 
- CLUMP              no         Match any extended grapheme cluster
-                               sequence
+ CLUMP              no         Находит расширенную последовательность графема кластера -
+                               (специальное юникодной комбинации - примечание переводчика)
+                               (Match any extended grapheme cluster sequence)
 
- # Alternation
+ # Альтернатива (Alternation)
 
- # BRANCH        The set of branches constituting a single choice are
+ # BRANCH        Совокупность ветвей, образующих единый выбор
+ #               крючок вместе с их "рядом" указатели, так
+ #               приоритет предотвращает ничего, объединяемых в
+ #               любые отдельные ветви. "Следующий" указатель последнего
+ #               Филиал в моменты выбора, что после
+ #               весь выбор. Это также, где в финале "далее"
+ #               указатель # каждого отдельного точек ветвления; каждая ветвь
+ #               начинается с узлом операнда узла филиала.
+ 
+                 The set of branches constituting a single choice are
  #               hooked together with their "next" pointers, since
  #               precedence prevents anything being concatenated to
  #               any individual branch.  The "next" pointer of the last
