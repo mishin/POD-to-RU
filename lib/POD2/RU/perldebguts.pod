@@ -610,37 +610,18 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
  # Альтернатива (Alternation)
 
  # BRANCH        Совокупность веток(branches), образующих единый выбор
- #               зацепленный вместе с их "следующими" указателями, так
- #               приоритет предотвращает ничего, объединяемых в
- #               любые отдельные ветви. "Следующий" указатель последнего
- #               Филиал в моменты выбора, что после
- #               весь выбор. Это также, где в финале "далее"
- #               указатель # каждого отдельного точек ветвления; каждая ветвь
- #               начинается с узлом операнда узла филиала.
+ #               связанный вместе с их "следующими" указателями, так
+ #               приоритет предотвращает все, что объединено в
+ #               любых отдельных ветвях. "Следующий" указатель последней
+ #               ВЕТКИ в моменты выбора следует за
+ #               всем выбором. Это также, где в финале "далее"
+ #               указатель каждой отдельной точки ветвления; каждая ветвь
+ #               начинается с узлом операнда узла ВЕТКИ.
  
- Набор отделений, составляющих единственный выбор,
-               зацепленный вместе с их "следующими" указателями, с тех пор
-               предшествование предотвращает то, чтобы это было связанным к
-               любое отдельное отделение.
-
-"Следующий" указатель последнего
- ОТДЕЛЕНИЕ # в выборе указывает на вещь после
- # целый выбор. Это также где финал "затем"
- Указатель # каждый отдельные точки разветвления; каждое отделение
- # начинается с узла операнда узла ОТДЕЛЕНИЯ.
- 
-                 The set of branches constituting a single choice are
- #               hooked together with their "next" pointers, since
- #               precedence prevents anything being concatenated to
- #               any individual branch.  The "next" pointer of the last
- #               BRANCH in a choice points to the thing following the
- #               whole choice.  This is also where the final "next"
- #               pointer of each individual branch points; each branch
- #               starts with the operand node of a BRANCH node.
  #
- BRANCH             node       Match this alternative, or the next...
+ BRANCH             node       Найдет эту альтернативу или следующую ...(Match this alternative, or the next)
 
- # Back pointer
+ # Обратный указатель (Back pointer)
 
  # BACK          Normal "next" pointers all implicitly point forward;
  #               BACK exists to make loop structures possible.
