@@ -623,8 +623,8 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
 
  # Обратный указатель (Back pointer)
 
- # BACK          Normal "next" pointers all implicitly point forward;
- #               BACK exists to make loop structures possible.
+ # BACK          Нормальные указатели "next" все неявно указывают вперед;
+ #               BACK существует, чтобы сделать возможной структуру цикла.
  # not used
  BACK               no         Match "", "next" ptr points backward.
 
