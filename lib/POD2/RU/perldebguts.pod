@@ -626,11 +626,11 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
  # BACK          Нормальные указатели "next" все неявно указывают вперед;
  #               BACK существует, чтобы сделать возможной структуру цикла.
  # not used
- BACK               no         Match "", "next" ptr points backward.
+ BACK               no         Найдет "", "next" ptr eказывает назад.
 
  # Literals
 
- EXACT              str        Match this string (preceded by length).
+ EXACT              str        Соответствует этой строке (ей предшествует длина). (Match this string (preceded by length).)
  EXACTF             str        Match this non-UTF-8 string (not
                                guaranteed to be folded) using /id rules
                                (w/len).
