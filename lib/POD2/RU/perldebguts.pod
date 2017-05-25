@@ -626,35 +626,36 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
  # BACK          Нормальные указатели "next" все неявно указывают вперед;
  #               BACK существует, чтобы сделать возможной структуру цикла.
  # not used
- BACK               no         Найдет "", "next" ptr eказывает назад.
+ BACK               no         Найдет "", "next" ptr показывает назад.
 
  # Literals
 
  EXACT              str        Соответствует этой строке (ей предшествует длина). (Match this string (preceded by length).)
- EXACTF             str        Match this non-UTF-8 string (not
-                               guaranteed to be folded) using /id rules
+ EXACTF             str        Найдет эту не-UTF-8 строку (нет
+                               гарантии сложения (to be folded)) используя /id правил
                                (w/len).
- EXACTFL            str        Match this string (not guaranteed to be
-                               folded) using /il rules (w/len).
- EXACTFU            str        Match this string (folded iff in UTF-8,
-                               length in folding doesn't change if not
-                               in UTF-8) using /iu rules (w/len).
- EXACTFA            str        Match this string (not guaranteed to be
-                               folded) using /iaa rules (w/len).
- EXACTFU_SS         str        Match this string (folded iff in UTF-8,
-                               length in folding may change even if not
-                               in UTF-8) using /iu rules (w/len).
- EXACTFU_TRICKYFOLD str        Match this folded UTF-8 string using /iu
-                               rules
+ EXACTFL            str        Найдёт эту строку (нет
+                               гарантии сложения) используя /il правила (w/len).
+ EXACTFU            str        Найдёт эту строку (сложенный iff в UTF-8,
+                               длина при складывании не изменяется, если не
+                               в UTF-8) используя /iu правила (w/len).
+ EXACTFA            str        Найдёт эту строку (нет
+                               гарантии сложения) используя /iaa правила (w/len).
+ EXACTFU_SS         str        Найдёт эту строку (сложенный iff в UTF-8,
+                               длина в сложенном состоянии может измениться, даже если не
+                               в UTF-8) используя /iu правила (w/len).
+ EXACTFU_TRICKYFOLD str        Найдет эту свернутую(folded) строку UTF-8, используя /iu
+                               правила
 
- # Do nothing types
+ # Ничего не делать
 
- NOTHING            no         Match empty string.
- # A variant of above which delimits a group, thus stops optimizations
- TAIL               no         Match empty string. Can jump here from
-                               outside.
+ NOTHING            no         Соответствует пустой строке.
+ # Вариант выше, который ограничивает группу, тем самым останавливает оптимизацию
+ TAIL               no         Соответствует пустой строке. Может прыгать сюда из-
+                               за пределов (Match empty string. Can jump here from
+                               outside).
 
- # Loops
+ # Циклы
 
  # STAR,PLUS    '?', and complex '*' and '+', are implemented as
  #               circular BRANCH structures using BACK.  Simple cases
