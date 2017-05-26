@@ -657,82 +657,81 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
 
  # Циклы
 
- # STAR,PLUS    '?', and complex '*' and '+', are implemented as
- #               circular BRANCH structures using BACK.  Simple cases
- #               (one character per match) are implemented with STAR
- #               and PLUS for speed and to minimize recursive plunges.
+
+ # STAR,PLUS    '?', И сложные '*' и '+', реализованы как
+ #               круговые BRANCH структуры с использованием BACK. Простые случаи
+ #               (один символ в поиске (per match)) реализованы с помощью STAR
+ #               и PLUS для скорости и минимизации рекурсивных погружений (plunges).
  #
- STAR               node       Match this (simple) thing 0 or more
-                               times.
- PLUS               node       Match this (simple) thing 1 or more
-                               times.
 
- CURLY              sv 2       Match this simple thing {n,m} times.
- CURLYN             no 2       Capture next-after-this simple thing
- CURLYM             no 2       Capture this medium-complex thing {n,m}
-                               times.
- CURLYX             sv 2       Match this complex thing {n,m} times.
+ STAR               node       Найдет эту (простую) вещь 0 или более раз
+ PLUS               node       Найдет эту (простую) вещь 1 или более раз
 
- # This terminator creates a loop structure for CURLYX
- WHILEM             no         Do curly processing and see if rest
-                               matches.
+ CURLY              sv 2       Найдет эту (простую) вещь {n,m} раз
+ CURLYN             no 2       Захватит следующую после этого простую вещь (сapture next-after-this simple thing)
+ CURLYM             no 2       Захватит эту средне-сложную вещь {n,m} раз.
+ CURLYX             sv 2       Найдет эту сложную вещь {n,m} раз.
 
- # Buffer related
+ # Этот терминатор(разделитель) создает структуру цикла для 
+ WHILEM             no         Делайте кудрявую обработку и смотрите, остались ли данные для поиска.
+ 			       (Do curly processing and see if rest matches.0
 
- # OPEN,CLOSE,GROUPP     ...are numbered at compile time.
- OPEN               num 1      Mark this point in input as start of #n.
- CLOSE              num 1      Analogous to OPEN.
+ # Связанные с буфером
 
- REF                num 1      Match some already matched string
- REFF               num 1      Match already matched string, folded
-                               using native charset semantics for non-
+ # OPEN,CLOSE,GROUPP     ...нумеруются во время компиляции.
+ OPEN               num 1      Отметьте эту точку ввода как начало #n.
+ CLOSE              num 1      Аналогично OPEN.
+
+ REF                num 1      Соответствует некоторой уже найденной строке
+ REFF               num 1      Найти уже найденную строку, свернутую
+                               с использованием встроенной семантики кодировки для не-
                                utf8
- REFFL              num 1      Match already matched string, folded in
+ REFFL              num 1      Найти уже найденную строку, свернутую в
                                loc.
- REFFU              num 1      Match already matched string, folded
-                               using unicode semantics for non-utf8
- REFFA              num 1      Match already matched string, folded
-                               using unicode semantics for non-utf8, no
-                               mixing ASCII, non-ASCII
+ REFFU              num 1      Найти уже найденную строку, свернутую
+                               с использованием семантики Unicode для non-utf8
+ REFFA              num 1      Найти уже найденную строку, свернутую
+                               с использованием семантики Unicode для non-utf8, но
+                               смешанную с ASCII, не-ASCII
 
- # Named references.  Code in regcomp.c assumes that these all are after
- # the numbered references
- NREF               no-sv 1    Match some already matched string
- NREFF              no-sv 1    Match already matched string, folded
-                               using native charset semantics for non-
+ # Именованные ссылки. Код в regcomp.c предполагает, что все они после
+ # пронумерованных ссылок
+ NREF               no-sv 1    Найдет некоторую уже найденную строку
+ NREFF              no-sv 1    Найти уже найденную строку, свернутую
+                               с использованием встроенной семантики кодировки для не-
                                utf8
- NREFFL             no-sv 1    Match already matched string, folded in
+ NREFFL             no-sv 1    Найти уже найденную строку, свернутую в
                                loc.
- NREFFU             num 1      Match already matched string, folded
-                               using unicode semantics for non-utf8
- NREFFA             num 1      Match already matched string, folded
-                               using unicode semantics for non-utf8, no
-                               mixing ASCII, non-ASCII
+ NREFFU             num 1      Найти уже найденную строку, свернутую
+                               с использованием семантики Unicode для non-utf8
+ NREFFA             num 1      Найти уже найденную строку, свернутую
+                               с использованием семантики Unicode для non-utf8, но
+                               смешанную с ASCII, не-ASCII
 
- IFMATCH            off 1 2    Succeeds if the following matches.
- UNLESSM            off 1 2    Fails if the following matches.
- SUSPEND            off 1 1    "Independent" sub-RE.
- IFTHEN             off 1 1    Switch, should be preceded by switcher.
- GROUPP             num 1      Whether the group matched.
+ IFMATCH            off 1 2    Успешно, если следующие совпадают.
+ UNLESSM            off 1 2    Сбой, если следующие совпадают.
+ SUSPEND            off 1 1    "Независимое" sub-RE (подрегулярное выражение).
+ IFTHEN             off 1 1    Переключатель, которому должен предшествовать переключатель. (Switch, should be preceded by switcher.)
+ GROUPP             num 1      Где находится группа. (Whether the group matched.)
 
- # Support for long RE
+ # Поддержка длинных RE
 
- LONGJMP            off 1 1    Jump far away.
- BRANCHJ            off 1 1    BRANCH with long offset.
+ LONGJMP            off 1 1    Прыгай далеко.
+ BRANCHJ            off 1 1    BRANCH с длинным смещением.
 
- # The heavy worker
+ # Тяжелый рабочий (The heavy worker)
 
- EVAL               evl 1      Execute some Perl code.
+ EVAL               evl 1      Выполнить некоторый Perl-код.
 
- # Modifiers
+ # Модификаторы
 
- MINMOD             no         Next operator is not greedy.
- LOGICAL            no         Next opcode should set the flag only.
+ MINMOD             no         Следующий оператор не жадный.
+ LOGICAL            no         Следующий опкод должен устанавливать только флаг.
 
- # This is not used yet
- RENUM              off 1 1    Group with independently numbered parens.
+ # Это еще не используется
+ RENUM              off 1 1    Группа с независимой нумерацией.
 
- # Trie Related
+ # Связанные темы
 
  # Behave the same as A|LIST|OF|WORDS would. The '..C' variants
  # have inline charclass data (ascii only), the 'C' store it in the
