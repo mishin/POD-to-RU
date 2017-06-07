@@ -733,9 +733,9 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
 
  # Связанные темы
 
- # Behave the same as A|LIST|OF|WORDS would. The '..C' variants
- # have inline charclass data (ascii only), the 'C' store it in the
- # structure.
+ # Ведёт себя так же, как A|LIST|OF|WORDS. Варианты '..C' 
+ # имеют встроенные данные charclass (только ascii), где 'C' хранит его
+ # в составе.
 
  TRIE               trie 1     Match many EXACT(F[ALU]?)? at once.
                                flags==type
