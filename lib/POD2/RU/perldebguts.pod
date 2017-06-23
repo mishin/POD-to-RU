@@ -737,50 +737,49 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
  # имеют встроенные данные charclass (только ascii), где 'C' хранит его
  # в составе.
 
- TRIE               trie 1     Match many EXACT(F[ALU]?)? at once.
+ TRIE               trie 1     Найдет много EXACT(F[ALU]?)? один раз (at once).
                                flags==type
- TRIEC              trie       Same as TRIE, but with embedded charclass
-                    charclass  data
+ TRIEC              trie       То же, что и TRIE, но со встроенным charclass
 
  AHOCORASICK        trie 1     Aho Corasick stclass. flags==type
- AHOCORASICKC       trie       Same as AHOCORASICK, but with embedded
-                    charclass  charclass data
+ AHOCORASICKC       trie       То же, что и AHOCORASICK, но со встроенным charclass
 
- # Regex Subroutines
- GOSUB              num/ofs 2L recurse to paren arg1 at (signed) ofs
-                               arg2
- GOSTART            no         recurse to start of pattern
+ # Подпрограммы регулярных выражений (Regex Subroutines)
+ GOSUB              num/ofs 2L рекурсия к родительскому arg1 на (подписанных) ofs arg2 (recurse to paren arg1 at (signed) ofs)
+                               
+ GOSTART            no         рекурсия к началу шаблона (recurse to start of pattern)
 
- # Special conditionals
- NGROUPP            no-sv 1    Whether the group matched.
- INSUBP             num 1      Whether we are in a specific recurse.
- DEFINEP            none 1     Never execute directly.
+ # Специальные условия
+ NGROUPP            no-sv 1    Соответствовала ли группа. (Whether the group matched.)
+ INSUBP             num 1      Будем ли мы в конкретной рекурсии.
+ DEFINEP            none 1     Никогда не выполняйте непосредственно.
 
- # Backtracking Verbs
- ENDLIKE            none       Used only for the type field of verbs
- OPFAIL             none       Same as (?!)
- ACCEPT             parno 1    Accepts the current matched string.
+ # Глаголы с отступами (Backtracking Verbs)
+ ENDLIKE            none       Используется только для поля типа глагола (Used only for the type field of verbs)
+ OPFAIL             none       Тоже, что и (?!)
+ ACCEPT             parno 1    Принимает текущую найденную строку. (Accepts the current matched string.)
 
- # Verbs With Arguments
- VERB               no-sv 1    Used only for the type field of verbs
- PRUNE              no-sv 1    Pattern fails at this startpoint if no-
-                               backtracking through this
- MARKPOINT          no-sv 1    Push the current location for rollback by
-                               cut.
- SKIP               no-sv 1    On failure skip forward (to the mark)
-                               before retrying
- COMMIT             no-sv 1    Pattern fails outright if backtracking
-                               through this
- CUTGROUP           no-sv 1    On failure go to the next alternation in
-                               the group
+ # Глаголы с аргументами (Verbs With Arguments)
+ VERB               no-sv 1    Используется только для поля типа глаголов (verbs)
+ PRUNE              no-sv 1    Образец терпит неудачу в этой начальной точке, если нет возврата через этот 
+                               (Pattern fails at this startpoint if no-
+                               backtracking through this)
+ MARKPOINT          no-sv 1    Нажмите текущее местоположение для отката путем вырезания. (Push the current location for rollback by
+                               cut.)
+ SKIP               no-sv 1    При отказе пропустить вперед (до отметки) перед повторной попыткой (On failure skip forward (to the mark)
+                               before retrying)
+ COMMIT             no-sv 1    Шаблон выходит из строя, если возврат (Pattern fails outright if backtracking
+                               through this)
+ CUTGROUP           no-sv 1    При сбое перейдите к следующему чередованию в группе (On failure go to the next alternation in
+                               the group)
 
- # Control what to keep in $&.
- KEEPS              no         $& begins here.
+ # Контролируйте, что нужно держать в $&.
+ KEEPS              no         $& начинается здесь.
 
- # New charclass like patterns
- LNBREAK            none       generic newline pattern
+ # Новые charclass(классы символов), похожие на шаблоны (New charclass like patterns)
+ LNBREAK            none       создать шаблон начала строки (generic newline pattern)
 
- # SPECIAL  REGOPS
+ # СПЕЦИАЛЬНЫЕ РЕГУЛЯРКИ (SPECIAL  REGOPS)
 
  # This is not really a node, but an optimized away piece of a "long"
  # node.  To simplify debugging output, we mark it as if it were a node
