@@ -1001,40 +1001,40 @@ a 4-byte overhead, and thus an 8192-long bucket may take up to
 
 =item C<Total sbrk(): SBRKed/SBRKs:CONTINUOUS>
 
-The first two fields give the total amount of memory perl sbrk(2)ed
-(ess-broken? :-) and number of sbrk(2)s used.  The third number is
-what perl thinks about continuity of returned chunks.  So long as
-this number is positive, malloc() will assume that it is probable
-that sbrk(2) will provide continuous memory.
+Первые два поля дают общий объем памяти в Perl сбрк(2)Эд
+(есс-сломался? :-) и количество сбрк(2)использованных. Третий номер
+то, что Perl думает о продолжительном возвращении кусками. Пока
+это число является положительным, malloc() будет предполагать, что такое возможно
+что сбрк(2) будет обеспечивать продолженную память.
 
-Memory allocated by external libraries is not counted.
+Память, выделенная с помощью внешних библиотек не учитывается.
 
 =item C<pad: 0>
 
-The amount of sbrk(2)ed memory needed to keep buckets aligned.
+Количество сбрк(2)едь памяти, необходимой для поддержания выравненных пачек(needed to keep buckets aligned).
 
 =item C<heads: 2192>
 
-Although memory overhead of bigger buckets is kept inside the bucket, for
-smaller buckets, it is kept in separate areas.  This field gives the
-total size of these areas.
+Хотя память больших пачках хранится внутри пачки(bucket), для
+меньших пакетов она хранится в отдельных зонах. Это поле дает
+общую площадь этих участков.
 
 =item C<chain: 0>
 
-malloc() may want to subdivide a bigger bucket into smaller buckets.
-If only a part of the deceased bucket is left unsubdivided, the rest
-is kept as an element of a linked list.  This field gives the total
-size of these chunks.
+функции malloc() может хотеть разделить большой пакет на мелкие пакеты.
+Если только часть умершего пакета осталась неразделенная, остальные
+хранятся как элемент связанного списка. Это поле дает общий
+размер этих блоков.
 
 =item C<tail: 6144>
 
-To minimize the number of sbrk(2)s, malloc() asks for more memory.  This
-field gives the size of the yet unused part, which is sbrk(2)ed, but
-never touched.
+Чтобы свести к минимуму количество сбрк(2)с(sbrk(2)s) функциями malloc() запрашивает больше памяти. Это
+поле дает Размер еще неиспользованной части, которая сбрк(2)Эд(sbrk(2)ed), собрана но
+никогда не трогалась.
 
 =back
 
-=head1 SEE ALSO
+=head1 СМОТРЕТЬ ТАКЖЕ
 
 L<perldebug>,
 L<perlguts>,
