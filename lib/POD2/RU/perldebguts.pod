@@ -827,11 +827,11 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
 
 =head2 Вывод времени выполнения  (Run-time Output)
 
-First of all, when doing a match, one may get no run-time output even
-if debugging is enabled.  This means that the regex engine was never
-entered and that all of the job was therefore done by the optimizer.
+В первую очередь, когда происходит совпадение, может не быть времени на output даже
+если включена отладка. Это означает, что регулярное выражение никогда не вошло
+, и поэтому вся работа была сделана оптимизатором.
 
-If the regex engine was entered, the output may look like this:
+Если регулярное выражение было введено, то на выходе может выглядеть следующим образом:
 
   Matching '[bc]d(ef*g)+h[ij]k$' against 'abcdefg__gh__'
     Setting an EVAL scope, savestack=3
