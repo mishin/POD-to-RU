@@ -807,41 +807,25 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
   	11[1] 0[0] 12[0] 12[0] 13[1] 0[0] 14[4] 0[0] 0[0] 0[0] 0[0]
   	0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 18[1] 0[0] 19[1] 20[0]  
 
-Первая строка указывает на то, что смещение/длина Таблица содержит 45
-записи. Каждая запись является парой чисел, обозначается с<смещение[длина]>.
+Первая строка указывает на то, что таблица смещений/длин  содержит 45
+записей. Каждая запись является парой чисел(integers), обозначается C<смещение[длина]> (C<offset[length]>.).
 Записи нумеруются начиная с 1, поэтому запись #1 вот это C<1[4]> и
-запись #12-С<5[1]>. С<1[4]> указывает, что узел, обозначенный как C<1:>
-(с<1: что-нибудь из[до н. э.]>) начинается в позиции символа 1 в
+запись #12 это С<5[1]>. С<1[4]> указывает, что узел, обозначенный как C<1:>
+(C<1: что-нибудь из[до н. э.]>)(the C<1: ANYOF[bc]>) начинается в позиции символа 1 в
 предварительно скомпилированном виде регулярного выражения, и имеет длину 4 символа.
 С<5[1]> в положении 12
 указывает, что узел, обозначенный как c<12:>
-(с<< 12: точные <д> >>) начинается на символ 5 в
+(C<< 12: точные <д> >>)(the C<< 12: EXACT <d> >>) начинается на символ 5 в
 предварительно скомпилированном виде регулярного выражения, и имеет длину 1 символ.
 С<12[1]> в позиции 14
 указывает, что узел, обозначенный как C<14:>
-(с<< 14: CURLYX[0] {1,32767} >>) начинается в позиции знака 12 В
+(C<< 14: CURLYX[0] {1,32767} >>) начинается в позиции знака 12 В
 предварительно скомпилированном виде регулярного выражения, и имеет длину 1 символ - - -, что
-является, оно соответствует с<+> символ в предварительно скомпилированных регулярных выражений
+является, оно соответствует C<+> символ в предварительно скомпилированном регулярном выражении (in the precompiled regex)
 
-The first line here indicates that the offset/length table contains 45
-entries.  Each entry is a pair of integers, denoted by C<offset[length]>.
-Entries are numbered starting with 1, so entry #1 here is C<1[4]> and
-entry #12 is C<5[1]>.  C<1[4]> indicates that the node labeled C<1:>
-(the C<1: ANYOF[bc]>) begins at character position 1 in the
-pre-compiled form of the regex, and has a length of 4 characters.
-C<5[1]> in position 12 
-indicates that the node labeled C<12:>
-(the C<< 12: EXACT <d> >>) begins at character position 5 in the
-pre-compiled form of the regex, and has a length of 1 character.
-C<12[1]> in position 14 
-indicates that the node labeled C<14:>
-(the C<< 14: CURLYX[0] {1,32767} >>) begins at character position 12 in the
-pre-compiled form of the regex, and has a length of 1 character---that
-is, it corresponds to the C<+> symbol in the precompiled regex.
+С<0[0]> элементы указывают на то, что нет соответствующего узла.
 
-C<0[0]> items indicate that there is no corresponding node.
-
-=head2 Run-time Output
+=head2 Вывод времени выполнения  (Run-time Output)
 
 First of all, when doing a match, one may get no run-time output even
 if debugging is enabled.  This means that the regex engine was never
