@@ -859,61 +859,60 @@ C<   >I<id>: I<TYPE> I<OPTIONAL-INFO> (I<next-id>)
 				    failed...
 				failed...
 
-The most significant information in the output is about the particular I<node>
-of the compiled regex that is currently being tested against the target string.
-The format of these lines is
+Наиболее существенная информация в выводе о том, что I<узел> (I<node>)
+скомпилированного регулярного выражения в настоящее время тестируется в отношении к целевой строке.
+Формат этих строк
 
 C<    >I<STRING-OFFSET> <I<PRE-STRING>> <I<POST-STRING>>   |I<ID>:  I<TYPE>
 
-The I<TYPE> info is indented with respect to the backtracking level.
-Other incidental information appears interspersed within.
+Информация о I<ТИПЕ> (I<TYPE>) форматируется относительно уровне трекинга (backtracking level).
+Другая информация об инциденте появляется и пересекается внутри.
 
-=head1 Debugging Perl Memory Usage
+=head1 Использования Памяти при Отладке в Perl  (Debugging Perl Memory Usage)
 
-Perl is a profligate wastrel when it comes to memory use.  There
-is a saying that to estimate memory usage of Perl, assume a reasonable
-algorithm for memory allocation, multiply that estimate by 10, and
-while you still may miss the mark, at least you won't be quite so
-astonished.  This is not absolutely true, but may provide a good
-grasp of what happens.
+Perl-это распутный бездельник, когда дело доходит до использования памяти. 
+Говорят, чтобы оценить использование памяти в Perl нужно подразумевать разумный
+алгоритм выделения памяти, умножить эту оценку на 10, и
+ хотя вы можете промазать, но по крайней мере, вы не будете так
+удивлены. Это не совсем так, но может обеспечить хорошее
+понимание о том, что происходит.
 
-Assume that an integer cannot take less than 20 bytes of memory, a
-float cannot take less than 24 bytes, a string cannot take less
-than 32 bytes (all these examples assume 32-bit architectures, the
-result are quite a bit worse on 64-bit architectures).  If a variable
-is accessed in two of three different ways (which require an integer,
-a float, or a string), the memory footprint may increase yet another
-20 bytes.  A sloppy malloc(3) implementation can inflate these
-numbers dramatically.
+Предположим, что целое число(integer) не может принимать меньше 20 байт памяти, a
+плавающее(float) не может занимать менее 24 байт, а строка(string) не может занимать меньше
+32 байта (все эти примеры предполагают 32-разрядные архитектуры,
+результат немного хуже на 64-битных архитектурах).  Если к переменной
+осуществляется доступ двумя из трех различных способов (для которых требуется целое число(integer),
+плавающее(float), или строку(string)), объем памяти возможно увеличить еще на
+20 байт.  Неаккуратная реализация функции malloc(3)  может раздуть эти
+значения драматически.
 
-On the opposite end of the scale, a declaration like
+На противоположном конце шкалы, объявление
 
   sub foo;
 
-may take up to 500 bytes of memory, depending on which release of Perl
-you're running.
+может потребовать до 500 байт памяти, в зависимости от версии языка Perl под 
+которым вы запускаетесь.
 
-Anecdotal estimates of source-to-compiled code bloat suggest an
-eightfold increase.  This means that the compiled form of reasonable
-(normally commented, properly indented etc.) code will take
-about eight times more space in memory than the code took
-on disk.
+Анекдотические оценки наворотов кода для копиляции (source-to-compiled) предполагают
+8-кратное увеличение. Это означает, что скомпилированная форма разумного
+(хорошо скомментирована, с правильно отступом и т. д.) кода возьмут
+принял примерно в восемь раз больше места в памяти, чем код
+на диске.
 
-The B<-DL> command-line switch is obsolete since circa Perl 5.6.0
-(it was available only if Perl was built with C<-DDEBUGGING>).
-The switch was used to track Perl's memory allocations and possible
-memory leaks.  These days the use of malloc debugging tools like
-F<Purify> or F<valgrind> is suggested instead.  See also
+Переключатель командной строки B<-DL> устарел начиная с 5.6.0
+(он был доступен, только если Perl был построен c C<-DDEBUGGING>).
+Этот ключ использовался для отслеживания распределения памяти в Perl и возможной
+утечки памяти.  В наши дни для отладки использования malloc вместо этого предлагаются   
+ такие инструменты, как F<Purify> или F<valgrind>.  Смотрите также
 L<perlhacktips/PERL_MEM_LOG>.
 
-One way to find out how much memory is being used by Perl data
-structures is to install the Devel::Size module from CPAN: it gives
-you the minimum number of bytes required to store a particular data
-structure.  Please be mindful of the difference between the size()
-and total_size().
+Один из способов узнать, сколько памяти используется данными Perl
+структуры - установить модуль Devel::Size из CPAN: он дает
+вам минимальное количество байтов, необходимых для хранения определенных данных.
+Помните о различии между size() и total_size ().
 
-If Perl has been compiled using Perl's malloc you can analyze Perl
-memory usage by setting $ENV{PERL_DEBUG_MSTATS}.
+Если Perl был скомпилирован с использованием malloc Perl, вы можете проанализировать 
+использования памяти Perl, задав $ENV{PERL_DEBUG_MSTATS}.
 
 =head2 С помощью C<$ENV{PERL_DEBUG_MSTATS}>
 
